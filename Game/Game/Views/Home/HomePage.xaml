@@ -1,37 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="Game.Views.HomePage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Game.Views.HomePage">
 
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <ScrollView
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand">
 
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
 
-                <StackLayout HorizontalOptions="Center" Style="{StaticResource HorizontalStack}">
-                    <Image Source="knight.png" Style="{StaticResource ImageLargeStyle}" />
+                <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="Center">
+                    <Image
+                         Source="knight.png"
+                         Style="{StaticResource ImageLargeStyle}"/>
 
-                    <Image Source="troll.png" Style="{StaticResource ImageLargeStyle}" />
+                    <Image
+                         Source="troll.png"
+                         Style="{StaticResource ImageLargeStyle}"/>
 
                 </StackLayout>
 
-                <StackLayout Padding="75,5,75,5" HorizontalOptions="Center">
+                <StackLayout HorizontalOptions="Center" Padding="75,5,75,5">
 
-                    <Label
+                    <Label 
+                        Text="In a far away land there was a tribe of warrior elves."
+                        Style="{StaticResource CenterMessageStyle}"
                         FontSize="Micro"
                         LineBreakMode="WordWrap"
-                        Style="{StaticResource CenterMessageStyle}"
-                        Text="In a far away land there was a tribe of warrior kklves." />
+                        />
 
-                    <Label
+                    <Label 
+                        Text="The elves entered the woods to eraticate the monsters that threatened their villages."
+                        Style="{StaticResource CenterMessageStyle}"
                         FontSize="Micro"
                         LineBreakMode="WordWrap"
-                        Style="{StaticResource CenterMessageStyle}"
-                        Text="The elves entered the woods to eraticate the monsters that threatened their villages." />
+                        />
                 </StackLayout>
 
-                <Button Clicked="GameButton_Clicked" Text="Enter" />
+                <Button
+                    Text="Enter"
+                    Clicked="GameButton_Clicked"/>
 
             </StackLayout>
         </ScrollView>
