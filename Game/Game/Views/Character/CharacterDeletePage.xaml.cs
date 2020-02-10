@@ -11,9 +11,13 @@ namespace Game.Views.Character
 
         readonly GenericViewModel<CharacterModel> viewModel;
 
-        public CharacterDeletePage()
+        public CharacterDeletePage(GenericViewModel<CharacterModel> data)
         {
             InitializeComponent();
+
+            BindingContext = this.viewModel = data;
+
+            this.viewModel.Title = "Delete " + data.Title;
         }
     }
 }
