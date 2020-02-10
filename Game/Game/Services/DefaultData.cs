@@ -55,6 +55,15 @@ namespace Game.Services
         {
             var datalist = new List<CharacterModel>()
             {
+                new CharacterModel {
+                    Name = "Default Character",
+                    Health = 10,
+                    Description = "Default description",
+                    ImageURI = "http://www.clker.com/cliparts/e/L/A/m/I/c/sword-md.png",
+                    DefenseAttribute = 5,
+                    OffenseAttribute = 5,
+                    SpeedAttribute = 1,
+                }
             };
 
             return datalist;

@@ -23,7 +23,6 @@ namespace Game.Models
             SpeedAttribute = newData.SpeedAttribute;
             OffenseAttribute = newData.OffenseAttribute;
             DefenseAttribute = newData.DefenseAttribute;
-            Description = newData.Description;
             ImageURI = newData.ImageURI;
             Skill = newData.Skill;
             Equipments = newData.Equipments;
