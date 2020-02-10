@@ -4,7 +4,7 @@ using Game.ViewModels;
 using System;
 using Game.Models;
 
-namespace Game.Views.Character
+namespace Game.Views
 {
     public partial class CharacterReadPage : ContentView
     {
