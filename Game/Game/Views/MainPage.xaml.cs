@@ -41,6 +41,10 @@ namespace Game.Views
                         MenuPages.Add(id, new NavigationPage(new ScoreIndexPage()));
                         break;
 
+                    case (int)MenuItemEnum.Character:
+                        MenuPages.Add(id, new NavigationPage(new CharacterIndexPage()));
+                        break;
+
                     case (int)MenuItemEnum.Items:
                         MenuPages.Add(id, new NavigationPage(new ItemIndexPage()));
                         break;
