@@ -47,6 +47,19 @@ namespace Game.Services
             return datalist;
         }
 
+        /// <summary>
+        /// Load the Default character data
+        /// </summary>
+        /// <returns></returns>
+        public static List<CharacterModel> LoadData(CharacterModel temp)
+        {
+            var datalist = new List<CharacterModel>()
+            {
+            };
+
+            return datalist;
+        }
+
         public static List<ScoreModel> LoadData(ScoreModel temp)
         {
             var datalist = new List<ScoreModel>()
