@@ -4,11 +4,12 @@ using Game.ViewModels;
 using System;
 using Game.Models;
 
-namespace Game.Views.Character
+namespace Game.Views
 {
-    public partial class CharacterDeletePage : ContentView
-    {
 
+    public partial class CharacterDeletePage : ContentPage
+    {
+        // View Model for Item
         readonly GenericViewModel<CharacterModel> viewModel;
 
         public CharacterDeletePage(GenericViewModel<CharacterModel> data)
