@@ -50,7 +50,7 @@ namespace Game.ViewModels
         {
             Title = "Characters";
 
-            //#region Messages
+            #region Messages
 
             //// Register the Create Message
             //MessagingCenter.Subscribe<CharacterCreatePage, CharacterModel>(this, "Create", async (obj, data) =>
@@ -73,9 +73,22 @@ namespace Game.ViewModels
             //    await DeleteAsync(data as CharacterModel);
             //});
 
+            // Register the Set Data Source Message
+            MessagingCenter.Subscribe<AboutPage, int>(this, "SetDataSource", async (obj, data) =>
+            {
+                await SetDataSource(data);
+            });
+
+            // Register the Wipe Data List Message
+            MessagingCenter.Subscribe<AboutPage, bool>(this, "WipeDataList", async (obj, data) =>
+            {
+                await WipeDataListAsync();
+            });
+
+            #endregion Messages
 
         }
 
-        #endregion Constructor
+#endregion Constructor
     }
 }
