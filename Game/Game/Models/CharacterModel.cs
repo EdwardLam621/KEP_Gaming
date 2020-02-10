@@ -4,8 +4,10 @@ using System.Text;
 
 namespace Game.Models
 {
-    public class CharacterModel : BaseModel<CharacterModel>
+    public class CharacterModel : CreatureModel<CharacterModel>
     {
+        public List<ItemModel> Equipments;
+
 
     }
 }
