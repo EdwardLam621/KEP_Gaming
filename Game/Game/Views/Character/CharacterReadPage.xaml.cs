@@ -10,9 +10,17 @@ namespace Game.Views.Character
     {
         readonly GenericViewModel<CharacterModel> ViewModel;
 
-        public CharacterReadPage()
+        /// <summary>
+        /// Constructor called with a view model
+        /// This is the primary way to open the page
+        /// The viewModel is the data that should be displayed
+        /// </summary>
+        /// <param name="viewModel"></param>
+        public CharacterReadPage(GenericViewModel<CharacterModel> data)
         {
             InitializeComponent();
+
+            BindingContext = this.ViewModel = data;
         }
     }
 }
