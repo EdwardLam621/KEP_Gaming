@@ -89,6 +89,33 @@ namespace Game.ViewModels
 
         }
 
-#endregion Constructor
+        #endregion Constructor
+
+        #region DataOperations_CRUDi
+
+        /// <summary>
+        /// Returns the item passed in
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public CharacterModel CheckIfItemExists(CharacterModel data)
+        {
+            // This will walk the items and find if there is one that is the same.
+            // If so, it returns the item...
+
+            var myList = Dataset.Where(a =>
+                                        a.Name == data.Name)
+                                        .FirstOrDefault();
+
+            if (myList == null)
+            {
+                // it's not a match, return false;
+                return null;
+            }
+
+            return myList;
+        }
+        #endregion DataOperations_CRUDi
+
     }
 }
