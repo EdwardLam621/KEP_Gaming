@@ -8,7 +8,7 @@
         Battle,
         Village,
         Score,
-        Character,
+        //Character,
         Items,
         Game,
         About
