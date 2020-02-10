@@ -8,6 +8,7 @@ namespace Game.Models
     {
         public List<ItemModel> Equipments;
 
+        public int Level { get; set; }
 
         public override void Update(CharacterModel newData)
         {
@@ -18,6 +19,7 @@ namespace Game.Models
 
             // Update all the fields in the Data, except for the Id and guid
             Name = newData.Name;
+            Level = newData.Level;
             Health = newData.Health;
             Description = newData.Description;
             SpeedAttribute = newData.SpeedAttribute;
