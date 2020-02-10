@@ -94,7 +94,7 @@ namespace Game.ViewModels
         #region DataOperations_CRUDi
 
         /// <summary>
-        /// Returns the item passed in
+        /// Returns the character passed in
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
