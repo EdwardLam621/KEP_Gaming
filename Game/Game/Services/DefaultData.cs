@@ -58,12 +58,28 @@ namespace Game.Services
                 new CharacterModel {
                     Name = "Default Character",
                     Health = 10,
+                    Level = 1,
                     Description = "Default description",
                     ImageURI = "http://www.clker.com/cliparts/e/L/A/m/I/c/sword-md.png",
                     DefenseAttribute = 5,
                     OffenseAttribute = 5,
                     SpeedAttribute = 1,
+                    Skill = CreatureSkillEnum.None,
+                },
+
+                 new CharacterModel {
+                    Name = "Wiki Expert",
+                    Health = 20,
+                    Level = 1,
+                    Description = "Search Wikipedia for everything!",
+                    ImageURI = "https://cn.i.cdn.ti-platform.com/cnapac/content/438/showpage/teen-titans-go%21/sa/showicon.png",
+                    DefenseAttribute = 10,
+                    OffenseAttribute = 1,
+                    SpeedAttribute = 8,
+                    Skill = CreatureSkillEnum.TeachersPet,
                 }
+
+
             };
 
             return datalist;
