@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Game.ViewModels;
+using System;
+using Game.Models;
 
 namespace Game.Views.Character
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CharacterReadPage : ContentView
     {
+        readonly GenericViewModel<CharacterModel> ViewModel;
+
         public CharacterReadPage()
         {
             InitializeComponent();
