@@ -5,7 +5,7 @@ using Game.Services;
 
 namespace Game.Models
 {
-    class CreatureModel<T> : BaseModel<T>
+    public class CreatureModel<T> : BaseModel<T>
     {
         public int Health { get; set; }
         public int SpeedAttribute { get; set; }
