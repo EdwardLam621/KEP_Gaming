@@ -83,12 +83,24 @@ namespace Game.Services
                     Name = "Unknown",
                     Health = 10,
                     Level = 1,
-                    Description = "No one ever saw him in the Class. Does he/she even exist?",
+                    Description = "No one ever saw him in the class. Does he/she even exist?",
                     ImageURI = "https://cn.i.cdn.ti-platform.com/cnapac/content/438/showpage/teen-titans-go%21/sa/showicon.png",
                     DefenseAttribute = 7,
                     OffenseAttribute = 4,
                     SpeedAttribute = 3,
                     Skill = CreatureSkillEnum.Slacker,
+                },
+
+                 new CharacterModel {
+                    Name = "Straight A",
+                    Health = 10,
+                    Level = 20,
+                    Description = "Finish every assignment with perfect grade. Instructor's favorite",
+                    ImageURI = "https://cn.i.cdn.ti-platform.com/cnapac/content/438/showpage/teen-titans-go%21/sa/showicon.png",
+                    DefenseAttribute = 10,
+                    OffenseAttribute = 10,
+                    SpeedAttribute = 10,
+                    Skill = CreatureSkillEnum.Bookworm,
                 }
 
 
