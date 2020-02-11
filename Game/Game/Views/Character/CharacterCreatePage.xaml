@@ -1,14 +1,208 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Game.Views.CharacterCreatePage">
+             xmlns:local="using:Game.Models"
+             xmlns:local_helpers="clr-namespace:Game.Helpers"
+             xmlns:local_enum="clr-namespace:Game.Models"
+             x:Class="Game.Views.CharacterCreatePage"
+             Title="{Binding Title}">
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
-        <ToolbarItem Text="Create" Clicked="Create_Clicked" IconImageSource="icon_create.png"/>
+        <ToolbarItem Text="Create" Clicked="Create_Clicked" IconImageSource="icon_save.png"/>
     </ContentPage.ToolbarItems>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local_helpers:StringEnumConverter x:Key="StringEnum"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout Style="{StaticResource OuterBoxStack}"
+                Spacing="10">
+
+                <Label Text="Create Page" Style="{StaticResource HeaderStyle}"/>
+
+                <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}" HorizontalOptions="CenterAndExpand"/>
+
+                <Grid
+                    RowSpacing="1"
+                    ColumnSpacing="2"
+                    VerticalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                        Text="Name" 
+                        Style="{StaticResource LabelStyle}"/>
+                    
+                    <Entry Grid.Row="0" Grid.Column="1"
+                        Text="{Binding Data.Name}"
+                        Style="{StaticResource EntryStyle}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0"
+                        Text="Description" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <Entry Grid.Row="1" Grid.Column="1"
+                        Text="{Binding Data.Description}" 
+                        Style="{StaticResource EntryStyle}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0"
+                        Text="Skill" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <Picker Grid.Row="2" Grid.Column="1"
+                        ItemsSource="{x:Static local_helpers:CreatureSkillEnumHelper.GetListSkill}" 
+                        SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
+                        x:Name="SkillPicker"/>
+
+                    <Label Grid.Row="3" Grid.Column="0"
+                        Text="Image" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Grid.Row="3" Grid.Column="1" Style="{StaticResource HorizontalStack}" HorizontalOptions="FillAndExpand">
+
+                        <Image 
+                            Source="{Binding Data.ImageURI}"
+                            Style="{StaticResource ImageSmallStyle}"/>
+
+                        <Entry 
+                            Text="{Binding Data.ImageURI}" 
+                            Style="{StaticResource EntryStyle}"/>
+                    </StackLayout>
+
+                </Grid>
+
+                <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
+
+                    <Label 
+                        Text="Level" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                        <Label 
+                            Text="{Binding Data.Range}" 
+                            x:Name="LevelValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"/>
+                    
+                        <Stepper 
+                            Value="{Binding Data.Range, Mode=TwoWay}"
+                            Maximum = "20"
+                            Minimum = "0"
+                            ValueChanged="Level_OnStepperValueChanged"/>
+                        
+                    </StackLayout>
+
+                    <Label 
+                        Text="Health" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                        <Label 
+                            Text="{Binding Data.Range}" 
+                            x:Name="HealthValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"/>
+                    
+                        <Stepper 
+                            Value="{Binding Data.Range, Mode=TwoWay}"
+                            Maximum = "100"
+                            Minimum = "0"
+                            ValueChanged="Health_OnStepperValueChanged"/>
+                        
+                    </StackLayout>
+
+                    <Label 
+                        Text="Speed" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                        <Label 
+                            Text="{Binding Data.Range}" 
+                            x:Name="SpeedValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"/>
+                    
+                        <Stepper 
+                            Value="{Binding Data.Range, Mode=TwoWay}"
+                            Maximum = "20"
+                            Minimum = "0"
+                            ValueChanged="Speed_OnStepperValueChanged"/>
+                        
+                    </StackLayout>
+
+                    <Label 
+                        Text="Defense" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                        <Label 
+                            Text="{Binding Data.Range}" 
+                            x:Name="DefenseValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"/>
+                    
+                        <Stepper 
+                            Value="{Binding Data.Range, Mode=TwoWay}"
+                            Maximum = "20"
+                            Minimum = "0"
+                            ValueChanged="Defense_OnStepperValueChanged"/>
+                        
+                    </StackLayout>
+
+                    <Label 
+                        Text="Offense" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                        <Label 
+                            Text="{Binding Data.Range}" 
+                            x:Name="OffenseValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"/>
+                    
+                        <Stepper 
+                            Value="{Binding Data.Range, Mode=TwoWay}"
+                            Maximum = "20"
+                            Minimum = "0"
+                            ValueChanged="Offense_OnStepperValueChanged"/>
+                        
+                    </StackLayout>
+
+
+
+                </StackLayout>
+
+                    
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

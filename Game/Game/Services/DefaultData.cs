@@ -101,6 +101,18 @@ namespace Game.Services
                     OffenseAttribute = 10,
                     SpeedAttribute = 10,
                     Skill = CreatureSkillEnum.Bookworm,
+                },
+
+                 new CharacterModel {
+                    Name = "The Delinquent",
+                    Health = 20,
+                    Level = 1,
+                    Description = "THe mischief class skipper. Low in defense but high in attack",
+                    ImageURI = "https://icon2.cleanpng.com/20190628/pzy/kisspng-vector-graphics-graffiti-drawing-illustration-clip-juvenile-delinquent-creates-graffiti-vector-imag-5d15fb87863623.8126502415617217355497.jpg",
+                    DefenseAttribute = 1,
+                    OffenseAttribute = 10,
+                    SpeedAttribute = 15,
+                    Skill = CreatureSkillEnum.None,
                 }
 
 

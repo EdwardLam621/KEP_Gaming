@@ -6,8 +6,13 @@ using Game.Models;
 
 namespace Game.Views
 {
-    public partial class CharacterReadPage : ContentView
+    /// <summary>
+    /// The Read Page
+    /// </summary>
+    [DesignTimeVisible(false)]
+    public partial class CharacterReadPage : ContentPage
     {
+        // View Model for Character
         readonly GenericViewModel<CharacterModel> ViewModel;
 
         /// <summary>

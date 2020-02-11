@@ -8,20 +8,22 @@
              x:Class="Game.Views.CharacterIndexPage"
              Title="{Binding Title}">
 
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddCharacter_Clicked" IconImageSource="icon_add.png"/>
     </ContentPage.ToolbarItems>
- 
+    
+
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
 
             <Label Text="Character List Page" Style="{StaticResource HeaderStyle}"/>
 
-            <!-- todo: add this line ItemSelected="OnItemSelected" -->
             <ListView x:Name="CharacterListView" 
                     ItemsSource="{Binding Dataset}"
                     IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                     RefreshCommand="{Binding LoadItemsCommand}"
+                    ItemSelected="OnItemSelected"
                     CachingStrategy="RecycleElement"
                     HasUnevenRows="true"
                     Margin="5,0,5,0"
@@ -58,7 +60,7 @@
                                        Text="{Binding Attribute}" 
                                        Style="{StaticResource ListStyle}"/>
 
-                                    <Label Text="{Binding Value}" 
+                                    <Label Text="{Binding Level}" 
                                         Style="{StaticResource ListStyle}"/>
                                 
                                 </StackLayout>
