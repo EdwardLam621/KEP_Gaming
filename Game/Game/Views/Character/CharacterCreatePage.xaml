@@ -130,6 +130,31 @@
                             ValueChanged="Health_OnStepperValueChanged"/>
                         
                     </StackLayout>
+
+                    <Label 
+                        Text="Speed" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                        <Label 
+                            Text="{Binding Data.Range}" 
+                            x:Name="SpeedValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"/>
+                    
+                        <Stepper 
+                            Value="{Binding Data.Range, Mode=TwoWay}"
+                            Maximum = "20"
+                            Minimum = "0"
+                            ValueChanged="Speed_OnStepperValueChanged"/>
+                        
+                    </StackLayout>
+
+
+
                 </StackLayout>
 
                     
