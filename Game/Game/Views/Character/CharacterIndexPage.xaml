@@ -60,7 +60,7 @@
                                        Text="{Binding Attribute}" 
                                        Style="{StaticResource ListStyle}"/>
 
-                                    <Label Text="{Binding Value}" 
+                                    <Label Text="{Binding Level}" 
                                         Style="{StaticResource ListStyle}"/>
                                 
                                 </StackLayout>
