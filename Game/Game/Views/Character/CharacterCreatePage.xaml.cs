@@ -91,6 +91,11 @@ namespace Game.Views
         {
             OffenseValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 
 }
