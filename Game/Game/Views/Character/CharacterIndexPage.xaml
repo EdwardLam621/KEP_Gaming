@@ -19,11 +19,11 @@
 
             <Label Text="Character List Page" Style="{StaticResource HeaderStyle}"/>
 
-            <!-- todo: add this line ItemSelected="OnItemSelected" -->
             <ListView x:Name="CharacterListView" 
                     ItemsSource="{Binding Dataset}"
                     IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                     RefreshCommand="{Binding LoadItemsCommand}"
+                    ItemSelected="OnItemSelected"
                     CachingStrategy="RecycleElement"
                     HasUnevenRows="true"
                     Margin="5,0,5,0"

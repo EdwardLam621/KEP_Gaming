@@ -33,9 +33,9 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        //async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
-        //{
-            /*
+        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            
             CharacterModel data = args.SelectedItem as CharacterModel;
             if (data == null)
             {
@@ -46,9 +46,9 @@ namespace Game.Views
             await Navigation.PushAsync(new CharacterReadPage(new GenericViewModel<CharacterModel>(data)));
 
             // Manually deselect item.
-            ItemsListView.SelectedItem = null;
-            */
-        //}
+            CharacterListView.SelectedItem = null;
+            
+        }
 
         /// <summary>
         /// Call to Add a new record
