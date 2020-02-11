@@ -56,6 +56,15 @@
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="Health: " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Label 
+                    Text="{Binding Data.Health}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
         </StackLayout>
     </ScrollView>
 
