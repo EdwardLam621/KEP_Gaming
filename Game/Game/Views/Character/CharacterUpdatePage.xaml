@@ -85,7 +85,7 @@
                     </StackLayout>
                 </Grid>
 
-                <StackLayout Style="{StaticResource Vertical}" HorizontalOptions="FillAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand">
 
                     <Label 
                         Text ="Speed: " 
