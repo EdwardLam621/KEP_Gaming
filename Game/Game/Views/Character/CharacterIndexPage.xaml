@@ -1,13 +1,21 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Game.Views.CharacterIndexPage">
-  <ContentView.Content>
-      <StackLayout>
-          <Label Text="Hello Xamarin.Forms!" />
-      </StackLayout>
-  </ContentView.Content>
-</ContentView>
+             x:Name="BrowseCharacterPage"
+             x:Class="Game.Views.CharacterIndexPage"
+             Title="{Binding Title}">
+
+   
+
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource OuterBoxStack}">
+
+            <Label Text="Character List Page" Style="{StaticResource HeaderStyle}"/>
+
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
