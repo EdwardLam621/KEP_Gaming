@@ -6,6 +6,11 @@ namespace Game.Models
 {
     public class CharacterModel : CreatureModel<CharacterModel>
     {
+        public CharacterModel()
+        {
+            this.Name = "this is Name";
+            this.Description = "this is Character Description";
+        }
         public List<ItemModel> Equipments;
 
         public int Level { get; set; }
