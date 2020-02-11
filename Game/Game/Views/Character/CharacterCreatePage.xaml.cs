@@ -33,7 +33,7 @@ namespace Game.Views
             // If the image in the data box is empty, use the default one..
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
             {
-                ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
+                ViewModel.Data.ImageURI = Services.CharacterService.DefaultImageURI; ;
             }
 
             MessagingCenter.Send(this, "Create", ViewModel.Data);

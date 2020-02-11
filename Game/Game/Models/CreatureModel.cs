@@ -21,7 +21,7 @@ namespace Game.Models
         /// </summary>
         public CreatureModel()
         {
-            ImageURI = ItemService.DefaultImageURI;
+            ImageURI = CharacterService.DefaultImageURI;
         }
 
         /// <summary>
