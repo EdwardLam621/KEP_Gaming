@@ -9,16 +9,18 @@ namespace Game.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CharacterCreatePage : ContentPage
     {
-        // View Model for Item
-        readonly GenericViewModel<CharacterModel> viewModel;
+        // View Model for Character
+        readonly GenericViewModel<CharacterModel> ViewModel;
 
         public CharacterCreatePage(GenericViewModel<CharacterModel> data)
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = data;
+            data.Data = new CharacterModel();
 
-            this.viewModel.Title = "Create " + data.Title;
+            BindingContext = this.ViewModel = data;
+
+            this.ViewModel.Title = "Create " + data.Title;
         }
 
         /// <summary>
@@ -28,7 +30,13 @@ namespace Game.Views
         /// <param name="e"></param>
         async void Create_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "Create", viewModel.Data);
+            // If the image in the data box is empty, use the default one..
+            if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
+            {
+                ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
+            }
+
+            MessagingCenter.Send(this, "Create", ViewModel.Data);
             await Navigation.PopModalAsync();
         }
 
