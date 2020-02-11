@@ -77,6 +77,18 @@ namespace Game.Services
                     OffenseAttribute = 1,
                     SpeedAttribute = 8,
                     Skill = CreatureSkillEnum.TeachersPet,
+                },
+
+                 new CharacterModel {
+                    Name = "Unknown",
+                    Health = 10,
+                    Level = 1,
+                    Description = "No one ever saw him in the Class. Does he/she even exist?",
+                    ImageURI = "https://cn.i.cdn.ti-platform.com/cnapac/content/438/showpage/teen-titans-go%21/sa/showicon.png",
+                    DefenseAttribute = 7,
+                    OffenseAttribute = 4,
+                    SpeedAttribute = 3,
+                    Skill = CreatureSkillEnum.Slacker,
                 }
 
 
