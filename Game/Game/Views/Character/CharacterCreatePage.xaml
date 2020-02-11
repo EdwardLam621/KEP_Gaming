@@ -59,7 +59,14 @@
                         Text="{Binding Data.Description}" 
                         Style="{StaticResource EntryStyle}"/>
 
-                    
+                    <Label Grid.Row="2" Grid.Column="0"
+                        Text="Skill" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <Picker Grid.Row="2" Grid.Column="1"
+                        ItemsSource="{x:Static local_helpers:CreatureSkillEnumHelper.GetListSkill}" 
+                        SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
+                        x:Name="SkillPicker"/>
 
                 </Grid>
 
