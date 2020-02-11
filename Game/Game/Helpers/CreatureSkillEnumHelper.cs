@@ -35,6 +35,19 @@ namespace Game.Helpers
 
                 return myReturn;
             }
+
+        }
+
+        public static List<string> GetListSkill
+        {
+            get
+            {
+                var myList = Enum.GetNames(typeof(CreatureSkillEnum)).ToList();
+                var myReturn = myList.OrderBy(a => a).ToList();
+
+                return myReturn;
+            }
+
         }
 
         /// <summary>
@@ -47,8 +60,7 @@ namespace Game.Helpers
             return (CreatureSkillEnum)Enum.Parse(typeof(CreatureSkillEnum), value);
         }
 
-        /// <summary>
-        /// If asked for a position number, return a location.  Head as 1 etc. 
+        /// <summary> 
         /// This compsenstates for the enum #s not being sequential, but allows for calls to the postion for random allocation etc (roll 1-7 dice and pick a item to equipt), etc... 
         /// </summary>
         /// <param name="position"></param>
