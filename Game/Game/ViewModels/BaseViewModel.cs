@@ -395,12 +395,12 @@ namespace Game.ViewModels
         /// <param name="propertyName"></param>
         /// <param name="onChanged"></param>
         /// <returns></returns>
-        protected bool SetProperty<T>(ref T backingStore,
-            T value,
+        protected bool SetProperty<U>(ref U backingStore,
+            U value,
             [CallerMemberName]string propertyName = "",
             Action onChanged = null)
         {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
+            if (EqualityComparer<U>.Default.Equals(backingStore, value))
             {
                 return false;
             }
