@@ -7,7 +7,10 @@ namespace Game.Models
 {
     public class CreatureModel<T> : BaseModel<T>
     {
-        public int Health { get; set; }
+        public int MaxHealth { get; set; } = 1;
+
+        public int CurrentHealth { get; set; }
+
         public int SpeedAttribute { get; set; }
         public int OffenseAttribute { get; set; }
         public int DefenseAttribute { get; set; }
