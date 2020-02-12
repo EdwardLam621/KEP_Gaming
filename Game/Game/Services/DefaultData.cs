@@ -121,7 +121,31 @@ namespace Game.Services
             return datalist;
         }
 
-        public static List<ScoreModel> LoadData(ScoreModel temp)
+        /// <summary>
+        /// Load the Default character data
+        /// </summary>
+        /// <returns></returns>
+        public static List<MonsterModel> LoadData(MonsterModel temp)
+        {
+            var datalist = new List<MonsterModel>();
+
+            new MonsterModel
+            {
+                Name = "The Coronavirus",
+                MaxHealth = 20,
+                Level = 1,
+                Description = "Human disaster",
+                ImageURI = "https://icon2.cleanpng.com/20190628/pzy/kisspng-vector-graphics-graffiti-drawing-illustration-clip-juvenile-delinquent-creates-graffiti-vector-imag-5d15fb87863623.8126502415617217355497.jpg",
+                DefenseAttribute = 1,
+                OffenseAttribute = 10,
+                SpeedAttribute = 15,
+                Skill = CreatureSkillEnum.None,
+            };
+            return datalist;
+        }
+
+
+            public static List<ScoreModel> LoadData(ScoreModel temp)
         {
             var datalist = new List<ScoreModel>()
             {
