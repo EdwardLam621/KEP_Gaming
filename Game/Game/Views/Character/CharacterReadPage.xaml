@@ -96,7 +96,11 @@
                         Text="Equipment"
                         Style="{StaticResource LabelStyle}" />
 
-            <Grid>
+            <Grid
+                 HeightRequest="300"
+                 WidthRequest="300"
+                 HorizontalOptions="CenterAndExpand"
+                 VerticalOptions="CenterAndExpand">
                 <Image 
                         Grid.Column="0"
                         Grid.Row="0"
