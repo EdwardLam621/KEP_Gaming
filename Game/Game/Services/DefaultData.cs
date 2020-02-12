@@ -57,7 +57,7 @@ namespace Game.Services
             {
                 new CharacterModel {
                     Name = "Default Character",
-                    Health = 10,
+                    MaxHealth = 10,
                     Level = 1,
                     Description = "Default description",
                     ImageURI = "http://www.clker.com/cliparts/e/L/A/m/I/c/sword-md.png",
@@ -69,7 +69,7 @@ namespace Game.Services
 
                  new CharacterModel {
                     Name = "Wiki Expert",
-                    Health = 20,
+                    MaxHealth = 20,
                     Level = 1,
                     Description = "Search Wikipedia for everything!",
                     ImageURI = "https://cn.i.cdn.ti-platform.com/cnapac/content/438/showpage/teen-titans-go%21/sa/showicon.png",
@@ -81,7 +81,7 @@ namespace Game.Services
 
                  new CharacterModel {
                     Name = "Unknown",
-                    Health = 10,
+                    MaxHealth = 10,
                     Level = 1,
                     Description = "No one ever saw him in the class. Does he/she even exist?",
                     ImageURI = "https://previews.123rf.com/images/feferoni/feferoni0803/feferoni080300032/2752612-invisible-man-concept.jpg",
@@ -93,7 +93,7 @@ namespace Game.Services
 
                  new CharacterModel {
                     Name = "Straight A",
-                    Health = 10,
+                    MaxHealth = 10,
                     Level = 20,
                     Description = "Finish every assignment with perfect grade. Instructor's favorite",
                     ImageURI = "https://previews.123rf.com/images/hermandesign2015/hermandesign20151704/hermandesign2015170400338/77046434-young-boy-scientist.jpg",
@@ -105,7 +105,7 @@ namespace Game.Services
 
                  new CharacterModel {
                     Name = "The Delinquent",
-                    Health = 20,
+                    MaxHealth = 20,
                     Level = 1,
                     Description = "THe mischief class skipper. Low in defense but high in attack",
                     ImageURI = "https://icon2.cleanpng.com/20190628/pzy/kisspng-vector-graphics-graffiti-drawing-illustration-clip-juvenile-delinquent-creates-graffiti-vector-imag-5d15fb87863623.8126502415617217355497.jpg",
