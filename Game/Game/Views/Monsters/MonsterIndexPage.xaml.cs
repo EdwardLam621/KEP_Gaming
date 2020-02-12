@@ -32,14 +32,14 @@ namespace Game.Views
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
 
-            CharacterModel data = args.SelectedItem as CharacterModel;
+            MonsterModel data = args.SelectedItem as MonsterModel;
             if (data == null)
             {
                 return;
             }
 
             // Open the Read Page
-            await Navigation.PushAsync(new CharacterReadPage(new GenericViewModel<CharacterModel>(data)));
+            await Navigation.PushAsync(new MonsterReadPage(new GenericViewModel<MonsterModel>(data)));
 
             // Manually deselect item.
             MonsterListView.SelectedItem = null;
