@@ -104,6 +104,13 @@
                         Grid.RowSpan="6"
                         HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                         Source ="https://images.fineartamerica.com/images-medium-large/1-human-body-by-da-vinci-omikron.jpg"/>
+                <Image Grid.Row="0" Grid.Column="3" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                <Image Grid.Row="2" Grid.Column="0" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                <Image Grid.Row="2" Grid.Column="1" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                <Image Grid.Row="2" Grid.Column="5" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                <Image Grid.Row="2" Grid.Column="6" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                <Image Grid.Row="3" Grid.Column="3" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                <Image Grid.Row="5" Grid.Column="3" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
