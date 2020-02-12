@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Game.Models
 {
-    class MonsterModel : CreatureModel<MonsterModel>
+    public class MonsterModel : CreatureModel<MonsterModel>
     {
         public List<ItemModel> DropItems;
 
