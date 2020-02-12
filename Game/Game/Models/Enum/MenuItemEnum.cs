@@ -11,6 +11,7 @@
         Character,
         Items,
         Game,
-        About
+        About,
+        Monster,
     }
 }
