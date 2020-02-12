@@ -200,8 +200,8 @@
                     <Label
                         Text="Equipment"
                         Style="{StaticResource LabelStyle}" />
-                    
-                    <Grid
+
+                    <Grid>
                         <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
