@@ -25,7 +25,8 @@ namespace Game.Models
             // Update all the fields in the Data, except for the Id and guid
             Name = newData.Name;
             Level = newData.Level;
-            Health = newData.Health;
+            MaxHealth = newData.MaxHealth;
+            CurrentHealth = newData.CurrentHealth;
             Description = newData.Description;
             SpeedAttribute = newData.SpeedAttribute;
             OffenseAttribute = newData.OffenseAttribute;
