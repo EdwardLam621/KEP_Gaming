@@ -72,7 +72,7 @@ namespace Game.UWP
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
 
-            ApplicationView.PreferredLaunchViewSize = new Size(720, 1440);
+            ApplicationView.PreferredLaunchViewSize = new Size(500, 800);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
 
             // Ensure the current window is active
