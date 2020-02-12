@@ -1,4 +1,4 @@
-﻿using Game.Views.Monsters;
+﻿using Game.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
