@@ -83,6 +83,15 @@
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="Defense: " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Label 
+                    Text="{Binding Data.DefenseAttribute}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
         </StackLayout>
     </ScrollView>
 
