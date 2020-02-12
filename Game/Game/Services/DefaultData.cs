@@ -135,7 +135,7 @@ namespace Game.Services
                 MaxHealth = 20,
                 Level = 1,
                 Description = "Human disaster",
-                ImageURI = "https://icon2.cleanpng.com/20190628/pzy/kisspng-vector-graphics-graffiti-drawing-illustration-clip-juvenile-delinquent-creates-graffiti-vector-imag-5d15fb87863623.8126502415617217355497.jpg",
+                ImageURI = "https://pngimg.com/uploads/coronavirus/coronavirus_PNG33.png",
                 DefenseAttribute = 1,
                 OffenseAttribute = 10,
                 SpeedAttribute = 15,
