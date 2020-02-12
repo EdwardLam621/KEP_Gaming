@@ -9,9 +9,17 @@ namespace Game.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonsterCreatePage : ContentPage
     {
-        public MonsterCreatePage()
+        readonly GenericViewModel<MonsterModel> ViewModel;
+
+        public MonsterCreatePage(GenericViewModel<MonsterModel> data)
         {
             InitializeComponent();
+
+            data.Data = new CharacterModel();
+
+            BindingContext = this.ViewModel = data;
+
+            this.ViewModel.Title = "Create " + data.Title;
         }
     }
 }
