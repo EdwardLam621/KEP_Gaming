@@ -127,10 +127,10 @@ namespace Game.Services
         /// <returns></returns>
         public static List<MonsterModel> LoadData(MonsterModel temp)
         {
-            var datalist = new List<MonsterModel>();
-
-            new MonsterModel
+            var datalist = new List<MonsterModel>()
             {
+                new MonsterModel
+                {
                 Name = "The Coronavirus",
                 MaxHealth = 20,
                 Level = 1,
@@ -139,7 +139,9 @@ namespace Game.Services
                 DefenseAttribute = 1,
                 OffenseAttribute = 10,
                 SpeedAttribute = 15,
-                Skill = CreatureSkillEnum.None,
+                Skill = CreatureSkillEnum.Boss,
+                }
+                
             };
             return datalist;
         }

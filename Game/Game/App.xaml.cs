@@ -20,6 +20,7 @@ namespace Game
             ScoreIndexViewModel.Instance.GetCurrentDataSource();
             ItemIndexViewModel.Instance.GetCurrentDataSource();
             CharIndexViewModel.Instance.GetCurrentDataSource();
+            MonsterIndexViewModel.Instance.GetCurrentDataSource();
 
             // Call the Main Page to open
             MainPage = new MainPage();
