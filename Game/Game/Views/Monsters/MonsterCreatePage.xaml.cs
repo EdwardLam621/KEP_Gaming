@@ -21,5 +21,22 @@ namespace Game.Views
 
             this.ViewModel.Title = "Create " + data.Title;
         }
+
+        /// <summary>
+        /// Save calls to Create
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        async void Create_Clicked(object sender, EventArgs e)
+        {
+            // If the image in the data box is empty, use the default one..
+            if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
+            {
+                ViewModel.Data.ImageURI = Services.CharacterService.DefaultImageURI; ;
+            }
+
+            MessagingCenter.Send(this, "Create", ViewModel.Data);
+            await Navigation.PopModalAsync();
+        }
     }
 }
