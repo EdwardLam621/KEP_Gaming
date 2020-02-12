@@ -15,7 +15,7 @@ namespace Game.Views
         {
             InitializeComponent();
 
-            data.Data = new CharacterModel();
+            data.Data = new MonsterModel();
 
             BindingContext = this.ViewModel = data;
 
