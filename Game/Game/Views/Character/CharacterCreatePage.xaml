@@ -196,39 +196,6 @@
                             ValueChanged="Offense_OnStepperValueChanged"/>
 
                     </StackLayout>
-
-                    <Label
-                        Text="Equipment"
-                        Style="{StaticResource LabelStyle}" />
-
-                    <Grid>
-                        <Image 
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        Grid.ColumnSpan="7"
-                        Grid.RowSpan="6"
-                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                        Source ="https://images.fineartamerica.com/images-medium-large/1-human-body-by-da-vinci-omikron.jpg"/>
-                        <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-
-
                 </StackLayout>
 
                     
