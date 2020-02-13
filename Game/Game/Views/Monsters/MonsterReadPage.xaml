@@ -96,6 +96,66 @@
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
+            <Label 
+                    Text="Drop Itmes: " 
+                    Style="{StaticResource LabelStyle}"/>
+           
+
+            <ListView x:Name="DropItemListView"
+                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                    RefreshCommand="{Binding LoadItemsCommand}"
+                    CachingStrategy="RecycleElement"
+                    HasUnevenRows="true"
+                    Margin="5,0,5,0"
+                    RowHeight="80"
+                    >
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnSpacing="5" RowSpacing="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                                        Source="{Binding ImageURI}"
+                                        Style="{StaticResource ImageSmallStyle}"
+                                        VerticalOptions="CenterAndExpand"/>
+
+                                <Label Grid.Column="1" Grid.Row="0"
+                                       Text="{Binding Name}" 
+                                       Style="{StaticResource ListStyle}"/>
+
+                                <StackLayout Grid.Column="1" Grid.Row="1"
+                                    Orientation="Horizontal">
+                                    
+                                    <Label 
+                                       Text="{Binding Attribute}" 
+                                       Style="{StaticResource ListStyle}"/>
+
+                                    <Label Text="{Binding Value}" 
+                                        Style="{StaticResource ListStyle}"/>
+                                
+                                </StackLayout>
+
+                                <Label Grid.Column="1" Grid.Row="2"
+                                       Text="{Binding Description}" 
+                                       Style="{StaticResource ListStyle}"
+                                       FontSize="Micro"/>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
 
         </StackLayout>
     </ScrollView>
