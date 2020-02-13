@@ -94,7 +94,20 @@
                     </StackLayout>
                 </Grid>
 
-                <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
+
+                <!--<StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
+                    <Label
+                        Text="Item Kind"
+                        Style="{DynamicResource DebugSwitchLabel}"/>
+
+                    <Picker Grid.Row="3" Grid.Column="1"
+                        ItemsSource="{x:Static local_helpers:AttributeEnumHelper.GetListCharacter}" 
+                        SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
+                        x:Name="KindPicker"/>-->
+
+
+
+                    <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
 
                     <Label 
                         Text="Range" 
