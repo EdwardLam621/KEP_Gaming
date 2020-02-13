@@ -32,7 +32,68 @@
 
                 
 
-                
+                <StackLayout HorizontalOptions="FillAndExpand">
+
+                    <Label 
+                        Text ="Speed: " 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                        <Label 
+                            Text="{Binding Data.SpeedAttribute}" 
+                            x:Name="SpeedValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"/>
+
+                        <Stepper 
+                            Value="{Binding Data.SpeedAttribute, Mode=TwoWay}"
+                            ValueChanged="Speed_OnStepperValueChanged"/>
+
+                    </StackLayout>
+
+                    <Label 
+                        Text="Offense"
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                        <Label 
+                            Text="{Binding Data.OffenseAttribute}" 
+                            x:Name="OffenseValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"/>
+
+                        <Stepper 
+                            Value="{Binding Data.OffenseAttribute, Mode=TwoWay}"
+                            ValueChanged="Offense_OnStepperValueChanged"/>
+
+                    </StackLayout>
+
+                    <Label 
+                        Text="Defense" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                        <Label 
+                            Text="{Binding Data.DefenseAttribute}" 
+                            x:Name="DefenseValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"/>
+
+                        <Stepper 
+                            Value="{Binding Data.DefenseAttribute, Mode=TwoWay}"
+                            ValueChanged="Defense_OnStepperValueChanged"/>
+
+                    </StackLayout>
+                </StackLayout>
                 
             </StackLayout>
         </ScrollView>
