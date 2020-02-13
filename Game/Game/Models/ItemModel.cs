@@ -17,7 +17,7 @@ namespace Game.Models
     /// </summary>
     public class ItemModel : BaseModel<ItemModel>
     {
-        //Kind of the item
+        //Kind of the item: combat, ranged, armor
         public ItemKindEnum Kind{ get;set; } = ItemKindEnum.Armor;
 
         // Range of the item, swords are 1, hats/rings are 0, bows are >1
