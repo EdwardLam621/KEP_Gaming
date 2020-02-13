@@ -26,7 +26,7 @@ namespace Game.Models
             Name = newData.Name;
             Level = newData.Level;
             MaxHealth = newData.MaxHealth;
-            CurrentHealth = newData.CurrentHealth;
+            CurrentHealth = MaxHealth;
             Description = newData.Description;
             SpeedAttribute = newData.SpeedAttribute;
             OffenseAttribute = newData.OffenseAttribute;
