@@ -13,7 +13,7 @@ namespace Game.Views
     [DesignTimeVisible(false)]
     public partial class MonsterReadPage : ContentPage
     {
-        // View Model for Character
+        // View Model for Monster
         readonly GenericViewModel<MonsterModel> ViewModel;
 
         ObservableCollection<ItemModel> dropItems = new ObservableCollection<ItemModel>();
@@ -36,5 +36,18 @@ namespace Game.Views
                 dropItems.Add(data.Data.DropItems[i]);
             }
         }
+
+        /// <summary>
+        /// Save calls to Update
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        async void Update_Clicked(object sender, EventArgs e)
+        {
+            //await Navigation.PushModalAsync(new NavigationPage(new MonsterUpdatePage(new GenericViewModel<MonsterModel>(ViewModel.Data))));
+            await Navigation.PopAsync();
+        }
+
+        
     }
 }
