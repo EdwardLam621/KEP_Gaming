@@ -127,6 +127,30 @@ namespace Game.Services
         /// <returns></returns>
         public static List<MonsterModel> LoadData(MonsterModel temp)
         {
+
+            var dropItems = new List<ItemModel>()
+            {
+                new ItemModel {
+                    Name = "Gold Sword",
+                    Description = "Sword made of Gold, really expensive looking",
+                    ImageURI = "http://www.clker.com/cliparts/e/L/A/m/I/c/sword-md.png",
+                    Range = 0,
+                    Damage = 9,
+                    Value = 9,
+                    Location = ItemLocationEnum.PrimaryHand,
+                    Attribute = AttributeEnum.Defense},
+
+                new ItemModel {
+                    Name = "Strong Shield",
+                    Description = "Enough to hide behind",
+                    ImageURI = "http://www.clipartbest.com/cliparts/4T9/LaR/4T9LaReTE.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 9,
+                    Location = ItemLocationEnum.OffHand,
+                    Attribute = AttributeEnum.Defense},
+            };
+
             var datalist = new List<MonsterModel>()
             {
                 new MonsterModel
@@ -140,6 +164,7 @@ namespace Game.Services
                 OffenseAttribute = 10,
                 SpeedAttribute = 15,
                 Skill = CreatureSkillEnum.Boss,
+                DropItems = dropItems
                 }
                 
             };
