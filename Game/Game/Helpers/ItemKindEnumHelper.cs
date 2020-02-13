@@ -36,7 +36,7 @@ namespace Game.Helpers
         {
             get
             {
-                var myList = Enum.GetNames(typeof(ItemKindEnumHelper)).ToList();
+                var myList = Enum.GetNames(typeof(ItemKindEnum)).ToList();
                 var myReturn = myList.Where(a =>
                                            a.ToString() != ItemKindEnum.Armor.ToString() &&
                                             a.ToString() != ItemKindEnum.RangedWeapon.ToString() &&

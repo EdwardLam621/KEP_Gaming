@@ -92,22 +92,24 @@
                             Style="{StaticResource EntryStyle}"/>
 
                     </StackLayout>
+                    
+                    
+                    <Label Grid.Row="5" Grid.Column="0"
+                        Text="Item Kind" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <Picker Grid.Row="5" Grid.Column="1"
+                        ItemsSource="{x:Static local_helpers:ItemKindEnumHelper.GetListCharacter}" 
+                        SelectedItem="{Binding Data.Kind, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
+                        x:Name="KindPicker"/>
                 </Grid>
 
 
-                <!--<StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
-                    <Label
-                        Text="Item Kind"
-                        Style="{DynamicResource DebugSwitchLabel}"/>
-
-                    <Picker Grid.Row="3" Grid.Column="1"
-                        ItemsSource="{x:Static local_helpers:AttributeEnumHelper.GetListCharacter}" 
-                        SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
-                        x:Name="KindPicker"/>-->
+                
 
 
 
-                    <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
+                <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
 
                     <Label 
                         Text="Range" 
