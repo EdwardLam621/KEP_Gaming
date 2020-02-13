@@ -27,7 +27,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Save calls to Update
+        /// Save calls to Updatet
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -42,6 +42,17 @@ namespace Game.Views
             MessagingCenter.Send(this, "Update", ViewModel.Data);
             await Navigation.PopModalAsync();
         }
+
+        /// <summary>
+        /// Cancel and close this page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+
 
     }
 }
