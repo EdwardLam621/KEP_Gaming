@@ -17,9 +17,14 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ScrollView>
+                <StackLayout Style="{StaticResource OuterBoxStack}"
+                Spacing="10">
+                    <Label Text="Create Page" Style="{StaticResource HeaderStyle}"/>
+
+
+                    <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}" HorizontalOptions="CenterAndExpand"/>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
