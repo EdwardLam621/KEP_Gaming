@@ -11,5 +11,32 @@
         <ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>
     </ContentPage.ToolbarItems>
 
-    
+    <ScrollView>
+        <StackLayout Style="{StaticResource OuterBoxStack}"
+                Spacing="10">
+
+            <Label Text="Delete Page" Style="{StaticResource HeaderStyle}"/>
+
+            <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}"/>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                   Text="Name : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Label 
+                    Text="{Binding Data.Name}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="Description : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Label 
+                    Text="{Binding Data.Description}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
