@@ -17,13 +17,7 @@ namespace Game.Helpers
             get
             {
                 var myList = Enum.GetNames(typeof(ItemKindEnumHelper)).ToList();
-                var myReturn = myList.Where(a =>
-                                            a.ToString() != ItemKindEnum.Armor.ToString() &&
-                                            a.ToString() != ItemKindEnum.CombatWeapon.ToString() &&
-                                            a.ToString() != ItemKindEnum.RangedWeapon.ToString()
-                                            )
-                                            .OrderBy(a => a)
-                                            .ToList();
+                var myReturn = myList.OrderBy(a => a).ToList();
                 return myReturn;
             }
         }
@@ -37,14 +31,7 @@ namespace Game.Helpers
             get
             {
                 var myList = Enum.GetNames(typeof(ItemKindEnum)).ToList();
-                var myReturn = myList.Where(a =>
-                                           a.ToString() != ItemKindEnum.Armor.ToString() &&
-                                            a.ToString() != ItemKindEnum.RangedWeapon.ToString() &&
-                                            a.ToString() != ItemKindEnum.CombatWeapon.ToString()
-                                            )
-                                            .OrderBy(a => a)
-                                            .ToList();
-
+                var myReturn = myList.OrderBy(a => a).ToList();
                 return myReturn;
             }
         }
