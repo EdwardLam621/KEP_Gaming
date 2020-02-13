@@ -64,9 +64,6 @@ namespace Game.Models
             {
                 return;
             }
-            
-            //if(
-
 
             // Update all the fields in the Data, except for the Id and guid
             Name = newData.Name;
@@ -75,8 +72,22 @@ namespace Game.Models
             Attribute = newData.Attribute;
             Location = newData.Location;
             ImageURI = newData.ImageURI;
-            Range = newData.Range;
             Damage = newData.Damage;
+            Kind = newData.Kind;
+
+            //if ranged weapon
+            if (Kind == ItemKindEnum.RangedWeapon)
+            {
+                Range = newData.Range;
+            }
+            else if (Kind == ItemKindEnum.RangedWeapon)
+            {
+                Range = 1;
+            }
+            else
+            {
+                Range = 0;
+            }
         }
 
         // Helper to combine the attributes into a single line, to make it easier to display the item as a string
