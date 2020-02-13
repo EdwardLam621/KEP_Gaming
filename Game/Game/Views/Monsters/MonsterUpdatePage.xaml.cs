@@ -1,20 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Game.ViewModels;
+using Game.Models;
 
 namespace Game.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonsterUpdatePage : ContentPage
     {
-        public MonsterUpdatePage()
+        // View Model for monster
+        readonly GenericViewModel<MonsterModel> ViewModel;
+
+        /// <summary>
+        /// Constructor that takes and existing data monster
+        /// </summary>
+        public MonsterUpdatePage(GenericViewModel<MonsterModel> data)
         {
             InitializeComponent();
+
+            BindingContext = this.ViewModel = data;
+
+            this.ViewModel.Title = "Update " + data.Title;
+
+            //Need to make the SelectedItem a string, so it can select the correct item.
+            SkillPicker.SelectedItem = data.Data.Skill.ToString();
+
         }
+
+        
+
     }
 }
