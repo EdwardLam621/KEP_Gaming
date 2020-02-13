@@ -37,6 +37,23 @@
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
+
+            <StackLayout 
+            HorizontalOptions="Center" 
+            Padding="20">
+
+                <Label Text="Really delete this?" Style="{StaticResource MessageStyle}"/>
+
+                <Button 
+                Text="Yes" 
+                Clicked="Delete_Clicked" 
+                HorizontalOptions="Center"
+                FontSize="Medium"
+                BorderWidth="1" 
+                BorderColor="black">
+                </Button>
+            </StackLayout>
+
         </StackLayout>
     </ScrollView>
 </ContentPage>
