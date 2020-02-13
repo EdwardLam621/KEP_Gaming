@@ -80,7 +80,7 @@ namespace Game.Models
             {
                 Range = newData.Range;
             }
-            else if (Kind == ItemKindEnum.RangedWeapon)
+            else if (Kind == ItemKindEnum.CombatWeapon)
             {
                 Range = 1;
             }
