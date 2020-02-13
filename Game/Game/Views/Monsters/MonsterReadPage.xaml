@@ -4,12 +4,17 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Game.Views.MonsterReadPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             x:Class="Game.Views.MonsterReadPage"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <StackLayout Style="{StaticResource OuterBoxStack}"
+            Spacing="10">
+
+            
+
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
+
+    
 </ContentPage>
