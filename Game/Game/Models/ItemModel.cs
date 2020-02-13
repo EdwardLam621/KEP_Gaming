@@ -75,7 +75,8 @@ namespace Game.Models
             Damage = newData.Damage;
             Kind = newData.Kind;
 
-            //if ranged weapon
+            //if ranged weapon, update the range by user's request
+            //or it will be 1 for CombatWeapon or 0 for Armor(Accessories)
             if (Kind == ItemKindEnum.RangedWeapon)
             {
                 Range = newData.Range;

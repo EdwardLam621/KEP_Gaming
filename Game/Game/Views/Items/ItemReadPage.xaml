@@ -59,10 +59,10 @@
 
             <StackLayout Style="{StaticResource HorizontalStack}">
                 <Label 
-                    Text="Range : " 
+                    Text="Item Kind : " 
                     Style="{StaticResource LabelStyle}"/>
                 <Label 
-                    Text="{Binding Data.Range}" 
+                    Text="{Binding Data.Kind}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 

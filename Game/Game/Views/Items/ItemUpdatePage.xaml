@@ -92,8 +92,8 @@
                             Style="{StaticResource EntryStyle}"/>
 
                     </StackLayout>
-                    
-                    
+
+
                     <Label Grid.Row="5" Grid.Column="0"
                         Text="Item Kind" 
                         Style="{StaticResource LabelStyle}"/>
@@ -103,11 +103,6 @@
                         SelectedItem="{Binding Data.Kind, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
                         x:Name="KindPicker"/>
                 </Grid>
-
-
-                
-
-
 
                 <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
 
