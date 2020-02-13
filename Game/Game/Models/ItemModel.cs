@@ -17,6 +17,9 @@ namespace Game.Models
     /// </summary>
     public class ItemModel : BaseModel<ItemModel>
     {
+        //Kind of the item
+        public ItemKindEnum Kind{ get;set; } = ItemKindEnum.Armor;
+
         // Range of the item, swords are 1, hats/rings are 0, bows are >1
         public int Range { get; set; } = 0;
 
@@ -61,6 +64,9 @@ namespace Game.Models
             {
                 return;
             }
+            
+            //if(
+
 
             // Update all the fields in the Data, except for the Id and guid
             Name = newData.Name;
