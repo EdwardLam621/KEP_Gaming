@@ -24,6 +24,15 @@
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="Skill: " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Label 
+                    Text="{Binding Data.Skill}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
         </StackLayout>
     </ScrollView>
 
