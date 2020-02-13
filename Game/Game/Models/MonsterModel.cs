@@ -29,7 +29,7 @@ namespace Game.Models
             Level = newData.Level;
             DropItems = newData.DropItems;
             MaxHealth = newData.MaxHealth;
-            CurrentHealth = newData.CurrentHealth;
+            CurrentHealth = MaxHealth;
             Description = newData.Description;
             SpeedAttribute = newData.SpeedAttribute;
             OffenseAttribute = newData.OffenseAttribute;
