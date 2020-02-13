@@ -1,20 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Game.ViewModels;
+using System;
+using Game.Models;
 
 namespace Game.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class MonsterDeletePage : ContentPage
     {
-        public MonsterDeletePage()
+        // View Model for Monsters
+        readonly GenericViewModel<MonsterModel> viewModel;
+
+        public MonsterDeletePage(GenericViewModel<MonsterModel> data)
         {
             InitializeComponent();
+
+            BindingContext = this.viewModel = data;
+
+            this.viewModel.Title = "Delete " + data.Title;
         }
+
+        
     }
 }
