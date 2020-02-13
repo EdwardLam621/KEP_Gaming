@@ -189,7 +189,7 @@
 
                         </StackLayout>
                     </StackLayout>
-
+                </StackLayout>
             </ScrollView>
         </StackLayout>
     </ContentPage.Content>
