@@ -216,4 +216,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\MetaDungeonMain.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="vetruv.png" />
+  </ItemGroup>
 </Project>
