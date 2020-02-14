@@ -104,8 +104,10 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="autostudy.png" />
     <Content Include="battleboard.jpg" />
     <Content Include="cauldren.png" />
+    <Content Include="classroom.png" />
     <Content Include="d12.png" />
     <Content Include="dice_20.png" />
     <Content Include="door.png" />
@@ -153,6 +155,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="score.png" />
     <Content Include="splashscreen.jpg" />
+    <Content Include="study.png" />
     <Content Include="troll.png" />
     <Content Include="vetruv.png" />
     <Content Include="village.jpg" />
