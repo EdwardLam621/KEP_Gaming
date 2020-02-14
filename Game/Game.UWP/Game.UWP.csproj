@@ -125,6 +125,7 @@
     <Content Include="knight.png" />
     <Content Include="icon_new.png" />
     <Content Include="MetaDungeonMain.jpg" />
+    <Content Include="monsterbook.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
@@ -155,6 +156,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="score.png" />
     <Content Include="splashscreen.jpg" />
+    <Content Include="students.png" />
     <Content Include="study.png" />
     <Content Include="troll.png" />
     <Content Include="vetruv.png" />
