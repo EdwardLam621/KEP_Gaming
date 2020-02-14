@@ -12,6 +12,7 @@ namespace Game.Models
         Bookworm,
         ClassClown,
         Boss,
-        None
+        None,
+        PersonalIssue
     }
 }

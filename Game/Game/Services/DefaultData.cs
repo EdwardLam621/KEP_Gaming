@@ -165,8 +165,36 @@ namespace Game.Services
                 SpeedAttribute = 15,
                 Skill = CreatureSkillEnum.Boss,
                 DropItems = dropItems
+                },
+
+                new MonsterModel
+                {
+                Name = "Needy Boyfriend",
+                MaxHealth = 100,
+                Level = 2,
+                Description = "A demanding, and annoying boyfriend",
+                ImageURI = "https://i.ya-webdesign.com/images/poor-drawing-animated-11.png",
+                DefenseAttribute = 10,
+                OffenseAttribute = 4,
+                SpeedAttribute = 10,
+                Skill = CreatureSkillEnum.PersonalIssue,
+                DropItems = dropItems
+                },
+
+                new MonsterModel
+                {
+                Name = "Never-ending Netflix Series",
+                MaxHealth = 20,
+                Level = 4,
+                Description = "10 seasons series",
+                ImageURI = "https://lh3.googleusercontent.com/proxy/t6SNfmdEiVRcxlt_luGdzc5dDbtHbcdmFeILPIUqkIg9IJUZAmIwelNGdAKJPNFMNAbyVwfJahad7DUxGOvdiut_RfInIOTVU12bm07SaaDUpcptonFYlsA",
+                DefenseAttribute = 9,
+                OffenseAttribute = 3,
+                SpeedAttribute = 6,
+                Skill = CreatureSkillEnum.PersonalIssue,
+                DropItems = dropItems
                 }
-                
+
             };
             return datalist;
         }
