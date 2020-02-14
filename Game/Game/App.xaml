@@ -74,6 +74,7 @@
                 x:Key="HeaderStyle"
                 BasedOn="{StaticResource Xamarin.Forms.Label}">
                 <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="FontSize" Value="Large" />
             </Style>
 
