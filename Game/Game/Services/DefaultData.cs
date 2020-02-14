@@ -14,9 +14,9 @@ namespace Game.Services
             var datalist = new List<ItemModel>()
             {
                 new ItemModel {
-                    Name = "Gold Sword",
-                    Description = "Sword made of Gold, really expensive looking",
-                    ImageURI = "http://www.clker.com/cliparts/e/L/A/m/I/c/sword-md.png",
+                    Name = "Doctor Letter",
+                    Description = "a file used to write a note on a given patient to prove that they were indeed sick",
+                    ImageURI = "https://iconbug.com/data/74/256/54e923381a3dae598a53b9287f415137.png",
                     Range = 0,
                     Damage = 9,
                     Value = 9,
@@ -24,9 +24,9 @@ namespace Game.Services
                     Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
-                    Name = "Strong Shield",
-                    Description = "Enough to hide behind",
-                    ImageURI = "http://www.clipartbest.com/cliparts/4T9/LaR/4T9LaReTE.png",
+                    Name = "Calculator",
+                    Description = "something used for making mathematical calculations",
+                    ImageURI = "https://lh3.googleusercontent.com/proxy/3nEsnJtzGXTp2EU3dTot-EcZKWVq6cY2P1hM7a3KM5d0ATjJXhHT75hMCGTjXCau3dEPVHdKAzAxeevO3Ov2wZKBhinYN3Z_JMSYULbKZM7GpUFPVm8yYhsFuoD8j3eR-Gb_ljTJ8GbXR5nCWmdvmccL",
                     Range = 0,
                     Damage = 0,
                     Value = 9,
@@ -34,8 +34,8 @@ namespace Game.Services
                     Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
-                    Name = "Bunny Hat",
-                    Description = "Pink hat with fluffy ears",
+                    Name = "Energy Drink",
+                    Description = "a drink that provides mental and physical stimulation",
                     ImageURI = "http://www.clipartbest.com/cliparts/yik/e9k/yike9kMyT.png",
                     Range = 0,
                     Damage = 0,
