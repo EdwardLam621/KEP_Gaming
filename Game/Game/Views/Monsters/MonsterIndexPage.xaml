@@ -19,7 +19,7 @@
 
                 <Label Text="Monster List Page" Style="{StaticResource HeaderStyle}"/>
 
-                <ListView x:Name="MonsterListView" 
+            <ListView x:Name="MonsterListView" 
                     ItemsSource="{Binding Dataset}"
                     IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                     RefreshCommand="{Binding LoadItemsCommand}"
@@ -27,14 +27,14 @@
                     CachingStrategy="RecycleElement"
                     HasUnevenRows="true"
                     Margin="5,0,5,0"
-                    RowHeight="80">
+                    RowHeight="120">
 
-                    <ListView.ItemTemplate>
+                <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <Grid ColumnSpacing="5" RowSpacing="1">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="100"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
