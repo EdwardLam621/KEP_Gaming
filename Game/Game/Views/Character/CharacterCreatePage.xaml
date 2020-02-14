@@ -116,7 +116,7 @@
                     <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
 
                         <Label 
-                            Text="{Binding Data.Health}" 
+                            Text="{Binding Data.MaxHealth}" 
                             x:Name="HealthValue"
                             Style="{StaticResource ValueStyle}"
                             Padding="0,0,10,0"
@@ -124,7 +124,7 @@
                             HorizontalTextAlignment="End"/>
                     
                         <Stepper 
-                            Value="{Binding Data.Health, Mode=TwoWay}"
+                            Value="{Binding Data.MaxHealth, Mode=TwoWay}"
                             Maximum = "100"
                             Minimum = "0"
                             ValueChanged="Health_OnStepperValueChanged"/>

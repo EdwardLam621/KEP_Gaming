@@ -61,7 +61,7 @@
                     Text="Health: " 
                     Style="{StaticResource LabelStyle}"/>
                 <Label 
-                    Text="{Binding Data.Health}" 
+                    Text="{Binding Data.MaxHealth}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
