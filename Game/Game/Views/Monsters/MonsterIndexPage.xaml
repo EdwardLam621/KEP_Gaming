@@ -55,7 +55,11 @@
                                     <StackLayout Grid.Column="1" Grid.Row="1"
                                     Orientation="Horizontal">
 
-                                        <Label 
+                                    <Label
+                                            Text="Level: "
+                                            Style="{StaticResource ListStyle}"/>
+
+                                    <Label 
                                         Text="{Binding Level}" 
                                         Style="{StaticResource ListStyle}"/>
 
