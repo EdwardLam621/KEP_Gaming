@@ -88,28 +88,6 @@
                 <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
 
                     <Label 
-                        Text="Level" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
-
-                        <Label 
-                            Text="{Binding Data.Level}" 
-                            x:Name="LevelValue"
-                            Style="{StaticResource ValueStyle}"
-                            Padding="0,0,10,0"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="End"/>
-                    
-                        <Stepper 
-                            Value="{Binding Data.Level, Mode=TwoWay}"
-                            Maximum = "20"
-                            Minimum = "0"
-                            ValueChanged="Level_OnStepperValueChanged"/>
-                        
-                    </StackLayout>
-
-                    <Label 
                         Text="Health" 
                         Style="{StaticResource LabelStyle}"/>
 
