@@ -14,7 +14,7 @@ namespace Game.Views
     public partial class CharacterIndexPage : ContentPage
     {
         // The view model, used for data binding
-        readonly CharIndexViewModel ViewModel;
+        readonly CharacterIndexViewModel ViewModel;
 
         /// <summary>
         /// Constructor for Index Page
@@ -25,7 +25,7 @@ namespace Game.Views
         {
             InitializeComponent();
 
-            BindingContext = ViewModel = CharIndexViewModel.Instance;
+            BindingContext = ViewModel = CharacterIndexViewModel.Instance;
         }
 
         /// <summary>

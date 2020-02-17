@@ -9,15 +9,15 @@ using Game.Services;
 namespace Game.ViewModels
 {
 
-    public class CharIndexViewModel : BaseViewModel<CharacterModel>
+    public class CharacterIndexViewModel : BaseViewModel<CharacterModel>
     {
         #region Singleton
 
         // Make this a singleton so it only exist one time because holds all the data records in memory
-        private static volatile CharIndexViewModel instance;
+        private static volatile CharacterIndexViewModel instance;
         private static readonly object syncRoot = new Object();
 
-        public static CharIndexViewModel Instance
+        public static CharacterIndexViewModel Instance
         {
             get
             {
@@ -27,7 +27,7 @@ namespace Game.ViewModels
                     {
                         if (instance == null)
                         {
-                            instance = new CharIndexViewModel();
+                            instance = new CharacterIndexViewModel();
                             instance.Initialize();
                         }
                     }
@@ -46,7 +46,7 @@ namespace Game.ViewModels
         /// 
         /// The constructor subscribes message listeners for crudi operations
         /// </summary>
-        public CharIndexViewModel()
+        public CharacterIndexViewModel()
         {
             Title = "Characters";
 
