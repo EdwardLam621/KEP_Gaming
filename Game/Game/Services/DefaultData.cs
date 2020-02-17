@@ -122,7 +122,7 @@ namespace Game.Services
         }
 
         /// <summary>
-        /// Load the Default character data
+        /// Load the Default monster data
         /// </summary>
         /// <returns></returns>
         public static List<MonsterModel> LoadData(MonsterModel temp)
