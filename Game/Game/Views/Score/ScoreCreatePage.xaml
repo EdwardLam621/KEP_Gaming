@@ -84,6 +84,19 @@
                         Text="Round" 
                         Style="{StaticResource LabelStyle}"/>
 
+
+                    <Label Grid.Row="3" Grid.Column="0"
+                        Text="Score" 
+                        Style="{StaticResource LabelStyle}"/>
+                    
+                    <Entry Grid.Row="3" Grid.Column="1"
+                        Text="{Binding Data.ScoreTotal}" 
+                        x:Name="ScoreEntry"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Numeric"
+                    />
+
                 </Grid>
             </StackLayout>
         </ScrollView>
