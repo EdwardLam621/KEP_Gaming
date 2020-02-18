@@ -55,5 +55,15 @@ namespace Game.Views
         {
             await Navigation.PopModalAsync();
         }
+
+        // <summary>
+        /// Catch the change to the Stepper for RoundCount
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void RoundCount_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            RoundValue.Text = String.Format("{0}", e.NewValue);
+        }
     }
 }
