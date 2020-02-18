@@ -139,7 +139,8 @@ namespace Game.ViewModels
         public override List<ScoreModel> SortDataset(List<ScoreModel> dataset)
         {
             return dataset
-                    .OrderBy(a => a.Name)
+                    .OrderByDescending(a => a.ScoreTotal)
+                    .ThenBy(a => a.Name)
                     .ThenBy(a => a.Description)
                     .ToList();
         }
