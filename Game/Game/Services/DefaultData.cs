@@ -55,17 +55,6 @@ namespace Game.Services
         {
             var datalist = new List<CharacterModel>()
             {
-                new CharacterModel {
-                    Name = "Default Character",
-                    MaxHealth = 10,
-                    Level = 1,
-                    Description = "Default description",
-                    ImageURI = "http://www.clker.com/cliparts/e/L/A/m/I/c/sword-md.png",
-                    DefenseAttribute = 5,
-                    OffenseAttribute = 5,
-                    SpeedAttribute = 1,
-                    Skill = CreatureSkillEnum.None,
-                },
 
                  new CharacterModel {
                     Name = "Wiki Expert",
@@ -173,7 +162,7 @@ namespace Game.Services
                 MaxHealth = 100,
                 Level = 2,
                 Description = "A demanding, and annoying boyfriend",
-                ImageURI = "https://i.ya-webdesign.com/images/poor-drawing-animated-11.png",
+                ImageURI = "https://i.ya-webdesign.com/images/poor-drawing-animated-1.png",
                 DefenseAttribute = 10,
                 OffenseAttribute = 4,
                 SpeedAttribute = 10,
@@ -183,11 +172,11 @@ namespace Game.Services
 
                 new MonsterModel
                 {
-                Name = "Never-ending Netflix Series",
+                Name = "Netflix Series",
                 MaxHealth = 20,
                 Level = 4,
-                Description = "10 seasons series",
-                ImageURI = "https://lh3.googleusercontent.com/proxy/t6SNfmdEiVRcxlt_luGdzc5dDbtHbcdmFeILPIUqkIg9IJUZAmIwelNGdAKJPNFMNAbyVwfJahad7DUxGOvdiut_RfInIOTVU12bm07SaaDUpcptonFYlsA",
+                Description = "Never-ending Netflix Series",
+                ImageURI = "https://lh3.googleusercontent.com/proxy/yy2ps4Ec1L3hMcbyN9rdVLcZALxywhbundLTqBodZjIAtq1BggIb6vcmOEZsciQq0P4G1E3HDSLT0nL3arSmAVpvQ-YE9R8FuFuB3jmHsTgTBdEnku8",
                 DefenseAttribute = 9,
                 OffenseAttribute = 3,
                 SpeedAttribute = 6,
