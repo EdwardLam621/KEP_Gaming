@@ -67,15 +67,6 @@
                             Style="{StaticResource ValueStyle}"/>
                     </StackLayout>
 
-                    <StackLayout Style="{StaticResource HorizontalStack}">
-                        <Label 
-                            Text="Current Health: " 
-                            Style="{StaticResource LabelStyle}"/>
-                        <Label 
-                            Text="{Binding Data.CurrentHealth}" 
-                            Style="{StaticResource ValueStyle}"/>
-                    </StackLayout>
-
                 </StackLayout>
                 
             </Grid>
