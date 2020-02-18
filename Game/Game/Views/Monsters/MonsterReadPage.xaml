@@ -91,30 +91,33 @@
                 </Grid.ColumnDefinitions>
 
                 <StackLayout Grid.Row="0" Grid.Column="0">
-                    <Label 
+                    <Label
+                        FontSize="Medium"
+                        HorizontalOptions="CenterAndExpand"
                         Text="{Binding Data.SpeedAttribute}" 
                         Style="{StaticResource ValueStyle}"/>
-                    <Label 
-                        Text="Speed" 
-                        Style="{StaticResource LabelStyle}"/>
+                   
+                    <Image Source="speed.png"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="0" Grid.Column="1">
-                    <Label 
+                    <Label
+                        FontSize="Medium"
+                        HorizontalOptions="CenterAndExpand"
                         Text="{Binding Data.OffenseAttribute}" 
                         Style="{StaticResource ValueStyle}"/>
-                    <Label 
-                        Text="Offense" 
-                        Style="{StaticResource LabelStyle}"/>
+                    
+                    <Image Source="offense.png"/>
                 </StackLayout>
 
-                <StackLayout Grid.Row="0" Grid.Column="2">
-                    <Label 
+                <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label
+                        FontSize="Medium"
+                        HorizontalOptions="CenterAndExpand"
                         Text="{Binding Data.DefenseAttribute}" 
                         Style="{StaticResource ValueStyle}"/>
-                    <Label 
-                        Text="Defense" 
-                        Style="{StaticResource LabelStyle}"/>
+                    
+                    <Image Source="defense.png"/>
                 </StackLayout>
 
 
