@@ -44,7 +44,23 @@
                                                Aspect="AspectFit"/>
                                     </Frame>
 
-                                    
+                                    <Label Text="{Binding Name}" TextColor="Black" FontSize="Medium" Margin="10,0,0,0"/>
+
+                                    <Frame BorderColor="Black" 
+                                               CornerRadius="10" 
+                                               HasShadow="True" 
+                                               Padding="1"
+                                               WidthRequest="70"
+                                               HeightRequest="40"
+                                               HorizontalOptions="EndAndExpand">
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding Attribute}" TextColor="Black" HorizontalOptions="Center" Margin="0,0,0,-5"/>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                                <Label Text="+" TextColor="Black"/>
+                                                <Label Text="{Binding Value}" TextColor="Black" Margin="-5,0,0,0"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
                                 </StackLayout>
                             </Frame>
                         </ViewCell>
