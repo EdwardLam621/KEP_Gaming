@@ -33,6 +33,17 @@
                         <ViewCell>
                             <Frame Padding="2" BorderColor="Black">
                                 <StackLayout Orientation="Horizontal">
+                                    <Frame BorderColor="#AA0000" 
+                                           CornerRadius="10" 
+                                           HasShadow="True" 
+                                           Padding="1"
+                                           WidthRequest="40"
+                                           HeightRequest="40">
+                                        <Image Source="{Binding ImageURI}" 
+                                               HorizontalOptions="Center"
+                                               Aspect="AspectFit"/>
+                                    </Frame>
+
                                     
                                 </StackLayout>
                             </Frame>
