@@ -65,5 +65,15 @@ namespace Game.Views
         {
             RoundValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        // <summary>
+        /// Catch the change to the Stepper for TurnCount
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void TurnCount_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            TurnValue.Text = String.Format("{0}", e.NewValue);
+        }
     }
 }
