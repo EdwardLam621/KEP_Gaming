@@ -57,8 +57,9 @@
                         Text="{Binding Data.ScoreTotal}" 
                         Style="{StaticResource EntryStyle}"/>
 
-                    <Label Grid.Row="1" Grid.Column="0"
-                        Text="Score" 
+
+                    <Label Grid.Row="2" Grid.Column="0"
+                        Text="Number of Rounds" 
                         Style="{StaticResource LabelStyle}"/>
 
                     <StackLayout Grid.Row="2" Grid.Column="1"
@@ -103,28 +104,13 @@
 
                     </StackLayout>
 
-                    <Label Grid.Row="2" Grid.Column="0"
-                        Text="Number of Rounds" 
-                        Style="{StaticResource LabelStyle}"/>
 
 
                     <Label Grid.Row="4" Grid.Column="0"
-                        Text="Score" 
-                        Style="{StaticResource LabelStyle}"/>
-                    
-                    <Entry Grid.Row="4" Grid.Column="1"
-                        Text="{Binding Data.ScoreTotal}" 
-                        x:Name="ScoreEntry"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Keyboard="Numeric"
-                    />
-
-                    <Label Grid.Row="5" Grid.Column="0"
                         Text="Gained Experience" 
                         Style="{StaticResource LabelStyle}"/>
 
-                    <Entry Grid.Row="5" Grid.Column="1"
+                    <Entry Grid.Row="4" Grid.Column="1"
                         Text="{Binding Data.ExperienceGainedTotal}" 
                         x:Name="ExperienceEntry"
                         VerticalOptions="FillAndExpand"
