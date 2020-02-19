@@ -118,6 +118,11 @@
                         Keyboard="Numeric"
                     />
 
+                    <Label Grid.Row="5" 
+                        Text="Character Death List" 
+                        Style="{StaticResource LabelStyle}"/>
+                    
+                    
 
                 </Grid>
             </StackLayout>

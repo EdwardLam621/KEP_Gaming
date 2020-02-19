@@ -3,6 +3,7 @@ using Game.ViewModels;
 using System;
 using System.ComponentModel;
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace Game.Views
 {

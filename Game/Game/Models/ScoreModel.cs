@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Game.Models
 {
@@ -53,6 +54,10 @@ namespace Game.Models
         // Only use Get only, set will be done by the Add feature.
         public string ItemsDroppedList { get; set; }
 
+
+        public List<CharacterModel> CharacterDeadList { get; set; }
+
+
         /// <summary>
         /// Instantiate new Score 
         /// </summary>
@@ -69,6 +74,7 @@ namespace Game.Models
             RoundCount = 0;
             ExperienceGainedTotal = 0;
             MonsterSlainNumber = 0;
+            CharacterAtDeathList = null;
         }
 
         /// <summary>
@@ -96,7 +102,7 @@ namespace Game.Models
             // Update all the fields in the Data, except for the Id
             Name = newData.Name;
             Description = newData.Description;
-
+            CharacterAtDeathList = newData.CharacterAtDeathList;
             BattleNumber = newData.BattleNumber;
             ScoreTotal = newData.ScoreTotal;
             GameDate = newData.GameDate;
