@@ -103,6 +103,20 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
 
+            <Style TargetType="Label"
+                 x:Key="ListViewMainLabel">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="10,0,0,0" />
+            </Style>
+
+            <Style TargetType="Label"
+                 x:Key="ListViewSubLabel">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="Margin" Value="15,-6,0,0" />
+            </Style>
+            
             <!-- Image -->
             <Style TargetType="Image"
                 x:Key="ImageLargeStyle">
