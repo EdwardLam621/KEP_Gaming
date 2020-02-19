@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Name="BrowseItemsPage"
+             x:Name="BrowseScoresPage"
              x:Class="Game.Views.ScoreIndexPage"
              Title="{Binding Title}">
 
@@ -15,7 +15,7 @@
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
 
-            <Label Text="Score List Page" Style="{StaticResource HeaderStyle}"/>
+            <Label Text="High Scores" Style="{StaticResource HeaderStyle}"/>
 
             <ListView x:Name="DataListView" 
                     ItemsSource="{Binding Dataset}"
@@ -29,7 +29,19 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            
+                            <Frame Style="{StaticResource ListFrame}">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical">
+
+                                        <Label Style="{StaticResource ListViewMainLabel}" Text="Score"/>
+
+                                    </StackLayout>
+
+                                    
+
+
+                                </StackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
