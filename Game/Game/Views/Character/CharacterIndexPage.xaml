@@ -30,7 +30,22 @@
                     <DataTemplate>
                         <ViewCell>
                             <Frame Style="{StaticResource ListFrame}">
-                                
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame Style="{StaticResource ListImageFrame}">
+                                        <Image Source="{Binding ImageURI}" 
+                                               HorizontalOptions="Center"
+                                               Aspect="AspectFit"/>
+                                    </Frame>
+
+                                    <StackLayout Orientation="Vertical">
+
+                                        <Label Style="{StaticResource ListViewMainLabel}" Text="{Binding Name}"/>
+
+                                    </StackLayout>
+
+
+                                    
+                                </StackLayout>
                             </Frame>
                         </ViewCell>
                     </DataTemplate>
