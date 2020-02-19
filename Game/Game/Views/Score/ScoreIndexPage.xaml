@@ -32,14 +32,30 @@
                             <Frame Style="{StaticResource ListFrame}">
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout Orientation="Vertical">
-
-                                        <Label Style="{StaticResource ListViewMainLabel}" Text="Score"/>
-
-                                    </StackLayout>
-
+                                        
+                                        <Label Style="{StaticResource ListViewMainLabel}" Text="{Binding Name}"/>
+                                        
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Style="{StaticResource ListViewSubLabel}" Text="Rounds: "/>
+                                            <Label Style="{StaticResource ListViewSubLabel}" Text="{Binding RoundCount}"/>
+                                        </StackLayout>
                                     
+                                    </StackLayout>
+                                    
+                                    <Frame BorderColor="Black" 
+                                               CornerRadius="10" 
+                                               HasShadow="True" 
+                                               Padding="1"
+                                               WidthRequest="70"
+                                               HeightRequest="40"
+                                               HorizontalOptions="EndAndExpand">
+                                        <StackLayout Orientation="Horizontal" BackgroundColor="White">
 
+                                            <Label Style="{StaticResource ListViewItemAttribute}" Text="Score: " />
+                                            <Label Style="{StaticResource ListViewSubLabel}" Text="{Binding ScoreTotal}"/>
 
+                                        </StackLayout>
+                                    </Frame>
                                 </StackLayout>
                             </Frame>
                         </ViewCell>
