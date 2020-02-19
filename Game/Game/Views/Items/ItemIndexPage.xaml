@@ -24,6 +24,7 @@
                     RefreshCommand="{Binding LoadItemsCommand}"
                     CachingStrategy="RecycleElement"
                     ItemSelected="OnItemSelected"
+                    VerticalScrollBarVisibility="Never"
                     BackgroundColor="Black">
                 
                 <ListView.ItemTemplate>
