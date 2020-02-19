@@ -6,8 +6,10 @@ namespace Game.Models
 {
     public class MonsterModel : CreatureModel<MonsterModel>
     {
+        //list of a drop items of a monster
         public List<ItemModel> DropItems;
 
+        //constructor of Monster Model class
         public MonsterModel()
         {
             this.Name = "this is Name";
@@ -15,8 +17,10 @@ namespace Game.Models
             this.CurrentHealth = MaxHealth;
         }
 
+        //level of a monster
         public int Level { get; set; }
 
+        //method to update a monster
         public override void Update(MonsterModel newData)
         {
             if (newData == null)
