@@ -32,13 +32,10 @@ namespace Game.Views
             BindingContext = this.ViewModel = data;
 
             DropItemListView.ItemsSource = dropItems;
-            
-            if (data.Data.DropItems != null)
+
+            foreach (ItemModel item in data.Data.DropItems)
             {
-                for (int i = 0; i < data.Data.DropItems.Count; i++)
-                {
-                    dropItems.Add(data.Data.DropItems[i]);
-                }
+                dropItems.Add(item);  
             }
             
         }

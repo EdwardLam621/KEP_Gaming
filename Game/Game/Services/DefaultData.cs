@@ -26,22 +26,12 @@ namespace Game.Services
                 new ItemModel {
                     Name = "Calculator",
                     Description = "something used for making mathematical calculations",
-                    ImageURI = "https://library.kissclipart.com/20181217/srw/kissclipart-calculator-clipart-calculator-computer-keyboard-nu-18f534de40fcbfc6.png",
+                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
                     Range = 0,
                     Damage = 0,
                     Value = 9,
                     Location = ItemLocationEnum.OffHand,
-                    Attribute = AttributeEnum.Defense},
-
-                new ItemModel {
-                    Name = "Energy Drink",
-                    Description = "a drink that provides mental and physical stimulation",
-                    ImageURI = "https://f0.pngfuel.com/png/427/174/clear-glass-bottle-with-cork-cap-png-clip-art.png",
-                    Range = 0,
-                    Damage = 0,
-                    Value = 9,
-                    Location = ItemLocationEnum.Head,
-                    Attribute = AttributeEnum.Speed},
+                    Attribute = AttributeEnum.Defense}
             };
 
             return datalist;
@@ -74,6 +64,7 @@ namespace Game.Services
                     Value = 9,
                     Location = ItemLocationEnum.OffHand,
                     Attribute = AttributeEnum.Defense}
+
             };
 
             var datalist = new List<CharacterModel>()

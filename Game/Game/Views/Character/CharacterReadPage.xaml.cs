@@ -16,7 +16,7 @@ namespace Game.Views
         // View Model for Character
         readonly GenericViewModel<CharacterModel> ViewModel;
 
-        //
+        //list of equipments of character
         ObservableCollection<ItemModel> equipments = new ObservableCollection<ItemModel>();
 
         /// <summary>
@@ -33,12 +33,9 @@ namespace Game.Views
 
             EquipmentListView.ItemsSource = equipments;
 
-            if (data.Data.Equipments != null)
+            foreach (ItemModel equipment in data.Data.Equipments)
             {
-                for (int i = 0; i < data.Data.Equipments.Count; i++)
-                {
-                    equipments.Add(data.Data.Equipments[i]);
-                }
+                equipments.Add(equipment);
             }
         }
 
