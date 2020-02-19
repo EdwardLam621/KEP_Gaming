@@ -18,14 +18,12 @@
 
             <Label Text="Items List Page" Style="{StaticResource HeaderStyle}"/>
 
-            <ListView x:Name="ItemsListView" 
+            <ListView x:Name="ItemsListView"   
                     ItemsSource="{Binding Dataset}"
                     IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                     RefreshCommand="{Binding LoadItemsCommand}"
                     CachingStrategy="RecycleElement"
                     ItemSelected="OnItemSelected"
-                    Margin="0,0,0,3"
-                    BackgroundColor="Black"
                     >
                 
                 <ListView.ItemTemplate>
@@ -33,18 +31,19 @@
                         <ViewCell>
                             <Frame Padding="2" BorderColor="Black">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BorderColor="#AA0000" 
-                                           CornerRadius="10" 
-                                           HasShadow="True" 
-                                           Padding="1"
-                                           WidthRequest="40"
-                                           HeightRequest="40">
+                                    <Frame Style="{StaticResource ListFrame}">
                                         <Image Source="{Binding ImageURI}" 
                                                HorizontalOptions="Center"
                                                Aspect="AspectFit"/>
                                     </Frame>
 
-                                    <Label Text="{Binding Name}" TextColor="Black" FontSize="Medium" Margin="10,0,0,0"/>
+                                    <StackLayout Orientation="Vertical">
+
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="Medium" Margin="10,0,0,0"/>
+
+                                        <Label Text="{Binding Location}" TextColor="Black" FontSize="Micro" Margin="15,-6,0,0"/>
+                                    </StackLayout>
+                                    
 
                                     <Frame BorderColor="Black" 
                                                CornerRadius="10" 
@@ -54,7 +53,9 @@
                                                HeightRequest="40"
                                                HorizontalOptions="EndAndExpand">
                                         <StackLayout Orientation="Vertical">
+
                                             <Label Text="{Binding Attribute}" TextColor="Black" HorizontalOptions="Center" Margin="0,0,0,-5"/>
+
                                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                                 <Label Text="+" TextColor="Black"/>
                                                 <Label Text="{Binding Value}" TextColor="Black" Margin="-5,0,0,0"/>
