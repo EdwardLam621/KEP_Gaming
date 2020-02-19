@@ -227,8 +227,34 @@ namespace Game.Services
 
                 new ScoreModel {
                     Name = "Second Score",
-                    Description = "Test Data",
-                }
+                    Description = "Test Data 2",
+                    CharacterDeadList = new List<CharacterModel>()
+                    {
+                        new CharacterModel {
+                            Name = "Straight A",
+                            MaxHealth = 10,
+                            Level = 20,
+                            Description = "Finish every assignment with perfect grade. Instructor's favorite",
+                            ImageURI = "https://pngimage.net/wp-content/uploads/2018/06/thai-student-png-5.png",
+                            DefenseAttribute = 10,
+                            OffenseAttribute = 10,
+                            SpeedAttribute = 10,
+                            Skill = CreatureSkillEnum.Bookworm,
+                        },
+
+                         new CharacterModel {
+                            Name = "The Delinquent",
+                            MaxHealth = 20,
+                            Level = 1,
+                            Description = "The mischief class skipper. Low in defense but high in attack",
+                            ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
+                            DefenseAttribute = 1,
+                            OffenseAttribute = 10,
+                            SpeedAttribute = 15,
+                            Skill = CreatureSkillEnum.None,
+                        }
+                    }
+                },
             };
 
             return datalist;
