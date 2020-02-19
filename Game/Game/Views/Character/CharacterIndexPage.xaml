@@ -23,6 +23,7 @@
                     RefreshCommand="{Binding LoadItemsCommand}"
                     ItemSelected="OnItemSelected"
                     CachingStrategy="RecycleElement"
+                    VerticalScrollBarVisibility="Never"
                     BackgroundColor="Black"
                     >
                 
