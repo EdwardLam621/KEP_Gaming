@@ -5,15 +5,24 @@ using Game.Services;
 
 namespace Game.Models
 {
+    /// <summary>
+    /// Creature Model of the game
+    /// 
+    /// Base class of Creature to be inherited by Character and Monster
+    /// </summary>
     public class CreatureModel<T> : BaseModel<T>
     {
+        //max health of a creature
         public int MaxHealth { get; set; } = 1;
-
+        //current health of a creature
         public int CurrentHealth { get; set; }
-
+        //Spped value of a creature
         public int SpeedAttribute { get; set; }
+        //Attack value of a creature
         public int OffenseAttribute { get; set; }
+        //Defense value of a creature
         public int DefenseAttribute { get; set; }
+        //Skill of a creature
         public CreatureSkillEnum Skill { get; set; }
 
         // Add Unique attributes for Item

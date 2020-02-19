@@ -4,19 +4,24 @@ using System.Text;
 
 namespace Game.Models
 {
+    /// <summary>
+    /// Character model
+    /// </summary>
     public class CharacterModel : CreatureModel<CharacterModel>
     {
-
+        //List of equipments
         public List<ItemModel> Equipments;
 
+        //constructor of the class
         public CharacterModel()
         {
             this.Name = "this is Name";
             this.Description = "this is Character Description";
         }
-
+        //level of character
         public int Level { get; set; }
 
+        //methods to update a character
         public override void Update(CharacterModel newData)
         {
             if (newData == null)
