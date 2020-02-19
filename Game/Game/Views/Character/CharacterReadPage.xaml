@@ -136,63 +136,33 @@
             <Label 
                 Text="Equipments: " 
                 Style="{StaticResource LabelStyle}"/>
-           
 
-            <ListView x:Name="EquipmentListView"
-                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                    RefreshCommand="{Binding LoadItemsCommand}"
-                    CachingStrategy="RecycleElement"
-                    HasUnevenRows="true"
-                    Margin="5,0,5,0"
-                    RowHeight="80"
-                    >
-                
-                <ListView.ItemTemplate>
+            <CollectionView x:Name="EquipmentListView">
+                <CollectionView.ItemsLayout>
+                   <GridItemsLayout Orientation="Vertical"
+                                    Span="3" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid ColumnSpacing="5" RowSpacing="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="80" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.RowSpan="1"
+                                   Source="{Binding ImageURI}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="60"
+                                   WidthRequest="60" />
 
-                                
-
-                                <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
-                                        Source="{Binding ImageURI}"
-                                        Style="{StaticResource ImageSmallStyle}"
-                                        VerticalOptions="CenterAndExpand"/>
-
-                                <Label Grid.Column="1" Grid.Row="0"
-                                       Text="{Binding Name}" 
-                                       Style="{StaticResource ListStyle}"/>
-
-                                <StackLayout Grid.Column="1" Grid.Row="1"
-                                    Orientation="Horizontal">
-                                    
-                                    <Label 
-                                       Text="{Binding Attribute}" 
-                                       Style="{StaticResource ListStyle}"/>
-
-                                    <Label Text="{Binding Value}" 
-                                        Style="{StaticResource ListStyle}"/>
-                                
-                                </StackLayout>
-
-                                <Label Grid.Column="1" Grid.Row="2"
-                                       Text="{Binding Description}" 
-                                       Style="{StaticResource ListStyle}"
-                                       FontSize="Micro"/>
-
-                            </Grid>
-                        </ViewCell>
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <!--
             <Label
