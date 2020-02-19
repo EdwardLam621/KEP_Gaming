@@ -189,8 +189,9 @@ namespace Game.Services
         }
 
 
-            public static List<ScoreModel> LoadData(ScoreModel temp)
+        public static List<ScoreModel> LoadData(ScoreModel temp)
         {
+
             var datalist = new List<ScoreModel>()
             {
                 new ScoreModel {

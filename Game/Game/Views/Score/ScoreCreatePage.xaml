@@ -121,8 +121,15 @@
                     <Label Grid.Row="5" 
                         Text="Character Death List" 
                         Style="{StaticResource LabelStyle}"/>
-                    
-                    
+
+                    <Label Grid.Row="7"
+                        Text="Slained Monster Amount"
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <Label Grid.Row="9"
+                        Text="Item Dropped"
+                        Style="{StaticResource LabelStyle}"/>
+
 
                 </Grid>
             </StackLayout>
