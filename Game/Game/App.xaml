@@ -105,14 +105,14 @@
 
             <Style TargetType="Label"
                  x:Key="ListViewMainLabel">
-                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="Margin" Value="10,0,0,0" />
             </Style>
 
             <Style TargetType="Label"
                  x:Key="ListViewSubLabel">
-                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="Micro" />
                 <Setter Property="Margin" Value="15,-6,0,0" />
             </Style>
@@ -250,14 +250,20 @@
             </Style>
 
             <Style TargetType="Frame"
-                   x:Key="ListFrame">
+                   x:Key="ListImageFrame">
                 <Setter Property="BorderColor" Value="#AA0000"/>
                 <Setter Property="CornerRadius" Value="10"/>
                 <Setter Property="HasShadow" Value="True"/>
                 <Setter Property="Padding" Value="1"/>
                 <Setter Property="WidthRequest" Value="40"/>
                 <Setter Property="HeightRequest" Value="40"/>
+            </Style>
 
+            <Style TargetType="Frame"
+                   x:Key="ListFrame">
+                <Setter Property="BackgroundColor" Value="#AA0000"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="Padding" Value="2"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

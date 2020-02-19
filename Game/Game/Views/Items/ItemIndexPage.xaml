@@ -29,9 +29,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame Padding="2" BorderColor="Black">
+                            <Frame Style="{StaticResource ListFrame}">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame Style="{StaticResource ListFrame}">
+                                    <Frame Style="{StaticResource ListImageFrame}">
                                         <Image Source="{Binding ImageURI}" 
                                                HorizontalOptions="Center"
                                                Aspect="AspectFit"/>
