@@ -196,6 +196,32 @@ namespace Game.Services
                 new ScoreModel {
                     Name = "First Score",
                     Description = "Test Data",
+                    CharacterDeadList = new List<CharacterModel>()
+                    {
+                        new CharacterModel {
+                            Name = "Wiki Expert",
+                            MaxHealth = 20,
+                            Level = 1,
+                            Description = "Search Wikipedia for everything!",
+                            ImageURI = "https://cn.i.cdn.ti-platform.com/cnapac/content/438/showpage/teen-titans-go%21/sa/showicon.png",
+                            DefenseAttribute = 10,
+                            OffenseAttribute = 1,
+                            SpeedAttribute = 8,
+                            Skill = CreatureSkillEnum.TeachersPet,
+                        },
+
+                         new CharacterModel {
+                            Name = "Unknown",
+                            MaxHealth = 10,
+                            Level = 1,
+                            Description = "No one ever saw him in the class. Does he/she even exist?",
+                            ImageURI = "https://ya-webdesign.com/images250_/thief-clipart-sneak-11.png",
+                            DefenseAttribute = 7,
+                            OffenseAttribute = 4,
+                            SpeedAttribute = 3,
+                            Skill = CreatureSkillEnum.Slacker,
+                        },
+                    }
                 },
 
                 new ScoreModel {
