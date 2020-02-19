@@ -24,16 +24,16 @@
 
             <Color x:Key="PageBackgroundColor">#D9C6B0</Color>
             <Color x:Key="ViewBackgroundColor">#AA0000</Color>
-            <Color x:Key="NavigationBarColor">#D9C6B0</Color>
+            <Color x:Key="NavigationBarColor">#AA0000</Color>
 
-            <Color x:Key="PrimaryBackgroundColor">#000000</Color>
+            <Color x:Key="PrimaryBackgroundColor">#D9C6B0</Color>
             <Color x:Key="SecondaryBackgroundColor">#AA0000</Color>
             <Color x:Key="TriciaryBackgroundColor">#FFFFFF</Color>
-            <Color x:Key="LightBackgroundColor">Bisque</Color>
+            <Color x:Key="LightBackgroundColor">#AA0000</Color>
             <Color x:Key="DarkBackgroundColor">#222222</Color>
             <Color x:Key="PrimaryTextColor">#FFFFFF</Color>
-            <Color x:Key="SecondaryTextColor">Gray</Color>
-            <Color x:Key="TriciaryTextColor">#FF7F60</Color>
+            <Color x:Key="SecondaryTextColor">White</Color>
+            <Color x:Key="TriciaryTextColor">#AA0000</Color>
 
             <Color x:Key="TransparentColor">Transparent</Color>
 
@@ -234,7 +234,7 @@
                 <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="Margin" Value="0" />
-                <Setter Property="BackgroundColor" Value="{StaticResource SecondaryBackgroundColor}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
                 <Setter Property="Minimum" Value="0" />
                 <Setter Property="Maximum" Value="9" />
                 <Setter Property="Increment" Value="1" />

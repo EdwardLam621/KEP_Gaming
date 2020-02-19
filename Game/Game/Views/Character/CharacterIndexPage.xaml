@@ -8,12 +8,10 @@
              x:Class="Game.Views.CharacterIndexPage"
              Title="{Binding Title}">
 
-    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddCharacter_Clicked" IconImageSource="icon_add.png"/>
     </ContentPage.ToolbarItems>
     
-
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
 
@@ -25,52 +23,46 @@
                     RefreshCommand="{Binding LoadItemsCommand}"
                     ItemSelected="OnItemSelected"
                     CachingStrategy="RecycleElement"
-                    HasUnevenRows="true"
-                    Margin="5,0,5,0"
-                    RowHeight="80"
+                    BackgroundColor="Black"
                     >
                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid ColumnSpacing="5" RowSpacing="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                            <Frame Style="{StaticResource ListFrame}">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame Style="{StaticResource ListImageFrame}">
+                                        <Image Source="{Binding ImageURI}" 
+                                               HorizontalOptions="Center"
+                                               Aspect="AspectFit"/>
+                                    </Frame>
 
-                                <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
-                                        Source="{Binding ImageURI}"
-                                        Style="{StaticResource ImageSmallStyle}"
-                                        VerticalOptions="CenterAndExpand"/>
+                                    <StackLayout Orientation="Vertical">
 
-                                <Label Grid.Column="1" Grid.Row="0"
-                                       Text="{Binding Name}" 
-                                       Style="{StaticResource ListStyle}"/>
+                                        <Label Style="{StaticResource ListViewMainLabel}" Text="{Binding Name}"/>
 
-                                <StackLayout Grid.Column="1" Grid.Row="1"
-                                    Orientation="Horizontal">
-                                    
-                                    <Label 
-                                       Text="{Binding Attribute}" 
-                                       Style="{StaticResource ListStyle}"/>
+                                    </StackLayout>
 
-                                    <Label Text="{Binding Level}" 
-                                        Style="{StaticResource ListStyle}"/>
-                                
+                                    <Frame BorderColor="Black" 
+                                               CornerRadius="10" 
+                                               HasShadow="True" 
+                                               Padding="1"
+                                               WidthRequest="70"
+                                               HeightRequest="40"
+                                               HorizontalOptions="EndAndExpand">
+                                        <StackLayout Orientation="Vertical" BackgroundColor="White">
+
+                                            <Label Style="{StaticResource ListViewItemAttribute}" Text="Level" />
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                                <Label Text="{Binding Level}" TextColor="Black" Margin="-5,0,0,0"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+
+
                                 </StackLayout>
-
-                                <Label Grid.Column="1" Grid.Row="2"
-                                       Text="{Binding Description}" 
-                                       Style="{StaticResource ListStyle}"
-                                       FontSize="Micro"/>
-
-                            </Grid>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

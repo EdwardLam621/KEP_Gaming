@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Name="BrowseItemsPage"
+             x:Name="BrowseScoresPage"
              x:Class="Game.Views.ScoreIndexPage"
              Title="{Binding Title}">
 
@@ -15,7 +15,7 @@
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
 
-            <Label Text="Score List Page" Style="{StaticResource HeaderStyle}"/>
+            <Label Text="High Scores" Style="{StaticResource HeaderStyle}"/>
 
             <ListView x:Name="DataListView" 
                     ItemsSource="{Binding Dataset}"
@@ -24,42 +24,40 @@
                     CachingStrategy="RecycleElement"
                     ItemSelected="OnItemSelected"
                     HasUnevenRows="true"
-                    Margin="5,0,5,0"
-                    RowHeight="80"
                     >
                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid ColumnSpacing="1" RowSpacing="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                            <Frame Style="{StaticResource ListFrame}">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical">
+                                        
+                                        <Label Style="{StaticResource ListViewMainLabel}" Text="{Binding Name}"/>
+                                        
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Style="{StaticResource ListViewSubLabel}" Text="Rounds: "/>
+                                            <Label Style="{StaticResource ListViewSubLabel}" Text="{Binding RoundCount}"/>
+                                        </StackLayout>
+                                    
+                                    </StackLayout>
+                                    
+                                    <Frame BorderColor="Black" 
+                                               CornerRadius="10" 
+                                               HasShadow="True" 
+                                               Padding="1"
+                                               WidthRequest="70"
+                                               HeightRequest="40"
+                                               HorizontalOptions="EndAndExpand">
+                                        <StackLayout Orientation="Horizontal" BackgroundColor="White">
 
-                                <Label Grid.Column="0" Grid.Row="0"
-                                       Text="{Binding Name}" 
-                                       Style="{StaticResource ListStyle}"/>
+                                            <Label Style="{StaticResource ListViewItemAttribute}" Text="Score: " />
+                                            <Label Style="{StaticResource ListViewSubLabel}" Text="{Binding ScoreTotal}"/>
 
-                                <Label Grid.Column="0" Grid.Row="1"
-                                       Text="Rounds" 
-                                       Style="{StaticResource ListStyle}"/>
-
-                                <Label Grid.Column="1" Grid.Row="1"
-                                       Text="{Binding RoundCount}" 
-                                       Style="{StaticResource ListStyle}"/>
-
-                                <Label Grid.Column="0" Grid.Row="2"
-                                       Text="Score" 
-                                       Style="{StaticResource ListStyle}"/>
-                                
-                                <Label Grid.Column="1" Grid.Row="2"
-                                       Text="{Binding ScoreTotal}" 
-                                       Style="{StaticResource ListStyle}"/>
-
-                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
