@@ -17,7 +17,7 @@
         <ContentPage.Content>
             <StackLayout Style="{StaticResource OuterBoxStack}">
 
-                <Label Text="Monster List Page" Style="{StaticResource HeaderStyle}"/>
+                <Label Text="Monster List" Style="{StaticResource HeaderStyle}"/>
 
             <ListView x:Name="MonsterListView" 
                     ItemsSource="{Binding Dataset}"
@@ -34,7 +34,7 @@
                             <ViewCell>
                                 <Grid ColumnSpacing="5" RowSpacing="1">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
@@ -64,11 +64,6 @@
                                         Style="{StaticResource ListStyle}"/>
 
                                     </StackLayout>
-
-                                    <Label Grid.Column="1" Grid.Row="2"
-                                       Text="{Binding Description}" 
-                                       Style="{StaticResource ListStyle}"
-                                       FontSize="Micro"/>
 
                                 </Grid>
                             </ViewCell>

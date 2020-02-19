@@ -57,9 +57,67 @@
                         Text="{Binding Data.ScoreTotal}" 
                         Style="{StaticResource EntryStyle}"/>
 
-                    <Label Grid.Row="1" Grid.Column="0"
-                        Text="Score" 
+
+                    <Label Grid.Row="2" Grid.Column="0"
+                        Text="Number of Rounds" 
                         Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Grid.Row="2" Grid.Column="1"
+                        Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                        <Label 
+                            Text="{Binding Data.RoundCount}" 
+                            x:Name="RoundValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"/>
+
+                        <Stepper 
+                            Value="{Binding Data.RoundCount, Mode=TwoWay}"
+                            Maximum = "500"
+                            Minimum = "0"
+                            ValueChanged="RoundCount_OnStepperValueChanged"/>
+
+                    </StackLayout>
+
+                    <Label Grid.Row="3" Grid.Column="0"
+                        Text="Number of Turns" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Grid.Row="3" Grid.Column="1"
+                        Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                        <Label 
+                            Text="{Binding Data.TurnCount}" 
+                            x:Name="TurnValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"/>
+
+                        <Stepper 
+                            Value="{Binding Data.TurnCount, Mode=TwoWay}"
+                            Maximum = "500"
+                            Minimum = "0"
+                            ValueChanged="TurnCount_OnStepperValueChanged"/>
+
+                    </StackLayout>
+
+
+
+                    <Label Grid.Row="4" Grid.Column="0"
+                        Text="Gained Experience" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <Entry Grid.Row="4" Grid.Column="1"
+                        Text="{Binding Data.ExperienceGainedTotal}" 
+                        x:Name="ExperienceEntry"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Numeric"
+                    />
+
 
                 </Grid>
             </StackLayout>

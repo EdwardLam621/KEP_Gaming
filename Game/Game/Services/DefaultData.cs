@@ -55,17 +55,6 @@ namespace Game.Services
         {
             var datalist = new List<CharacterModel>()
             {
-                new CharacterModel {
-                    Name = "Default Character",
-                    MaxHealth = 10,
-                    Level = 1,
-                    Description = "Default description",
-                    ImageURI = "http://www.clker.com/cliparts/e/L/A/m/I/c/sword-md.png",
-                    DefenseAttribute = 5,
-                    OffenseAttribute = 5,
-                    SpeedAttribute = 1,
-                    Skill = CreatureSkillEnum.None,
-                },
 
                  new CharacterModel {
                     Name = "Wiki Expert",
@@ -84,7 +73,7 @@ namespace Game.Services
                     MaxHealth = 10,
                     Level = 1,
                     Description = "No one ever saw him in the class. Does he/she even exist?",
-                    ImageURI = "https://previews.123rf.com/images/feferoni/feferoni0803/feferoni080300032/2752612-invisible-man-concept.jpg",
+                    ImageURI = "https://ya-webdesign.com/images250_/thief-clipart-sneak-11.png",
                     DefenseAttribute = 7,
                     OffenseAttribute = 4,
                     SpeedAttribute = 3,
@@ -96,7 +85,7 @@ namespace Game.Services
                     MaxHealth = 10,
                     Level = 20,
                     Description = "Finish every assignment with perfect grade. Instructor's favorite",
-                    ImageURI = "https://previews.123rf.com/images/hermandesign2015/hermandesign20151704/hermandesign2015170400338/77046434-young-boy-scientist.jpg",
+                    ImageURI = "https://pngimage.net/wp-content/uploads/2018/06/thai-student-png-5.png",
                     DefenseAttribute = 10,
                     OffenseAttribute = 10,
                     SpeedAttribute = 10,
@@ -107,8 +96,8 @@ namespace Game.Services
                     Name = "The Delinquent",
                     MaxHealth = 20,
                     Level = 1,
-                    Description = "THe mischief class skipper. Low in defense but high in attack",
-                    ImageURI = "https://icon2.cleanpng.com/20190628/pzy/kisspng-vector-graphics-graffiti-drawing-illustration-clip-juvenile-delinquent-creates-graffiti-vector-imag-5d15fb87863623.8126502415617217355497.jpg",
+                    Description = "The mischief class skipper. Low in defense but high in attack",
+                    ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
                     DefenseAttribute = 1,
                     OffenseAttribute = 10,
                     SpeedAttribute = 15,
@@ -173,7 +162,7 @@ namespace Game.Services
                 MaxHealth = 100,
                 Level = 2,
                 Description = "A demanding, and annoying boyfriend",
-                ImageURI = "https://i.ya-webdesign.com/images/poor-drawing-animated-11.png",
+                ImageURI = "https://i.ya-webdesign.com/images/poor-drawing-animated-1.png",
                 DefenseAttribute = 10,
                 OffenseAttribute = 4,
                 SpeedAttribute = 10,
@@ -183,11 +172,11 @@ namespace Game.Services
 
                 new MonsterModel
                 {
-                Name = "Never-ending Netflix Series",
+                Name = "Netflix Series",
                 MaxHealth = 20,
                 Level = 4,
-                Description = "10 seasons series",
-                ImageURI = "https://lh3.googleusercontent.com/proxy/t6SNfmdEiVRcxlt_luGdzc5dDbtHbcdmFeILPIUqkIg9IJUZAmIwelNGdAKJPNFMNAbyVwfJahad7DUxGOvdiut_RfInIOTVU12bm07SaaDUpcptonFYlsA",
+                Description = "Never-ending Netflix Series",
+                ImageURI = "https://lh3.googleusercontent.com/proxy/mVvlJkxEHrUPZLMDjo5wy9VU5olB5QewTbyUsbUGEpL2ZhVoyNWLXXL31fqhOGJkxaVcaQhWYntj1ylFOK7TsFJsyjjp2NFeMcrDO1wS0LYefVPQnbh6Hc4",
                 DefenseAttribute = 9,
                 OffenseAttribute = 3,
                 SpeedAttribute = 6,
