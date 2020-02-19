@@ -16,7 +16,7 @@ namespace Game.Services
                 new ItemModel {
                     Name = "Doctor Letter",
                     Description = "a file used to write a note on a given patient to prove that they were indeed sick",
-                    ImageURI = "https://iconbug.com/data/74/256/54e923381a3dae598a53b9287f415137.png",
+                    ImageURI = "https://iconbug.com/data/6b/512/27307b4de000a17aac101e8bbbb48a6d.png",
                     Range = 0,
                     Damage = 9,
                     Value = 9,
@@ -26,7 +26,7 @@ namespace Game.Services
                 new ItemModel {
                     Name = "Calculator",
                     Description = "something used for making mathematical calculations",
-                    ImageURI = "https://lh3.googleusercontent.com/proxy/3nEsnJtzGXTp2EU3dTot-EcZKWVq6cY2P1hM7a3KM5d0ATjJXhHT75hMCGTjXCau3dEPVHdKAzAxeevO3Ov2wZKBhinYN3Z_JMSYULbKZM7GpUFPVm8yYhsFuoD8j3eR-Gb_ljTJ8GbXR5nCWmdvmccL",
+                    ImageURI = "https://library.kissclipart.com/20181217/srw/kissclipart-calculator-clipart-calculator-computer-keyboard-nu-18f534de40fcbfc6.png",
                     Range = 0,
                     Damage = 0,
                     Value = 9,
@@ -36,7 +36,7 @@ namespace Game.Services
                 new ItemModel {
                     Name = "Energy Drink",
                     Description = "a drink that provides mental and physical stimulation",
-                    ImageURI = "http://www.clipartbest.com/cliparts/yik/e9k/yike9kMyT.png",
+                    ImageURI = "https://f0.pngfuel.com/png/427/174/clear-glass-bottle-with-cork-cap-png-clip-art.png",
                     Range = 0,
                     Damage = 0,
                     Value = 9,
@@ -53,6 +53,29 @@ namespace Game.Services
         /// <returns></returns>
         public static List<CharacterModel> LoadData(CharacterModel temp)
         {
+            var equipments = new List<ItemModel>()
+            {
+                new ItemModel {
+                    Name = "Doctor Letter",
+                    Description = "a file used to write a note on a given patient to prove that they were indeed sick",
+                    ImageURI = "https://iconbug.com/data/6b/512/27307b4de000a17aac101e8bbbb48a6d.png",
+                    Range = 0,
+                    Damage = 9,
+                    Value = 9,
+                    Location = ItemLocationEnum.PrimaryHand,
+                    Attribute = AttributeEnum.Defense},
+
+                new ItemModel {
+                    Name = "Calculator",
+                    Description = "something used for making mathematical calculations",
+                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 9,
+                    Location = ItemLocationEnum.OffHand,
+                    Attribute = AttributeEnum.Defense}
+            };
+
             var datalist = new List<CharacterModel>()
             {
 
@@ -66,6 +89,7 @@ namespace Game.Services
                     OffenseAttribute = 1,
                     SpeedAttribute = 8,
                     Skill = CreatureSkillEnum.TeachersPet,
+                    Equipments = equipments
                 },
 
                  new CharacterModel {
@@ -78,6 +102,7 @@ namespace Game.Services
                     OffenseAttribute = 4,
                     SpeedAttribute = 3,
                     Skill = CreatureSkillEnum.Slacker,
+                    Equipments = equipments
                 },
 
                  new CharacterModel {
@@ -90,6 +115,7 @@ namespace Game.Services
                     OffenseAttribute = 10,
                     SpeedAttribute = 10,
                     Skill = CreatureSkillEnum.Bookworm,
+                    Equipments = equipments
                 },
 
                  new CharacterModel {
@@ -102,6 +128,7 @@ namespace Game.Services
                     OffenseAttribute = 10,
                     SpeedAttribute = 15,
                     Skill = CreatureSkillEnum.None,
+                    Equipments = equipments
                 }
 
 
@@ -120,9 +147,9 @@ namespace Game.Services
             var dropItems = new List<ItemModel>()
             {
                 new ItemModel {
-                    Name = "Gold Sword",
-                    Description = "Sword made of Gold, really expensive looking",
-                    ImageURI = "http://www.clker.com/cliparts/e/L/A/m/I/c/sword-md.png",
+                    Name = "Doctor Letter",
+                    Description = "a file used to write a note on a given patient to prove that they were indeed sick",
+                    ImageURI = "https://iconbug.com/data/6b/512/27307b4de000a17aac101e8bbbb48a6d.png",
                     Range = 0,
                     Damage = 9,
                     Value = 9,
@@ -130,14 +157,14 @@ namespace Game.Services
                     Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
-                    Name = "Strong Shield",
-                    Description = "Enough to hide behind",
-                    ImageURI = "http://www.clipartbest.com/cliparts/4T9/LaR/4T9LaReTE.png",
+                    Name = "Calculator",
+                    Description = "something used for making mathematical calculations",
+                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
                     Range = 0,
                     Damage = 0,
                     Value = 9,
                     Location = ItemLocationEnum.OffHand,
-                    Attribute = AttributeEnum.Defense},
+                    Attribute = AttributeEnum.Defense}
             };
 
             var datalist = new List<MonsterModel>()
