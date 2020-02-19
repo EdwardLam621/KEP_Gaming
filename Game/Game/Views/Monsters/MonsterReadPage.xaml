@@ -20,14 +20,16 @@
             <Label
                 Text="{Binding Data.Name}"
                 Style="{StaticResource HeaderStyle}"
-                XAlign="Center"
+                HorizontalTextAlignment="Center"
                 LineBreakMode="WordWrap"/>
 
             <Label 
                 Text="{Binding Data.Description}"
+                Style="{StaticResource HeaderStyle}"
                 FontSize="Small"
-                XAlign="Center"
-                LineBreakMode="WordWrap"/>
+                HorizontalTextAlignment="Center"
+                LineBreakMode="WordWrap"
+                />
 
             <Grid>
                 <Grid.RowDefinitions>
