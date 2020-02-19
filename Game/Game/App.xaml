@@ -116,7 +116,15 @@
                 <Setter Property="FontSize" Value="Micro" />
                 <Setter Property="Margin" Value="15,-6,0,0" />
             </Style>
-            
+
+            <Style TargetType="Label"
+                 x:Key="ListViewItemAttribute">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0,0,0,-5" />
+
+            </Style>
+
             <!-- Image -->
             <Style TargetType="Image"
                 x:Key="ImageLargeStyle">

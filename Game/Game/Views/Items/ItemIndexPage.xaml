@@ -55,7 +55,7 @@
                                                HorizontalOptions="EndAndExpand">
                                         <StackLayout Orientation="Vertical">
 
-                                            <Label Text="{Binding Attribute}" TextColor="Black" HorizontalOptions="Center" Margin="0,0,0,-5"/>
+                                            <Label Style="{StaticResource ListViewItemAttribute}" Text="{Binding Attribute}" />
 
                                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                                 <Label Text="+" TextColor="Black"/>
