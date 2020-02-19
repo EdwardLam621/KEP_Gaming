@@ -26,7 +26,7 @@
             <Color x:Key="ViewBackgroundColor">#AA0000</Color>
             <Color x:Key="NavigationBarColor">#D9C6B0</Color>
 
-            <Color x:Key="PrimaryBackgroundColor">#222222</Color>
+            <Color x:Key="PrimaryBackgroundColor">#000000</Color>
             <Color x:Key="SecondaryBackgroundColor">#222222</Color>
             <Color x:Key="TriciaryBackgroundColor">#733612</Color>
             <Color x:Key="LightBackgroundColor">Bisque</Color>
