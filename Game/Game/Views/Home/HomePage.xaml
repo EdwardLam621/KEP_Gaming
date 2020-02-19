@@ -14,6 +14,8 @@
                          VerticalOptions="End">
                 <Button Text="Enter"
                         Margin="40"
+                        WidthRequest="100"
+                        HeightRequest="60"
                         Clicked="GameButton_Clicked"/>
 
             </StackLayout>
