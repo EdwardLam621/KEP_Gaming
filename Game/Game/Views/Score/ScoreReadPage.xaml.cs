@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Game.ViewModels;
 using System;
 using Game.Models;
+using System.Collections.ObjectModel;
 
 namespace Game.Views
 {
@@ -15,6 +16,8 @@ namespace Game.Views
         // View Model for Score
         readonly GenericViewModel<ScoreModel> ViewModel;
 
+        ObservableCollection<CharacterModel> characterDeadView = new ObservableCollection<CharacterModel>();
+
         /// <summary>
         /// Constructor called with a view model
         /// This is the primary way to open the page
@@ -26,6 +29,16 @@ namespace Game.Views
             InitializeComponent();
 
             BindingContext = this.ViewModel = data;
+
+            CharacterDeadListView.ItemsSource = characterDeadView;
+
+            if (data.Data.CharacterDeadList != null)
+            {
+                for (int i = 0; i < data.Data.CharacterDeadList.Count; i++)
+                {
+                    characterDeadView.Add(data.Data.CharacterDeadList[i]);
+                }
+            }
         }
 
         /// <summary>
