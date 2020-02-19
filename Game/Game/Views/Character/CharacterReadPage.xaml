@@ -134,11 +134,11 @@
 
 
             <Label 
-                Text="Items: " 
+                Text="Equipments: " 
                 Style="{StaticResource LabelStyle}"/>
            
 
-            <ListView x:Name="DropItemListView"
+            <ListView x:Name="EquipmentListView"
                     IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                     RefreshCommand="{Binding LoadItemsCommand}"
                     CachingStrategy="RecycleElement"

@@ -16,6 +16,7 @@ namespace Game.Views
         // View Model for Monster
         readonly GenericViewModel<MonsterModel> ViewModel;
 
+        //drop item list of monsters
         ObservableCollection<ItemModel> dropItems = new ObservableCollection<ItemModel>();
      
         /// <summary>

@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Game.ViewModels;
 using System;
 using Game.Models;
+using System.Collections.ObjectModel;
 
 namespace Game.Views
 {
@@ -15,6 +16,9 @@ namespace Game.Views
         // View Model for Character
         readonly GenericViewModel<CharacterModel> ViewModel;
 
+        //
+        ObservableCollection<ItemModel> equipments = new ObservableCollection<ItemModel>();
+
         /// <summary>
         /// Constructor called with a view model
         /// This is the primary way to open the page
@@ -26,6 +30,16 @@ namespace Game.Views
             InitializeComponent();
 
             BindingContext = this.ViewModel = data;
+
+            EquipmentListView.ItemsSource = equipments;
+
+            if (data.Data.Equipments != null)
+            {
+                for (int i = 0; i < data.Data.Equipments.Count; i++)
+                {
+                    equipments.Add(data.Data.Equipments[i]);
+                }
+            }
         }
 
         /// <summary>
