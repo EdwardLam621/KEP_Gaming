@@ -24,7 +24,7 @@
                     RefreshCommand="{Binding LoadItemsCommand}"
                     CachingStrategy="RecycleElement"
                     ItemSelected="OnItemSelected"
-                    >
+                    BackgroundColor="Black">
                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
