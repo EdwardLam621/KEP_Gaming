@@ -43,8 +43,24 @@
 
                                     </StackLayout>
 
+                                    <Frame BorderColor="Black" 
+                                               CornerRadius="10" 
+                                               HasShadow="True" 
+                                               Padding="1"
+                                               WidthRequest="70"
+                                               HeightRequest="40"
+                                               HorizontalOptions="EndAndExpand">
+                                        <StackLayout Orientation="Vertical" BackgroundColor="White">
 
-                                    
+                                            <Label Style="{StaticResource ListViewItemAttribute}" Text="Level" />
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                                <Label Text="{Binding Level}" TextColor="Black" Margin="-5,0,0,0"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+
+
                                 </StackLayout>
                             </Frame>
                         </ViewCell>
