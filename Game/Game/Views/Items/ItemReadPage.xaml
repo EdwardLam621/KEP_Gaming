@@ -51,11 +51,11 @@
 
             <StackLayout Orientation="Horizontal">
                 <Label
-                Text="{Binding Data.Description}"
-                Style="{StaticResource HeaderStyle}"
-                FontSize="Small"
-                HorizontalTextAlignment="Center"
-                LineBreakMode="WordWrap"/>
+                    Text="{Binding Data.Description}"
+                    Style="{StaticResource HeaderStyle}"
+                    FontSize="Small"
+                    HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"/>
                 
             </StackLayout>
 
