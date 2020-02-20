@@ -12,14 +12,15 @@ namespace Game.Models
         //List of equipments
         public List<ItemModel> Equipments;
 
+        //level of character
+        public int Level { get; set; } = 0;
+
         //constructor of the class
         public CharacterModel()
         {
             this.Name = "this is Name";
             this.Description = "this is Character Description";
         }
-        //level of character
-        public int Level { get; set; } = 0;
 
         //methods to update a character
         public override void Update(CharacterModel newData)
