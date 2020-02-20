@@ -13,86 +13,53 @@
     </ContentPage.ToolbarItems>
 
 
-    <ScrollView>
-        <StackLayout Style="{StaticResource OuterBoxStack}"
-            Spacing="10">
+    <StackLayout HorizontalOptions="CenterAndExpand" Spacing="10">
 
-            <Label Text="Detail Page" Style="{StaticResource HeaderStyle}"/>
+        <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}"/>
 
-            <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}"/>
+        <Label 
+            Text="{Binding Data.Name}" 
+            Style="{StaticResource HeaderStyle}"/>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                   Text="Name : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Name}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
+        <Label 
+            Text="{Binding Data.Location}" 
+            Style="{StaticResource HeaderStyle}"
+            FontSize ="Medium"/>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Description : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Description}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
+        <Frame CornerRadius="5"  
+               OutlineColor="White"
+               BackgroundColor="#AA0000"
+               >
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Location : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Location}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
-
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Attribute : " 
-                    Style="{StaticResource LabelStyle}"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label 
                     Text="{Binding Data.Attribute}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
-
-            <StackLayout Style="{StaticResource HorizontalStack}">
+                    Style="{StaticResource HeaderStyle}"/>
                 <Label 
-                    Text="Item Kind : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Kind}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
-
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Range : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Range}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
-
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Value : " 
-                    Style="{StaticResource LabelStyle}"/>
+                    Text="+" 
+                    Style="{StaticResource HeaderStyle}"/>
                 <Label 
                     Text="{Binding Data.Value}" 
-                    Style="{StaticResource ValueStyle}"/>
+                    Style="{StaticResource HeaderStyle}"/>
             </StackLayout>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Damage : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Damage}" 
-                    Style="{StaticResource ValueStyle}"/>
+        </Frame>
+
+        <Frame CornerRadius="5"  
+               OutlineColor="White"
+               BackgroundColor="#AA0000">
+
+            <StackLayout Orientation="Horizontal">
+                <Label
+                Text="{Binding Data.Description}"
+                Style="{StaticResource HeaderStyle}"
+                FontSize="Small"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="WordWrap"/>
+                
             </StackLayout>
 
-        </StackLayout>
-    </ScrollView>
+        </Frame>
+
+    </StackLayout>
 </ContentPage>
