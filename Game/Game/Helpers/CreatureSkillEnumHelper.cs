@@ -69,6 +69,9 @@ namespace Game.Helpers
         {
             switch (position)
             {
+                case 0:
+                default:
+                    return CreatureSkillEnum.None;
                 case 1:
                     return CreatureSkillEnum.Bookworm;
 
@@ -86,10 +89,6 @@ namespace Game.Helpers
 
                 case 6:
                     return CreatureSkillEnum.TeachersPet;
-
-                case 7:
-                default:
-                    return CreatureSkillEnum.None;
             }
         }
     }
