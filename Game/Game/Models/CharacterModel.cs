@@ -19,7 +19,7 @@ namespace Game.Models
             this.Description = "this is Character Description";
         }
         //level of character
-        public int Level { get; set; }
+        public int Level { get; set; } = 0;
 
         //methods to update a character
         public override void Update(CharacterModel newData)

@@ -18,7 +18,7 @@ namespace Game.Models
         }
 
         //level of a monster
-        public int Level { get; set; }
+        public int Level { get; set; } = 0;
 
         //method to update a monster
         public override void Update(MonsterModel newData)

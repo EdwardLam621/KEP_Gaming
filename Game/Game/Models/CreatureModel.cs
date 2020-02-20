@@ -13,17 +13,17 @@ namespace Game.Models
     public class CreatureModel<T> : BaseModel<T>
     {
         //max health of a creature
-        public int MaxHealth { get; set; } = 1;
+        public int MaxHealth { get; set; } = 0;
         //current health of a creature
-        public int CurrentHealth { get; set; }
+        public int CurrentHealth { get; set; } = 0;
         //Spped value of a creature
-        public int SpeedAttribute { get; set; }
+        public int SpeedAttribute { get; set; } = 0;
         //Attack value of a creature
-        public int OffenseAttribute { get; set; }
+        public int OffenseAttribute { get; set; } = 0;
         //Defense value of a creature
-        public int DefenseAttribute { get; set; }
+        public int DefenseAttribute { get; set; } = 0;
         //Skill of a creature
-        public CreatureSkillEnum Skill { get; set; }
+        public CreatureSkillEnum Skill { get; set; } = CreatureSkillEnum.None;
 
         // Add Unique attributes for Item
 
