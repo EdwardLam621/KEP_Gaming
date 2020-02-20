@@ -34,10 +34,12 @@
                 <Grid
                     RowSpacing="1"
                     ColumnSpacing="2"
-                    VerticalOptions="Center">
+                    VerticalOptions="Center"
+                    Padding="5,5,5,5">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
+                        <RowDefinition Height="100" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -55,7 +57,7 @@
                         Text="Description" 
                         Style="{StaticResource LabelStyle}"/>
 
-                    <Entry Grid.Row="1" Grid.Column="1"
+                    <Editor Grid.Row="1" Grid.Column="1" HeightRequest="100"
                         Text="{Binding Data.Description}" 
                         Style="{StaticResource EntryStyle}"/>
 
