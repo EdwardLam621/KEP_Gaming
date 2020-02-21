@@ -7,6 +7,7 @@ namespace Game.Engine
 {
     public class BattleEngine 
     {
-
+        private List<DungeonCharacterModel> Party;
+        private List<DungeonMonsterModel> Mobs;
     }
 }
