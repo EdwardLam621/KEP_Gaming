@@ -80,7 +80,7 @@ namespace Game.Services
                     OffenseAttribute = 1,
                     SpeedAttribute = 8,
                     Skill = CreatureSkillEnum.TeachersPet,
-                    Equipments = equipments
+                    //Equipments = equipments
                 },
 
                  new CharacterModel {
@@ -93,7 +93,7 @@ namespace Game.Services
                     OffenseAttribute = 4,
                     SpeedAttribute = 3,
                     Skill = CreatureSkillEnum.Slacker,
-                    Equipments = equipments
+                    //Equipments = equipments
                 },
 
                  new CharacterModel {
@@ -106,7 +106,7 @@ namespace Game.Services
                     OffenseAttribute = 10,
                     SpeedAttribute = 10,
                     Skill = CreatureSkillEnum.Bookworm,
-                    Equipments = equipments
+                    //Equipments = equipments
                 },
 
                  new CharacterModel {
@@ -119,7 +119,7 @@ namespace Game.Services
                     OffenseAttribute = 10,
                     SpeedAttribute = 15,
                     Skill = CreatureSkillEnum.None,
-                    Equipments = equipments
+                    //Equipments = equipments
                 }
 
 
