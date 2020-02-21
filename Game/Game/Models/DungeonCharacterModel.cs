@@ -39,7 +39,7 @@ namespace Game.Models
             DefenseAttribute = character.DefenseAttribute;
 
             Skill = character.Skill;
-            Equipment = character.Equipments;
+            Equipment = character.Equipment;
 
         }
     }
