@@ -33,10 +33,10 @@ namespace Game.Views
 
             EquipmentListView.ItemsSource = equipments;
 
-            foreach (ItemModel equipment in data.Data.Equipments)
-            {
-                equipments.Add(equipment);
-            }
+            //foreach (ItemModel equipment in data.Data.Equipments)
+            //{
+            //    equipments.Add(equipment);
+            //}
         }
 
         /// <summary>
