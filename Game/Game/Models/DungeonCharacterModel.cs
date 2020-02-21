@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Game.Models
 {
-    public class DungeonCharacterModel : CreatureModel<CharacterModel>
+    public class DungeonCharacterModel : CreatureModel<DungeonCharacterModel>
     {
 
     }
