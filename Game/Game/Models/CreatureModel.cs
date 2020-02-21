@@ -22,6 +22,8 @@ namespace Game.Models
         public int OffenseAttribute { get; set; } = 0;
         //Defense value of a creature
         public int DefenseAttribute { get; set; } = 0;
+        //Level of a creature
+        public int Level { get; set; } = 0;
         //Skill of a creature
         public CreatureSkillEnum Skill { get; set; } = CreatureSkillEnum.None;
 
