@@ -14,8 +14,6 @@ namespace Game.Models
     {
         //max health of a creature
         public int MaxHealth { get; set; } = 0;
-        //current health of a creature
-        public int CurrentHealth { get; set; } = 0;
         //Spped value of a creature
         public int SpeedAttribute { get; set; } = 0;
         //Attack value of a creature

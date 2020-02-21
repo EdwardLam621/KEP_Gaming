@@ -14,7 +14,6 @@ namespace Game.Models
         {
             this.Name = "this is Name";
             this.Description = "this is Monster Description";
-            this.CurrentHealth = MaxHealth;
         }
 
         //level of a monster
@@ -33,7 +32,6 @@ namespace Game.Models
             Level = newData.Level;
             DropItems = newData.DropItems;
             MaxHealth = newData.MaxHealth;
-            CurrentHealth = MaxHealth;
             Description = newData.Description;
             SpeedAttribute = newData.SpeedAttribute;
             OffenseAttribute = newData.OffenseAttribute;
