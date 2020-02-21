@@ -12,9 +12,6 @@ namespace Game.Models
         // Current equipment
         public HashSet<ItemModel> Equipment;
 
-        //level of character
-        public int Level { get; set; } = 0;
-
         //constructor of the class
         public CharacterModel()
         {
