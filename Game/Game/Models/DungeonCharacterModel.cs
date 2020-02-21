@@ -7,8 +7,15 @@ namespace Game.Models
     public class DungeonCharacterModel : CreatureModel<DungeonCharacterModel>
     {
 
-        private int Level;
-        private HashSet<ItemModel> Equipment;
+        /// <summary>
+        /// Current health of the character
+        /// </summary>
+        public int CurrentHealth { get; set; } = 0;
+        
+        /// <summary>
+        /// Currently equipped items
+        /// </summary>
+        public HashSet<ItemModel> Equipment;
 
         /// <summary>
         /// Empty constructor
@@ -32,15 +39,13 @@ namespace Game.Models
             
             Level = character.Level;
             MaxHealth = character.MaxHealth;
-            CurrentHealth = MaxHealth;
-
             SpeedAttribute = character.SpeedAttribute;
             OffenseAttribute = character.OffenseAttribute;
             DefenseAttribute = character.DefenseAttribute;
-
             Skill = character.Skill;
+            
             Equipment = character.Equipment;
-
+            CurrentHealth = MaxHealth;
         }
     }
 }
