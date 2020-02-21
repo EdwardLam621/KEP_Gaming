@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Game.Models
 {
-    class BattleMessagesModel
+    public class BattleMessagesModel
     {
+
     }
 }
