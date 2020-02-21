@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Game.Models
 {
-    public class DungeonCharacterModel : CreatureModel<DungeonCharacterModel>
+    public class DungeonCharacterModel : CharacterModel
     {
 
         /// <summary>
@@ -12,10 +12,6 @@ namespace Game.Models
         /// </summary>
         public int CurrentHealth { get; set; } = 0;
         
-        /// <summary>
-        /// Currently equipped items
-        /// </summary>
-        public HashSet<ItemModel> Equipment;
 
         /// <summary>
         /// Empty constructor
