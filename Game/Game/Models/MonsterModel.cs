@@ -17,7 +17,7 @@ namespace Game.Models
         }
 
         //method to update a monster
-        public override void Update(MonsterModel newData)
+        public void Update(MonsterModel newData)
         {
             if (newData == null)
             {

@@ -26,7 +26,7 @@ namespace Game.Models
             {
                 return;
             }
-
+            
             // Update all the fields in the Data, except for the Id and guid
             Name = newData.Name;
             Level = newData.Level;
