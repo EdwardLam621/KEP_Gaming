@@ -9,8 +9,8 @@ namespace Game.Models
     /// </summary>
     public class CharacterModel : CreatureModel<CharacterModel>
     {
-        //List of equipments
-        public List<ItemModel> Equipments;
+        // Current equipment
+        public HashSet<ItemModel> Equipment;
 
         //level of character
         public int Level { get; set; } = 0;
@@ -41,7 +41,7 @@ namespace Game.Models
             DefenseAttribute = newData.DefenseAttribute;
             ImageURI = newData.ImageURI;
             Skill = newData.Skill;
-            Equipments = newData.Equipments;
+            Equipment = newData.Equipment;
         }
 
     }
