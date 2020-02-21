@@ -6,6 +6,7 @@ namespace Game.Models
 {
     public enum ItemKindEnum
     {
+        Unknown,
         Armor,
         CombatWeapon,
         RangedWeapon
