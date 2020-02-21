@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Game.Models
 {
-    public class DungeonCharacterModel : CharacterModel
+    public class DungeonFighterModel : CharacterModel
     {
 
         /// <summary>
@@ -16,7 +16,7 @@ namespace Game.Models
         /// <summary>
         /// Empty constructor
         /// </summary>
-        public DungeonCharacterModel()
+        public DungeonFighterModel()
         {
 
         }
@@ -25,7 +25,7 @@ namespace Game.Models
         /// Constructor based on CharacterModel
         /// </summary>
         /// <param name="character"></param>
-        public DungeonCharacterModel(CharacterModel character)
+        public DungeonFighterModel(CharacterModel character)
         {
             ImageURI = character.ImageURI;
             
