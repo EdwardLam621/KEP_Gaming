@@ -8,6 +8,7 @@ namespace Game.Engine
     {
         private int Round { get; set; } = 1;
         private const int MAX_NUM_MONSTERS = 6;
+        
 
         /// <summary>
         /// Default empty constructor
@@ -17,14 +18,17 @@ namespace Game.Engine
 
         }
 
+        public RoundEngine(List<DungeonFighterModel> party)
+        {
 
+        }
 
 
         /// <summary>
         /// Create monsters for a new round, with levels scaled to the round number
         /// </summary>
         /// <returns>List of new monsters</returns>
-        public List<DungeonFighterModel> GetNewMonsters()
+        private List<DungeonFighterModel> GetNewMonsters()
         {
 
             List<DungeonFighterModel> monsterList = new List<DungeonFighterModel>(); 
@@ -35,6 +39,10 @@ namespace Game.Engine
             return monsterList;
         }
 
-        
+        private List<DungeonFighterModel> getTurnOrder()
+        {
+            List<DungeonFighterModel> turnOrder = new List<DungeonFighterModel>();
+            return null;   
+        }
     }
 }
