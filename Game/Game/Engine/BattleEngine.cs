@@ -13,13 +13,17 @@ namespace Game.Engine
         /// <summary>
         /// List of characters in the party
         /// </summary>
-        private List<DungeonCharacterModel> Party;
+        private List<DungeonFighterModel> Party;
         
         /// <summary>
         /// List of monsters currently fighting
         /// </summary>
-        private List<DungeonMonsterModel> Mobs;
+        private List<DungeonFighterModel> Mobs;
 
+        public BattleEngine()
+        {
+
+        }
 
 
     }
