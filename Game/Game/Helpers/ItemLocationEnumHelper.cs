@@ -71,7 +71,7 @@ namespace Game.Helpers
                     return ItemLocationEnum.Head;
 
                 case 2:
-                    return ItemLocationEnum.Necklass;
+                    return ItemLocationEnum.Body;
 
                 case 3:
                     return ItemLocationEnum.PrimaryHand;
