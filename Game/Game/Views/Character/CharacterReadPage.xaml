@@ -137,6 +137,14 @@
                 Text="Equipments: " 
                 Style="{StaticResource LabelStyle}"/>
 
+            <FlexLayout 
+                        Padding="5"
+                        Wrap="Wrap"
+                        JustifyContent="SpaceAround"
+                        AlignContent="SpaceAround"
+                        x:Name="ItemBox">
+            </FlexLayout>
+
             <CollectionView x:Name="EquipmentListView">
                 <CollectionView.ItemsLayout>
                    <GridItemsLayout Orientation="Vertical"
