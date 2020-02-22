@@ -89,6 +89,12 @@ namespace Game.Engine
                 .ToList();
 
         }
-
+        public bool StartFight()
+        {
+            
+            
+            
+            return true;
+        }
     }
 }
