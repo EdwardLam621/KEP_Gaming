@@ -27,6 +27,7 @@ namespace Game.Models
         /// </summary>
         public int ListOrder = 0;
 
+        public CreatureEnum PlayerType { get; set; } = CreatureEnum.Unknown;
 
         /// <summary>
         /// Current health of the character
@@ -63,6 +64,7 @@ namespace Game.Models
             
             Equipment = character.Equipment;
             CurrentHealth = MaxHealth;
+            PlayerType = CreatureEnum.Character;
         }
 
         /// <summary>
@@ -86,6 +88,7 @@ namespace Game.Models
 
             DropItems = monster.DropItems;
             CurrentHealth = MaxHealth;
+            PlayerType = CreatureEnum.Monster;
         }
     }
 }
