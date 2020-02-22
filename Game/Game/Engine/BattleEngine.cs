@@ -25,6 +25,14 @@ namespace Game.Engine
 
         }
 
+        public BattleEngine(List<CharacterModel> party)
+        {
+            foreach (CharacterModel character in party)
+            {
+                Party.Add(new DungeonFighterModel(character));
+            }
+        }
+
 
     }
 }
