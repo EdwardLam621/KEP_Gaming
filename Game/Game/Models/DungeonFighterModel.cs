@@ -9,6 +9,7 @@ namespace Game.Models
 
         private HashSet<ItemModel> Equipment;
         private List<ItemModel> DropItems;
+        private bool isAlive { get; set; } = true;
 
         /// <summary>
         /// Current health of the character
