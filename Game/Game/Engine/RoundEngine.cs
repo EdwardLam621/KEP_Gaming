@@ -46,13 +46,37 @@ namespace Game.Engine
            
         }
 
-        private List<DungeonFighterModel> getTurnOrder()
+
+        /// <summary>
+        /// Who is Playing this round?
+        /// </summary>
+        public void OrderTurns()
         {
-            List<DungeonFighterModel> turnOrder = new List<DungeonFighterModel>();
-            return null;   
+            // Start from a clean list of players
+            PlayerList.Clear();
+
+            // Remember the Insert order, used for Sorting
+            var order = 0;
+
+            foreach (var hero in PlayerList)
+            {
+                if (hero.Alive)
+                {
+                    hero.ListOrder = order;
+                    PlayerList.Add(hero);
+                    order++;
+                }
+            }
+
+            foreach (var mob in MonsterList)
+            {
+                if (mob.Alive)
+                {
+                    mob.ListOrder = order;
+                    PlayerList.Add(mob);
+                    order++;
+                }
+            }
         }
-
-
-
     }
 }
