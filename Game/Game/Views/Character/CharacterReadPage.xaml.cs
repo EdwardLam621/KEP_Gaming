@@ -32,6 +32,8 @@ namespace Game.Views
 
             BindingContext = this.ViewModel = data;
 
+            AddItemsToDisplay();
+
             EquipmentListView.ItemsSource = equipments;
 
 
