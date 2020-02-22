@@ -20,18 +20,21 @@ namespace Game.Engine
 
         public DungeonFighterModel CurrentPlayer;
 
+        public Referee Referee;
         
         /// <summary>
         /// Default empty constructor
         /// </summary>
         public RoundEngine()
         {
-            GetNewMonsters();
+
         }
 
-        public RoundEngine(List<DungeonFighterModel> party)
+        public RoundEngine(List<DungeonFighterModel> party, Referee referee)
         {
             HeroList = party;
+            Referee = referee;
+            // Referee.Score.RoundCount++  <-- to be implemented
             GetNewMonsters();
         }
 
