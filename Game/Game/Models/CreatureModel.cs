@@ -25,6 +25,8 @@ namespace Game.Models
         //Skill of a creature
         public CreatureSkillEnum Skill { get; set; } = CreatureSkillEnum.None;
 
+        public int ExperiencePoints { get; set; } = 0;
+
         // Add Unique attributes for Item
 
         /// <summary>
