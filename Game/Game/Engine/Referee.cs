@@ -12,20 +12,25 @@ namespace Game.Engine
     /// </summary>
     public class Referee
     {
-        public ScoreModel ScoreCard;
-        public BattleMessagesModel BattleMessages;
-        public List<ItemModel> ItemPool;
+
+        public List<DungeonFighterModel> Characters;
+        public List<ItemModel> ItemPool = new List<ItemModel>();
+
+        // Holds the official ScoreModel
+        public ScoreModel BattleScore = new ScoreModel();
+
+        // Holds the Battle Messages as they happen
+        public BattleMessagesModel BattleMessages = new BattleMessagesModel();
+
 
         public Referee()
         {
 
         }
 
-        public Referee(ScoreModel scoreCard, BattleMessagesModel battleMessages)
+        public Referee(List<DungeonFighterModel> characters)
         {
-            ScoreCard = scoreCard;
-            BattleMessages = battleMessages;
-            ItemPool = new List<ItemModel>();
+            Characters = characters;
 
         }
     }
