@@ -7,15 +7,15 @@ namespace Game.Engine
 {
     public class TurnEngine
     {
-        private DungeonFighterModel Attacker;
-        private DungeonFighterModel Defender;
+        public DungeonFighterModel Attacker;
+        public DungeonFighterModel Defender;
 
-        private TurnEngine()
+        public TurnEngine()
         {
 
         }
 
-        private TurnEngine(DungeonFighterModel attacker)
+        public TurnEngine(DungeonFighterModel attacker)
         {
             Attacker = attacker;
         }
