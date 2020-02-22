@@ -44,6 +44,9 @@ namespace Game.Engine
             }
         }
 
-
+        public void startBattle()
+        {
+            RoundEngine round = new RoundEngine();
+        }
     }
 }
