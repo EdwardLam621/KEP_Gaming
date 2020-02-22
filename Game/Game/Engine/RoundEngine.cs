@@ -8,18 +8,19 @@ namespace Game.Engine
 {
     public class RoundEngine
     {
-        private int Round { get; set; } = 1;
+        public int Round { get; set; } = 1;
 
-        private const int MAX_NUM_MONSTERS = 6;
+        public const int MAX_NUM_MONSTERS = 6;
 
-        private List<DungeonFighterModel> HeroList;
+        public List<DungeonFighterModel> HeroList;
 
-        private List<DungeonFighterModel> MonsterList;
+        public List<DungeonFighterModel> MonsterList;
 
-        private List<DungeonFighterModel> PlayerList;
+        public List<DungeonFighterModel> PlayerList;
 
-        private DungeonFighterModel CurrentPlayer;
+        public DungeonFighterModel CurrentPlayer;
 
+        
         /// <summary>
         /// Default empty constructor
         /// </summary>
