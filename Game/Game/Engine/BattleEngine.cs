@@ -10,6 +10,17 @@ namespace Game.Engine
     /// </summary>
     public class BattleEngine 
     {
+
+        // Holds the official ScoreModel
+        public ScoreModel BattleScore = new ScoreModel();
+
+        // Holds the Battle Messages as they happen
+        public BattleMessagesModel BattleMessagesModel = new BattleMessagesModel();
+
+        // The Pool of items collected during the round as turns happen
+        public List<ItemModel> ItemPool = new List<ItemModel>();
+
+
         /// <summary>
         /// List of characters in the party
         /// </summary>
@@ -18,7 +29,7 @@ namespace Game.Engine
         /// <summary>
         /// List of monsters currently fighting
         /// </summary>
-        private List<DungeonFighterModel> Mobs;
+        //private List<DungeonFighterModel> Mobs;
 
         public BattleEngine()
         {
