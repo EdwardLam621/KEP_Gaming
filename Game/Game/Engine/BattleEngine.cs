@@ -11,25 +11,9 @@ namespace Game.Engine
     public class BattleEngine 
     {
 
-        // Holds the official ScoreModel
-        public ScoreModel BattleScore = new ScoreModel();
+        public Referee Referee;
 
-        // Holds the Battle Messages as they happen
-        public BattleMessagesModel BattleMessagesModel = new BattleMessagesModel();
-
-        // The Pool of items collected during the round as turns happen
-        public List<ItemModel> ItemPool = new List<ItemModel>();
-
-
-        /// <summary>
-        /// List of characters in the party
-        /// </summary>
-        private List<DungeonFighterModel> Party;
-        
-        /// <summary>
-        /// List of monsters currently fighting
-        /// </summary>
-        //private List<DungeonFighterModel> Mobs;
+        public RoundEngine RoundEngine;
 
         public BattleEngine()
         {
@@ -38,15 +22,23 @@ namespace Game.Engine
 
         public BattleEngine(List<CharacterModel> party)
         {
+            var dungeonFighterModels = new List<DungeonFighterModel>();
+            
             foreach (CharacterModel character in party)
             {
-                Party.Add(new DungeonFighterModel(character));
+                dungeonFighterModels.Add(new DungeonFighterModel(character));
             }
+            
+            Referee = new Referee(dungeonFighterModels);
+
+            RoundEngine = new RoundEngine(Referee);
+
         }
 
         public void startBattle()
         {
-            RoundEngine round = new RoundEngine();
+            RoundEngine.StartFight();
+            //referee.getScores <- to be implemented
         }
     }
 }
