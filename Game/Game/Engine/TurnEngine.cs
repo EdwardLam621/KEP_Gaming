@@ -20,7 +20,26 @@ namespace Game.Engine
             Attacker = attacker;
         }
 
-        
+        public bool ChooseTarget()
+        {
+            //unimplemented
+            return false;
+        }
 
+        /// <summary>
+        /// CharacterModel Attacks...
+        /// </summary>
+        /// <param name="Attacker"></param>
+        /// <returns></returns>
+        public bool TakeTurn()
+        {
+            // Choose Action.  Such as Move, Attack etc.
+
+            //var result = Attack(Attacker);
+
+            //BattleScore.TurnCount++;
+
+            return false;
+        }
     }
 }
