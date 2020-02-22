@@ -60,5 +60,38 @@ namespace Game.Views
             await Navigation.PushModalAsync(new NavigationPage(new CharacterDeletePage(new GenericViewModel<CharacterModel>(ViewModel.Data))));
             await Navigation.PopAsync();
         }
+
+        public bool ShowPopup(ItemModel data)
+        {
+            PopupLoadingView.IsVisible = true;
+            PopupItemImage.Source = data.ImageURI;
+
+            PopupItemName.Text = data.Name;
+            PopupItemDescription.Text = data.Description;
+            PopupItemLocation.Text = data.Location.ToMessage();
+            PopupItemAttribute.Text = data.Attribute.ToMessage();
+            PopupItemValue.Text = " + " + data.Value.ToString();
+
+            // Close the popup after 3 seconds
+            Device.StartTimer(TimeSpan.FromSeconds(3), () => {
+                PopupLoadingView.IsVisible = false;
+                return true;
+            });
+
+            return true;
+        }
+
+        /// <summary>
+        /// When the user clicks the close in the Popup
+        /// hide the view
+        /// show the scroll view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ClosePopup_Clicked(object sender, EventArgs e)
+        {
+            PopupLoadingView.IsVisible = false;
+        }
+
     }
 }
