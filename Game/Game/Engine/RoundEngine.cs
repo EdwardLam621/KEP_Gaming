@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Game.Models;
+using System.Linq;
+
 namespace Game.Engine
 {
     public class RoundEngine
@@ -77,6 +79,16 @@ namespace Game.Engine
                     order++;
                 }
             }
+
+            PlayerList = PlayerList.OrderByDescending(a => a.SpeedAttribute)
+                .ThenByDescending(a => a.Level)
+                .ThenByDescending(a => a.ExperiencePoints)
+                .ThenByDescending(a => a.PlayerType)
+                .ThenBy(a => a.Name)
+                .ThenBy(a => a.ListOrder)
+                .ToList();
+
         }
+
     }
 }
