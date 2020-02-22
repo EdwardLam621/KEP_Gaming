@@ -93,7 +93,7 @@ namespace Game.Engine
         }
         public bool StartFight()
         {
-            //var nextPlayer = 
+            var nextPlayer = GetNextPlayerInList(); 
 
 
             return true;
