@@ -6,7 +6,10 @@ namespace Game.Models
 {
     public enum CreatureEnum
     {
-        Monster = 0,
+        Unknown = 0,
+
+        Monster = 5,
+        
         Character = 10, 
 
     }
