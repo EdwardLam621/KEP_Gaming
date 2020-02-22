@@ -1,6 +1,8 @@
 ﻿using Game.Models;
+using Game.ViewModels;
+using System;
 using System.Collections.Generic;
-
+using System.Linq;
 namespace Game.Services
 {
     public static class DefaultData
@@ -43,29 +45,55 @@ namespace Game.Services
         /// <returns></returns>
         public static List<CharacterModel> LoadData(CharacterModel temp)
         {
-            var equipments = new List<ItemModel>()
+            string HeadString = null;
+            string BodyString = null;
+            string PrimaryHandString = null;
+            string OffHandString = null;
+            string FeetString = null;
+            string RightFingerString = null;
+            string LeftFingerString = null;
+
+            try
             {
-                new ItemModel {
-                    Name = "Doctor Letter",
-                    Description = "a file used to write a note on a given patient to prove that they were indeed sick",
-                    ImageURI = "https://iconbug.com/data/6b/512/27307b4de000a17aac101e8bbbb48a6d.png",
-                    Range = 0,
-                    Damage = 9,
-                    Value = 9,
-                    Location = ItemLocationEnum.PrimaryHand,
-                    Attribute = AttributeEnum.Defense},
+                HeadString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.Head).ElementAtOrDefault(0).Id;
+            }
+            catch (Exception e) { }
 
-                new ItemModel {
-                    Name = "Calculator",
-                    Description = "something used for making mathematical calculations",
-                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
-                    Range = 0,
-                    Damage = 0,
-                    Value = 9,
-                    Location = ItemLocationEnum.OffHand,
-                    Attribute = AttributeEnum.Defense}
+            try
+            {
+                BodyString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.Body).FirstOrDefault().Id;
+            }
+            catch (Exception e) { }
 
-            };
+            try
+            {
+                PrimaryHandString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.PrimaryHand).FirstOrDefault().Id;
+            }
+            catch (Exception e) { }
+
+            try
+            {
+                OffHandString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.OffHand).FirstOrDefault().Id;
+            }
+            catch (Exception e) { }
+
+            try
+            {
+                FeetString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.Feet).FirstOrDefault().Id;
+            }
+            catch (Exception e) { }
+
+            try
+            {
+                RightFingerString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.Finger).FirstOrDefault().Id;
+            }
+            catch (Exception e) { }
+
+            try
+            {
+                LeftFingerString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.Finger).LastOrDefault().Id;
+            }
+            catch (Exception e) { }
 
             var datalist = new List<CharacterModel>()
             {
@@ -81,6 +109,15 @@ namespace Game.Services
                     SpeedAttribute = 8,
                     Skill = CreatureSkillEnum.TeachersPet,
                     //Equipments = equipments
+
+                    Head = HeadString,
+                    Body = BodyString,
+                    PrimaryHand = PrimaryHandString,
+                    OffHand = OffHandString,
+                    Feet = FeetString,
+                    RightFinger = RightFingerString,
+                    LeftFinger = LeftFingerString,
+
                 },
 
                  new CharacterModel {

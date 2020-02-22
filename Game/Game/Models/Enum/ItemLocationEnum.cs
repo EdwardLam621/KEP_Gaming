@@ -8,8 +8,8 @@
         // The head includes, Hats, Helms, Caps, Crowns, Hair Ribbons, Bunny Ears, and anything else that sits on the head
         Head = 10,
 
-        // Things to put around the neck, such as necklass, broaches, scarfs, neck ribbons.  Can have at the same time with Head items ex. Ribbon for Hair, and Ribbon for Neck is OK to have
-        Necklass = 12,
+        // Things to be equipped on body, an armor
+        Body = 12,
 
         // The primary hand used for fighting with a sword or a staff.  
         PrimaryHand = 20,
@@ -28,5 +28,62 @@
 
         // Boots, shoes, socks or anything else on the feet
         Feet = 40,
+    }
+
+    /// <summary>
+    /// Friendly strings for the Enum Class
+    /// </summary>
+    public static class ItemLocationEnumExtensions
+    {
+        /// <summary>
+        /// Display a String for the Enums
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string ToMessage(this ItemLocationEnum value)
+        {
+            // Default String
+            var Message = "Unknown";
+
+            switch (value)
+            {
+                case ItemLocationEnum.Head:
+                    Message = "Head";
+                    break;
+
+                case ItemLocationEnum.Body:
+                    Message = "Body";
+                    break;
+
+                case ItemLocationEnum.PrimaryHand:
+                    Message = "Primary Hand";
+                    break;
+
+                case ItemLocationEnum.OffHand:
+                    Message = "Off Hand";
+                    break;
+
+                case ItemLocationEnum.RightFinger:
+                    Message = "Right Finger";
+                    break;
+
+                case ItemLocationEnum.LeftFinger:
+                    Message = "Left Finger";
+                    break;
+
+                case ItemLocationEnum.Finger:
+                    Message = "Any Finger";
+                    break;
+
+                case ItemLocationEnum.Feet:
+                    Message = "Feet";
+                    break;
+
+                case ItemLocationEnum.Unknown:
+                default:
+                    break;
+            }
+            return Message;
+        }
     }
 }
