@@ -30,12 +30,11 @@ namespace Game.Engine
 
         }
 
-        public RoundEngine(List<DungeonFighterModel> party, Referee referee)
+        public RoundEngine(Referee referee)
         {
-            HeroList = party;
             Referee = referee;
             // Referee.Score.RoundCount++  <-- to be implemented
-            GetNewMonsters();
+            StartFight();
         }
 
 
@@ -58,7 +57,7 @@ namespace Game.Engine
         /// <summary>
         /// Who is Playing this round?
         /// </summary>
-        public void OrderTurns()
+        public void MakeList()
         {
             // Start from a clean list of players
             PlayerList.Clear();
@@ -86,6 +85,10 @@ namespace Game.Engine
                 }
             }
 
+        }
+
+        public void OrderFight()
+        {
             PlayerList = PlayerList.OrderByDescending(a => a.SpeedAttribute)
                 .ThenByDescending(a => a.Level)
                 .ThenByDescending(a => a.ExperiencePoints)
@@ -93,13 +96,16 @@ namespace Game.Engine
                 .ThenBy(a => a.Name)
                 .ThenBy(a => a.ListOrder)
                 .ToList();
-
         }
+
         public bool StartFight()
         {
-            var nextPlayer = GetNextPlayerInList(); 
-
-
+            GetNewMonsters();
+            MakeList();
+            OrderFight();
+            var nextPlayer = GetNextPlayerInList();
+            TurnEngine turn = new TurnEngine(nextPlayer);
+            turn.TakeTurn();
             return true;
         }
 
