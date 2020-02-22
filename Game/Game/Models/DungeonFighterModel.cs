@@ -7,9 +7,26 @@ namespace Game.Models
     public class DungeonFighterModel : CreatureModel<DungeonFighterModel>
     {
 
+        /// <summary>
+        /// For heroes, the set of equipment that is currently equipped
+        /// </summary>
         private HashSet<ItemModel> Equipment;
+        
+        /// <summary>
+        /// For mobs, the list of items that are able to be dropped
+        /// </summary>
         private List<ItemModel> DropItems;
-        private bool isAlive { get; set; } = true;
+        
+        /// <summary>
+        /// Whether the Player is alive or dead
+        /// </summary>
+        public bool Alive { get; set; } = true;
+        
+        /// <summary>
+        /// Keep track of the turn order
+        /// </summary>
+        public int ListOrder = 0;
+
 
         /// <summary>
         /// Current health of the character
