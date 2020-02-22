@@ -4,6 +4,7 @@ using Game.ViewModels;
 using System;
 using Game.Models;
 using System.Collections.ObjectModel;
+using Game.Helpers;
 
 namespace Game.Views
 {
@@ -39,6 +40,25 @@ namespace Game.Views
             //    equipments.Add(equipment);
             //}
         }
+
+        public void AddItemsToDisplay()
+        {
+
+            // Get the List of Locations a Character can have
+            var LocationList = ItemLocationEnumHelper.GetListCharacter;
+
+            // Add Each item in the list
+            foreach (var location in LocationList)
+            {
+                var LocationString = ItemLocationEnumHelper.ConvertStringToEnum(location).ToMessage();
+                ItemBox.Children.Add(
+                    GetItemToDisplay(
+                        LocationString,
+                        ViewModel.Data.GetItemByLocation(
+                            ItemLocationEnumHelper.ConvertStringToEnum(location))));
+            }
+        }
+
 
         /// <summary>
         /// Save calls to Update

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Game.ViewModels;
 using System.Text;
 
 namespace Game.Models
@@ -12,9 +13,7 @@ namespace Game.Models
         // Current equipment
         public HashSet<ItemModel> Equipment;
 
-        // Head, Body, Primary Hand, Off Hand, Left Finger, Right Finger, Feet,
-
-
+        // Head, Body, Primary Hand, Off Hand, Left Finger, Right Finger, Feet
         #region Items
         // ItemModel is a string referencing the database table
         public string Head { get; set; } = null;
@@ -43,6 +42,40 @@ namespace Game.Models
         {
             this.Name = "this is Name";
             this.Description = "this is Character Description";
+        }
+
+        public ItemModel GetItem(string itemString)
+        {
+            return ItemIndexViewModel.Instance.GetItem(itemString);
+        }
+
+        public ItemModel GetItemByLocation(ItemLocationEnum itemLocation)
+        {
+            switch (itemLocation)
+            {
+                case ItemLocationEnum.Head:
+                    return GetItem(Head);
+
+                case ItemLocationEnum.Body:
+                    return GetItem(Body);
+
+                case ItemLocationEnum.PrimaryHand:
+                    return GetItem(PrimaryHand);
+
+                case ItemLocationEnum.OffHand:
+                    return GetItem(OffHand);
+
+                case ItemLocationEnum.RightFinger:
+                    return GetItem(RightFinger);
+
+                case ItemLocationEnum.LeftFinger:
+                    return GetItem(LeftFinger);
+
+                case ItemLocationEnum.Feet:
+                    return GetItem(Feet);
+            }
+
+            return null;
         }
 
         //methods to update a character
