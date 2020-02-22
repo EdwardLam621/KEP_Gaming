@@ -9,8 +9,32 @@ namespace Game.Models
     /// </summary>
     public class CharacterModel : CreatureModel<CharacterModel>
     {
-        // Current equipment
-        public HashSet<ItemModel> Equipment;
+        // Current equipment 
+        // Head, Body, Primary Hand, Off Hand, Left Finger, Right Finger, Feet,
+
+
+        #region Items
+        // ItemModel is a string referencing the database table
+        public string Head { get; set; } = null;
+
+        // Feet is a string referencing the database table
+        public string Feet { get; set; } = null;
+
+        // Body is a string referencing the database table
+        public string Body { get; set; } = null;
+
+        // PrimaryHand is a string referencing the database table
+        public string PrimaryHand { get; set; } = null;
+
+        // Offhand is a string referencing the database table
+        public string OffHand { get; set; } = null;
+
+        // RightFinger is a string referencing the database table
+        public string RightFinger { get; set; } = null;
+
+        // LeftFinger is a string referencing the database table
+        public string LeftFinger { get; set; } = null;
+        #endregion Items
 
         //constructor of the class
         public CharacterModel()
@@ -37,7 +61,15 @@ namespace Game.Models
             DefenseAttribute = newData.DefenseAttribute;
             ImageURI = newData.ImageURI;
             Skill = newData.Skill;
-            Equipment = newData.Equipment;
+
+            PrimaryHand = newData.PrimaryHand;
+            OffHand = newData.OffHand;
+            Body = newData.Body;
+            LeftFinger = newData.LeftFinger;
+            RightFinger = newData.RightFinger;
+            Feet = newData.Feet;
+            Head = newData.Feet;
+
         }
 
     }
