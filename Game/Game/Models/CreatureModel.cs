@@ -240,6 +240,16 @@ namespace Game.Models
         /// <returns></returns>
         public int GetAttack()
         {
+            /*
+            // Base Attack
+            var myReturn = Attack;
+
+            // Attack Bonus from Level
+            myReturn += GetAttackLevelBonus;
+
+            // Get Attack bonus from Items
+            myReturn += GetAttackItemBonus;
+            */
             return 0; // unimplemented
         }
 
@@ -249,6 +259,16 @@ namespace Game.Models
         /// <returns></returns>
         public int GetDefense()
         {
+            /*
+            // Base Defense
+            var myReturn = Defense;
+
+            // Defense Bonus from Level
+            myReturn += GetDefenseLevelBonus;
+
+            // Get Defense bonus from Items
+            myReturn += GetDefenseItemBonus;
+            */
             return 0; // unimplemented
         }
 
@@ -258,6 +278,16 @@ namespace Game.Models
         /// <returns></returns>
         public int GetSpeed()
         {
+            /*
+            // Base Speed
+            var myReturn = Speed;
+
+            // Speed Bonus from Level
+            myReturn += GetSpeedLevelBonus;
+
+            // Get Speed bonus from Items
+            myReturn += GetSpeedItemBonus;
+            */
             return 0; // unimplemented
         }
 
