@@ -25,11 +25,6 @@ namespace Game.Engine
             Referee = referee;
         }
 
-        public bool ChooseTarget()
-        {
-            //unimplemented
-            return false;
-        }
 
         /// <summary>
         /// CharacterModel Attacks...
