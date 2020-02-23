@@ -119,5 +119,30 @@ namespace Game.Engine
             return Defender;
         }
 
+
+        /// <summary>
+        /// Pick the Monster to Attack
+        /// </summary>
+        /// <returns></returns>
+        public DungeonFighterModel SelectMonsterToAttack()
+        {
+            if (Referee.Monsters == null)
+            {
+                return null;
+            }
+
+            if (Referee.Monsters.Count < 1)
+            {
+                return null;
+            }
+
+            // Select first one to hit in the list for now...
+            // Attack the Weakness (lowest HP) MonsterModel first 
+            var Defender = Referee.Monsters
+                .Where(m => m.Alive)
+                .OrderBy(m => m.CurrentHealth).FirstOrDefault();
+
+            return Defender;
+        }
     }
 }
