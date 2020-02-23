@@ -116,6 +116,9 @@ namespace Game.Models
         [Ignore]
         // Return the MaxHealth with Item Bonus
         public int GetMaxHealthItemBonus { get { return GetItemBonus(AttributeEnum.MaxHealth); } }
+        [Ignore]
+        // Return the Total of All MaxHealth
+        public int GetMaxHealthTotal { get { return GetMaxHealth(); } }
         #endregion MaxHealth
 
         #endregion AttributeDisplay
@@ -191,6 +194,24 @@ namespace Game.Models
         public int GetSpeed()
         {
             return 0; // unimplemented
+        }
+
+        /// <summary>
+        /// Return the Total MaxHealth Value
+        /// </summary>
+        /// <returns></returns>
+        public int GetMaxHealth()
+        {
+            // Base MaxHealth
+            var myReturn = MaxHealth;
+
+            // MaxHealth Bonus from Level
+            myReturn += GetMaxHealthLevelBonus;
+
+            // Get MaxHealth bonus from Items
+            myReturn += GetMaxHealthItemBonus;
+
+            return myReturn;
         }
         #endregion GetAttributesValue
 
