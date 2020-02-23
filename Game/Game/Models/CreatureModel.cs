@@ -77,6 +77,9 @@ namespace Game.Models
         [Ignore]
         // Return the attack value
         public int GetAttackLevelBonus { get { return LevelTableHelper.Instance.LevelDetailsList[Level].Attack; } }
+        [Ignore]
+        // Return the Attack with Item Bonus
+        public int GetAttackItemBonus { get { return GetItemBonus(AttributeEnum.Attack); } }
         
         #endregion Attack
 
