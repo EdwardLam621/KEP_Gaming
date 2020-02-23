@@ -60,24 +60,24 @@ namespace Game.Engine
         /// </summary>
         /// <param name="Attacker"></param>
         /// <returns></returns>
-        //public bool Attack(DungeonFighterModel Attacker)
-        //{
-        //    // For Attack, Choose Who
-        //    var Target = AttackChoice(Attacker);
+        public bool Attack(DungeonFighterModel Attacker)
+        {
+            // For Attack, Choose Who
+            var Target = AttackChoice(Attacker);
 
-        //    if (Target == null)
-        //    {
-        //        return false;
-        //    }
+            if (Target == null)
+            {
+                return false;
+            }
 
-        //    // Do Attack
-        //    TurnAsAttack(Attacker, Target);
+            // Do Attack
+            TurnAsAttack(Attacker, Target);
 
-        //    CurrentAttacker = new DungeonFighterModel(Attacker);
-        //    CurrentDefender = new DungeonFighterModel(Target);
+            //CurrentAttacker = new DungeonFighterModel(Attacker);
+            //CurrentDefender = new DungeonFighterModel(Target);
 
-        //    return true;
-        //}
+            return true;
+        }
 
         /// <summary>
         /// Decide which to attack
