@@ -95,7 +95,7 @@ namespace Game.Models
         /// Get the total attack power of the fighter
         /// </summary>
         /// <returns></returns>
-        public int getAttack()
+        public int GetAttack()
         {
             return 0; // unimplemented
         }
