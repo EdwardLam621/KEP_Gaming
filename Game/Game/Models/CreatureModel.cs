@@ -328,6 +328,16 @@ namespace Game.Models
         }
         #endregion GetAttributesValue
 
+        
+
+        // Death
+        // Alive turns to False
+        public bool CauseDeath()
+        {
+            Alive = false;
+            return Alive;
+        }
+        #endregion Methods
 
         #region Items
         // Get the Item at a known string location (head, foot etc.)
