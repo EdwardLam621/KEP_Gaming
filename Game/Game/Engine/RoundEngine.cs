@@ -37,6 +37,40 @@ namespace Game.Engine
             StartRound();
         }
 
+        public bool StartRound()
+        {
+            GetNewMonsters();
+            MakeList();
+            OrderFight();
+
+            //fight loop
+
+            var nextPlayer = GetNextPlayerInList();
+
+            var turn = new TurnEngine(nextPlayer, Referee);
+            turn.TakeTurn();
+            return true;
+        }
+
+        /// <summary>
+        /// At the end of the round
+        /// Clear the ItemModel List
+        /// Clear the MonsterModel List
+        /// </summary>
+        /// <returns></returns>
+        public bool EndRound()
+        {
+            // Have each character pickup items...
+            foreach (var character in Referee.Characters)
+            {
+                //PickupItemsFromPool(character);
+            }
+
+            // Reset Monster and Item Lists
+            //ClearLists();
+
+            return true;
+        }
 
         /// <summary>
         /// Create monsters for a new round, with levels scaled to the round number
@@ -98,16 +132,8 @@ namespace Game.Engine
                 .ToList();
         }
 
-        public bool StartRound()
-        {
-            GetNewMonsters();
-            MakeList();
-            OrderFight();
-            var nextPlayer = GetNextPlayerInList();
-            var turn = new TurnEngine(nextPlayer, Referee);
-            turn.TakeTurn();
-            return true;
-        }
+        
+
 
         /// <summary>
         /// Get the Information about the Player
