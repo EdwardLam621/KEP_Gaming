@@ -149,6 +149,46 @@ namespace Game.Engine
 
 
         /// <summary>
+        /// Roll To Hit
+        /// </summary>
+        /// <param name="AttackScore"></param>
+        /// <param name="DefenseScore"></param>
+        /// <returns></returns>
+        public HitStatusEnum RollToHitTarget(int AttackScore, int DefenseScore)
+        {
+            var d20 = DiceHelper.RollDice(1, 20);
+
+            if (d20 == 1)
+            {
+                // Force Miss
+                Referee.BattleMessages.HitStatus = HitStatusEnum.Miss;
+                return Referee.BattleMessages.HitStatus;
+            }
+
+            if (d20 == 20)
+            {
+                // Force Hit
+                Referee.BattleMessages.HitStatus = HitStatusEnum.Hit;
+                return Referee.BattleMessages.HitStatus;
+            }
+
+            var ToHitScore = d20 + AttackScore;
+            if (ToHitScore < DefenseScore)
+            {
+                Referee.BattleMessages.AttackStatus = " misses ";
+                // Miss
+                Referee.BattleMessages.HitStatus = HitStatusEnum.Miss;
+                Referee.BattleMessages.DamageAmount = 0;
+                return Referee.BattleMessages.HitStatus;
+            }
+
+            // Hit
+            Referee.BattleMessages.HitStatus = HitStatusEnum.Hit;
+            return Referee.BattleMessages.HitStatus;
+        }
+
+
+        /// <summary>
         /// Will drop between 1 and 4 items from the ItemModel set...
         /// </summary>
         /// <param name="round"></param>
