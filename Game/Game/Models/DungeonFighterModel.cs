@@ -44,6 +44,30 @@ namespace Game.Models
         }
 
         /// <summary>
+        /// Copy from one PlayerInfoModel into Another
+        /// </summary>
+        /// <param name="data"></param>
+        public DungeonFighterModel(DungeonFighterModel data)
+        {
+            ImageURI = data.ImageURI;
+
+            Id = data.Id;
+            Name = data.Name;
+            Description = data.Description;
+
+            Level = data.Level;
+            MaxHealth = data.MaxHealth;
+            SpeedAttribute = data.SpeedAttribute;
+            OffenseAttribute = data.OffenseAttribute;
+            DefenseAttribute = data.DefenseAttribute;
+            Skill = data.Skill;
+            
+            Equipment = data.Equipment;
+            CurrentHealth = MaxHealth;
+            PlayerType = data.PlayerType;
+        }
+
+        /// <summary>
         /// Constructor based on CharacterModel
         /// </summary>
         /// <param name="character"></param>
