@@ -588,7 +588,7 @@ namespace Game.Models
 
         public bool AddExperience(int newExperience) { return true; }
 
-
+        public int CalculateExperienceEarned(int damage) { return 0; }
 
         #endregion Methods
 
