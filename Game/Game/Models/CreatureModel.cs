@@ -101,6 +101,9 @@ namespace Game.Models
         [Ignore]
         // Return the Speed value
         public int GetSpeedLevelBonus { get { return LevelTableHelper.Instance.LevelDetailsList[Level].Speed; } }
+        [Ignore]
+        // Return the Speed with Item Bonus
+        public int GetSpeedItemBonus { get { return GetItemBonus(AttributeEnum.Speed); } }
         #endregion Speed
 
         #endregion AttributeDisplay
