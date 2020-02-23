@@ -12,6 +12,9 @@ namespace Game.Views
         // View Model for Item
         readonly GenericViewModel<CharacterModel> ViewModel;
 
+        // as a reference to find location
+        public ItemLocationEnum PopupLocationEnum = ItemLocationEnum.Unknown;
+
         /// <summary>
         /// Constructor that takes and existing data item
         /// </summary>
@@ -149,14 +152,14 @@ namespace Game.Views
 
         public bool ShowPopup(ItemModel data)
         {
-            PopupItemSelector.IsVisible = true;
+            PopupLoadingView.IsVisible = true;
 
             PopupLocationLabel.Text = "Items for :";
-            PopupLocationValue.Text = location.ToMessage();
+            PopupLocationValue.Text = data.Location.ToMessage();
 
-            PopupLocationItemListView.ItemsSource = ItemIndexViewModel.Instance.GetLocationItems(location);
+            PopupLocationItemListView.ItemsSource = ItemIndexViewModel.Instance.GetLocationItems(data.Location);
 
-            PopupLocationEnum = location;
+            PopupLocationEnum = data.Location;
 
 
             return true;
