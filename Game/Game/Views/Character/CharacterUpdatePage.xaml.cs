@@ -121,7 +121,7 @@ namespace Game.Views
             };
 
             // Add a event to the user can click the item and see more
-            //ItemButton.Clicked += (sender, args) => ShowPopup(data);
+            ItemButton.Clicked += (sender, args) => ShowPopup(data);
 
             // Add the Display Text for the item
             var ItemLabel = new Label
@@ -145,6 +145,21 @@ namespace Game.Views
             };
 
             return ItemStack;
+        }
+
+        public bool ShowPopup(ItemModel data)
+        {
+            //PopupLoadingView.IsVisible = true;
+            //PopupItemImage.Source = data.ImageURI;
+
+            //PopupItemName.Text = data.Name;
+            //PopupItemDescription.Text = data.Description;
+            //PopupItemLocation.Text = data.Location.ToMessage();
+            //PopupItemAttribute.Text = data.Attribute.ToMessage();
+            //PopupItemValue.Text = " + " + data.Value.ToString();
+
+
+            return true;
         }
     }
 }
