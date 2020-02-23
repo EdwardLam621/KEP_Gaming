@@ -51,10 +51,7 @@ namespace Game.Models
         public int ExperiencePoints { get; set; } = 0;
         #endregion PlayerAttributes
 
-        #endregion Attributes
-
-
-        #region Items
+        #region ItemsAttributes
         // Head is a string referencing the database table
         public string Head { get; set; } = null;
         // Feet is a string referencing the database table
@@ -71,7 +68,10 @@ namespace Game.Models
         public string LeftFinger { get; set; } = null;
         // Feet is a string referencing the database table
         public string Feet { get; set; } = null;
-        #endregion Items
+        #endregion ItemsAttributes
+
+        #endregion Attributes
+
 
 
         #region AttributesDisplay
@@ -256,6 +256,7 @@ namespace Game.Models
         /// <returns></returns>
         public int GetMaxHealth()
         {
+            /*
             // Base MaxHealth
             var myReturn = MaxHealth;
 
@@ -266,6 +267,8 @@ namespace Game.Models
             myReturn += GetMaxHealthItemBonus;
 
             return myReturn;
+            */
+            return 0;
         }
 
         /// <summary>
@@ -274,6 +277,7 @@ namespace Game.Models
         /// <returns></returns>
         public int GetCurrentHealth()
         {
+            /*
             // Base CurrentHealth
             var myReturn = CurrentHealth;
 
@@ -284,6 +288,8 @@ namespace Game.Models
             myReturn += GetCurrentHealthItemBonus;
 
             return myReturn;
+            */
+            return 0;
         }
         #endregion GetAttributesValue
         
