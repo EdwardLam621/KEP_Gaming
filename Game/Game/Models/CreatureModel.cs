@@ -34,6 +34,8 @@ namespace Game.Models
         #region PlayerAttributes
         //max health of a creature
         public int MaxHealth { get; set; } = 0;
+        // Current Health
+        public int CurrentHealth { get; set; } = 0;
         //Spped value of a creature
         public int SpeedAttribute { get; set; } = 0;
         //Attack value of a creature
@@ -128,6 +130,9 @@ namespace Game.Models
         [Ignore]
         // Return the CurrentHealth with Item Bonus
         public int GetCurrentHealthItemBonus { get { return GetItemBonus(AttributeEnum.CurrentHealth); } }
+        [Ignore]
+        // Return the Total of All CurrentHealth
+        public int GetCurrentHealthTotal { get { return GetCurrentHealth(); } }
         #endregion CurrentHealth
 
 
@@ -220,6 +225,24 @@ namespace Game.Models
 
             // Get MaxHealth bonus from Items
             myReturn += GetMaxHealthItemBonus;
+
+            return myReturn;
+        }
+
+        /// <summary>
+        /// Return the Total CurrentHealth Value
+        /// </summary>
+        /// <returns></returns>
+        public int GetCurrentHealth()
+        {
+            // Base CurrentHealth
+            var myReturn = CurrentHealth;
+
+            // CurrentHealth Bonus from Level
+            myReturn += GetCurrentHealthLevelBonus;
+
+            // Get CurrentHealth bonus from Items
+            myReturn += GetCurrentHealthItemBonus;
 
             return myReturn;
         }
