@@ -135,6 +135,11 @@ namespace Game.Models
         public int GetCurrentHealthTotal { get { return GetCurrentHealth(); } }
         #endregion CurrentHealth
 
+        #region Damage
+        [Ignore]
+        // Return the Damage value, it is 25% of the Level rounded up
+        public int GetDamageLevelBonus { get { return Convert.ToInt32(Math.Ceiling(Level * .25)); } }
+        #endregion Damage
 
         #endregion AttributeDisplay
 
@@ -180,6 +185,7 @@ namespace Game.Models
 
             return myReturn.Trim();
         }
+
 
         #region Methods
 
@@ -247,6 +253,7 @@ namespace Game.Models
             return myReturn;
         }
         #endregion GetAttributesValue
+
 
         #region Items
         // Get the Item at a known string location (head, foot etc.)
