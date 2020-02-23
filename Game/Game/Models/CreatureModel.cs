@@ -92,6 +92,9 @@ namespace Game.Models
         [Ignore]
         // Return the Defense with Item Bonus
         public int GetDefenseItemBonus { get { return GetItemBonus(AttributeEnum.Defense); } }
+        [Ignore]
+        // Return the Total of All Defense
+        public int GetDefenseTotal { get { return GetDefense(); } }
         #endregion Defense
 
 
