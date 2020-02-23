@@ -9,15 +9,17 @@ namespace Game.Engine
     {
         public DungeonFighterModel Attacker;
         public DungeonFighterModel Defender;
+        public Referee Referee;
 
         public TurnEngine()
         {
 
         }
 
-        public TurnEngine(DungeonFighterModel attacker)
+        public TurnEngine(DungeonFighterModel attacker, Referee referee)
         {
             Attacker = attacker;
+            Referee = referee;
         }
 
         public bool ChooseTarget()
@@ -37,9 +39,59 @@ namespace Game.Engine
 
             //var result = Attack(Attacker);
 
-            //BattleScore.TurnCount++;
+            Referee.BattleScore.TurnCount++;
 
             return false;
         }
+
+        /// <summary>
+        /// Attack as a Turn
+        /// 
+        /// Pick who to go after
+        /// 
+        /// Determine Attack Score
+        /// Determine DefenseScore
+        /// 
+        /// Do the Attack
+        /// 
+        /// </summary>
+        /// <param name="Attacker"></param>
+        /// <returns></returns>
+        //public bool Attack(DungeonFighterModel Attacker)
+        //{
+        //    // For Attack, Choose Who
+        //    var Target = AttackChoice(Attacker);
+
+        //    if (Target == null)
+        //    {
+        //        return false;
+        //    }
+
+        //    // Do Attack
+        //    TurnAsAttack(Attacker, Target);
+
+        //    CurrentAttacker = new PlayerInfoModel(Attacker);
+        //    CurrentDefender = new PlayerInfoModel(Target);
+
+        //    return true;
+        //}
+
+        /// <summary>
+        /// Decide which to attack
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        //public DungeonFighterModel AttackChoice(DungeonFighterModel data)
+        //{
+        //    switch (data.PlayerType)
+        //    {
+        //        case CreatureEnum.Monster:
+        //            return SelectCharacterToAttack();
+
+        //        case CreatureEnum.Character:
+        //        default:
+        //            return SelectMonsterToAttack();
+        //    }
+        //}
     }
 }
