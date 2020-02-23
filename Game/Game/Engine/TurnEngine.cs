@@ -148,6 +148,74 @@ namespace Game.Engine
         }
 
         /// <summary>
+        /// // MonsterModel Attacks CharacterModel
+        /// </summary>
+        /// <param name="Attacker"></param>
+        /// <param name="AttackScore"></param>
+        /// <param name="Target"></param>
+        /// <param name="DefenseScore"></param>
+        /// <returns></returns>
+        public bool TurnAsAttack(DungeonFighterModel Attacker, DungeonFighterModel Target)
+        {
+            if (Attacker == null)
+            {
+                return false;
+            }
+
+            if (Target == null)
+            {
+                return false;
+            }
+
+            Referee.BattleMessages.TurnMessage = string.Empty;
+            Referee.BattleMessages.TurnMessageSpecial = string.Empty;
+            Referee.BattleMessages.AttackStatus = string.Empty;
+
+            Referee.BattleMessages.PlayerType = CreatureEnum.Monster;
+
+            //var AttackScore = Attacker.Level + Attacker.GetAttack();
+            //var DefenseScore = Target.GetDefense() + Target.Level;
+            
+            var AttackScore = 2; // hardcode for now
+            var DefenseScore = 1; 
+
+            // Choose who to attack
+
+            Referee.BattleMessages.TargetName = Target.Name;
+            Referee.BattleMessages.AttackerName = Attacker.Name;
+
+            Referee.BattleMessages.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
+
+            Debug.WriteLine(Referee.BattleMessages.TurnMessage);
+
+            // It's a Miss
+            if (Referee.BattleMessages.HitStatus == HitStatusEnum.Miss)
+            {
+                return true;
+            }
+
+            // It's a Hit
+            if (Referee.BattleMessages.HitStatus == HitStatusEnum.Hit)
+            {
+                //Calculate Damage
+                //Referee.BattleMessages.DamageAmount = Attacker.GetDamageRollValue();
+
+                //Target.TakeDamage(Referee.BattleMessages.DamageAmount);
+            }
+
+            Referee.BattleMessages.CurrentHealth = Target.CurrentHealth;
+            //Referee.BattleMessages.TurnMessageSpecial = Referee.BattleMessages.GetCurrentHealthMessage();
+
+            RemoveIfDead(Target);
+
+            Referee.BattleMessages.TurnMessage = Attacker.Name + Referee.BattleMessages.AttackStatus 
+                + Target.Name + Referee.BattleMessages.TurnMessageSpecial;
+            Debug.WriteLine(Referee.BattleMessages.TurnMessage);
+
+            return true;
+        }
+
+        /// <summary>
         /// If Dead process Targed Died
         /// </summary>
         /// <param name="Target"></param>
