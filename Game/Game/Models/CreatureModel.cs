@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Game.Helpers;
 using Game.Services;
 using Game.ViewModels;
 using SQLite;
@@ -596,6 +597,27 @@ namespace Game.Models
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Roll the Damage Dice, and add to the Damage
+        /// </summary>
+        /// <returns></returns>
+        public int GetDamageRollValue()
+        {
+            var myReturn = 0;
+
+            var myItem = ItemIndexViewModel.Instance.GetItem(PrimaryHand);
+            if (myItem != null)
+            {
+                // Dice of the weapon.  So sword of Damage 10 is d10
+                myReturn += DiceHelper.RollDice(1, myItem.Damage);
+            }
+
+            // Add in the Level as extra damage per game rules
+            myReturn += GetDamageLevelBonus;
+
+            return myReturn;
         }
 
         // Death
