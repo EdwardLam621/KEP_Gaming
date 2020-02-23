@@ -90,5 +90,35 @@ namespace Game.Models
             CurrentHealth = MaxHealth;
             PlayerType = CreatureEnum.Monster;
         }
+
+        /// <summary>
+        /// Get the total attack power of the fighter
+        /// </summary>
+        /// <returns></returns>
+        public int getAttack()
+        {
+            return 0; // unimplemented
+        }
+
+        /// <summary>
+        /// Get the total defense of the fighter
+        /// </summary>
+        /// <returns></returns>
+        public int GetDefense()
+        {
+            return 0; // unimplemented
+        }
+
+        /// <summary>
+        /// Get the total Speed of the fighter
+        /// </summary>
+        /// <returns></returns>
+        public int GetSpeed()
+        {
+            return 0; // unimplemented
+        }
+
+
+
     }
 }
