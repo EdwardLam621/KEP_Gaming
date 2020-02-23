@@ -125,6 +125,9 @@ namespace Game.Models
         [Ignore]
         // Return the CurrentHealth value
         public int GetCurrentHealthLevelBonus { get { return 0; } }
+        [Ignore]
+        // Return the CurrentHealth with Item Bonus
+        public int GetCurrentHealthItemBonus { get { return GetItemBonus(AttributeEnum.CurrentHealth); } }
         #endregion CurrentHealth
 
 
