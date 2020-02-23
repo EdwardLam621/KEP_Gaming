@@ -104,6 +104,9 @@ namespace Game.Models
         [Ignore]
         // Return the Speed with Item Bonus
         public int GetSpeedItemBonus { get { return GetItemBonus(AttributeEnum.Speed); } }
+        [Ignore]
+        // Return the Total of All Speed
+        public int GetSpeedTotal { get { return GetSpeed(); } }
         #endregion Speed
 
         #endregion AttributeDisplay
