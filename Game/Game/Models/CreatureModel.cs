@@ -80,7 +80,9 @@ namespace Game.Models
         [Ignore]
         // Return the Attack with Item Bonus
         public int GetAttackItemBonus { get { return GetItemBonus(AttributeEnum.Attack); } }
-        
+        [Ignore]
+        // Return the Total of All Attack
+        public int GetAttackTotal { get { return GetAttack(); } }
         #endregion Attack
 
         #endregion AttributeDisplay
