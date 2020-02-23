@@ -155,8 +155,6 @@ namespace Game.Models
             return ItemIndexViewModel.Instance.GetItem(itemString);
         }
 
-        
-
         // Walk all the Items on the Character.
         // Add together all Items that modify the Attribute Enum Passed in
         // Return the sum
@@ -238,6 +236,38 @@ namespace Game.Models
             }
 
             return myReturn;
+        }
+
+        // Get the ItemModel at a known string location (head, foot etc.)
+        public ItemModel GetItemByLocation(ItemLocationEnum itemLocation)
+        {
+            switch (itemLocation)
+            {
+                case ItemLocationEnum.Head:
+                    return GetItem(Head);
+
+                case ItemLocationEnum.Body:
+                    return GetItem(Body);
+
+                case ItemLocationEnum.PrimaryHand:
+                    return GetItem(PrimaryHand);
+
+                case ItemLocationEnum.OffHand:
+                    return GetItem(OffHand);
+
+                case ItemLocationEnum.Finger:
+                    return GetItem(Finger);
+
+                case ItemLocationEnum.RightFinger:
+                    return GetItem(RightFinger);
+
+                case ItemLocationEnum.LeftFinger:
+                    return GetItem(LeftFinger);
+
+                case ItemLocationEnum.Feet:
+                    return GetItem(Feet);
+            }
+            return null;
         }
         #endregion Items
 
