@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Game.Helpers;
 using Game.Models;
 
 namespace Game.Engine
@@ -144,6 +145,27 @@ namespace Game.Engine
                 .OrderBy(m => m.CurrentHealth).FirstOrDefault();
 
             return Defender;
+        }
+
+
+        /// <summary>
+        /// Will drop between 1 and 4 items from the ItemModel set...
+        /// </summary>
+        /// <param name="round"></param>
+        /// <returns></returns>
+        public List<ItemModel> GetRandomMonsterItemDrops(int round)
+        {
+            // You decide how to drop monster items, level, etc.
+
+            var NumberToDrop = DiceHelper.RollDice(1, round);
+
+            var myList = new List<ItemModel>();
+
+            for (var i = 0; i < NumberToDrop; i++)
+            {
+                myList.Add(new ItemModel());
+            }
+            return myList;
         }
 
     }
