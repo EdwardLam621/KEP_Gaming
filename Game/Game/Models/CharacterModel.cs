@@ -128,8 +128,8 @@ namespace Game.Models
                     Head = itemID;
                     break;
 
-                case ItemLocationEnum.Necklass:
-                    Necklass = itemID;
+                case ItemLocationEnum.Body:
+                    Body = itemID;
                     break;
 
                 case ItemLocationEnum.PrimaryHand:
