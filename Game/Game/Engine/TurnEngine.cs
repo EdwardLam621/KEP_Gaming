@@ -149,6 +149,32 @@ namespace Game.Engine
 
 
         /// <summary>
+        /// Drop Items
+        /// </summary>
+        /// <param name="Target"></param>
+        public int DropItems(DungeonFighterModel Target)
+        {
+            // Drop Items to ItemModel Pool
+            var myItemList = new List<ItemModel>();
+            //var myItemList = Target.DropAllItems();
+
+            // I feel generous, even when characters die, random drops happen :-)
+            // If Random drops are enabled, then add some....
+            //myItemList.AddRange(GetRandomMonsterItemDrops(Referee.BattleScore.RoundCount));
+
+            // Add to ScoreModel
+            foreach (var ItemModel in myItemList)
+            {
+                Referee.BattleScore.ItemsDroppedList += ItemModel.FormatOutput() + "\n";
+                Referee.BattleMessages.TurnMessageSpecial += " ItemModel " + ItemModel.Name + " dropped";
+            }
+
+            Referee.ItemPool.AddRange(myItemList);
+
+            return myItemList.Count();
+        }
+
+        /// <summary>
         /// Roll To Hit
         /// </summary>
         /// <param name="AttackScore"></param>
