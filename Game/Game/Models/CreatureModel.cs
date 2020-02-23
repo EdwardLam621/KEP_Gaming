@@ -269,6 +269,57 @@ namespace Game.Models
             }
             return null;
         }
+
+        // Add ItemModel
+        // Looks up the ItemModel
+        // Puts the ItemModel ID as a string in the location slot
+        // If ItemModel is null, then puts null in the slot
+        // Returns the ItemModel that was in the location
+        public ItemModel AddItem(ItemLocationEnum itemLocation, string itemID)
+        {
+            var myReturn = GetItemByLocation(itemLocation);
+
+            switch (itemLocation)
+            {
+                case ItemLocationEnum.Feet:
+                    Feet = itemID;
+                    break;
+
+                case ItemLocationEnum.Head:
+                    Head = itemID;
+                    break;
+
+                case ItemLocationEnum.Body:
+                    Body = itemID;
+                    break;
+
+                case ItemLocationEnum.Finger:
+                    Finger = itemID;
+                    break;
+
+                case ItemLocationEnum.PrimaryHand:
+                    PrimaryHand = itemID;
+                    break;
+
+                case ItemLocationEnum.OffHand:
+                    OffHand = itemID;
+                    break;
+
+                case ItemLocationEnum.RightFinger:
+                    RightFinger = itemID;
+                    break;
+
+                case ItemLocationEnum.LeftFinger:
+                    LeftFinger = itemID;
+                    break;
+
+                default:
+                    myReturn = null;
+                    break;
+            }
+
+            return myReturn;
+        }
         #endregion Items
 
         #endregion Methods
