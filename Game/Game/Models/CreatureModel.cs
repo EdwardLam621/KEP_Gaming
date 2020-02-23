@@ -97,6 +97,11 @@ namespace Game.Models
         public int GetDefenseTotal { get { return GetDefense(); } }
         #endregion Defense
 
+        #region Speed
+        [Ignore]
+        // Return the Speed value
+        public int GetSpeedLevelBonus { get { return LevelTableHelper.Instance.LevelDetailsList[Level].Speed; } }
+        #endregion Speed
 
         #endregion AttributeDisplay
 
