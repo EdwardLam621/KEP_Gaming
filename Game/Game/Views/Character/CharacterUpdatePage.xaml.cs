@@ -175,16 +175,6 @@ namespace Game.Views
         public void ClosePopup_Clicked(object sender, EventArgs e)
         {
             PopupLoadingView.IsVisible = false;
-        
-        
-        }
-
-        /// <summary>
-        /// Close the popup
-        /// </summary>
-        private void ClosePopup()
-        {
-            PopupItemSelector.IsVisible = false;
         }
 
         /// <summary>
@@ -206,6 +196,5 @@ namespace Game.Views
 
             ClosePopup();
         }
-
     }
 }
