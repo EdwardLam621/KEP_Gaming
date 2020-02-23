@@ -168,5 +168,19 @@ namespace Game.ViewModels
         }
 
         #endregion SortDataSet
+
+        /// <summary>
+        /// Get all the items for a set location
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public List<ItemModel> GetLocationItems(ItemLocationEnum location)
+        {
+            List<ItemModel> data = null;
+
+            data = Dataset.Where(m => m.Location == location).ToList();
+
+            return data;
+        }
     }
 }
