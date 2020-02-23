@@ -51,10 +51,7 @@ namespace Game.Models
         public int ExperiencePoints { get; set; } = 0;
         #endregion PlayerAttributes
 
-        #endregion Attributes
-
-
-        #region Items
+        #region ItemsAttributes
         // Head is a string referencing the database table
         public string Head { get; set; } = null;
         // Feet is a string referencing the database table
@@ -71,7 +68,10 @@ namespace Game.Models
         public string LeftFinger { get; set; } = null;
         // Feet is a string referencing the database table
         public string Feet { get; set; } = null;
-        #endregion Items
+        #endregion ItemsAttributes
+
+        #endregion Attributes
+
 
 
         #region AttributesDisplay
