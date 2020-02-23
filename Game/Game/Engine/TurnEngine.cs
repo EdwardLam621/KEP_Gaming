@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Game.Models;
@@ -71,8 +72,8 @@ namespace Game.Engine
         //    // Do Attack
         //    TurnAsAttack(Attacker, Target);
 
-        //    CurrentAttacker = new PlayerInfoModel(Attacker);
-        //    CurrentDefender = new PlayerInfoModel(Target);
+        //    CurrentAttacker = new DungeonFighterModel(Attacker);
+        //    CurrentDefender = new DungeonFighterModel(Target);
 
         //    return true;
         //}
@@ -82,18 +83,18 @@ namespace Game.Engine
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        //public DungeonFighterModel AttackChoice(DungeonFighterModel data)
-        //{
-        //    switch (data.PlayerType)
-        //    {
-        //        case CreatureEnum.Monster:
-        //            return SelectCharacterToAttack();
+        public DungeonFighterModel AttackChoice(DungeonFighterModel data)
+        {
+            switch (data.PlayerType)
+            {
+                case CreatureEnum.Monster:
+                    return SelectCharacterToAttack();
 
-        //        case CreatureEnum.Character:
-        //        default:
-        //            return SelectMonsterToAttack();
-        //    }
-        //}
+                case CreatureEnum.Character:
+                default:
+                    return SelectMonsterToAttack();
+            }
+        }
 
         /// <summary>
         /// Pick the Character to Attack
@@ -144,5 +145,6 @@ namespace Game.Engine
 
             return Defender;
         }
+
     }
 }
