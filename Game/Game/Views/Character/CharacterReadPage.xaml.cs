@@ -34,7 +34,7 @@ namespace Game.Views
 
             AddItemsToDisplay();
 
-            EquipmentListView.ItemsSource = equipments;
+            //EquipmentListView.ItemsSource = equipments;
 
 
             //foreach (ItemModel equipment in data.Data.Equipments)
@@ -95,11 +95,6 @@ namespace Game.Views
             PopupItemAttribute.Text = data.Attribute.ToMessage();
             PopupItemValue.Text = " + " + data.Value.ToString();
 
-            // Close the popup after 3 seconds
-            Device.StartTimer(TimeSpan.FromSeconds(3), () => {
-                PopupLoadingView.IsVisible = false;
-                return true;
-            });
 
             return true;
         }

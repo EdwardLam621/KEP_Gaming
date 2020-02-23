@@ -151,7 +151,23 @@
                         Text="Equipment"
                         Style="{StaticResource LabelStyle}" />
 
-                <Grid
+
+                <FlexLayout 
+                        Padding="5"
+                        Wrap="Wrap"
+                        JustifyContent="SpaceAround"
+                        AlignContent="SpaceAround"
+                        x:Name="ItemBox">
+                </FlexLayout>
+
+
+
+
+
+
+
+
+                <!--<Grid
                  HeightRequest="300"
                  WidthRequest="300"
                  HorizontalOptions="CenterAndExpand"
@@ -187,7 +203,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                </Grid>
+                </Grid>-->
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
