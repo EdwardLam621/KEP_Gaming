@@ -14,6 +14,9 @@ namespace Game.Engine
     {
 
         public List<DungeonFighterModel> Characters;
+
+        public List<DungeonFighterModel> Monsters;
+
         public List<ItemModel> ItemPool = new List<ItemModel>();
 
         // Holds the official ScoreModel
