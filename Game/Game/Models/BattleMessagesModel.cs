@@ -7,10 +7,10 @@ namespace Game.Models
     public class BattleMessagesModel
     {
         // Is the player a character or a monster
-        //public PlayerTypeEnum PlayerType = PlayerTypeEnum.Unknown;
+        public CreatureEnum PlayerType = CreatureEnum.Unknown;
 
         // The Status of the action
-        //public HitStatusEnum HitStatus = HitStatusEnum.Unknown;
+        public HitStatusEnum HitStatus = HitStatusEnum.Unknown;
 
         // Name of the Attacker
         public string AttackerName = string.Empty;
