@@ -149,6 +149,50 @@ namespace Game.Engine
 
 
         /// <summary>
+        /// Target Died
+        /// 
+        /// Process for death...
+        /// 
+        /// Returns the count of items dropped at death
+        /// </summary>
+        /// <param name="Target"></param>
+        public bool TargedDied(DungeonFighterModel Target)
+        {
+            // Mark Status in output
+            Referee.BattleMessages.TurnMessageSpecial = " and causes death";
+
+            // Remove target from list...
+
+            // Using a switch so in the future additional PlayerTypes can be added (Boss...)
+            switch (Target.PlayerType)
+            {
+                case CreatureEnum.Character:
+                    Referee.Characters.Remove(Target);
+
+                    // Add the MonsterModel to the killed list
+                    Referee.BattleScore.CharacterAtDeathList += Target.FormatOutput() + "\n";
+
+                    DropItems(Target);
+
+                    return true;
+
+                case CreatureEnum.Monster:
+                default:
+                    Referee.Monsters.Remove(Target);
+
+                    // Add one to the monsters killed count...
+                    Referee.BattleScore.MonsterSlainNumber++;
+
+                    // Add the MonsterModel to the killed list
+                    Referee.BattleScore.MonstersKilledList += Target.FormatOutput() + "\n";
+
+                    DropItems(Target);
+
+                    return true;
+            }
+        }
+
+        /// <summary>
         /// Drop Items
         /// </summary>
         /// <param name="Target"></param>
