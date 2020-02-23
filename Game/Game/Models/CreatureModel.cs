@@ -139,6 +139,21 @@ namespace Game.Models
         [Ignore]
         // Return the Damage value, it is 25% of the Level rounded up
         public int GetDamageLevelBonus { get { return Convert.ToInt32(Math.Ceiling(Level * .25)); } }
+        [Ignore]
+        // Return the Damage with Item Bonus
+        public int GetDamageItemBonus
+        {
+            get
+            {
+                var myItem = ItemIndexViewModel.Instance.GetItem(PrimaryHand);
+                if (myItem == null)
+                {
+                    return 0;
+                }
+                return myItem.Damage;
+            }
+        }
+
         #endregion Damage
 
         #endregion AttributeDisplay
