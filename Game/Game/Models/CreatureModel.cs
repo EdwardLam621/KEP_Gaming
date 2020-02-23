@@ -188,48 +188,6 @@ namespace Game.Models
 
         #endregion AttributeDisplay
 
-        /// <summary>
-        /// Default MonsterModel
-        /// Establish the Default Image Path
-        /// </summary>
-        public CreatureModel()
-        {
-            ImageURI = CharacterService.DefaultImageURI;
-        }
-
-        /// <summary>
-        /// Constructor to create an item based on what is passed in
-        /// </summary>
-        /// <param name="data"></param>
-        public CreatureModel(T data)
-        {
-            Update(data);
-        }
-
-        /// <summary>
-        /// Update the Record
-        /// </summary>
-        /// <param name="newData">The new data</param>
-        public override void Update(T newData)
-        {
-            if (newData == null)
-            {
-                return;
-            }
-        }
-
-        // Helper to combine the attributes into a single line, to make it easier to display the item as a string
-        public string FormatOutput()
-        {
-            var myReturn = Name + " , " +
-                            Description + " for speed " + SpeedAttribute +
-                            " and offense " + OffenseAttribute +
-                            " and defense " + DefenseAttribute +
-                            "which its type is " + Skill;
-
-
-            return myReturn.Trim();
-        }
 
 
         #region Methods
@@ -628,7 +586,53 @@ namespace Game.Models
             return Alive;
         }
 
+        public bool AddExperience(int newExperience) { return true; }
+
+
+
         #endregion Methods
 
+        /// <summary>
+        /// Default MonsterModel
+        /// Establish the Default Image Path
+        /// </summary>
+        public CreatureModel()
+        {
+            ImageURI = CharacterService.DefaultImageURI;
+        }
+
+        /// <summary>
+        /// Constructor to create an item based on what is passed in
+        /// </summary>
+        /// <param name="data"></param>
+        public CreatureModel(T data)
+        {
+            Update(data);
+        }
+
+        /// <summary>
+        /// Update the Record
+        /// </summary>
+        /// <param name="newData">The new data</param>
+        public override void Update(T newData)
+        {
+            if (newData == null)
+            {
+                return;
+            }
+        }
+
+        // Helper to combine the attributes into a single line, to make it easier to display the item as a string
+        public string FormatOutput()
+        {
+            var myReturn = Name + " , " +
+                            Description + " for speed " + SpeedAttribute +
+                            " and offense " + OffenseAttribute +
+                            " and defense " + DefenseAttribute +
+                            "which its type is " + Skill;
+
+
+            return myReturn.Trim();
+        }
     }
 }
