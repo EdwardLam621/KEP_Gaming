@@ -168,6 +168,21 @@ namespace Game.Models
                 return string.Format("1D {0}", data);
             }
         }
+        [Ignore]
+        // Return the Total of All Damage
+        public string GetDamageTotalString
+        {
+            get
+            {
+
+                if (GetDamageItemBonusString.Equals("-"))
+                {
+                    return GetDamageLevelBonus.ToString();
+                }
+
+                return GetDamageLevelBonus.ToString() + " + " + GetDamageItemBonusString;
+            }
+        }
         #endregion Damage
 
         #endregion AttributeDisplay
