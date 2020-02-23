@@ -149,14 +149,14 @@ namespace Game.Views
 
         public bool ShowPopup(ItemModel data)
         {
-            //PopupLoadingView.IsVisible = true;
-            //PopupItemImage.Source = data.ImageURI;
+            PopupLoadingView.IsVisible = true;
+            PopupItemImage.Source = data.ImageURI;
 
-            //PopupItemName.Text = data.Name;
-            //PopupItemDescription.Text = data.Description;
-            //PopupItemLocation.Text = data.Location.ToMessage();
-            //PopupItemAttribute.Text = data.Attribute.ToMessage();
-            //PopupItemValue.Text = " + " + data.Value.ToString();
+            PopupItemName.Text = data.Name;
+            PopupItemDescription.Text = data.Description;
+            PopupItemLocation.Text = data.Location.ToMessage();
+            PopupItemAttribute.Text = data.Attribute.ToMessage();
+            PopupItemValue.Text = " + " + data.Value.ToString();
 
 
             return true;

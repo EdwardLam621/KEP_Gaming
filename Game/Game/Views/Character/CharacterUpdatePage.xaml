@@ -20,191 +20,230 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView>
+                <StackLayout Style="{StaticResource OuterBoxStack}"
+                    Spacing="10">
 
-        <ScrollView>
-            <StackLayout Style="{StaticResource OuterBoxStack}"
-                Spacing="10">
+                    <Label Text="Update Page" Style="{StaticResource HeaderStyle}"/>
 
-                <Label Text="Update Page" Style="{StaticResource HeaderStyle}"/>
+                    <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}" HorizontalOptions="CenterAndExpand"/>
 
-                <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}" HorizontalOptions="CenterAndExpand"/>
+                    <Grid
+                        RowSpacing="1"
+                        ColumnSpacing="2"
+                        VerticalOptions="Center">
 
-                <Grid
-                    RowSpacing="1"
-                    ColumnSpacing="2"
-                    VerticalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0"
+                            Text="Name" 
+                            Style="{StaticResource LabelStyle}"/>
 
-                    <Label Grid.Row="0" Grid.Column="0"
-                        Text="Name" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Entry Grid.Row="0" Grid.Column="1"
-                        Text="{Binding Data.Name}" 
-                        Style="{StaticResource EntryStyle}"/>
-
-                    <Label Grid.Row="1" Grid.Column="0"
-                        Text="Description" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Entry Grid.Row="1" Grid.Column="1"
-                        Text="{Binding Data.Description}" 
-                        Style="{StaticResource EntryStyle}"/>
-
-                    <Label Grid.Row="2" Grid.Column="0"
-                        Text="Type" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Picker Grid.Row="2" Grid.Column="1"
-                        ItemsSource="{x:Static local_helpers:CreatureSkillEnumHelper.GetListCharacter}" 
-                        SelectedItem="{Binding Data.Skill, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
-                        x:Name="SkillPicker"/>
-
-
-
-                    <Label Grid.Row="3" Grid.Column="0"
-                        Text="Image" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <StackLayout Grid.Row="3" Grid.Column="1" Style="{StaticResource HorizontalStack}" HorizontalOptions="FillAndExpand">
-
-                        <Image 
-                            Source="{Binding Data.ImageURI}"
-                            Style="{StaticResource ImageSmallStyle}"/>
-
-                        <Entry 
-                            Text="{Binding Data.ImageURI}" 
+                        <Entry Grid.Row="0" Grid.Column="1"
+                            Text="{Binding Data.Name}" 
                             Style="{StaticResource EntryStyle}"/>
 
-                    </StackLayout>
-                </Grid>
+                        <Label Grid.Row="1" Grid.Column="0"
+                            Text="Description" 
+                            Style="{StaticResource LabelStyle}"/>
 
-                <StackLayout HorizontalOptions="FillAndExpand">
+                        <Entry Grid.Row="1" Grid.Column="1"
+                            Text="{Binding Data.Description}" 
+                            Style="{StaticResource EntryStyle}"/>
 
-                    <Label 
-                        Text ="Speed: " 
-                        Style="{StaticResource LabelStyle}"/>
+                        <Label Grid.Row="2" Grid.Column="0"
+                            Text="Type" 
+                            Style="{StaticResource LabelStyle}"/>
 
-                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+                        <Picker Grid.Row="2" Grid.Column="1"
+                            ItemsSource="{x:Static local_helpers:CreatureSkillEnumHelper.GetListCharacter}" 
+                            SelectedItem="{Binding Data.Skill, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
+                            x:Name="SkillPicker"/>
 
-                        <Label 
-                            Text="{Binding Data.SpeedAttribute}" 
-                            x:Name="SpeedValue"
-                            Style="{StaticResource ValueStyle}"
-                            Padding="0,0,10,0"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="End"/>
 
-                        <Stepper 
-                            Value="{Binding Data.SpeedAttribute, Mode=TwoWay}"
-                            ValueChanged="Speed_OnStepperValueChanged"/>
 
-                    </StackLayout>
+                        <Label Grid.Row="3" Grid.Column="0"
+                            Text="Image" 
+                            Style="{StaticResource LabelStyle}"/>
 
-                    <Label 
-                        Text="Offense"
-                        Style="{StaticResource LabelStyle}"/>
+                        <StackLayout Grid.Row="3" Grid.Column="1" Style="{StaticResource HorizontalStack}" HorizontalOptions="FillAndExpand">
 
-                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+                            <Image 
+                                Source="{Binding Data.ImageURI}"
+                                Style="{StaticResource ImageSmallStyle}"/>
 
-                        <Label 
-                            Text="{Binding Data.OffenseAttribute}" 
-                            x:Name="OffenseValue"
-                            Style="{StaticResource ValueStyle}"
-                            Padding="0,0,10,0"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="End"/>
+                            <Entry 
+                                Text="{Binding Data.ImageURI}" 
+                                Style="{StaticResource EntryStyle}"/>
 
-                        <Stepper 
-                            Value="{Binding Data.OffenseAttribute, Mode=TwoWay}"
-                            ValueChanged="Offense_OnStepperValueChanged"/>
+                        </StackLayout>
+                    </Grid>
 
-                    </StackLayout>
-
-                    <Label 
-                        Text="Defense" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+                    <StackLayout HorizontalOptions="FillAndExpand">
 
                         <Label 
-                            Text="{Binding Data.DefenseAttribute}" 
-                            x:Name="DefenseValue"
-                            Style="{StaticResource ValueStyle}"
-                            Padding="0,0,10,0"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="End"/>
+                            Text ="Speed: " 
+                            Style="{StaticResource LabelStyle}"/>
 
-                        <Stepper 
-                            Value="{Binding Data.DefenseAttribute, Mode=TwoWay}"
-                            ValueChanged="Defense_OnStepperValueChanged"/>
+                        <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
 
+                            <Label 
+                                Text="{Binding Data.SpeedAttribute}" 
+                                x:Name="SpeedValue"
+                                Style="{StaticResource ValueStyle}"
+                                Padding="0,0,10,0"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"/>
+
+                            <Stepper 
+                                Value="{Binding Data.SpeedAttribute, Mode=TwoWay}"
+                                ValueChanged="Speed_OnStepperValueChanged"/>
+
+                        </StackLayout>
+
+                        <Label 
+                            Text="Offense"
+                            Style="{StaticResource LabelStyle}"/>
+
+                        <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                            <Label 
+                                Text="{Binding Data.OffenseAttribute}" 
+                                x:Name="OffenseValue"
+                                Style="{StaticResource ValueStyle}"
+                                Padding="0,0,10,0"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"/>
+
+                            <Stepper 
+                                Value="{Binding Data.OffenseAttribute, Mode=TwoWay}"
+                                ValueChanged="Offense_OnStepperValueChanged"/>
+
+                        </StackLayout>
+
+                        <Label 
+                            Text="Defense" 
+                            Style="{StaticResource LabelStyle}"/>
+
+                        <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                            <Label 
+                                Text="{Binding Data.DefenseAttribute}" 
+                                x:Name="DefenseValue"
+                                Style="{StaticResource ValueStyle}"
+                                Padding="0,0,10,0"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"/>
+
+                            <Stepper 
+                                Value="{Binding Data.DefenseAttribute, Mode=TwoWay}"
+                                ValueChanged="Defense_OnStepperValueChanged"/>
+
+                        </StackLayout>
                     </StackLayout>
+                    <Label
+                            Text="Equipment"
+                            Style="{StaticResource LabelStyle}" />
+
+
+                    <FlexLayout 
+                            Padding="5"
+                            Wrap="Wrap"
+                            JustifyContent="SpaceAround"
+                            AlignContent="SpaceAround"
+                            x:Name="ItemBox">
+                    </FlexLayout>
+
+
+
+
+
+
+
+
+                    <!--<Grid
+                     HeightRequest="300"
+                     WidthRequest="300"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand">
+                        <Image 
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="7"
+                            Grid.RowSpan="6"
+                            HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                            Source ="https://images.fineartamerica.com/images-medium-large/1-human-body-by-da-vinci-omikron.jpg"/>
+                        <Image Grid.Row="0" Grid.Column="3" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                        <Image Grid.Row="2" Grid.Column="0" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                        <Image Grid.Row="2" Grid.Column="1" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                        <Image Grid.Row="2" Grid.Column="5" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                        <Image Grid.Row="2" Grid.Column="6" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                        <Image Grid.Row="3" Grid.Column="3" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                        <Image Grid.Row="5" Grid.Column="3" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                    </Grid>-->
                 </StackLayout>
-                <Label
-                        Text="Equipment"
-                        Style="{StaticResource LabelStyle}" />
+            </ScrollView>
+            <ContentView x:Name="PopupLoadingView" 
+                        BackgroundColor="{StaticResource DarkBackgroundColor}" 
+                        IsVisible="false" 
+                        AbsoluteLayout.LayoutBounds=".5, .5,.5,.5" 
+                        AbsoluteLayout.LayoutFlags="All">
 
+                <StackLayout 
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="300"
+                            HeightRequest="300"
+                        >
 
-                <FlexLayout 
-                        Padding="5"
-                        Wrap="Wrap"
-                        JustifyContent="SpaceAround"
-                        AlignContent="SpaceAround"
-                        x:Name="ItemBox">
-                </FlexLayout>
+                    <Frame 
+                            BorderColor="{StaticResource TriciaryTextColor}" Padding="1">
+                        <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand" Padding="2">
+                            <Image x:Name="PopupItemImage" Style="{StaticResource ImageLargeStyle}"/>
 
+                            <Label x:Name="PopupItemName" Style="{StaticResource PopupItemTextStyle}" />
+                            <Label x:Name="PopupItemDescription" Style="{StaticResource PopupItemTextStyle}" />
 
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <Label Text="Location : " Style="{StaticResource LabelStyle}" />
+                                <Label x:Name="PopupItemLocation" Style="{StaticResource ValueStyle}" />
+                            </StackLayout>
 
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <Label x:Name="PopupItemAttribute" Style="{StaticResource LabelStyle}" />
+                                <Label x:Name="PopupItemValue" Style="{StaticResource ValueStyle}" />
+                            </StackLayout>
 
-
-
-
-
-                <!--<Grid
-                 HeightRequest="300"
-                 WidthRequest="300"
-                 HorizontalOptions="CenterAndExpand"
-                 VerticalOptions="CenterAndExpand">
-                    <Image 
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        Grid.ColumnSpan="7"
-                        Grid.RowSpan="6"
-                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                        Source ="https://images.fineartamerica.com/images-medium-large/1-human-body-by-da-vinci-omikron.jpg"/>
-                    <Image Grid.Row="0" Grid.Column="3" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
-                    <Image Grid.Row="2" Grid.Column="0" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
-                    <Image Grid.Row="2" Grid.Column="1" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
-                    <Image Grid.Row="2" Grid.Column="5" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
-                    <Image Grid.Row="2" Grid.Column="6" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
-                    <Image Grid.Row="3" Grid.Column="3" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
-                    <Image Grid.Row="5" Grid.Column="3" Source="https://cdn3.iconfinder.com/data/icons/eightyshades/512/14_Add-512.png" Aspect="AspectFit"/>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                </Grid>-->
-            </StackLayout>
-        </ScrollView>
+                            <Button x:Name="PopupCloseButton" 
+                                    Clicked="ClosePopup_Clicked" 
+                                    Text="Close"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ContentView>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
