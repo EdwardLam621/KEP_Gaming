@@ -113,6 +113,9 @@ namespace Game.Models
         [Ignore]
         // Return the MaxHealth value
         public int GetMaxHealthLevelBonus { get { return 0; } }
+        [Ignore]
+        // Return the MaxHealth with Item Bonus
+        public int GetMaxHealthItemBonus { get { return GetItemBonus(AttributeEnum.MaxHealth); } }
         #endregion MaxHealth
 
         #endregion AttributeDisplay
