@@ -174,6 +174,14 @@ namespace Game.Views
         /// <param name="e"></param>
         public void ClosePopup_Clicked(object sender, EventArgs e)
         {
+            ClosePopup();
+        }
+
+        /// <summary>
+        /// Close the popup
+        /// </summary>
+        private void ClosePopup()
+        {
             PopupLoadingView.IsVisible = false;
         }
 
