@@ -147,6 +147,21 @@ namespace Game.Engine
             return Defender;
         }
 
+        /// <summary>
+        /// If Dead process Targed Died
+        /// </summary>
+        /// <param name="Target"></param>
+        public bool RemoveIfDead(DungeonFighterModel Target)
+        {
+            // Check for alive
+            if (Target.Alive == false)
+            {
+                TargedDied(Target);
+                return true;
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Target Died
