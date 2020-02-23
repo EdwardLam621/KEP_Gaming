@@ -34,7 +34,7 @@ namespace Game.Engine
         {
             Referee = referee;
             // Referee.Score.RoundCount++  <-- to be implemented
-            StartFight();
+            StartRound();
         }
 
 
@@ -98,7 +98,7 @@ namespace Game.Engine
                 .ToList();
         }
 
-        public bool StartFight()
+        public bool StartRound()
         {
             GetNewMonsters();
             MakeList();
