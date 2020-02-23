@@ -156,6 +156,89 @@ namespace Game.Models
         }
 
         
+
+        // Walk all the Items on the Character.
+        // Add together all Items that modify the Attribute Enum Passed in
+        // Return the sum
+        public int GetItemBonus(AttributeEnum attributeEnum)
+        {
+            var myReturn = 0;
+            ItemModel myItem;
+
+            myItem = GetItem(Head);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = GetItem(Body);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = GetItem(PrimaryHand);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = GetItem(OffHand);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = GetItem(Finger);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = GetItem(RightFinger);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = GetItem(LeftFinger);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = GetItem(Feet);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            return myReturn;
+        }
         #endregion Items
 
         #endregion Methods
