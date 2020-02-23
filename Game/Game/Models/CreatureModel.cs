@@ -107,7 +107,13 @@ namespace Game.Models
         [Ignore]
         // Return the Total of All Speed
         public int GetSpeedTotal { get { return GetSpeed(); } }
-        #endregion Speed
+        #endregion
+
+        #region MaxHealth
+        [Ignore]
+        // Return the MaxHealth value
+        public int GetMaxHealthLevelBonus { get { return 0; } }
+        #endregion MaxHealth
 
         #endregion AttributeDisplay
 
