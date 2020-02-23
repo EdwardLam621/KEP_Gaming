@@ -72,6 +72,14 @@ namespace Game.Models
 
 
         #region AttributesDisplay
+
+        #region Attack        
+        [Ignore]
+        // Return the attack value
+        public int GetAttackLevelBonus { get { return LevelTableHelper.Instance.LevelDetailsList[Level].Attack; } }
+        
+        #endregion Attack
+
         #endregion AttributeDisplay
 
         /// <summary>
