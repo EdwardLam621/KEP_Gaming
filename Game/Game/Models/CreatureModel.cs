@@ -153,7 +153,21 @@ namespace Game.Models
                 return myItem.Damage;
             }
         }
+        [Ignore]
+        // Return the Damage Dice if there is one
+        public string GetDamageItemBonusString
+        {
+            get
+            {
+                var data = GetDamageItemBonus;
+                if (data == 0)
+                {
+                    return "-";
+                }
 
+                return string.Format("1D {0}", data);
+            }
+        }
         #endregion Damage
 
         #endregion AttributeDisplay
