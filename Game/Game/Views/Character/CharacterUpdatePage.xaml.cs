@@ -154,8 +154,7 @@ namespace Game.Views
         {
             PopupLoadingView.IsVisible = true;
 
-            PopupLocationLabel.Text = "Items for :";
-            PopupLocationValue.Text = data.Location.ToMessage();
+            PopupLocationLabel.Text = "Avaliable Items for: " + data.Location.ToMessage();
 
             PopupLocationItemListView.ItemsSource = ItemIndexViewModel.Instance.GetLocationItems(data.Location);
 
