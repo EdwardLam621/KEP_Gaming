@@ -121,6 +121,13 @@ namespace Game.Models
         public int GetMaxHealthTotal { get { return GetMaxHealth(); } }
         #endregion MaxHealth
 
+        #region CurrentHealth
+        [Ignore]
+        // Return the CurrentHealth value
+        public int GetCurrentHealthLevelBonus { get { return 0; } }
+        #endregion CurrentHealth
+
+
         #endregion AttributeDisplay
 
         /// <summary>
