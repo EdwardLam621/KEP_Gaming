@@ -104,7 +104,7 @@ namespace Game.Engine
             MakeList();
             OrderFight();
             var nextPlayer = GetNextPlayerInList();
-            TurnEngine turn = new TurnEngine(nextPlayer);
+            var turn = new TurnEngine(nextPlayer, Referee);
             turn.TakeTurn();
             return true;
         }
