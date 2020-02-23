@@ -33,7 +33,63 @@ namespace Game.Services
                     Damage = 0,
                     Value = 9,
                     Location = ItemLocationEnum.OffHand,
-                    Attribute = AttributeEnum.Defense}
+                    Attribute = AttributeEnum.Defense},
+
+                 new ItemModel {
+                    Name = "Rain Coat",
+                    Description = "Stay wet from raining in seattle",
+                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 3,
+                    Location = ItemLocationEnum.Body,
+                    Attribute = AttributeEnum.MaxHealth
+                 },
+
+                 new ItemModel {
+                    Name = "Seahawks Cap",
+                    Description = "Go Hawks!!",
+                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 3,
+                    Location = ItemLocationEnum.Head,
+                    Attribute = AttributeEnum.Defense
+                 },
+
+                 new ItemModel {
+                    Name = "Pandora",
+                    Description = "$$$$$",
+                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 1,
+                    Location = ItemLocationEnum.LeftFinger,
+                    Attribute = AttributeEnum.Attack
+                 },
+
+                 new ItemModel {
+                    Name = "Unknown right",
+                    Description = "5 dollars from Amazon",
+                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 1,
+                    Location = ItemLocationEnum.RightFinger,
+                    Attribute = AttributeEnum.Attack
+                 },
+
+
+                 new ItemModel {
+                    Name = "Nike!",
+                    Description = "Impossible is nothing",
+                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 1,
+                    Location = ItemLocationEnum.Feet,
+                    Attribute = AttributeEnum.Attack
+                 },
             };
 
             return datalist;
@@ -85,13 +141,13 @@ namespace Game.Services
 
             try
             {
-                RightFingerString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.Finger).FirstOrDefault().Id;
+                RightFingerString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.RightFinger).FirstOrDefault().Id;
             }
             catch (Exception e) { }
 
             try
             {
-                LeftFingerString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.Finger).LastOrDefault().Id;
+                LeftFingerString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.LeftFinger).LastOrDefault().Id;
             }
             catch (Exception e) { }
 
@@ -131,6 +187,14 @@ namespace Game.Services
                     SpeedAttribute = 3,
                     Skill = CreatureSkillEnum.Slacker,
                     //Equipments = equipments
+
+                    Head = null,
+                    Body = null,
+                    PrimaryHand = null,
+                    OffHand = null,
+                    Feet = null,
+                    RightFinger = null,
+                    LeftFinger = null,
                 },
 
                  new CharacterModel {
