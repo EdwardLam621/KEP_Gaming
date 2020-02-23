@@ -333,6 +333,66 @@ namespace Game.Models
             // Save Changes
             return myReturn;
         }
+
+        // Drop All Items
+        // Return a list of items for the pool of items
+        public List<ItemModel> DropAllItems()
+        {
+            var myReturn = new List<ItemModel>();
+
+            // Drop all Items
+            ItemModel myItem;
+
+            myItem = RemoveItem(ItemLocationEnum.Head);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.Body);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.PrimaryHand);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.OffHand);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.Finger);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.RightFinger);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.LeftFinger);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.Feet);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            return myReturn;
+        }
         #endregion Items
 
         #endregion Methods
