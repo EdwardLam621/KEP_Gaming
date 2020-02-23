@@ -35,11 +35,13 @@ namespace Game.Engine
         {
             // Choose Action.  Such as Move, Attack etc.
 
-            //var result = Attack(Attacker);
+            // Todo: Add Move, Skill options
+
+            var result = Attack(Attacker);
 
             Referee.BattleScore.TurnCount++;
 
-            return false;
+            return result;
         }
 
         /// <summary>
