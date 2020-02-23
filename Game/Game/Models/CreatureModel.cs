@@ -320,6 +320,19 @@ namespace Game.Models
 
             return myReturn;
         }
+
+        // Remove ItemModel from a set location
+        // Does this by adding a new ItemModel of Null to the location
+        // This will return the previous ItemModel, and put null in its place
+        // Returns the ItemModel that was at the location
+        // Nulls out the location
+        public ItemModel RemoveItem(ItemLocationEnum itemlocation)
+        {
+            var myReturn = AddItem(itemlocation, null);
+
+            // Save Changes
+            return myReturn;
+        }
         #endregion Items
 
         #endregion Methods
