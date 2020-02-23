@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Game.Services;
+using SQLite;
 
 namespace Game.Models
 {
@@ -12,6 +13,26 @@ namespace Game.Models
     /// </summary>
     public class CreatureModel<T> : BaseModel<T>
     {
+        #region Attributes
+
+        #region GameEngineAttributes
+        // alive status, !alive will be removed from the list
+        [Ignore]
+        public bool Alive { get; set; } = true;
+
+        // The type of player, character comes before monster
+        [Ignore]
+        public CreatureSkillEnum PlayerType { get; set; } = CreatureSkillEnum.None;
+
+        // TurnOrder
+        [Ignore]
+        public int Order { get; set; } = 0;
+
+        // Remember who was first into the list...
+        [Ignore]
+        public int ListOrder { get; set; } = 0;
+
+        #endregion GameEngineAttributes
         //max health of a creature
         public int MaxHealth { get; set; } = 0;
         //Spped value of a creature
@@ -24,8 +45,10 @@ namespace Game.Models
         public int Level { get; set; } = 0;
         //Skill of a creature
         public CreatureSkillEnum Skill { get; set; } = CreatureSkillEnum.None;
-
+        //experience points player has used
         public int ExperiencePoints { get; set; } = 0;
+
+        #endregion Attributes
 
         // Add Unique attributes for Item
 
