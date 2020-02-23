@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Game.Services;
+using Game.ViewModels;
 using SQLite;
 
 namespace Game.Models
@@ -19,20 +20,18 @@ namespace Game.Models
         // alive status, !alive will be removed from the list
         [Ignore]
         public bool Alive { get; set; } = true;
-
         // The type of player, character comes before monster
         [Ignore]
         public CreatureSkillEnum PlayerType { get; set; } = CreatureSkillEnum.None;
-
         // TurnOrder
         [Ignore]
         public int Order { get; set; } = 0;
-
         // Remember who was first into the list...
         [Ignore]
         public int ListOrder { get; set; } = 0;
-
         #endregion GameEngineAttributes
+
+        #region PlayerAttributes
         //max health of a creature
         public int MaxHealth { get; set; } = 0;
         //Spped value of a creature
@@ -47,10 +46,27 @@ namespace Game.Models
         public CreatureSkillEnum Skill { get; set; } = CreatureSkillEnum.None;
         //experience points player has used
         public int ExperiencePoints { get; set; } = 0;
+        #endregion PlayerAttributes
 
         #endregion Attributes
 
-        // Add Unique attributes for Item
+
+        #region Items
+        // ItemModel is a string referencing the database table
+        public string Head { get; set; } = null;
+        // Feet is a string referencing the database table
+        public string Body { get; set; } = null;
+        // PrimaryHand is a string referencing the database table
+        public string PrimaryHand { get; set; } = null;
+        // Offhand is a string referencing the database table
+        public string OffHand { get; set; } = null;
+        // Finger is a string referencing the database table
+        public string Finger { get; set; } = null;
+        // RightFinger is a string referencing the database table
+        public string RightFinger { get; set; } = null;
+        // LeftFinger is a string referencing the database table
+        public string LeftFinger { get; set; } = null;
+        #endregion Items
 
         /// <summary>
         /// Default MonsterModel
