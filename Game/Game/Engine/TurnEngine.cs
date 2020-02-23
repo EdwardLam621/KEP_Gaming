@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Game.Models;
 
@@ -93,5 +94,30 @@ namespace Game.Engine
         //            return SelectMonsterToAttack();
         //    }
         //}
+
+        /// <summary>
+        /// Pick the Character to Attack
+        /// </summary>
+        /// <returns></returns>
+        public DungeonFighterModel SelectCharacterToAttack()
+        {
+            if (Referee.Characters == null)
+            {
+                return null;
+            }
+
+            if (Referee.Characters.Count < 1)
+            {
+                return null;
+            }
+
+            // Select first in the list
+            var Defender = Referee.Characters
+                .Where(m => m.Alive)
+                .OrderBy(m => m.ListOrder).FirstOrDefault();
+
+            return Defender;
+        }
+
     }
 }
