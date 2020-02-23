@@ -176,5 +176,25 @@ namespace Game.Views
         {
             PopupLoadingView.IsVisible = false;
         }
+
+        /// <summary>
+        /// The row selected from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void OnPopupItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            ItemModel data = args.SelectedItem as ItemModel;
+            if (data == null)
+            {
+                return;
+            }
+
+            ViewModel.Data.AddItem(PopupLocationEnum, data.Id);
+
+            AddItemsToDisplay();
+
+            ClosePopup();
+        }
     }
 }
