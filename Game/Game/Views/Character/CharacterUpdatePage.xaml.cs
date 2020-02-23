@@ -3,6 +3,7 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Game.ViewModels;
 using Game.Models;
+using Game.Helpers;
 
 namespace Game.Views
 {
@@ -21,6 +22,8 @@ namespace Game.Views
             BindingContext = this.ViewModel = data;
 
             this.ViewModel.Title = "Update " + data.Title;
+
+            AddItemsToDisplay();
 
             //Need to make the SelectedItem a string, so it can select the correct item.
             SkillPicker.SelectedItem = data.Data.Skill.ToString();
@@ -84,5 +87,64 @@ namespace Game.Views
             DefenseValue.Text = String.Format("{0}", e.NewValue);
         }
 
+
+        public void AddItemsToDisplay()
+        {
+
+            // Get the List of Locations a Character can have
+            var LocationList = ItemLocationEnumHelper.GetListCharacter;
+
+            // Add Each item in the list
+            foreach (var location in LocationList)
+            {
+                var LocationString = ItemLocationEnumHelper.ConvertStringToEnum(location).ToMessage();
+                ItemBox.Children.Add(
+                    GetItemToDisplay(
+                        LocationString,
+                        ViewModel.Data.GetItemByLocation(
+                            ItemLocationEnumHelper.ConvertStringToEnum(location))));
+            }
+        }
+
+        public StackLayout GetItemToDisplay(string LocationString, ItemModel data)
+        {
+            if (data == null)
+            {
+                return new StackLayout();
+            }
+
+            // Hookup the Image Button to show the Item picture
+            var ItemButton = new ImageButton
+            {
+                Style = (Style)Application.Current.Resources["ImageMediumStyle"],
+                Source = data.ImageURI
+            };
+
+            // Add a event to the user can click the item and see more
+            //ItemButton.Clicked += (sender, args) => ShowPopup(data);
+
+            // Add the Display Text for the item
+            var ItemLabel = new Label
+            {
+                Text = LocationString,
+                Style = (Style)Application.Current.Resources["ValueStyle"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+
+            // Put the Image Button and Text inside a layout
+            var ItemStack = new StackLayout
+            {
+                Padding = 3,
+                Style = (Style)Application.Current.Resources["ItemImageBox"],
+                HorizontalOptions = LayoutOptions.Center,
+                Children = {
+                    ItemButton,
+                    ItemLabel
+                },
+            };
+
+            return ItemStack;
+        }
     }
 }

@@ -188,13 +188,6 @@ namespace Game.Services
                     Skill = CreatureSkillEnum.Slacker,
                     //Equipments = equipments
 
-                    Head = null,
-                    Body = null,
-                    PrimaryHand = null,
-                    OffHand = null,
-                    Feet = null,
-                    RightFinger = null,
-                    LeftFinger = null,
                 },
 
                  new CharacterModel {
