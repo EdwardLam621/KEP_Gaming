@@ -83,6 +83,12 @@ namespace Game.Models
         [Ignore]
         // Return the Total of All Attack
         public int GetAttackTotal { get { return GetAttack(); } }
+
+        #region Defense
+        [Ignore]
+        // Return the Defense value
+        public int GetDefenseLevelBonus { get { return LevelTableHelper.Instance.LevelDetailsList[Level].Defense; } }
+        #endregion Defense
         #endregion Attack
 
         #endregion AttributeDisplay
