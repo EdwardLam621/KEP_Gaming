@@ -17,7 +17,7 @@ namespace Game.Models
         #region Attributes
 
         #region GameEngineAttributes
-        // alive status, !alive will be removed from the list
+        // alive status, not alive will be removed from the list
         [Ignore]
         public bool Alive { get; set; } = true;
         // The type of player, character comes before monster
@@ -52,7 +52,7 @@ namespace Game.Models
 
 
         #region Items
-        // ItemModel is a string referencing the database table
+        // Head is a string referencing the database table
         public string Head { get; set; } = null;
         // Feet is a string referencing the database table
         public string Body { get; set; } = null;
@@ -66,7 +66,13 @@ namespace Game.Models
         public string RightFinger { get; set; } = null;
         // LeftFinger is a string referencing the database table
         public string LeftFinger { get; set; } = null;
+        // Feet is a string referencing the database table
+        public string Feet { get; set; } = null;
         #endregion Items
+
+
+        #region AttributesDisplay
+        #endregion AttributeDisplay
 
         /// <summary>
         /// Default MonsterModel
@@ -111,6 +117,9 @@ namespace Game.Models
             return myReturn.Trim();
         }
 
+        #region Methods
+
+        #region GetAttributesValue
         /// <summary>
         /// Get the total attack power of the fighter
         /// </summary>
@@ -137,6 +146,19 @@ namespace Game.Models
         {
             return 0; // unimplemented
         }
+        #endregion GetAttributesValue
+
+        #region Items
+        // Get the Item at a known string location (head, foot etc.)
+        public ItemModel GetItem(string itemString)
+        {
+            return ItemIndexViewModel.Instance.GetItem(itemString);
+        }
+
+        
+        #endregion Items
+
+        #endregion Methods
 
     }
 }
