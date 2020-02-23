@@ -327,18 +327,7 @@ namespace Game.Models
             return myReturn;
         }
         #endregion GetAttributesValue
-
         
-
-        // Death
-        // Alive turns to False
-        public bool CauseDeath()
-        {
-            Alive = false;
-            return Alive;
-        }
-        #endregion Methods
-
         #region Items
         // Get the Item at a known string location (head, foot etc.)
         public ItemModel GetItem(string itemString)
@@ -585,6 +574,37 @@ namespace Game.Models
             return myReturn;
         }
         #endregion Items
+
+        // Take Damage
+        // If the damage recived, is > health, then death occurs
+        // Return the number of experience received for this attack 
+        // monsters give experience to characters.  Characters don't accept expereince from monsters
+        public bool TakeDamage(int damage)
+        {
+            if (damage <= 0)
+            {
+                return false;
+            }
+
+            CurrentHealth = CurrentHealth - damage;
+            if (CurrentHealth <= 0)
+            {
+                CurrentHealth = 0;
+
+                // Death...
+                CauseDeath();
+            }
+
+            return true;
+        }
+
+        // Death
+        // Alive turns to False
+        public bool CauseDeath()
+        {
+            Alive = false;
+            return Alive;
+        }
 
         #endregion Methods
 
