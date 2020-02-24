@@ -41,10 +41,28 @@ namespace Game.Engine
             
         }
 
-        
+        public bool Begin()
+        {
+            var fight = StartRound(roundCount);
+            switch (fight)
+            {
+                case RoundEnum.NewRound:
+                    roundCount++;
+                    break;
+                case RoundEnum.GameOver:
+                    // display game over screen
+                    break;
+                default:
+                    break;
+                        
+            }
+
+
+            return true;
+        }
 
         
-        public bool StartRound(int round)
+        public RoundEnum StartRound(int round)
         {
             RoundStateEnum = RoundEnum.NextTurn;
             GetNewMonsters();
@@ -55,7 +73,6 @@ namespace Game.Engine
             
             var nextPlayer = GetNextPlayerInList();
 
-            var turn = new TurnEngine(nextPlayer, Referee);
 
             while (RoundStateEnum.Equals(RoundEnum.NextTurn))
             {
@@ -64,15 +81,15 @@ namespace Game.Engine
 
             if (RoundStateEnum.Equals(RoundEnum.GameOver))
             {
-                // Game over screen
+                return RoundEnum.GameOver;
             }
 
             if (RoundStateEnum.Equals(RoundEnum.NewRound))
             {
-                roundCount++;
+                return RoundEnum.NewRound;
             }
 
-            return true;
+            return RoundEnum.Unknown;
 
         }
 
