@@ -1,6 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Game.Engine;
+using Game.Models;
+using System.Collections.Generic;
 
 namespace Game.Views
 {
@@ -48,7 +51,28 @@ namespace Game.Views
 			// Run the Autobattle simulation from here
 
 			// Call to the Score Page
-			await Navigation.PushModalAsync(new NavigationPage(new ScorePage()));
+			//await Navigation.PushModalAsync(new NavigationPage(new ScorePage()));
+			
+			
+			// Battle testing
+			List<CharacterModel> testFighter = new List<CharacterModel>();
+			
+			testFighter.Add(new CharacterModel
+			{
+				Name = "The Delinquent",
+				MaxHealth = 20,
+				Level = 1,
+				Description = "The mischief class skipper. Low in defense but high in attack",
+				ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
+				DefenseAttribute = 1,
+				OffenseAttribute = 10,
+				SpeedAttribute = 15,
+				Skill = CreatureSkillEnum.None,
+				//Equipments = equipments
+			});
+
+			BattleEngine battle = new BattleEngine(testFighter);
+			battle.startBattle();
 		}
 	}
 }
