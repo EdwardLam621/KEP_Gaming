@@ -55,6 +55,24 @@ namespace Game.Models
             return string.Format(" for {0} damage ", DamageAmount);
         }
 
+        /// <summary>
+        /// Return formatted string
+        /// </summary>
+        /// <param name="hitStatus"></param>
+        /// <returns></returns>
+        public string GetSwingResult()
+        {
+            return HitStatus.ToMessage();
+        }
+
+        /// <summary>
+        /// Returns the String Attacker Hit Defender
+        /// </summary>
+        /// <returns></returns>
+        public string GetTurnMessage()
+        {
+            return AttackerName + GetSwingResult() + TargetName;
+        }
 
     }
 }
