@@ -12,8 +12,6 @@ namespace Game.Engine
 
         public int roundCount = 1;
 
-        public List<DungeonFighterModel> HeroList;
-
         public List<DungeonFighterModel> MonsterList;
 
         public List<DungeonFighterModel> PlayerList;
