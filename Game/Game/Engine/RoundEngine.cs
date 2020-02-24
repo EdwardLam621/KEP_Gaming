@@ -43,16 +43,23 @@ namespace Game.Engine
 
         public bool StartRound()
         {
+            RoundStateEnum = RoundEnum.NextTurn;
             GetNewMonsters();
             MakeList();
             OrderFight();
 
             //fight loop
-
+            
             var nextPlayer = GetNextPlayerInList();
 
             var turn = new TurnEngine(nextPlayer, Referee);
-            turn.TakeTurn();
+
+            while (RoundStateEnum.Equals(RoundEnum.NextTurn))
+            {
+                RoundStateEnum = RoundNextTurn();
+            }
+
+
             return true;
         }
 
@@ -89,11 +96,11 @@ namespace Game.Engine
         public RoundEnum RoundNextTurn()
         {
             // No characters, game is over...
-            if (CharacterList.Count < 1)
+            if (Referee.Characters.Count < 1)
             {
                 // Game Over
-                RoundEnum = RoundEnum.GameOver;
-                return RoundEnum;
+                RoundStateEnum = RoundEnum.GameOver;
+                return RoundStateEnum;
             }
 
             // Check if round is over
@@ -106,10 +113,11 @@ namespace Game.Engine
 
             // Decide Who gets next turn
             // Remember who just went...
-            PlayerCurrent = GetNextPlayerTurn();
+            var playerCurrent = GetNextPlayerInList();
 
             // Do the turn....
-            TakeTurn(PlayerCurrent);
+            var turn = new TurnEngine(playerCurrent, Referee);
+            turn.TakeTurn();
 
             RoundStateEnum = RoundEnum.NextTurn;
 
