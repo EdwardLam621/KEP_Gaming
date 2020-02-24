@@ -43,20 +43,18 @@ namespace Game.Engine
 
         public bool Begin()
         {
+            // Round fight loop
             var fight = StartRound(roundCount);
-            switch (fight)
+            while (fight.Equals(RoundEnum.NewRound))
             {
-                case RoundEnum.NewRound:
-                    roundCount++;
-                    break;
-                case RoundEnum.GameOver:
-                    // display game over screen
-                    break;
-                default:
-                    break;
-                        
+                roundCount++;
+                fight = StartRound(roundCount);
             }
-
+            
+            if (fight.Equals(RoundEnum.GameOver))
+            {
+                // display game over screen
+            }
 
             return true;
         }
@@ -69,11 +67,8 @@ namespace Game.Engine
             MakeList();
             OrderFight();
 
-            //fight loop
-            
+            // Turn fight loop, go until monsters or characters are dead
             var nextPlayer = GetNextPlayerInList();
-
-
             while (RoundStateEnum.Equals(RoundEnum.NextTurn))
             {
                 RoundStateEnum = RoundNextTurn();
@@ -160,11 +155,12 @@ namespace Game.Engine
         /// <returns>List of new monsters</returns>
         private void GetNewMonsters()
         {
-
+            
             MonsterList = new List<DungeonFighterModel>();
             for (int i = 0; i < MAX_NUM_MONSTERS; i++)
             {
                 // unimplemented
+                // need to scale monsters to appropriate level based on round
             }
 
         }
