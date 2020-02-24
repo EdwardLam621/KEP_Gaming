@@ -8,17 +8,33 @@ using Game.Models;
 
 namespace Game.Engine
 {
+    /// <summary>
+    /// Manages a game turn
+    /// </summary>
     public class TurnEngine
     {
+        // Current attacker, set in constructor
         public DungeonFighterModel Attacker;
+        
+        // Current defender
         public DungeonFighterModel Defender;
+        
+        // Referee object to help manage the turn
         public Referee Referee;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public TurnEngine()
         {
 
         }
 
+        /// <summary>
+        /// Constructor taking an Attacker and Referee
+        /// </summary>
+        /// <param name="attacker"></param>
+        /// <param name="referee"></param>
         public TurnEngine(DungeonFighterModel attacker, Referee referee)
         {
             Attacker = attacker;
@@ -70,9 +86,6 @@ namespace Game.Engine
             // Do Attack
             TurnAsAttack(Attacker, Target);
 
-            //CurrentAttacker = new DungeonFighterModel(Attacker);
-            //CurrentDefender = new DungeonFighterModel(Target);
-
             return true;
         }
 
@@ -89,8 +102,10 @@ namespace Game.Engine
                     return SelectCharacterToAttack();
 
                 case CreatureEnum.Character:
-                default:
                     return SelectMonsterToAttack();
+
+                default:
+                    return null;
             }
         }
 
@@ -170,11 +185,8 @@ namespace Game.Engine
 
             Referee.BattleMessages.PlayerType = CreatureEnum.Monster;
 
-            //var AttackScore = Attacker.Level + Attacker.GetAttack();
-            //var DefenseScore = Target.GetDefense() + Target.Level;
-            
-            var AttackScore = 2; // hardcode for now
-            var DefenseScore = 1; 
+            var AttackScore = Attacker.Level + Attacker.GetAttack();
+            var DefenseScore = Target.GetDefense() + Target.Level;
 
             // Choose who to attack
 
@@ -195,9 +207,9 @@ namespace Game.Engine
             if (Referee.BattleMessages.HitStatus == HitStatusEnum.Hit)
             {
                 //Calculate Damage
-                //Referee.BattleMessages.DamageAmount = Attacker.GetDamageRollValue();
+                Referee.BattleMessages.DamageAmount = Attacker.GetDamageRollValue();
 
-                //Target.TakeDamage(Referee.BattleMessages.DamageAmount);
+                Target.TakeDamage(Referee.BattleMessages.DamageAmount);
             }
 
             Referee.BattleMessages.CurrentHealth = Target.CurrentHealth;
