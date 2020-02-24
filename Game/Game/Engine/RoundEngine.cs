@@ -36,7 +36,7 @@ namespace Game.Engine
         {
             Referee = referee;
             Referee.BattleScore.RoundCount++;
-            
+            PlayerList = new List<DungeonFighterModel>();
         }
 
         /// <summary>
