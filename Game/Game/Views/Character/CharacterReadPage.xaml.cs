@@ -121,7 +121,7 @@ namespace Game.Views
         public StackLayout GetItemToDisplay(ItemLocationEnum location)
         {
             // Defualt Image is the Plus
-            var ImageSource = "icon_cancel.png";
+            var ImageSource = "https://icons.iconarchive.com/icons/google/noto-emoji-smileys/1024/10024-thinking-face-icon.png";
             var ClickableButton = true;
 
             var data = ViewModel.Data.GetItemByLocation(location);
