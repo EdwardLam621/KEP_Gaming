@@ -50,6 +50,8 @@ namespace Game.Engine
             Referee = referee;
             Referee.BattleScore.RoundCount++;
             PlayerList = new List<DungeonFighterModel>();
+            MonsterList = new List<DungeonFighterModel>();
+
         }
 
         /// <summary>
@@ -122,7 +124,6 @@ namespace Game.Engine
         /// <summary>
         /// At the end of the round
         /// Clear the ItemModel List
-        /// Clear the MonsterModel List
         /// </summary>
         /// <returns></returns>
         public bool EndRound()
@@ -133,9 +134,9 @@ namespace Game.Engine
                 //PickupItemsFromPool(character);
             }
 
-            // Reset Monster and Item Lists
-            //ClearLists();
-
+            // Reset Item Lists
+            Referee.Monsters.Clear();
+            Referee.ItemPool.Clear();
             return true;
         }
 
@@ -186,8 +187,10 @@ namespace Game.Engine
         /// <returns>List of new monsters</returns>
         private void GetNewMonsters()
         {
-            
-            MonsterList = new List<DungeonFighterModel>();
+            // Clear out monster list
+            MonsterList.Clear();
+
+            // Fill up round with the maximum number of monsters
             for (int i = 0; i < MAX_NUM_MONSTERS; i++)
             {
                 // unimplemented
@@ -246,6 +249,11 @@ namespace Game.Engine
 
         }
 
+        /// <summary>
+        /// Order the fight list based on the Game rules:
+        /// Speed, then Level, then XP, then Player (Characters before Monsters),
+        /// then by Name, then list order.
+        /// </summary>
         public void OrderFight()
         {
             PlayerList = PlayerList.OrderByDescending(a => a.SpeedAttribute)
@@ -261,7 +269,7 @@ namespace Game.Engine
 
 
         /// <summary>
-        /// Get the Information about the Player
+        /// Get the player whose turn it is
         /// </summary>
         /// <returns></returns>
         public DungeonFighterModel GetNextPlayerInList()
