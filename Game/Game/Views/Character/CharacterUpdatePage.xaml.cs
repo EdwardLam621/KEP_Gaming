@@ -92,7 +92,9 @@ namespace Game.Views
             DefenseValue.Text = String.Format("{0}", e.NewValue);
         }
 
-
+        /// <summary>
+        /// Show the Items the Character has
+        /// </summary>
         public void AddItemsToDisplay()
         {
 
@@ -111,13 +113,18 @@ namespace Game.Views
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Feet));
         }
 
+        /// <summary>
+        /// Look up the Item to Display
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
         public StackLayout GetItemToDisplay(ItemLocationEnum location)
         {
             // Get the Item, if it exist show the info
             // If it does not exist, show a Plus Icon for the location
 
             // Defualt Image is the Plus
-            var ImageSource = "icon_add.png";
+            var ImageSource = "https://icons.iconarchive.com/icons/google/noto-emoji-smileys/1024/10024-thinking-face-icon.png";
 
             var data = ViewModel.Data.GetItemByLocation(location);
             if (data == null)
@@ -159,6 +166,11 @@ namespace Game.Views
             return ItemStack;
         }
 
+        /// <summary>
+        /// Show the Popup for the Item
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public bool ShowPopup(ItemLocationEnum data)
         {
             PopupLoadingView.IsVisible = true;

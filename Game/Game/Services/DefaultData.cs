@@ -48,7 +48,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Rain Coat",
                     Description = "Stay wet from raining in seattle",
-                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
+                    ImageURI = "https://i.pinimg.com/originals/e8/14/71/e8147125c3fd38997fbd76f93aff0b2e.png",
                     Range = 0,
                     Damage = 0,
                     Value = 3,
@@ -59,7 +59,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Seahawks Cap",
                     Description = "Go Hawks!!",
-                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
+                    ImageURI = "https://cdn.vox-cdn.com/thumbor/4882fHJ4x3jAK7DTAqhTuaqIpuc=/0x5:800x538/1200x800/filters:focal(0x5:800x538)/cdn.vox-cdn.com/assets/1204834/NFL_ONFIELD_12_59FIFTY_WING_SEASEA_3Q_0040.png",
                     Range = 0,
                     Damage = 0,
                     Value = 3,
@@ -70,7 +70,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Pandora",
                     Description = "$$$$$",
-                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
+                    ImageURI = "https://images.vexels.com/media/users/3/141116/isolated/preview/4c5328f93195f96dae8912280be9bc1f-ring-cartoon-by-vexels.png",
                     Range = 0,
                     Damage = 0,
                     Value = 1,
@@ -81,7 +81,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Unknown right",
                     Description = "5 dollars from Amazon",
-                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
+                    ImageURI = "https://pngimage.net/wp-content/uploads/2018/06/ring-cartoon-png-.png",
                     Range = 0,
                     Damage = 0,
                     Value = 1,
@@ -93,7 +93,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Nike!",
                     Description = "Impossible is nothing",
-                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
+                    ImageURI = "https://lh3.googleusercontent.com/proxy/41Y3uhLlswkFbVBvSiNI3-ig0ckGpQIPzihf-C71aSNPqDwaxqMXyY5UdC8V8JHfcGJUAKAHvBOUAOfLBIbUQs1DkCKfY86WDWQipZZsa4rlTMlONTJnd9iR3YeGi0VYkUT_rGGFHzMORNGoLqR7QL0Phroa-g",
                     Range = 0,
                     Damage = 0,
                     Value = 1,

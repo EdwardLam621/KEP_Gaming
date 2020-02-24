@@ -4,7 +4,9 @@ using Game.ViewModels;
 using System;
 using Game.Models;
 using System.Collections.ObjectModel;
-using Game.Helpers;
+using System.Linq;
+
+
 
 namespace Game.Views
 {
@@ -46,19 +48,19 @@ namespace Game.Views
         public void AddItemsToDisplay()
         {
 
-            // Get the List of Locations a Character can have
-            var LocationList = ItemLocationEnumHelper.GetListCharacter;
-
-            // Add Each item in the list
-            foreach (var location in LocationList)
+            var FlexList = ItemBox.Children.ToList();
+            foreach (var data in FlexList)
             {
-                var LocationString = ItemLocationEnumHelper.ConvertStringToEnum(location).ToMessage();
-                ItemBox.Children.Add(
-                    GetItemToDisplay(
-                        LocationString,
-                        ViewModel.Data.GetItemByLocation(
-                            ItemLocationEnumHelper.ConvertStringToEnum(location))));
+                ItemBox.Children.Remove(data);
             }
+
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Head));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Body));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.PrimaryHand));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.OffHand));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.RightFinger));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.LeftFinger));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Feet));
         }
 
 
@@ -116,11 +118,20 @@ namespace Game.Views
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public StackLayout GetItemToDisplay(string LocationString, ItemModel data)
+        public StackLayout GetItemToDisplay(ItemLocationEnum location)
         {
+            // Defualt Image is the Plus
+            var ImageSource = "https://icons.iconarchive.com/icons/google/noto-emoji-smileys/1024/10024-thinking-face-icon.png";
+            var ClickableButton = true;
+
+            var data = ViewModel.Data.GetItemByLocation(location);
             if (data == null)
             {
-                return new StackLayout();
+                // Show the Default Icon for the Location
+                data = new ItemModel { Location = location, ImageURI = ImageSource };
+
+                // Turn off click action
+                ClickableButton = false;
             }
 
             // Hookup the Image Button to show the Item picture
@@ -130,13 +141,16 @@ namespace Game.Views
                 Source = data.ImageURI
             };
 
-            // Add a event to the user can click the item and see more
-            ItemButton.Clicked += (sender, args) => ShowPopup(data);
+            if (ClickableButton)
+            {
+                // Add a event to the user can click the item and see more
+                ItemButton.Clicked += (sender, args) => ShowPopup(data);
+            }
 
             // Add the Display Text for the item
             var ItemLabel = new Label
             {
-                Text = LocationString,
+                Text = location.ToMessage(),
                 Style = (Style)Application.Current.Resources["ValueStyle"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center

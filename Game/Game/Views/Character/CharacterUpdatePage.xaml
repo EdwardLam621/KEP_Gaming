@@ -154,7 +154,7 @@
 
 
                     <FlexLayout 
-                            Padding="5"
+                            Padding="1"
                             Wrap="Wrap"
                             JustifyContent="SpaceAround"
                             AlignContent="SpaceAround"
