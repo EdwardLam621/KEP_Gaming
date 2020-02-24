@@ -213,12 +213,13 @@ namespace Game.Engine
             }
 
             Referee.BattleMessages.CurrentHealth = Target.CurrentHealth;
-            //Referee.BattleMessages.TurnMessageSpecial = Referee.BattleMessages.GetCurrentHealthMessage();
+            Referee.BattleMessages.TurnMessageSpecial = Referee.BattleMessages.GetCurrentHealthMessage();
 
             RemoveIfDead(Target);
 
             Referee.BattleMessages.TurnMessage = Attacker.Name + Referee.BattleMessages.AttackStatus 
                 + Target.Name + Referee.BattleMessages.TurnMessageSpecial;
+            
             Debug.WriteLine(Referee.BattleMessages.TurnMessage);
 
             return true;
