@@ -6,18 +6,27 @@ using System.Linq;
 
 namespace Game.Engine
 {
+    /// <summary>
+    /// Manages the rounds
+    /// </summary>
     public class RoundEngine
     {
+        // Maximum number of monsters to fight
         public const int MAX_NUM_MONSTERS = 6;
 
+        // Which round we are on
         public int roundCount = 1;
 
+        // List of monsters in this round
         public List<DungeonFighterModel> MonsterList;
 
+        // List of total players (monsters and characters) in this round
         public List<DungeonFighterModel> PlayerList;
 
+        // Player whose turn it is currently
         public DungeonFighterModel CurrentPlayer;
 
+        // The Referee object that handles scores/items/skills
         public Referee Referee;
 
         // Current Round State
@@ -32,6 +41,10 @@ namespace Game.Engine
 
         }
 
+        /// <summary>
+        /// Constructor that takes a Referee object
+        /// </summary>
+        /// <param name="referee"></param>
         public RoundEngine(Referee referee)
         {
             Referee = referee;
@@ -69,7 +82,7 @@ namespace Game.Engine
         /// <returns></returns>
         public RoundEnum StartRound(int round)
         {
-            
+            // Switch from Unknown to NextTurn
             RoundStateEnum = RoundEnum.NextTurn;
             
             // Populate round with monsters
@@ -85,16 +98,20 @@ namespace Game.Engine
             var nextPlayer = GetNextPlayerInList();
             while (RoundStateEnum.Equals(RoundEnum.NextTurn))
             {
+                // Fight still going
                 RoundStateEnum = RoundNextTurn();
             }
 
             if (RoundStateEnum.Equals(RoundEnum.GameOver))
             {
+                // Monsters won
                 return RoundEnum.GameOver;
             }
 
+
             if (RoundStateEnum.Equals(RoundEnum.NewRound))
             {
+                // Characters won, start a new round
                 return RoundEnum.NewRound;
             }
 
