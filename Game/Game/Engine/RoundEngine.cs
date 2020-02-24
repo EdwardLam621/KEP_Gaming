@@ -21,7 +21,11 @@ namespace Game.Engine
         public DungeonFighterModel CurrentPlayer;
 
         public Referee Referee;
-        
+
+        // Current Round State
+        public RoundEnum RoundStateEnum = RoundEnum.Unknown;
+
+
         /// <summary>
         /// Default empty constructor
         /// </summary>
@@ -33,7 +37,7 @@ namespace Game.Engine
         public RoundEngine(Referee referee)
         {
             Referee = referee;
-            // Referee.Score.RoundCount++  <-- to be implemented
+            Referee.BattleScore.RoundCount++; 
             StartRound();
         }
 
@@ -70,6 +74,46 @@ namespace Game.Engine
             //ClearLists();
 
             return true;
+        }
+
+        /// <summary>
+        /// Manage Next Turn
+        /// 
+        /// Decides Who's Turn
+        /// Remembers Current Player
+        /// 
+        /// Starts the Turn
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public RoundEnum RoundNextTurn()
+        {
+            // No characters, game is over...
+            if (CharacterList.Count < 1)
+            {
+                // Game Over
+                RoundEnum = RoundEnum.GameOver;
+                return RoundEnum;
+            }
+
+            // Check if round is over
+            if (MonsterList.Count < 1)
+            {
+                // If over, New Round
+                RoundStateEnum = RoundEnum.NewRound;
+                return RoundEnum.NewRound;
+            }
+
+            // Decide Who gets next turn
+            // Remember who just went...
+            PlayerCurrent = GetNextPlayerTurn();
+
+            // Do the turn....
+            TakeTurn(PlayerCurrent);
+
+            RoundStateEnum = RoundEnum.NextTurn;
+
+            return RoundStateEnum;
         }
 
         /// <summary>
