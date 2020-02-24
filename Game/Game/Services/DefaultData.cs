@@ -26,6 +26,16 @@ namespace Game.Services
                     Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
+                    Name = "Doctor Prescription",
+                    Description = "More convincing than Doctor Letter",
+                    ImageURI = "http://clipart-library.com/img/1244579.png",
+                    Range = 0,
+                    Damage = 9,
+                    Value = 9,
+                    Location = ItemLocationEnum.PrimaryHand,
+                    Attribute = AttributeEnum.Defense},
+
+                new ItemModel {
                     Name = "Calculator",
                     Description = "something used for making mathematical calculations",
                     ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
