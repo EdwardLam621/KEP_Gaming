@@ -8,9 +8,9 @@ namespace Game.Engine
 {
     public class RoundEngine
     {
-        public int Round { get; set; } = 1;
-
         public const int MAX_NUM_MONSTERS = 6;
+
+        public int roundCount = 1;
 
         public List<DungeonFighterModel> HeroList;
 
@@ -37,11 +37,14 @@ namespace Game.Engine
         public RoundEngine(Referee referee)
         {
             Referee = referee;
-            Referee.BattleScore.RoundCount++; 
-            StartRound();
+            Referee.BattleScore.RoundCount++;
+            
         }
 
-        public bool StartRound()
+        
+
+        
+        public bool StartRound(int round)
         {
             RoundStateEnum = RoundEnum.NextTurn;
             GetNewMonsters();
@@ -59,8 +62,18 @@ namespace Game.Engine
                 RoundStateEnum = RoundNextTurn();
             }
 
+            if (RoundStateEnum.Equals(RoundEnum.GameOver))
+            {
+                // Game over screen
+            }
+
+            if (RoundStateEnum.Equals(RoundEnum.NewRound))
+            {
+                roundCount++;
+            }
 
             return true;
+
         }
 
         /// <summary>
