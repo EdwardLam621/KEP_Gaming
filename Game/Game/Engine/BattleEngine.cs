@@ -10,16 +10,26 @@ namespace Game.Engine
     /// </summary>
     public class BattleEngine 
     {
-
+        // The referee object that keeps track of the fight
         public Referee Referee;
 
+        // The round engine that will manage the different rounds
         public RoundEngine RoundEngine;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public BattleEngine()
         {
 
         }
 
+        
+        /// <summary>
+        /// Constructor that takes the party of characters and converts them to fighters
+        /// Also initializes the Referee and RoundEngine
+        /// </summary>
+        /// <param name="party"></param>
         public BattleEngine(List<CharacterModel> party)
         {
             var dungeonFighterModels = new List<DungeonFighterModel>();
@@ -35,6 +45,9 @@ namespace Game.Engine
 
         }
 
+        /// <summary>
+        /// Start the round(s)!
+        /// </summary>
         public void startBattle()
         {
             RoundEngine.Begin();
