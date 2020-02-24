@@ -41,6 +41,10 @@ namespace Game.Engine
             
         }
 
+        /// <summary>
+        /// Begin starts round 1, and takes care of looping through rounds
+        /// </summary>
+        /// <returns></returns>
         public bool Begin()
         {
             // Round fight loop
@@ -54,17 +58,29 @@ namespace Game.Engine
             if (fight.Equals(RoundEnum.GameOver))
             {
                 // display game over screen
+                return true;
             }
 
-            return true;
+            return false;
         }
 
-        
+        /// <summary>
+        /// Start a new round
+        /// </summary>
+        /// <param name="round"></param>
+        /// <returns></returns>
         public RoundEnum StartRound(int round)
         {
+            
             RoundStateEnum = RoundEnum.NextTurn;
+            
+            // Populate round with monsters
             GetNewMonsters();
+
+            // Make a list of characters+monsters for turn order
             MakeList();
+
+            // Order fight as per game rules
             OrderFight();
 
             // Turn fight loop, go until monsters or characters are dead
@@ -162,6 +178,22 @@ namespace Game.Engine
                 // unimplemented
                 // need to scale monsters to appropriate level based on round
             }
+            
+            // FOR DEBUG
+            MonsterList.Add(new DungeonFighterModel(new MonsterModel
+            {
+                Name = "The Coronavirus",
+                MaxHealth = 20,
+                Level = 1,
+                Description = "Human disaster",
+                ImageURI = "https://pngimg.com/uploads/coronavirus/coronavirus_PNG33.png",
+                DefenseAttribute = 1,
+                OffenseAttribute = 10,
+                SpeedAttribute = 15,
+                Skill = CreatureSkillEnum.Boss,
+                DropItems = new List<ItemModel>(), 
+            }));
+            
 
         }
 
