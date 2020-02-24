@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Game.Models;
 
-namespace Game.Engine
+namespace Game.Models
 {
     /// <summary>
     /// Referee holds the ScoreModel, relays battle messages, 
     /// keeps track of the ItemModel pool, and follows the
     /// players *everywhere*
     /// </summary>
-    public class Referee
+    public class RefereeModel
     {
         // List of characters in the fight
         public List<DungeonFighterModel> Characters;
@@ -32,7 +31,7 @@ namespace Game.Engine
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Referee()
+        public RefereeModel()
         {
 
         }
@@ -41,7 +40,7 @@ namespace Game.Engine
         /// Constructor taking a list of characters
         /// </summary>
         /// <param name="characters"></param>
-        public Referee(List<DungeonFighterModel> characters)
+        public RefereeModel(List<DungeonFighterModel> characters)
         {
             Characters = characters;
         }

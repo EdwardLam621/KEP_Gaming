@@ -11,7 +11,7 @@ namespace Game.Engine
     public class BattleEngine 
     {
         // The referee object that keeps track of the fight
-        public Referee Referee;
+        public RefereeModel Referee;
 
         // The round engine that will manage the different rounds
         public RoundEngine RoundEngine;
@@ -42,7 +42,7 @@ namespace Game.Engine
                 dungeonFighterModels.Add(new DungeonFighterModel(character));
             }
             
-            Referee = new Referee(dungeonFighterModels);
+            Referee = new RefereeModel(dungeonFighterModels);
 
             RoundEngine = new RoundEngine(Referee);
 

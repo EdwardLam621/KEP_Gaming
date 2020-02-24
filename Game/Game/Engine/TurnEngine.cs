@@ -20,7 +20,7 @@ namespace Game.Engine
         public DungeonFighterModel Defender;
         
         // Referee object to help manage the turn
-        public Referee Referee;
+        public RefereeModel Referee;
 
         /// <summary>
         /// Default constructor
@@ -35,7 +35,7 @@ namespace Game.Engine
         /// </summary>
         /// <param name="attacker"></param>
         /// <param name="referee"></param>
-        public TurnEngine(DungeonFighterModel attacker, Referee referee)
+        public TurnEngine(DungeonFighterModel attacker, RefereeModel referee)
         {
             Attacker = attacker;
             Referee = referee;

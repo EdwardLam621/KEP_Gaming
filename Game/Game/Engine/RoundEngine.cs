@@ -27,7 +27,7 @@ namespace Game.Engine
         public DungeonFighterModel CurrentPlayer;
 
         // The Referee object that handles scores/items/skills
-        public Referee Referee;
+        public RefereeModel Referee;
 
         // Current Round State
         public RoundEnum RoundStateEnum = RoundEnum.Unknown;
@@ -45,7 +45,7 @@ namespace Game.Engine
         /// Constructor that takes a Referee object
         /// </summary>
         /// <param name="referee"></param>
-        public RoundEngine(Referee referee)
+        public RoundEngine(RefereeModel referee)
         {
             Referee = referee;
             Referee.BattleScore.RoundCount++;
