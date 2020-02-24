@@ -16,6 +16,9 @@ namespace Game.Engine
         // The round engine that will manage the different rounds
         public RoundEngine RoundEngine;
 
+        // Whether Autobattle is enabled
+        public bool AutoBattleEnabled = false;
+
         /// <summary>
         /// Default constructor
         /// </summary>
