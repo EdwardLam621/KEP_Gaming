@@ -1,9 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 using Game.ViewModels;
 using Game.Models;
 using Game.Helpers;
+using System.Linq;
 
 namespace Game.Views
 {
@@ -11,6 +13,9 @@ namespace Game.Views
     {
         // View Model for Item
         readonly GenericViewModel<CharacterModel> ViewModel;
+
+        // as a reference to find location
+        public ItemLocationEnum PopupLocationEnum = ItemLocationEnum.Unknown;
 
         /// <summary>
         /// Constructor that takes and existing data item
@@ -91,26 +96,33 @@ namespace Game.Views
         public void AddItemsToDisplay()
         {
 
-            // Get the List of Locations a Character can have
-            var LocationList = ItemLocationEnumHelper.GetListCharacter;
-
-            // Add Each item in the list
-            foreach (var location in LocationList)
+            var FlexList = ItemBox.Children.ToList();
+            foreach (var data in FlexList)
             {
-                var LocationString = ItemLocationEnumHelper.ConvertStringToEnum(location).ToMessage();
-                ItemBox.Children.Add(
-                    GetItemToDisplay(
-                        LocationString,
-                        ViewModel.Data.GetItemByLocation(
-                            ItemLocationEnumHelper.ConvertStringToEnum(location))));
+                ItemBox.Children.Remove(data);
             }
+
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Head));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Body));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.PrimaryHand));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.OffHand));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.RightFinger));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.LeftFinger));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Feet));
         }
 
-        public StackLayout GetItemToDisplay(string LocationString, ItemModel data)
+        public StackLayout GetItemToDisplay(ItemLocationEnum location)
         {
+            // Get the Item, if it exist show the info
+            // If it does not exist, show a Plus Icon for the location
+
+            // Defualt Image is the Plus
+            var ImageSource = "icon_add.png";
+
+            var data = ViewModel.Data.GetItemByLocation(location);
             if (data == null)
             {
-                return new StackLayout();
+                data = new ItemModel { Location = location, ImageURI = ImageSource };
             }
 
             // Hookup the Image Button to show the Item picture
@@ -121,12 +133,12 @@ namespace Game.Views
             };
 
             // Add a event to the user can click the item and see more
-            ItemButton.Clicked += (sender, args) => ShowPopup(data);
+            ItemButton.Clicked += (sender, args) => ShowPopup(data.Location);
 
             // Add the Display Text for the item
             var ItemLabel = new Label
             {
-                Text = LocationString,
+                Text = location.ToMessage(),
                 Style = (Style)Application.Current.Resources["ValueStyle"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center
@@ -147,16 +159,16 @@ namespace Game.Views
             return ItemStack;
         }
 
-        public bool ShowPopup(ItemModel data)
+        public bool ShowPopup(ItemLocationEnum data)
         {
             PopupLoadingView.IsVisible = true;
-            PopupItemImage.Source = data.ImageURI;
 
-            PopupItemName.Text = data.Name;
-            PopupItemDescription.Text = data.Description;
-            PopupItemLocation.Text = data.Location.ToMessage();
-            PopupItemAttribute.Text = data.Attribute.ToMessage();
-            PopupItemValue.Text = " + " + data.Value.ToString();
+            PopupLocationLabel.Text = "Avaliable Items for: " + data.ToMessage();
+            PopupLocationValue.Text = data.ToMessage();
+
+            PopupLocationItemListView.ItemsSource = ItemIndexViewModel.Instance.GetLocationItems(data);
+
+            PopupLocationEnum = data;
 
 
             return true;
@@ -171,7 +183,35 @@ namespace Game.Views
         /// <param name="e"></param>
         public void ClosePopup_Clicked(object sender, EventArgs e)
         {
+            ClosePopup();
+        }
+
+        /// <summary>
+        /// Close the popup
+        /// </summary>
+        private void ClosePopup()
+        {
             PopupLoadingView.IsVisible = false;
+        }
+
+        /// <summary>
+        /// The row selected from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void OnPopupItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            ItemModel data = args.SelectedItem as ItemModel;
+            if (data == null)
+            {
+                return;
+            }
+
+            ViewModel.Data.AddItem(PopupLocationEnum, data.Id);
+
+            AddItemsToDisplay();
+
+            ClosePopup();
         }
     }
 }
