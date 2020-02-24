@@ -31,9 +31,8 @@ namespace Game.Engine
         /// Also initializes the Referee and RoundEngine
         /// </summary>
         /// <param name="party"></param>
-        public BattleEngine(List<CharacterModel> party, bool autoBattleEnabled)
+        public BattleEngine(List<CharacterModel> party, bool autoBattleEnabled = false)
         {
-            AutoBattleEnabled = autoBattleEnabled;
             
             var dungeonFighterModels = new List<DungeonFighterModel>();
             
@@ -43,6 +42,7 @@ namespace Game.Engine
             }
             
             Referee = new RefereeModel(dungeonFighterModels);
+            Referee.AutoBattleEnabled = autoBattleEnabled;
 
             RoundEngine = new RoundEngine(Referee);
 
