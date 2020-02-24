@@ -16,8 +16,6 @@ namespace Game.Engine
         // The round engine that will manage the different rounds
         public RoundEngine RoundEngine;
 
-        // Whether Autobattle is enabled
-        public bool AutoBattleEnabled = false;
 
         /// <summary>
         /// Default constructor
@@ -33,8 +31,10 @@ namespace Game.Engine
         /// Also initializes the Referee and RoundEngine
         /// </summary>
         /// <param name="party"></param>
-        public BattleEngine(List<CharacterModel> party)
+        public BattleEngine(List<CharacterModel> party, bool autoBattleEnabled)
         {
+            AutoBattleEnabled = autoBattleEnabled;
+            
             var dungeonFighterModels = new List<DungeonFighterModel>();
             
             foreach (CharacterModel character in party)

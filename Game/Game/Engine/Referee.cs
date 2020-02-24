@@ -27,6 +27,8 @@ namespace Game.Engine
         // Hold the Battle Messages as they happen
         public BattleMessagesModel BattleMessages = new BattleMessagesModel();
 
+        public bool AutoBattleEnabled { get; set; } = false;
+
         /// <summary>
         /// Default constructor
         /// </summary>
