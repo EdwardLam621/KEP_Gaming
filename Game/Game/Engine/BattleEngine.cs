@@ -37,7 +37,7 @@ namespace Game.Engine
 
         public void startBattle()
         {
-            RoundEngine.StartRound();
+            RoundEngine.Begin();
             //referee.getScores <- to be implemented
         }
     }
