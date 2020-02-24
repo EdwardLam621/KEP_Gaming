@@ -36,5 +36,15 @@ namespace Game.Models
         // The Remaining Health Mesage
         public int CurrentHealth = 0;
 
+
+        /// <summary>
+        /// Remaining Health Message
+        /// </summary>
+        /// <returns></returns>
+        public string GetCurrentHealthMessage()
+        {
+            return " remaining health is " + CurrentHealth.ToString();
+        }
+
     }
 }
