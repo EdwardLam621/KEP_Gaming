@@ -14,7 +14,7 @@ namespace Game.Services
         Task<bool> UpdateAsync(T Data);
         Task<bool> DeleteAsync(string id);
         Task<List<T>> IndexAsync();
-
+        Task<bool> GetNeedsInitializationAsync();
         Task<bool> WipeDataListAsync();
     }
 }
