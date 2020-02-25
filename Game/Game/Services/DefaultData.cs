@@ -238,8 +238,9 @@ namespace Game.Services
         /// <returns></returns>
         public static List<MonsterModel> LoadData(MonsterModel temp)
         {
+            List<string> test = new List<string>();
+            test.Add(ItemIndexViewModel.Instance.Dataset.FirstOrDefault().Id);
 
-  
 
             var datalist = new List<MonsterModel>()
             {
@@ -254,6 +255,7 @@ namespace Game.Services
                 OffenseAttribute = 10,
                 SpeedAttribute = 15,
                 Skill = CreatureSkillEnum.Boss,
+                DropItems = test,
                 },
 
                 new MonsterModel

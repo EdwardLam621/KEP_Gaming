@@ -7,7 +7,7 @@ namespace Game.Models
     public class MonsterModel : CreatureModel<MonsterModel>
     {
         //list of a drop items of a monster
-        public List<string> DropItems;
+        public List<string> DropItems = new List<string>();
 
         //constructor of Monster Model class
         public MonsterModel()
@@ -35,6 +35,7 @@ namespace Game.Models
             DefenseAttribute = newData.DefenseAttribute;
             ImageURI = newData.ImageURI;
             Skill = newData.Skill;
+            DropItems = newData.DropItems;
         }
     }
 }
