@@ -15,7 +15,7 @@ namespace Game.Models
         /// <summary>
         /// For mobs, the list of items that are able to be dropped
         /// </summary>
-        private List<ItemModel> DropItems;
+        private List<string> DropItems;
         
         /// <summary>
         /// Whether the Player is alive or dead

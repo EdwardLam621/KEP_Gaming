@@ -17,7 +17,7 @@ namespace Game.Views
         readonly GenericViewModel<MonsterModel> ViewModel;
 
         //drop item list of monsters
-        ObservableCollection<ItemModel> dropItems = new ObservableCollection<ItemModel>();
+        ObservableCollection<string> dropItems = new ObservableCollection<string>();
      
         /// <summary>
         /// Constructor called with a view model
@@ -31,13 +31,16 @@ namespace Game.Views
 
             BindingContext = this.ViewModel = data;
 
-            DropItemListView.ItemsSource = dropItems;
+            //DropItemListView.ItemsSource = dropItems;
 
-            foreach (ItemModel item in data.Data.DropItems)
-            {
-                dropItems.Add(item);  
-            }
-            
+            //if (data.Data.DropItems != null)
+            //{
+            //    foreach (string item in data.Data.DropItems)
+            //    {
+
+            //        dropItems.Add(item);
+            //    }
+            //}
         }
 
         /// <summary>

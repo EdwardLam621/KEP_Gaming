@@ -239,28 +239,7 @@ namespace Game.Services
         public static List<MonsterModel> LoadData(MonsterModel temp)
         {
 
-            var dropItems = new List<ItemModel>()
-            {
-                new ItemModel {
-                    Name = "Doctor Letter",
-                    Description = "a file used to write a note on a given patient to prove that they were indeed sick",
-                    ImageURI = "https://iconbug.com/data/6b/512/27307b4de000a17aac101e8bbbb48a6d.png",
-                    Range = 0,
-                    Damage = 9,
-                    Value = 9,
-                    Location = ItemLocationEnum.PrimaryHand,
-                    Attribute = AttributeEnum.Defense},
-
-                new ItemModel {
-                    Name = "Calculator",
-                    Description = "something used for making mathematical calculations",
-                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
-                    Range = 0,
-                    Damage = 0,
-                    Value = 9,
-                    Location = ItemLocationEnum.OffHand,
-                    Attribute = AttributeEnum.Defense}
-            };
+  
 
             var datalist = new List<MonsterModel>()
             {
@@ -275,7 +254,6 @@ namespace Game.Services
                 OffenseAttribute = 10,
                 SpeedAttribute = 15,
                 Skill = CreatureSkillEnum.Boss,
-                DropItems = dropItems
                 },
 
                 new MonsterModel
@@ -289,7 +267,6 @@ namespace Game.Services
                 OffenseAttribute = 4,
                 SpeedAttribute = 10,
                 Skill = CreatureSkillEnum.PersonalIssue,
-                DropItems = dropItems
                 },
 
                 new MonsterModel
@@ -303,7 +280,6 @@ namespace Game.Services
                 OffenseAttribute = 3,
                 SpeedAttribute = 6,
                 Skill = CreatureSkillEnum.PersonalIssue,
-                DropItems = dropItems
                 }
 
             };
