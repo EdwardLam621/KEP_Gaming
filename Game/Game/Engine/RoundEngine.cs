@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Game.Models;
 using System.Linq;
+using System.Diagnostics;
 
 namespace Game.Engine
 {
@@ -28,9 +29,6 @@ namespace Game.Engine
 
         // The Referee object that handles scores/items/skills
         public RefereeModel Referee;
-
-        // Current Round State
-        public RoundEnum RoundStateEnum = RoundEnum.Unknown;
 
 
         /// <summary>
@@ -65,7 +63,7 @@ namespace Game.Engine
         public RoundEnum StartRound()
         {
             // Switch from Unknown to NextTurn
-            RoundStateEnum = RoundEnum.NextTurn;
+            var roundResult = RoundEnum.NextTurn;
             
             // Populate round with monsters
             GetNewMonsters();
@@ -79,23 +77,25 @@ namespace Game.Engine
             OrderFight();
 
             // Turn fight loop, go until monsters or characters are dead
-            var nextPlayer = GetNextPlayerInList();
-            while (RoundStateEnum.Equals(RoundEnum.NextTurn))
+            
+            while (roundResult.Equals(RoundEnum.NextTurn))
             {
                 // Fight still going
-                RoundStateEnum = RoundNextTurn();
+                roundResult = RoundNextTurn();
             }
 
-            if (RoundStateEnum.Equals(RoundEnum.GameOver))
+            if (roundResult.Equals(RoundEnum.GameOver))
             {
                 // Monsters won
                 return RoundEnum.GameOver;
             }
 
 
-            if (RoundStateEnum.Equals(RoundEnum.NewRound))
+            if (roundResult.Equals(RoundEnum.NewRound))
             {
                 // Characters won, start a new round
+                RoundCount++;
+                Debug.Write("Starting round " + RoundCount);
                 return RoundEnum.NewRound;
             }
 
@@ -134,33 +134,31 @@ namespace Game.Engine
         /// <returns></returns>
         public RoundEnum RoundNextTurn()
         {
+            RoundEnum roundResult = RoundEnum.NextTurn;
+
+            // Decide Who gets next turn
+            // Remember who just went...
+            CurrentPlayer = GetNextPlayerInList();
+
+            // Do the turn....
+            var turn = new TurnEngine(CurrentPlayer, Referee);
+            turn.TakeTurn();
+
             // No characters, game is over...
             if (Referee.Characters.Count < 1)
             {
                 // Game Over
-                RoundStateEnum = RoundEnum.GameOver;
-                return RoundStateEnum;
+                return RoundEnum.GameOver;
             }
 
             // Check if round is over
             if (MonsterList.Count < 1)
             {
                 // If over, New Round
-                RoundStateEnum = RoundEnum.NewRound;
                 return RoundEnum.NewRound;
             }
 
-            // Decide Who gets next turn
-            // Remember who just went...
-            var playerCurrent = GetNextPlayerInList();
-
-            // Do the turn....
-            var turn = new TurnEngine(playerCurrent, Referee);
-            turn.TakeTurn();
-
-            RoundStateEnum = RoundEnum.NextTurn;
-
-            return RoundStateEnum;
+            return roundResult;
         }
 
         /// <summary>
@@ -184,7 +182,7 @@ namespace Game.Engine
             {
                 Name = "The Coronavirus",
                 MaxHealth = 5,
-                CurrentHealth = 5,
+                CurrentHealth = 1,
                 Level = 1,
                 Description = "Human disaster",
                 ImageURI = "https://pngimg.com/uploads/coronavirus/coronavirus_PNG33.png",
