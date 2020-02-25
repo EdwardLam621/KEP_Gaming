@@ -48,6 +48,8 @@ namespace Game.Engine
         public RoundEngine(RefereeModel referee)
         {
             Referee = referee;
+            
+            // Bump the round score
             Referee.BattleScore.RoundCount++;
             PlayerList = new List<DungeonFighterModel>();
             MonsterList = new List<DungeonFighterModel>();
@@ -134,7 +136,7 @@ namespace Game.Engine
                 //PickupItemsFromPool(character);
             }
 
-            // Reset Item Lists
+            // Reset Monster and Item Lists
             Referee.Monsters.Clear();
             Referee.ItemPool.Clear();
             return true;
