@@ -275,6 +275,8 @@ namespace Game.Engine
                 case CreatureEnum.Character:
                     Referee.Characters.Remove(Target);
 
+                    Referee.BattleScore.MonsterSlainNumber++;
+
                     // Add the MonsterModel to the killed list
                     Referee.BattleScore.CharacterAtDeathList += Target.FormatOutput() + "\n";
 
