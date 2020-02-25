@@ -36,6 +36,11 @@ namespace Game.Models
         // The Remaining Health Mesage
         public int CurrentHealth = 0;
 
+        public string GetPreamble()
+        {
+            return AttackerName + " a " + PlayerType + ", prepares to attack " + TargetName + "!";
+        }
+
 
         /// <summary>
         /// Remaining Health Message
