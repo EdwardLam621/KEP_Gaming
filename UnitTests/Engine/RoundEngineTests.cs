@@ -2,6 +2,7 @@
 
 using Game.Engine;
 using Game.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using Game.ViewModels;
@@ -18,7 +19,9 @@ namespace UnitTests.Engine
         public void Setup()
         {
             Referee = new RefereeModel();
-            Engine = new RoundEngine(Referee);
+            Referee.Monsters = new List<DungeonFighterModel>();
+            Referee.Characters = new List<DungeonFighterModel>();
+            Engine = new RoundEngine(Referee, 9);
         }
 
         [TearDown]
@@ -38,7 +41,98 @@ namespace UnitTests.Engine
 
             // Assert
             Assert.IsNotNull(result.MonsterList);
-            Assert.IsNotNull(result.FighterList);
+            Assert.IsNotNull(result.PlayerList);
+            Assert.AreEqual(result.RoundCount, 9);
+
+        }
+
+        [Test]
+        public void RoundEngine_EndRound_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var engine = Engine;
+            bool result = engine.EndRound();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(engine.MonsterList.Count, 0);
+            Assert.AreEqual(engine.PlayerList.Count, 0);
+            Assert.AreEqual(result, true);
+        }
+
+        [Test]
+        public void RoundEngine_RoundNextTurn_Should_Return_GameOver()
+        {
+            // Arrange
+
+            // Act
+            var engine = Engine;
+            RoundEnum result = engine.RoundNextTurn();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(result, RoundEnum.GameOver);
+        }
+
+        [Test]
+        public void RoundEngine_RoundNextTurn_Should_Return_NewRound()
+        {
+            // Arrange
+
+            // Act
+            var engine = Engine;
+            engine.Referee.Characters.Add(new DungeonFighterModel());
+            RoundEnum result = engine.RoundNextTurn();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(result, RoundEnum.NewRound);
+        }
+
+        [Test]
+        public void RoundEngine_RoundNextTurn_Should_Return_NextTurn()
+        {
+            // Arrange
+
+            // Act
+            var engine = Engine;
+            engine.Referee.Characters.Add(new DungeonFighterModel());
+            engine.MonsterList.Add(new DungeonFighterModel());
+            engine.PlayerList.Add(new DungeonFighterModel());
+            RoundEnum result = engine.RoundNextTurn();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(result, RoundEnum.NextTurn);
+        }
+
+        [Test]
+        public void RoundEngine_OrderFight_Sort_By_Level_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var engine = Engine;
+            DungeonFighterModel player1 = new DungeonFighterModel();
+            player1.SpeedAttribute = 10;
+            DungeonFighterModel player2 = new DungeonFighterModel();
+            player2.SpeedAttribute = 5;
+            engine.PlayerList.Add(player2);
+            engine.PlayerList.Add(player1);
+            engine.OrderFight();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(engine.PlayerList[0], player1);
+            Assert.AreEqual(engine.PlayerList[1], player2);
         }
     }
+
 }

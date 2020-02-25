@@ -78,7 +78,7 @@ namespace Game.Views
             //if null, add a null item
             if (ViewModel.Data.DropItems.Count == 0)
             {
-                ItemBox.Children.Add(GetItemToDisplay(ViewModel.Data.DropItems.ElementAt(0)));
+                ItemBox.Children.Add(GetItemToDisplay(ViewModel.Data.DropItems.ElementAtOrDefault(0)));
             }
 
 

@@ -7,13 +7,14 @@ namespace Game.Models
     public class MonsterModel : CreatureModel<MonsterModel>
     {
         //list of a drop items of a monster
-        public List<string> DropItems = new List<string>();
+        public List<string> DropItems;
 
         //constructor of Monster Model class
         public MonsterModel()
         {
             this.Name = "this is Name";
             this.Description = "this is Monster Description";
+            DropItems = new List<string>();
         }
 
         //method to update a monster
