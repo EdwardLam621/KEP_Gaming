@@ -81,9 +81,10 @@ namespace Game.Engine
             if (fightResult.Equals(RoundEnum.GameOver))
             {
                 // display game over screen with statistics
-                Debug.Write("GAME OVER\n");
-                Debug.Write("Total turns taken: " + Referee.BattleScore.TurnCount + "\n");
-                Debug.Write("Highest round: " + RoundCount + "\n");
+                Debug.WriteLine("GAME OVER");
+                Debug.WriteLine("Total turns taken: " + Referee.BattleScore.TurnCount);
+                Debug.WriteLine("Monster's killed: " + Referee.BattleScore.MonsterSlainNumber);
+                Debug.WriteLine("Highest round: " + RoundCount);
 
                 return true;
             }
