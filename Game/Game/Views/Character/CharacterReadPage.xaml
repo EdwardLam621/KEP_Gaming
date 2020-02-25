@@ -86,56 +86,51 @@
                     Text="Attributes: " 
                     Style="{StaticResource LabelStyle}"/>
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                        <StackLayout Grid.Row="0" Grid.Column="0">
-                            <Label
+                    <StackLayout Grid.Row="0" Grid.Column="0">
+                        <Label
                             FontSize="Medium"
                             HorizontalOptions="CenterAndExpand"
                             Text="{Binding Data.SpeedAttribute}" 
                             Style="{StaticResource ValueStyle}"/>
 
-                            <Image Source="speed.png"/>
-                        </StackLayout>
+                        <Image Source="speed.png"/>
+                    </StackLayout>
 
-                        <StackLayout Grid.Row="0" Grid.Column="1">
-                            <Label
+                    <StackLayout Grid.Row="0" Grid.Column="1">
+                        <Label
                             FontSize="Medium"
                             HorizontalOptions="CenterAndExpand"
                             Text="{Binding Data.OffenseAttribute}" 
                             Style="{StaticResource ValueStyle}"/>
 
-                            <Image Source="offense.png"/>
-                        </StackLayout>
+                        <Image Source="offense.png"
+                               Style="{StaticResource ImageSmallStyle}" />
+                    </StackLayout>
 
-                        <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Label
+                    <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label
                             FontSize="Medium"
                             HorizontalOptions="CenterAndExpand"
                             Text="{Binding Data.DefenseAttribute}" 
                             Style="{StaticResource ValueStyle}"/>
 
-                            <Image Source="defense.png"/>
-                        </StackLayout>
+                        <Image Source="defense.png"/>
+                    </StackLayout>
 
 
-                    </Grid>
-
-                    <Label 
-                    Text=""
-                    Style="{StaticResource LabelStyle}"/>
-
-
-                    <Label 
+                </Grid>
+                <Label 
                     Text="Equipments: " 
                     Style="{StaticResource LabelStyle}"/>
 
