@@ -4,6 +4,7 @@ using Game.ViewModels;
 using Game.Models;
 using System.Linq;
 using System.Collections.Generic;
+using Game.Helpers;
 
 namespace Game.Views
 {
@@ -220,6 +221,19 @@ namespace Game.Views
         void Defense_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             DefenseValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+        /// <summary>
+        /// Catch the change to the Stepper for Level
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void Level_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            var level = e.NewValue;
+            LevelValue.Text = level.ToString();
+            ViewModel.Data.MaxHealth = DiceHelper.RollDice((int)level, 10);
+            HealthValue.Text = string.Format(" : {0:G}", ViewModel.Data.MaxHealth);
         }
 
 
