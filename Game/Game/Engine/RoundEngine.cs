@@ -50,7 +50,7 @@ namespace Game.Engine
             Referee = referee;
             RoundCount = roundCount;
             
-            FighterList = referee.Characters;
+            FighterList = new List<DungeonFighterModel>();
             MonsterList = new List<DungeonFighterModel>();
 
         }
@@ -69,6 +69,8 @@ namespace Game.Engine
             
             // Populate round with monsters
             GetNewMonsters();
+            Referee.Monsters = MonsterList;
+
 
             // Make a list of characters+monsters for turn order
             MakeList();
