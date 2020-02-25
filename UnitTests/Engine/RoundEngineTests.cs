@@ -77,6 +77,22 @@ namespace UnitTests.Engine
             // Assert
             Assert.AreEqual(result, RoundEnum.GameOver);
         }
+
+        [Test]
+        public void RoundEngine_RoundNextTurn_Should_Return_NewRound()
+        {
+            // Arrange
+
+            // Act
+            var engine = Engine;
+            Referee.Characters.Add(new DungeonFighterModel());
+            RoundEnum result = engine.RoundNextTurn();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(result, RoundEnum.NewRound);
+        }
     }
 
 }
