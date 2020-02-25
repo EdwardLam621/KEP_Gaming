@@ -62,5 +62,21 @@ namespace UnitTests.Engine
             Assert.AreEqual(engine.PlayerList.Count, 0);
             Assert.AreEqual(result, true);
         }
+
+        [Test]
+        public void RoundEngine_RoundNextTurn_Should_Return_GameOver()
+        {
+            // Arrange
+
+            // Act
+            var engine = Engine;
+            RoundEnum result = engine.RoundNextTurn();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(result, RoundEnum.GameOver);
+        }
     }
+
 }
