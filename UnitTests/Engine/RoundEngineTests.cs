@@ -41,7 +41,7 @@ namespace UnitTests.Engine
 
             // Assert
             Assert.IsNotNull(result.MonsterList);
-            Assert.IsNotNull(result.PlayerList);
+            Assert.IsNotNull(result.FighterList);
             Assert.AreEqual(result.RoundCount, 9);
 
         }
@@ -59,7 +59,7 @@ namespace UnitTests.Engine
 
             // Assert
             Assert.AreEqual(engine.MonsterList.Count, 0);
-            Assert.AreEqual(engine.PlayerList.Count, 0);
+            Assert.AreEqual(engine.FighterList.Count, 0);
             Assert.AreEqual(result, true);
         }
 
@@ -103,7 +103,7 @@ namespace UnitTests.Engine
             var engine = Engine;
             engine.Referee.Characters.Add(new DungeonFighterModel());
             engine.MonsterList.Add(new DungeonFighterModel());
-            engine.PlayerList.Add(new DungeonFighterModel());
+            engine.FighterList.Add(new DungeonFighterModel());
             RoundEnum result = engine.RoundNextTurn();
 
             // Reset
@@ -123,15 +123,15 @@ namespace UnitTests.Engine
             player1.SpeedAttribute = 10;
             DungeonFighterModel player2 = new DungeonFighterModel();
             player2.SpeedAttribute = 5;
-            engine.PlayerList.Add(player2);
-            engine.PlayerList.Add(player1);
+            engine.FighterList.Add(player2);
+            engine.FighterList.Add(player1);
             engine.OrderFight();
 
             // Reset
 
             // Assert
-            Assert.AreEqual(engine.PlayerList[0], player1);
-            Assert.AreEqual(engine.PlayerList[1], player2);
+            Assert.AreEqual(engine.FighterList[0], player1);
+            Assert.AreEqual(engine.FighterList[1], player2);
         }
     }
 
