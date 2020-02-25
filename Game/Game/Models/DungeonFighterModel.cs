@@ -29,11 +29,6 @@ namespace Game.Models
 
         public CreatureEnum PlayerType { get; set; } = CreatureEnum.Unknown;
 
-        /// <summary>
-        /// Current health of the character
-        /// </summary>
-        public int CurrentHealth { get; set; } = 0;
-        
 
         /// <summary>
         /// Empty constructor
