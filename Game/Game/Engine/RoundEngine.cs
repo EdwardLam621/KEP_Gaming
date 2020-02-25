@@ -190,7 +190,7 @@ namespace Game.Engine
                 OffenseAttribute = 1,
                 SpeedAttribute = 1,
                 Skill = CreatureSkillEnum.Boss,
-                DropItems = new List<string>(), 
+                DropItems = new List<ItemModel>(), 
             }));
         }
 
