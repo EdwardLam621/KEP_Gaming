@@ -69,8 +69,18 @@ namespace Game.Views
                 ItemBox.Children.Remove(data);
             }
 
+            //if not null, read all items
+            for(int i = 0; i < ViewModel.Data.DropItems.Count; i++)
+            {
+                ItemBox.Children.Add(GetItemToDisplay(ViewModel.Data.DropItems.ElementAt(i)));
+            }
 
-            ItemBox.Children.Add(GetItemToDisplay(ViewModel.Data.DropItems.ElementAtOrDefault(0)));
+            //if null, add a null item
+            if (ViewModel.Data.DropItems.Count == 0)
+            {
+                ItemBox.Children.Add(GetItemToDisplay(ViewModel.Data.DropItems.ElementAt(0)));
+            }
+
 
         }
 
