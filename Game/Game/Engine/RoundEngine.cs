@@ -203,16 +203,17 @@ namespace Game.Engine
             MonsterList.Add(new DungeonFighterModel(new MonsterModel
             {
                 Name = "The Coronavirus",
-                MaxHealth = 20,
+                MaxHealth = 5,
                 Level = 1,
                 Description = "Human disaster",
                 ImageURI = "https://pngimg.com/uploads/coronavirus/coronavirus_PNG33.png",
                 DefenseAttribute = 1,
-                OffenseAttribute = 10,
-                SpeedAttribute = 15,
+                OffenseAttribute = 1,
+                SpeedAttribute = 1,
                 Skill = CreatureSkillEnum.Boss,
                 DropItems = new List<string>(), 
             }));
+
             
 
         }
