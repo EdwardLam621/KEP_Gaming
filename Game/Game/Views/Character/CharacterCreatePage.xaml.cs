@@ -56,9 +56,9 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Health_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        void Level_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            HealthValue.Text = String.Format("{0}", e.NewValue);
+            LevelValue.Text = String.Format("{0}", e.NewValue);
         }
 
         /// <summary>
