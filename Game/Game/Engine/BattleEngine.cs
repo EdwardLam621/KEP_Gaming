@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Game.Models;
 
@@ -69,15 +70,18 @@ namespace Game.Engine
 
             // Round fight loop
             var fightResult = CurrentRound.StartRound();
+            
             while (fightResult.Equals(RoundEnum.NewRound))
             {
                 RoundCount++;
                 CurrentRound = new RoundEngine(Referee, RoundCount);
+                fightResult = CurrentRound.StartRound();
             }
 
             if (fightResult.Equals(RoundEnum.GameOver))
             {
                 // display game over screen with statistics
+                Debug.Write("GAME OVER");
                 return true;
             }
 
