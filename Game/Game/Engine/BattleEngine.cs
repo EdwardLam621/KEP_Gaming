@@ -13,9 +13,11 @@ namespace Game.Engine
         // The referee object that keeps track of the fight
         public RefereeModel Referee;
 
-        // The round engine that will manage the different rounds
-        public RoundEngine RoundEngine;
+        // Which round we are on
+        public int RoundCount = 1;
 
+        // Current round
+        public RoundEngine CurrentRound;
 
         /// <summary>
         /// Default constructor
@@ -44,8 +46,6 @@ namespace Game.Engine
             Referee = new RefereeModel(dungeonFighterModels);
             Referee.AutoBattleEnabled = autoBattleEnabled;
 
-            RoundEngine = new RoundEngine(Referee);
-
         }
 
         /// <summary>
@@ -53,8 +53,36 @@ namespace Game.Engine
         /// </summary>
         public void startBattle()
         {
-            RoundEngine.Begin();
+            var roundResult = Begin();
             //referee.getScores <- to be implemented
         }
+
+        /// <summary>
+        /// Begin starts round 1, and takes care of looping through rounds
+        /// </summary>
+        /// <returns></returns>
+        private bool Begin()
+        {
+
+            CurrentRound = new RoundEngine(Referee, RoundCount);
+
+
+            // Round fight loop
+            var fightResult = CurrentRound.StartRound();
+            while (fightResult.Equals(RoundEnum.NewRound))
+            {
+                RoundCount++;
+                CurrentRound = new RoundEngine(Referee, RoundCount);
+            }
+
+            if (fightResult.Equals(RoundEnum.GameOver))
+            {
+                // display game over screen with statistics
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }

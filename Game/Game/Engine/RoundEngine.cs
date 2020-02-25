@@ -15,7 +15,7 @@ namespace Game.Engine
         public const int MAX_NUM_MONSTERS = 6;
 
         // Which round we are on
-        public int roundCount = 1;
+        public int RoundCount = 1;
 
         // List of monsters in this round
         public List<DungeonFighterModel> MonsterList;
@@ -45,46 +45,24 @@ namespace Game.Engine
         /// Constructor that takes a Referee object
         /// </summary>
         /// <param name="referee"></param>
-        public RoundEngine(RefereeModel referee)
+        public RoundEngine(RefereeModel referee, int roundCount)
         {
             Referee = referee;
+            RoundCount = roundCount;
             
-            // Bump the round score
-            Referee.BattleScore.RoundCount++;
             PlayerList = new List<DungeonFighterModel>();
             MonsterList = new List<DungeonFighterModel>();
 
         }
 
-        /// <summary>
-        /// Begin starts round 1, and takes care of looping through rounds
-        /// </summary>
-        /// <returns></returns>
-        public bool Begin()
-        {
-            // Round fight loop
-            var fight = StartRound(roundCount);
-            while (fight.Equals(RoundEnum.NewRound))
-            {
-                roundCount++;
-                fight = StartRound(roundCount);
-            }
-            
-            if (fight.Equals(RoundEnum.GameOver))
-            {
-                // display game over screen
-                return true;
-            }
-
-            return false;
-        }
+       
 
         /// <summary>
         /// Start a new round
         /// </summary>
         /// <param name="round"></param>
         /// <returns></returns>
-        public RoundEnum StartRound(int round)
+        public RoundEnum StartRound()
         {
             // Switch from Unknown to NextTurn
             RoundStateEnum = RoundEnum.NextTurn;
@@ -193,11 +171,11 @@ namespace Game.Engine
             MonsterList.Clear();
 
             // Fill up round with the maximum number of monsters
-            for (int i = 0; i < MAX_NUM_MONSTERS; i++)
-            {
-                // unimplemented
-                // need to scale monsters to appropriate level based on round
-            }
+            //for (int i = 0; i < MAX_NUM_MONSTERS; i++)
+            //{
+            //    // unimplemented
+            //    // need to scale monsters to appropriate level based on round
+            //}
             
             // FOR DEBUG
             MonsterList.Add(new DungeonFighterModel(new MonsterModel
