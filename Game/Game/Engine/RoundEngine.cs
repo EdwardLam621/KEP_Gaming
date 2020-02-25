@@ -182,6 +182,7 @@ namespace Game.Engine
             {
                 Name = "The Coronavirus",
                 MaxHealth = 5,
+                CurrentHealth = 5,
                 Level = 1,
                 Description = "Human disaster",
                 ImageURI = "https://pngimg.com/uploads/coronavirus/coronavirus_PNG33.png",
@@ -208,7 +209,7 @@ namespace Game.Engine
             // Remember the Insert order, used for Sorting
             var order = 0;
 
-            foreach (var hero in FighterList)
+            foreach (var hero in Referee.Characters)
             {
                 if (hero.Alive)
                 {
