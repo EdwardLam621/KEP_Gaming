@@ -33,14 +33,22 @@ namespace Game.Models
         // Amount of Damage
         public int DamageAmount = 0;
 
-        // The Remaining Health Mesage
-        public int CurrentHealth = 0;
+        // Remaining player health
+        public int AttackerHealth = 0;
+
+        // Remaining target health
+        public int TargetHealth = 0;
 
         public string GetPreamble()
         {
-            return AttackerName + " a " + PlayerType + ", prepares to attack " + TargetName + "!";
+            return AttackerName + ", a " + PlayerType + " with " + AttackerHealth + "hp" + 
+                ", prepares to attack " + TargetName + ", who has " + TargetHealth + "hp remaining!";
         }
 
+        public string GetHitMessage()
+        {
+            return AttackerName + " hits " + TargetName + " for " + DamageAmount + " damage.";
+        }
 
         /// <summary>
         /// Remaining Health Message
@@ -48,7 +56,7 @@ namespace Game.Models
         /// <returns></returns>
         public string GetCurrentHealthMessage()
         {
-            return " remaining health is " + CurrentHealth.ToString();
+            return TargetName + " has " + TargetHealth + " remaining health.";
         }
 
         /// <summary>
