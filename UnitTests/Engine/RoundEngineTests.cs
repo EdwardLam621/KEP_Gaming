@@ -85,13 +85,31 @@ namespace UnitTests.Engine
 
             // Act
             var engine = Engine;
-            Referee.Characters.Add(new DungeonFighterModel());
+            engine.Referee.Characters.Add(new DungeonFighterModel());
             RoundEnum result = engine.RoundNextTurn();
 
             // Reset
 
             // Assert
             Assert.AreEqual(result, RoundEnum.NewRound);
+        }
+
+        [Test]
+        public void RoundEngine_RoundNextTurn_Should_Return_NextTurn()
+        {
+            // Arrange
+
+            // Act
+            var engine = Engine;
+            engine.Referee.Characters.Add(new DungeonFighterModel());
+            engine.MonsterList.Add(new DungeonFighterModel());
+            engine.PlayerList.Add(new DungeonFighterModel());
+            RoundEnum result = engine.RoundNextTurn();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(result, RoundEnum.NextTurn);
         }
     }
 
