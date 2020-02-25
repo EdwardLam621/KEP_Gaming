@@ -3,6 +3,7 @@ using Game.ViewModels;
 using System;
 using Game.Models;
 using Xamarin.Forms.Xaml;
+using Game.Helpers;
 
 namespace Game.Views
 {
@@ -21,6 +22,8 @@ namespace Game.Views
             BindingContext = this.ViewModel = data;
 
             this.ViewModel.Title = "Create " + data.Title;
+
+            HealthValue.Text = string.Format(" : {0:G}", ViewModel.Data.MaxHealth);
         }
 
         /// <summary>
@@ -58,7 +61,10 @@ namespace Game.Views
         /// <param name="e"></param>
         void Level_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            LevelValue.Text = String.Format("{0}", e.NewValue);
+            var level = e.NewValue;
+            LevelValue.Text = level.ToString();
+            ViewModel.Data.MaxHealth = DiceHelper.RollDice((int)level, 10);
+            HealthValue.Text = string.Format(" : {0:G}", ViewModel.Data.MaxHealth);
         }
 
         /// <summary>
