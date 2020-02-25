@@ -4,6 +4,7 @@ using System;
 using Game.Models;
 using Xamarin.Forms.Xaml;
 using Game.Helpers;
+using System.Linq;
 
 namespace Game.Views
 {
@@ -12,6 +13,8 @@ namespace Game.Views
     {
         // View Model for Character
         readonly GenericViewModel<CharacterModel> ViewModel;
+
+        public ItemLocationEnum PopupLocationEnum = ItemLocationEnum.Unknown;
 
         public CharacterCreatePage(GenericViewModel<CharacterModel> data)
         {
@@ -22,6 +25,8 @@ namespace Game.Views
             BindingContext = this.ViewModel = data;
 
             this.ViewModel.Title = "Create " + data.Title;
+
+            AddItemsToDisplay();
 
             HealthValue.Text = string.Format(" : {0:G}", ViewModel.Data.MaxHealth);
         }
@@ -101,6 +106,139 @@ namespace Game.Views
         {
             return true;
         }
-    }
 
+        /// <summary>
+        /// Show the Items the Character has
+        /// </summary>
+        public void AddItemsToDisplay()
+        {
+
+            var FlexList = ItemBox.Children.ToList();
+            foreach (var data in FlexList)
+            {
+                ItemBox.Children.Remove(data);
+            }
+
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Head));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Body));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.PrimaryHand));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.OffHand));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.RightFinger));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.LeftFinger));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Feet));
+        }
+
+        /// <summary>
+        /// Look up the Item to Display
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public StackLayout GetItemToDisplay(ItemLocationEnum location)
+        {
+            // Get the Item, if it exist show the info
+            // If it does not exist, show a Plus Icon for the location
+
+            // Defualt Image is the Plus
+            var ImageSource = "https://icons.iconarchive.com/icons/google/noto-emoji-smileys/1024/10024-thinking-face-icon.png";
+
+            var data = ViewModel.Data.GetItemByLocation(location);
+            if (data == null)
+            {
+                data = new ItemModel { Location = location, ImageURI = ImageSource };
+            }
+
+            // Hookup the Image Button to show the Item picture
+            var ItemButton = new ImageButton
+            {
+                Style = (Style)Application.Current.Resources["ImageMediumStyle"],
+                Source = data.ImageURI
+            };
+
+            // Add a event to the user can click the item and see more
+            ItemButton.Clicked += (sender, args) => ShowPopup(data.Location);
+
+            // Add the Display Text for the item
+            var ItemLabel = new Label
+            {
+                Text = location.ToMessage(),
+                Style = (Style)Application.Current.Resources["ValueStyle"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+
+            // Put the Image Button and Text inside a layout
+            var ItemStack = new StackLayout
+            {
+                Padding = 3,
+                Style = (Style)Application.Current.Resources["ItemImageBox"],
+                HorizontalOptions = LayoutOptions.Center,
+                Children = {
+                    ItemButton,
+                    ItemLabel
+                },
+            };
+
+            return ItemStack;
+        }
+
+        /// <summary>
+        /// Show the Popup for the Item
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public bool ShowPopup(ItemLocationEnum data)
+        {
+            PopupLoadingView.IsVisible = true;
+
+            PopupLocationLabel.Text = "Avaliable Items for: " + data.ToMessage();
+            PopupLocationValue.Text = data.ToMessage();
+
+            PopupLocationItemListView.ItemsSource = ItemIndexViewModel.Instance.GetLocationItems(data);
+
+            PopupLocationEnum = data;
+
+
+            return true;
+        }
+
+        /// <summary>
+        /// When the user clicks the close in the Popup
+        /// hide the view
+        /// show the scroll view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ClosePopup_Clicked(object sender, EventArgs e)
+        {
+            ClosePopup();
+        }
+
+        /// <summary>
+        /// Close the popup
+        /// </summary>
+        private void ClosePopup()
+        {
+            PopupLoadingView.IsVisible = false;
+        }
+
+        /// <summary>
+        /// The row selected from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void OnPopupItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            ItemModel data = args.SelectedItem as ItemModel;
+            if (data == null)
+            {
+                return;
+            }
+
+            ViewModel.Data.AddItem(PopupLocationEnum, data.Id);
+
+            AddItemsToDisplay();
+
+            ClosePopup();
+        }
+    }
 }

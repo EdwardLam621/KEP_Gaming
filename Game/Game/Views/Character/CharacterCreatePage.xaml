@@ -24,61 +24,62 @@
     <ContentPage.Content>
 
         <ScrollView>
-            <StackLayout Style="{StaticResource OuterBoxStack}"
+            <AbsoluteLayout>
+                <StackLayout Style="{StaticResource OuterBoxStack}"
                 Spacing="10">
 
-                <Label Text="Create Page" Style="{StaticResource HeaderStyle}"/>
+                    <Label Text="Create Page" Style="{StaticResource HeaderStyle}"/>
 
-                <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}" HorizontalOptions="CenterAndExpand"/>
+                    <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}" HorizontalOptions="CenterAndExpand"/>
 
-                <Grid
+                    <Grid
                     RowSpacing="1"
                     ColumnSpacing="2"
                     VerticalOptions="Center"
                     Padding="5,5,5,5">
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="100" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="100" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0"
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                         Text="Name" 
                         Style="{StaticResource LabelStyle}"/>
-                    
-                    <Entry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+
+                        <Entry Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3"
                         Text="{Binding Data.Name}"
                         Style="{StaticResource EntryStyle}"/>
 
-                    <Label Grid.Row="1" Grid.Column="0"
+                        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
                         Text="Description" 
                         Style="{StaticResource LabelStyle}"/>
 
-                    <Editor Grid.Row="1" Grid.Column="1" HeightRequest="100" Grid.ColumnSpan="3"
+                        <Editor Grid.Row="1" Grid.Column="2" HeightRequest="100" Grid.ColumnSpan="3"
                         Text="{Binding Data.Description}" 
                         Style="{StaticResource EntryStyle}"/>
 
-                    <Label Grid.Row="2" Grid.Column="0"
+                        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
                         Text="Skill" 
                         Style="{StaticResource LabelStyle}"/>
 
-                    <Picker Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"
+                        <Picker Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"
                         ItemsSource="{x:Static local_helpers:CreatureSkillEnumHelper.GetListSkill}" 
                         SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
                         x:Name="SkillPicker"/>
 
-                    <Image Grid.Row="3" Grid.Column="0"
+                        <Image Grid.Row="3" Grid.Column="0"
                         Source="https://pngriver.com/wp-content/uploads/2017/12/download-blood-PNG-transparent-images-transparent-backgrounds-PNGRIVER-COM-blood.png" 
                         Style="{StaticResource ImageSmallStyle}" 
-                        
-                        HorizontalOptions="CenterAndExpand"/>
+                        HorizontalOptions="EndAndExpand"/>
 
-                    <Label Grid.Row="3" Grid.Column="1"
+                        <Label Grid.Row="3" Grid.Column="1"
                             Text="{Binding Data.MaxHealth}" 
                             x:Name="HealthValue"
                             Style="{StaticResource LabelStyle}"
@@ -86,98 +87,98 @@
                             HorizontalOptions="StartAndExpand"
                             HorizontalTextAlignment="Start"/>
 
-                    <Label Grid.Row="3" Grid.Column="2"
+                        <Label Grid.Row="3" Grid.Column="2"
                         Text="Image" 
                         Style="{StaticResource LabelStyle}"/>
 
-                    <StackLayout Grid.Row="3" Grid.Column="3" Style="{StaticResource HorizontalStack}" HorizontalOptions="FillAndExpand">
+                        <StackLayout Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource HorizontalStack}" HorizontalOptions="FillAndExpand">
 
-                        <Image 
+                            <Image 
                             Source="{Binding Data.ImageURI}"
                             Style="{StaticResource ImageSmallStyle}"/>
 
-                        <Entry 
+                            <Entry 
                             Text="{Binding Data.ImageURI}" 
                             Style="{StaticResource EntryStyle}"/>
-                    </StackLayout>
+                        </StackLayout>
 
-                </Grid>
+                    </Grid>
 
-                <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
+                    <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
 
-                    <Label 
+                        <Label 
                         Text="Level" 
                         Style="{StaticResource LabelStyle}"/>
 
-                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+                        <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
 
-                        <Label 
+                            <Label 
                             Text="{Binding Data.Level}" 
                             x:Name="LevelValue"
                             Style="{StaticResource ValueStyle}"
                             Padding="0,0,10,0"
                             HorizontalOptions="End"
                             HorizontalTextAlignment="End"/>
-                    
-                        <Stepper 
+
+                            <Stepper 
                             Value="{Binding Data.MaxHealth, Mode=TwoWay}"
                             Maximum = "20"
                             Minimum = "1"
                             ValueChanged="Level_OnStepperValueChanged"/>
-                        
-                    </StackLayout>
 
-                    <Label 
+                        </StackLayout>
+
+                        <Label 
                         Text="Speed" 
                         Style="{StaticResource LabelStyle}"/>
 
-                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+                        <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
 
-                        <Label 
+                            <Label 
                             Text="{Binding Data.SpeedAttribute}" 
                             x:Name="SpeedValue"
                             Style="{StaticResource ValueStyle}"
                             Padding="0,0,10,0"
                             HorizontalOptions="End"
                             HorizontalTextAlignment="End"/>
-                    
-                        <Stepper 
+
+                            <Stepper 
                             Value="{Binding Data.SpeedAttribute, Mode=TwoWay}"
                             Maximum = "20"
                             Minimum = "0"
                             ValueChanged="Speed_OnStepperValueChanged"/>
-                        
-                    </StackLayout>
 
-                    <Label 
+                        </StackLayout>
+
+                        <Label 
                         Text="Defense" 
                         Style="{StaticResource LabelStyle}"/>
 
-                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+                        <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
 
-                        <Label 
+                            <Label 
                             Text="{Binding Data.DefenseAttribute}" 
                             x:Name="DefenseValue"
                             Style="{StaticResource ValueStyle}"
                             Padding="0,0,10,0"
                             HorizontalOptions="End"
                             HorizontalTextAlignment="End"/>
-                    
-                        <Stepper 
+
+                            <Stepper 
                             Value="{Binding Data.DefenseAttribute, Mode=TwoWay}"
                             Maximum = "20"
                             Minimum = "0"
                             ValueChanged="Defense_OnStepperValueChanged"/>
-                        
-                    </StackLayout>
 
-                    <Label 
+                        </StackLayout>
+
+                        <Label 
                         Text="Offense" 
                         Style="{StaticResource LabelStyle}"/>
 
-                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+                        <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
 
-                        <Label 
+                            <Label 
                             Text="{Binding Data.OffenseAttribute}" 
                             x:Name="OffenseValue"
                             Style="{StaticResource ValueStyle}"
@@ -185,17 +186,114 @@
                             HorizontalOptions="End"
                             HorizontalTextAlignment="End"/>
 
-                        <Stepper 
+                            <Stepper 
                             Value="{Binding Data.OffenseAttribute, Mode=TwoWay}"
                             Maximum = "20"
                             Minimum = "0"
                             ValueChanged="Offense_OnStepperValueChanged"/>
 
+                        </StackLayout>
                     </StackLayout>
+
+                    <Label
+                            Text="Equipment"
+                            Style="{StaticResource LabelStyle}" />
+
+
+                    <FlexLayout 
+                            Padding="1"
+                            Wrap="Wrap"
+                            JustifyContent="SpaceAround"
+                            AlignContent="SpaceAround"
+                            x:Name="ItemBox">
+                    </FlexLayout>
+
+
                 </StackLayout>
 
-                    
-            </StackLayout>
+                <ContentView x:Name="PopupLoadingView" 
+                        BackgroundColor="{StaticResource DarkBackgroundColor}" 
+                        IsVisible="false" 
+                        AbsoluteLayout.LayoutBounds=".5, .5,.5,.5" 
+                        AbsoluteLayout.LayoutFlags="All">
+
+                    <StackLayout 
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="300"
+                            HeightRequest="300"
+                        >
+
+                        <Frame 
+                           BorderColor="{StaticResource TriciaryTextColor}" Padding="1">
+                            <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand" Padding="2">
+                                <Label x:Name="PopupLocationLabel" Style="{StaticResource PopupItemTextStyle}" />
+                                <Label x:Name="PopupLocationValue" Style="{StaticResource PopupItemTextStyle}" />
+
+                                <ListView x:Name="PopupLocationItemListView" 
+                                CachingStrategy="RecycleElement"
+                                ItemSelected="OnPopupItemSelected"
+                                HasUnevenRows="true"
+                                Margin="5,0,5,0"
+                                RowHeight="80"
+                    >
+
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid ColumnSpacing="5" RowSpacing="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                                                    Source="{Binding ImageURI}"
+                                                    Style="{StaticResource ImageSmallStyle}"
+                                                    VerticalOptions="CenterAndExpand"/>
+
+                                                    <Label Grid.Column="1" Grid.Row="0"
+                                                   Text="{Binding Name}" 
+                                                   Style="{StaticResource ListStyle}"/>
+
+                                                    <StackLayout Grid.Column="1" Grid.Row="1"
+                                                    Orientation="Horizontal">
+
+                                                        <Label 
+                                                        Text="{Binding Attribute}" 
+                                                        Style="{StaticResource ListStyle}"/>
+
+                                                        <Label Text="{Binding Value}" 
+                                                        Style="{StaticResource ListStyle}"/>
+
+                                                    </StackLayout>
+
+                                                    <Label Grid.Column="1" Grid.Row="2"
+                                                   Text="{Binding Description}" 
+                                                   Style="{StaticResource ListStyle}"
+                                                   FontSize="Micro"/>
+
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+
+                                <Button x:Name="PopupCloseButton" 
+                                Clicked="ClosePopup_Clicked" 
+                                Text="Close"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </ContentView>
+            </AbsoluteLayout>
         </ScrollView>
     </ContentPage.Content>
-</ContentPage>
+    </ContentPage>
+    
+            
