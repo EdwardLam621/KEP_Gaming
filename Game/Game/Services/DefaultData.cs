@@ -238,8 +238,8 @@ namespace Game.Services
         /// <returns></returns>
         public static List<MonsterModel> LoadData(MonsterModel temp)
         {
-            List<string> test = new List<string>();
-            test.Add(ItemIndexViewModel.Instance.Dataset.FirstOrDefault().Id);
+            List<ItemModel> test = new List<ItemModel>();
+            test.Add(ItemIndexViewModel.Instance.Dataset.FirstOrDefault());
 
 
             var datalist = new List<MonsterModel>()

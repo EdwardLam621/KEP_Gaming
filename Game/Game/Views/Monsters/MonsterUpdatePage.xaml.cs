@@ -40,14 +40,14 @@ namespace Game.Views
                 ItemBox.Children.Remove(data);
             }
 
-            //add a null item at the end of list for further add
-            ItemBox.Children.Add(GetItemToDisplay(ViewModel.Data.DropItems.ElementAtOrDefault(ViewModel.Data.DropItems.Count + 1)));
-
             //if not null, read all items
             for (int i = 0; i < ViewModel.Data.DropItems.Count; i++)
             {
                 ItemBox.Children.Add(GetItemToDisplay(ViewModel.Data.DropItems.ElementAt(i)));
             }
+
+            //add null item as new item space
+            ItemBox.Children.Add(GetItemToDisplay(new ItemModel()));
 
         }
 
@@ -56,7 +56,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public StackLayout GetItemToDisplay(string itemid)
+        public StackLayout GetItemToDisplay(ItemModel item)
         {
             // Get the Item, if it exist show the info
             // If it does not exist, show a Plus Icon for the location
@@ -64,7 +64,7 @@ namespace Game.Views
             // Defualt Image is the Plus
             var ImageSource = "https://icons.iconarchive.com/icons/google/noto-emoji-smileys/1024/10024-thinking-face-icon.png";
 
-            var data = ViewModel.Data.GetItem(itemid);
+            var data = ViewModel.Data.GetItem(item.Id);
             if (data == null)
             {
                 data = new ItemModel {Name = "Add", ImageURI = ImageSource };
@@ -149,13 +149,14 @@ namespace Game.Views
         /// <param name="args"></param>
         public void OnPopupItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
+
             ItemModel data = args.SelectedItem as ItemModel;
             if (data == null)
             {
                 return;
             }
 
-            ViewModel.Data.DropItems.Add(data.Id);
+            ViewModel.Data.DropItems.Add(data);
 
             AddItemsToDisplay();
 

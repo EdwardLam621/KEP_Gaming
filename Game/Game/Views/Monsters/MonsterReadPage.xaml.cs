@@ -78,7 +78,7 @@ namespace Game.Views
             //if null, add a null item
             if (ViewModel.Data.DropItems.Count == 0)
             {
-                ItemBox.Children.Add(GetItemToDisplay(ViewModel.Data.DropItems.ElementAtOrDefault(0)));
+                ItemBox.Children.Add(GetItemToDisplay(new ItemModel()));
             }
 
 
@@ -89,13 +89,13 @@ namespace Game.Views
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public StackLayout GetItemToDisplay(string itemid)
+        public StackLayout GetItemToDisplay(ItemModel itemid)
         {
             // Defualt Image is the Plus
             var ImageSource = "icon_cancel.png";
             var ClickableButton = true;
 
-            var data = ViewModel.Data.GetItem(itemid);
+            var data = ViewModel.Data.GetItem(itemid.Id);
             if (data == null)
             {
                 // Show the Default Icon for the Location
