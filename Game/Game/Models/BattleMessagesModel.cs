@@ -39,6 +39,15 @@ namespace Game.Models
         // Remaining target health
         public int TargetHealth = 0;
 
+        public void ClearMessages()
+        {
+            PlayerType = CreatureEnum.Unknown;
+            HitStatus = HitStatusEnum.Unknown;
+            AttackerName = string.Empty;
+            TargetName = string.Empty;
+            AttackStatus = string.Empty;
+        }
+
         public string GetPreamble()
         {
             return AttackerName + ", a " + PlayerType + " with " + AttackerHealth + "hp" + 
