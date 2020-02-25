@@ -61,6 +61,7 @@ namespace Game.Views
 			{
 				Name = "The Delinquent",
 				MaxHealth = 20,
+				CurrentHealth = 20,
 				Level = 1,
 				Description = "The mischief class skipper. Low in defense but high in attack",
 				ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
