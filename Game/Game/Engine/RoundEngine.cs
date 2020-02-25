@@ -21,7 +21,7 @@ namespace Game.Engine
         public List<DungeonFighterModel> MonsterList;
 
         // List of total players (monsters and characters) in this round
-        public List<DungeonFighterModel> PlayerList;
+        public List<DungeonFighterModel> FighterList;
 
         // Player whose turn it is currently
         public DungeonFighterModel CurrentPlayer;
@@ -50,7 +50,7 @@ namespace Game.Engine
             Referee = referee;
             RoundCount = roundCount;
             
-            PlayerList = new List<DungeonFighterModel>();
+            FighterList = referee.Characters;
             MonsterList = new List<DungeonFighterModel>();
 
         }
@@ -203,17 +203,17 @@ namespace Game.Engine
         public void MakeList()
         {
             // Start from a clean list of players
-            PlayerList.Clear();
+            FighterList.Clear();
 
             // Remember the Insert order, used for Sorting
             var order = 0;
 
-            foreach (var hero in PlayerList)
+            foreach (var hero in FighterList)
             {
                 if (hero.Alive)
                 {
                     hero.ListOrder = order;
-                    PlayerList.Add(hero);
+                    FighterList.Add(hero);
                     order++;
                 }
             }
@@ -223,7 +223,7 @@ namespace Game.Engine
                 if (mob.Alive)
                 {
                     mob.ListOrder = order;
-                    PlayerList.Add(mob);
+                    FighterList.Add(mob);
                     order++;
                 }
             }
@@ -237,7 +237,7 @@ namespace Game.Engine
         /// </summary>
         public void OrderFight()
         {
-            PlayerList = PlayerList.OrderByDescending(a => a.SpeedAttribute)
+            FighterList = FighterList.OrderByDescending(a => a.SpeedAttribute)
                 .ThenByDescending(a => a.Level)
                 .ThenByDescending(a => a.ExperiencePoints)
                 .ThenByDescending(a => a.PlayerType)
@@ -260,7 +260,7 @@ namespace Game.Engine
             // If not, return first player (looped)
 
             // If List is empty, return null
-            if (PlayerList.Count == 0)
+            if (FighterList.Count == 0)
             {
                 return null;
             }
@@ -268,20 +268,20 @@ namespace Game.Engine
             // No current player, so set the first one
             if (CurrentPlayer == null)
             {
-                return PlayerList.FirstOrDefault();
+                return FighterList.FirstOrDefault();
             }
 
             // Find current player in the list
-            var index = PlayerList.FindIndex(m => m.Id.Equals(CurrentPlayer.Id));
+            var index = FighterList.FindIndex(m => m.Id.Equals(CurrentPlayer.Id));
 
             // If at the end of the list, return the first element
-            if (index == PlayerList.Count() - 1)
+            if (index == FighterList.Count() - 1)
             {
-                return PlayerList.FirstOrDefault();
+                return FighterList.FirstOrDefault();
             }
 
             // Return the next element
-            return PlayerList[index + 1];
+            return FighterList[index + 1];
 
         }
     }

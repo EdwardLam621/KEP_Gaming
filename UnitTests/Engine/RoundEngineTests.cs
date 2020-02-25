@@ -38,7 +38,7 @@ namespace UnitTests.Engine
 
             // Assert
             Assert.IsNotNull(result.MonsterList);
-            Assert.IsNotNull(result.PlayerList);
+            Assert.IsNotNull(result.FighterList);
         }
     }
 }
