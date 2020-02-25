@@ -2,6 +2,7 @@
 
 using Game.Engine;
 using Game.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using Game.ViewModels;
@@ -18,7 +19,9 @@ namespace UnitTests.Engine
         public void Setup()
         {
             Referee = new RefereeModel();
-            Engine = new RoundEngine(Referee);
+            Referee.Monsters = new List<DungeonFighterModel>();
+            Referee.Characters = new List<DungeonFighterModel>();
+            Engine = new RoundEngine(Referee, 9);
         }
 
         [TearDown]
@@ -39,6 +42,25 @@ namespace UnitTests.Engine
             // Assert
             Assert.IsNotNull(result.MonsterList);
             Assert.IsNotNull(result.PlayerList);
+            Assert.AreEqual(result.RoundCount, 9);
+
+        }
+
+        [Test]
+        public void RoundEngine_EndRound_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var engine = Engine;
+            bool result = engine.EndRound();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(engine.MonsterList.Count, 0);
+            Assert.AreEqual(engine.PlayerList.Count, 0);
+            Assert.AreEqual(result, true);
         }
     }
 }
