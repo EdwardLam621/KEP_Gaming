@@ -111,6 +111,28 @@ namespace UnitTests.Engine
             // Assert
             Assert.AreEqual(result, RoundEnum.NextTurn);
         }
+
+        [Test]
+        public void RoundEngine_OrderFight_Sort_By_Level_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var engine = Engine;
+            DungeonFighterModel player1 = new DungeonFighterModel();
+            player1.SpeedAttribute = 10;
+            DungeonFighterModel player2 = new DungeonFighterModel();
+            player2.SpeedAttribute = 5;
+            engine.PlayerList.Add(player2);
+            engine.PlayerList.Add(player1);
+            engine.OrderFight();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(engine.PlayerList[0], player1);
+            Assert.AreEqual(engine.PlayerList[1], player2);
+        }
     }
 
 }

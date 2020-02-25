@@ -191,9 +191,6 @@ namespace Game.Engine
                 Skill = CreatureSkillEnum.Boss,
                 DropItems = new List<string>(), 
             }));
-
-            
-
         }
 
 
