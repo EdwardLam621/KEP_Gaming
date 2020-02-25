@@ -5,6 +5,7 @@ using System;
 using Game.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Game.Views
 {
@@ -18,7 +19,7 @@ namespace Game.Views
         readonly GenericViewModel<MonsterModel> ViewModel;
 
         //drop item list of monsters
-        ObservableCollection<string> dropItems = new ObservableCollection<string>();
+        List<string> dropItems = new List<string>();
      
         /// <summary>
         /// Constructor called with a view model
@@ -68,7 +69,18 @@ namespace Game.Views
                 ItemBox.Children.Remove(data);
             }
 
-            ItemBox.Children.Add(GetItemToDisplay(dropItems.ElementAtOrDefault(0)));
+            //if not null, read all items
+            for(int i = 0; i < ViewModel.Data.DropItems.Count; i++)
+            {
+                ItemBox.Children.Add(GetItemToDisplay(ViewModel.Data.DropItems.ElementAt(i)));
+            }
+
+            //if null, add a null item
+            if (ViewModel.Data.DropItems.Count == 0)
+            {
+                ItemBox.Children.Add(GetItemToDisplay(ViewModel.Data.DropItems.ElementAt(0)));
+            }
+
 
         }
 
