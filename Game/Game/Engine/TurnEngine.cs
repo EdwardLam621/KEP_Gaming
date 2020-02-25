@@ -179,48 +179,59 @@ namespace Game.Engine
                 return false;
             }
 
+            // Set Messages to empty
             Referee.BattleMessages.TurnMessage = string.Empty;
             Referee.BattleMessages.TurnMessageSpecial = string.Empty;
             Referee.BattleMessages.AttackStatus = string.Empty;
 
-            Referee.BattleMessages.PlayerType = CreatureEnum.Monster;
+            // Remember Current Player
+            Referee.BattleMessages.AttackerName = Attacker.Name;
+            Referee.BattleMessages.PlayerType = Attacker.PlayerType;
+            Referee.BattleMessages.AttackerHealth = Attacker.CurrentHealth;
+            Referee.BattleMessages.TargetHealth = Target.CurrentHealth;
 
+            // Choose who to attack
+            Referee.BattleMessages.TargetName = Target.Name;
+
+
+
+            Debug.WriteLine(Referee.BattleMessages.GetPreamble());
+            
+
+
+            // Set Attack and Defense
             var AttackScore = Attacker.Level + Attacker.GetAttack();
             var DefenseScore = Target.GetDefense() + Target.Level;
 
-            // Choose who to attack
-
-            Referee.BattleMessages.TargetName = Target.Name;
-            Referee.BattleMessages.AttackerName = Attacker.Name;
 
             Referee.BattleMessages.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
 
-            Debug.WriteLine(Referee.BattleMessages.TurnMessage);
-
-            // It's a Miss
-            if (Referee.BattleMessages.HitStatus == HitStatusEnum.Miss)
+            switch (Referee.BattleMessages.HitStatus)
             {
-                return true;
+                case HitStatusEnum.Miss:
+                    // It's a Miss
+                    Debug.WriteLine("It's a miss!");
+
+                    break;
+
+                case HitStatusEnum.Hit:
+                    // It's a Hit
+                    //Calculate Damage
+                    Debug.WriteLine("It's a hit!");
+
+                    Referee.BattleMessages.DamageAmount = Attacker.GetDamageRollValue();
+
+                    Target.TakeDamage(Referee.BattleMessages.DamageAmount);
+                    
+                    
+                    Referee.BattleMessages.TargetHealth = Target.CurrentHealth;
+                    Debug.WriteLine(Referee.BattleMessages.GetHitMessage());
+                    Debug.WriteLine(Referee.BattleMessages.GetCurrentHealthMessage());
+
+                    RemoveIfDead(Target);
+                    break;
             }
-
-            // It's a Hit
-            if (Referee.BattleMessages.HitStatus == HitStatusEnum.Hit)
-            {
-                //Calculate Damage
-                Referee.BattleMessages.DamageAmount = Attacker.GetDamageRollValue();
-
-                Target.TakeDamage(Referee.BattleMessages.DamageAmount);
-            }
-
-            Referee.BattleMessages.CurrentHealth = Target.CurrentHealth;
-            Referee.BattleMessages.TurnMessageSpecial = Referee.BattleMessages.GetCurrentHealthMessage();
-
-            RemoveIfDead(Target);
-
-            Referee.BattleMessages.TurnMessage = Attacker.Name + Referee.BattleMessages.AttackStatus 
-                + Target.Name + Referee.BattleMessages.TurnMessageSpecial;
-            
-            Debug.WriteLine(Referee.BattleMessages.TurnMessage);
+            Referee.BattleMessages.ClearMessages();
 
             return true;
         }
