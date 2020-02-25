@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Game.ViewModels;
 using Game.Models;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Game.Views
 {
@@ -64,7 +65,7 @@ namespace Game.Views
             // Defualt Image is the Plus
             var ImageSource = "https://icons.iconarchive.com/icons/google/noto-emoji-smileys/1024/10024-thinking-face-icon.png";
 
-            var data = ViewModel.Data.GetItem(item.Id);
+            var data = ViewModel.Data.GetDropItems(item.Id);
             if (data == null)
             {
                 data = new ItemModel {Name = "Add", ImageURI = ImageSource };
@@ -157,7 +158,7 @@ namespace Game.Views
             }
 
             ViewModel.Data.DropItems.Add(data);
-
+                
             AddItemsToDisplay();
 
             ClosePopup();

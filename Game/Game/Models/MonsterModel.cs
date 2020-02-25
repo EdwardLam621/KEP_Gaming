@@ -17,6 +17,12 @@ namespace Game.Models
             DropItems = new List<ItemModel>();
         }
 
+        public ItemModel GetDropItems(string id)
+        {
+            return DropItems.Find(x => x.Id == id);
+        }
+
+
         //method to update a monster
         public void Update(MonsterModel newData)
         {

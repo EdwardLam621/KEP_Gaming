@@ -89,13 +89,13 @@ namespace Game.Views
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public StackLayout GetItemToDisplay(ItemModel itemid)
+        public StackLayout GetItemToDisplay(ItemModel item)
         {
             // Defualt Image is the Plus
             var ImageSource = "icon_cancel.png";
             var ClickableButton = true;
 
-            var data = ViewModel.Data.GetItem(itemid.Id);
+            var data = ViewModel.Data.GetDropItems(item.Id);
             if (data == null)
             {
                 // Show the Default Icon for the Location
