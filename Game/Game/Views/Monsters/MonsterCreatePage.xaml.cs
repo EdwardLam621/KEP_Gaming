@@ -21,6 +21,8 @@ namespace Game.Views
 
             BindingContext = this.ViewModel = data;
 
+            AddItemsToDisplay();
+
             this.ViewModel.Title = "Create " + data.Title;
         }
 
