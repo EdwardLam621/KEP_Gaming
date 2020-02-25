@@ -82,6 +82,9 @@ namespace Game.Engine
             {
                 // display game over screen with statistics
                 Debug.Write("GAME OVER\n");
+                Debug.Write("Total turns taken: " + Referee.BattleScore.TurnCount + "\n");
+                Debug.Write("Highest round: " + RoundCount + "\n");
+
                 return true;
             }
 
