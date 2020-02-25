@@ -65,25 +65,29 @@ namespace Game.Engine
         private bool Begin()
         {
 
+            // Set up first round
             CurrentRound = new RoundEngine(Referee, RoundCount);
 
-
             // Round fight loop
-            var fightResult = CurrentRound.StartRound();
+            var roundResult = CurrentRound.StartRound();
             
-            while (fightResult.Equals(RoundEnum.NewRound))
+            while (roundResult.Equals(RoundEnum.NewRound))
             {
                 RoundCount++;
+                
+                // Start new round
                 CurrentRound = new RoundEngine(Referee, RoundCount);
-                fightResult = CurrentRound.StartRound();
+                
+                // Fight while characters keep entering new rounds
+                roundResult = CurrentRound.StartRound();
             }
 
-            if (fightResult.Equals(RoundEnum.GameOver))
+            if (roundResult.Equals(RoundEnum.GameOver))
             {
                 // display game over screen with statistics
                 Debug.WriteLine("GAME OVER");
                 Debug.WriteLine("Total turns taken: " + Referee.BattleScore.TurnCount);
-                Debug.WriteLine("Monster's killed: " + Referee.BattleScore.MonsterSlainNumber);
+                Debug.WriteLine("Monsters killed: " + Referee.BattleScore.MonsterSlainNumber);
                 Debug.WriteLine("Highest round: " + RoundCount);
 
                 return true;
