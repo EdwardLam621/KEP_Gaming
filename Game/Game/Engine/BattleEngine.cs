@@ -81,7 +81,7 @@ namespace Game.Engine
             if (fightResult.Equals(RoundEnum.GameOver))
             {
                 // display game over screen with statistics
-                Debug.Write("GAME OVER");
+                Debug.Write("GAME OVER\n");
                 return true;
             }
 
