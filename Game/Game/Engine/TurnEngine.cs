@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Game.Helpers;
 using Game.Models;
 
@@ -232,6 +233,7 @@ namespace Game.Engine
                     break;
             }
             Referee.BattleMessages.ClearMessages();
+            //Thread.Sleep(1000);
 
             return true;
         }
@@ -243,7 +245,7 @@ namespace Game.Engine
         public bool RemoveIfDead(DungeonFighterModel Target)
         {
             // Check for alive
-            if (Target.Alive == false)
+            if (Target.CurrentHealth <= 0)
             {
                 TargedDied(Target);
                 return true;
@@ -263,7 +265,7 @@ namespace Game.Engine
         public bool TargedDied(DungeonFighterModel Target)
         {
             // Mark Status in output
-            Referee.BattleMessages.TurnMessageSpecial = " and causes death";
+            //Referee.BattleMessages.TurnMessageSpecial = " and causes death";
 
             // Remove target from list...
 
