@@ -65,8 +65,8 @@ namespace Game.Views
 				Description = "The mischief class skipper. Low in defense but high in attack",
 				ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
 				DefenseAttribute = 1,
-				OffenseAttribute = 10,
-				SpeedAttribute = 15,
+				OffenseAttribute = 2,
+				SpeedAttribute = 1,
 				Skill = CreatureSkillEnum.None,
 				//Equipments = equipments
 			});
