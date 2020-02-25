@@ -51,6 +51,7 @@ namespace Game.Models
             Description = data.Description;
 
             Level = data.Level;
+            CurrentHealth = data.CurrentHealth;
             MaxHealth = data.MaxHealth;
             SpeedAttribute = data.SpeedAttribute;
             OffenseAttribute = data.OffenseAttribute;
@@ -60,6 +61,7 @@ namespace Game.Models
             Equipment = data.Equipment;
             CurrentHealth = MaxHealth;
             PlayerType = data.PlayerType;
+            
         }
 
         /// <summary>
