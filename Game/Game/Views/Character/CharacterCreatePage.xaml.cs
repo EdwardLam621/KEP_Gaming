@@ -60,7 +60,7 @@ namespace Game.Views
 
 
         /// <summary>
-        /// Catch the change to the Stepper for Health
+        /// Catch the change to the Stepper for Level
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
