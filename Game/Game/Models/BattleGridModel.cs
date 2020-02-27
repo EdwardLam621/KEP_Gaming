@@ -9,12 +9,8 @@ namespace Game.Models
     public class BattleGridModel
     {
         
-        // TileMap of pretty background images -- need to implement
-        
-        private int[,] TileMap;
-        
-        // Keep track of player and monster locations
-        private BattleGridEnum[,] PlayerGrid;
+        // 2D array of BattleGridCells, holding characters and sprites
+        private BattleGridCellModel[,] PlayerBoard;
 
         // Size of the board
         private const int GRID_WIDTH = 8;
@@ -26,10 +22,11 @@ namespace Game.Models
         /// </summary>
         public BattleGridModel()
         {
-            // Set up tile and player board sizes
-            TileMap = new int[GRID_WIDTH, GRID_HEIGHT];
-            PlayerGrid = new BattleGridEnum[GRID_WIDTH, GRID_HEIGHT];
+            // Set up player board
+            PlayerBoard = new BattleGridCellModel[GRID_WIDTH, GRID_HEIGHT];
         }
+
+
 
     }
 }
