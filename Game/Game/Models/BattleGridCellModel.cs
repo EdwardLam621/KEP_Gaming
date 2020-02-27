@@ -17,6 +17,8 @@ namespace Game.Models
         // Whether the cell is occupied with a character or monster, or empty
         private BattleGridEnum CellStatus { get; set; } = BattleGridEnum.Empty;
 
+        private DungeonFighterModel Player { get; set; } = null;
+
         /// <summary>
         /// Default constructor
         /// </summary>
