@@ -12,12 +12,13 @@ namespace Game.Models
     {
 
         // Index for a tilemap, showing the image
-        private int Tile { get; set; } = -1;
+        public int Tile { get; set; } = -1;
         
         // Whether the cell is occupied with a character or monster, or empty
         private BattleGridEnum CellStatus { get; set; } = BattleGridEnum.Empty;
 
-        private DungeonFighterModel Player { get; set; } = null;
+        // Fighter occupying the cell, if any
+        public DungeonFighterModel Player { get; set; } = null;
 
         /// <summary>
         /// Default constructor
@@ -55,5 +56,17 @@ namespace Game.Models
             return true;
         }
 
+        public DungeonFighterModel GetPlayer()
+        {
+            if (CellStatus == BattleGridEnum.Empty)
+            {
+                return null;
+            }
+
+            return Player;
+
+        }
+        
+        
     }
 }
