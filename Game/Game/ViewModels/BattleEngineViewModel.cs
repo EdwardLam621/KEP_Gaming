@@ -1,5 +1,5 @@
 ﻿using System;
-using Game.Engine
+using Game.Engine;
 
 namespace Game.ViewModels
 {
