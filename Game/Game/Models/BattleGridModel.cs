@@ -26,7 +26,16 @@ namespace Game.Models
             PlayerBoard = new BattleGridCellModel[GRID_WIDTH, GRID_HEIGHT];
         }
 
-
+        public bool SetPlayerLocation(DungeonFighterModel player, Tuple<int, int> location)
+        {
+            (int x, int y) = location;
+            if (PlayerBoard[x, y].IsEmpty())
+            {
+                PlayerBoard[x, y].SetPlayer(player);
+                return true;
+            }
+            return false;
+        }
 
     }
 }
