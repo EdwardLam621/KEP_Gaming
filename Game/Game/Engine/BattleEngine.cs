@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using Game.Models;
 
+
 namespace Game.Engine
 {
     /// <summary>
@@ -13,6 +14,9 @@ namespace Game.Engine
     {
         // The referee object that keeps track of the fight
         public RefereeModel Referee;
+
+        // The Grid that keeps track of player locations
+        //public BattleGridCellModel BattleGrid;
 
         // Which round we are on
         public int RoundCount = 1;
