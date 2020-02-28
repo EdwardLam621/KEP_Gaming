@@ -67,6 +67,16 @@ namespace Game.Models
 
         }
         
+        public bool SetPlayer(DungeonFighterModel player)
+        {
+            if (CellStatus != BattleGridEnum.Empty)
+            {
+                return false;
+            }
+
+            Player = player;
+            return true;
+        } 
         
     }
 }
