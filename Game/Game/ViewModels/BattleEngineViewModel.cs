@@ -1,6 +1,5 @@
-﻿
-
-using System;
+﻿using System;
+using Game.Engine
 
 namespace Game.ViewModels
 {
@@ -33,6 +32,20 @@ namespace Game.ViewModels
             }
         }
 
-        
+        #endregion Singleton
+
+
+        public BattleEngine Engine = new BattleEngine();
+
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public BattleEngineViewModel()
+        {
+        }
+
+        #endregion Constructor
     }
 }
