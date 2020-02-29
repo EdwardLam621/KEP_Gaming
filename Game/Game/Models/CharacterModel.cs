@@ -8,7 +8,7 @@ namespace Game.Models
     /// <summary>
     /// Character model
     /// </summary>
-    public class CharacterModel : CreatureModel<CharacterModel>
+public class CharacterModel : CreatureModel<CharacterModel>
     {
         // Current equipment
         public HashSet<ItemModel> Equipment;
