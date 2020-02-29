@@ -1,10 +1,21 @@
 ﻿using System;
-using Game.Engine;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
+using Xamarin.Forms;
+
+using Game.Models;
+using Game.Views;
+using Game.Services;
+using Game.ViewModels;
 
 namespace Game.ViewModels
 {
- 
-
+    /// <summary>
+    /// Index View Model
+    /// Manages the list of data records
+    /// </summary>
     public class BattleEngineViewModel
     {
         #region Singleton
@@ -35,12 +46,24 @@ namespace Game.ViewModels
         #endregion Singleton
 
 
-        public BattleEngine Engine = new BattleEngine();
+        /// <summary>
+        /// The Battle Engine
+        /// </summary>
+        public Engine.BattleEngine Engine = new Engine.BattleEngine();
+
+        // Hold the Proposed List of Characters for the Battle to Use
+        public ObservableCollection<CharacterModel> PartyCharacterList { get; set; } = new ObservableCollection<CharacterModel>();
+
+        // Hold the View Model to the CharacterIndexViewModel
+        public CharacterIndexViewModel DatabaseCharacterViewModel = CharacterIndexViewModel.Instance;
+
+        // Have the Database Character List point to the Character View Model List
+        public ObservableCollection<CharacterModel> DatabaseCharacterList { get; set; } = CharacterIndexViewModel.Instance.Dataset;
 
         #region Constructor
 
         /// <summary>
-        /// Default constructor
+        /// Constructor
         /// </summary>
         public BattleEngineViewModel()
         {
