@@ -14,11 +14,12 @@ namespace Game.Engine
     {
         // The referee object that keeps track of the fight
         public RefereeModel Referee;
+
         //max number of character party
         public int MaxNumberPartyCharacters = 6;
+
         // List of Characters
         public List<CharacterModel> CharacterList = new List<CharacterModel>();
-
 
         // The Grid that keeps track of player locations
         //public BattleGridCellModel BattleGrid;
