@@ -88,6 +88,60 @@
 
                 </StackLayout>
 
+                <StackLayout HorizontalOptions="End">
+
+                        <Label Text="Party" Style="{StaticResource CenterMessageStyle}"/>
+
+                        <ListView 
+                                x:Name="PartyListView" 
+                                ItemsSource="{Binding PartyCharacterList}"
+                                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                                RefreshCommand="{Binding LoadItemsCommand}"
+                                CachingStrategy="RecycleElement"
+                                ItemSelected="OnPartyCharacterItemSelected"
+                                HasUnevenRows="true"
+                                Margin="5,0,5,0"
+                                RowHeight="80">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid ColumnSpacing="5" RowSpacing="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                                                    Source="{Binding ImageURI}"
+                                                    Style="{StaticResource ImageMediumStyle}"
+                                                    VerticalOptions="CenterAndExpand"/>
+
+                                            <Label Grid.Column="1" Grid.Row="0"
+                                                   Text="{Binding Name}" 
+                                                   Style="{StaticResource ListStyle}"
+                                                   FontAttributes="Bold"/>
+
+                                            <Label Grid.Column="1" Grid.Row="1"
+                                                   Text="{Binding Path=Level, StringFormat='Level {0:G}'}" 
+                                                   Style="{StaticResource ListStyle}"/>
+
+                                            <Label Grid.Column="1" Grid.Row="2"
+                                                    Text="{Binding Path=MaxHealth, StringFormat= '{0:G} hp'}" 
+                                                    Style="{StaticResource ListStyle}"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
