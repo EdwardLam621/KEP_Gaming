@@ -32,6 +32,24 @@ namespace Game.Views
         // Empty Constructor for UTs
         public PickCharactersPage(bool UnitTest) { }
 
+        /// <summary>
+        /// Constructor for Index Page
+        /// 
+        /// Get the CharacterIndexView Model
+        /// </summary>
+        public PickCharactersPage()
+        {
+            InitializeComponent();
+
+            BindingContext = EngineViewModel;
+            //BindingContext = EngineViewModel;
+
+            // Clear the Database List and the Party List to start
+            EngineViewModel.PartyCharacterList.Clear();
+
+            UpdateNextButtonState();
+        }
+
         
     }
 }
