@@ -87,7 +87,7 @@
                         x:Name="BeginBattleButton"
                         Clicked="BattleButton_Clicked" 
                         Text="Begin Battle"
-                        IsEnabled="False"
+                        IsEnabled="True"
                         HorizontalOptions="Center"
                         />
   

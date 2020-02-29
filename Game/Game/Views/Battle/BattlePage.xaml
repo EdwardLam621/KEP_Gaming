@@ -4,25 +4,41 @@
              x:Class="Game.Views.BattlePage">
 
     <ContentPage.Content>
-        <StackLayout Style="{StaticResource VerticalStack}">
-            <Label Text="Battle Page..."></Label>
+        
+        <!-- should be absolute layout during finish-->
+        <ScrollView>
+            <Grid>
 
-            <Image Source="knight.png" Style="{StaticResource ImageMediumStyle}"></Image>
-            <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Grid.RowDefinitions>
+                    <!--Round message box grid-->
+                    <RowDefinition Height="*" />
+                    <!--Battlefield Grid-->
+                    <RowDefinition Height="6*" />
+                    <!--character action boxes grid-->
+                    <RowDefinition Height="3*" />
+                </Grid.RowDefinitions>
 
-            <Button Clicked="AttackButton_Clicked" Text="Attack"></Button>
+                <!--Round message box-->
+                <Label Text="Round 1" 
+                       Grid.Row="0" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       TextColor="White"
+                       FontSize="Default"/>
+                
+                
+                <Image Grid.Row="1" Source="https://mithun.com/wp-content/uploads/2020/02/0820400_N25.jpg"/>
 
-            <Button Clicked="NewRoundButton_Clicked" Text="New Round"></Button>
 
-            <Button Clicked="RoundOverButton_Clicked" Text="Round Over"></Button>
-            
-            <Button Clicked="BattleOverButton_Clicked" Text="Battle Over"></Button>
-            
-            <Button Clicked="ExitButton_Clicked" Text="Exit"></Button>
 
-            <Button Clicked="QuitButton_Clicked" Text="Quit"></Button>
 
-        </StackLayout>
+
+
+
+
+            </Grid>
+        </ScrollView>
+      
         
     </ContentPage.Content>
 </ContentPage>
