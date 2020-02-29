@@ -29,6 +29,9 @@ namespace Game.Views
         // This uses the Instance so it can be shared with other Battle Pages as needed
         public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
+        // Empty Constructor for UTs
+        public PickCharactersPage(bool UnitTest) { }
+
         
     }
 }
