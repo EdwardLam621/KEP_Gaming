@@ -41,6 +41,7 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="auto"/>
                                                 <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -53,11 +54,18 @@
                                                     Style="{StaticResource ImageMediumStyle}"
                                                     VerticalOptions="CenterAndExpand"/>
 
-                                            <input:CheckBox Text="{Binding Name}" Type="Check" Color="White" BoxBackgroundColor="Black" TextColor="White" HeightRequest="40"
+                                            <input:CheckBox Grid.Column="2" Grid.Row="0"
+                                                Type="Check"
+                                                Color="White"
+                                                BoxBackgroundColor="Black"
+                                                TextColor="White"
+                                                HeightRequest="40"
+                                                CheckChanged="checkbox_CheckChanged"
+                                                BindingContext="{Binding .}"/>
 
-                                            CheckChanged="checkbox_CheckChanged" BindingContext="{Binding .}" Grid.Column="1" Grid.Row="0"/>
-
-                                            
+                                            <Label Grid.Column="1" Grid.Row="0"
+                                                   Text="{Binding Path=Name, StringFormat='{0:G}'}" 
+                                                   Style="{StaticResource ListStyle}"/>
 
                                             <Label Grid.Column="1" Grid.Row="1"
                                                    Text="{Binding Path=Level, StringFormat='Level {0:G}'}" 
@@ -80,7 +88,8 @@
                         Clicked="BattleButton_Clicked" 
                         Text="Begin Battle"
                         IsEnabled="False"
-                        HorizontalOptions="Center"/>
+                        HorizontalOptions="Center"
+                        />
   
             </StackLayout>
  
