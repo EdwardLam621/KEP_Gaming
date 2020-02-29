@@ -15,18 +15,13 @@
 
                 <Label Text="Let's the study party started" Style="{StaticResource CenterMessageStyle}"/>
 
-                <Button 
-                        x:Name="BeginBattleButton"
-                        Clicked="BattleButton_Clicked" 
-                        Text="Begin Battle"
-                        IsEnabled="False"
-                        HorizontalOptions="Center"/>
+                
 
                 <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand">
 
                     <StackLayout HorizontalOptions="Start">
 
-                        <Label Text="Characters" Style="{StaticResource CenterMessageStyle}"/>
+                        <Label Text="Pick Your Team" Style="{StaticResource CenterMessageStyle}" FontSize="Medium"/>
 
                         <ListView 
                                 x:Name="CharactersListView" 
@@ -79,6 +74,13 @@
                         </ListView>
                     </StackLayout>
                 </StackLayout>
+
+                <Button 
+                        x:Name="BeginBattleButton"
+                        Clicked="BattleButton_Clicked" 
+                        Text="Begin Battle"
+                        IsEnabled="False"
+                        HorizontalOptions="Center"/>
   
             </StackLayout>
  
