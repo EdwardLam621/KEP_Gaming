@@ -149,5 +149,22 @@ namespace Game.Views
             }
         }
 
+        /// <summary>
+        /// Refresh the list on page appearing
+        /// </summary>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Clear the Binding
+            BindingContext = null;
+
+            EngineViewModel.PartyCharacterList.Clear();
+
+            // Force the Binding to Update
+            BindingContext = EngineViewModel;
+
+            UpdateNextButtonState();
+        }
     }
 }
