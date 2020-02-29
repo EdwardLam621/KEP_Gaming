@@ -97,6 +97,28 @@ namespace Game.Views
             UpdateNextButtonState();
         }
 
+        /// <summary>
+        /// Next Button is based on the count
+        /// 
+        /// If no selected characters, disable
+        /// 
+        /// Show the Count of the party
+        /// 
+        /// </summary>
+        private void UpdateNextButtonState()
+        {
+            // If no characters disable Next button
+            BeginBattleButton.IsEnabled = true;
+
+            var currentCount = EngineViewModel.PartyCharacterList.Count();
+            if (currentCount == 0)
+            {
+                BeginBattleButton.IsEnabled = false;
+            }
+
+            PartyCountLabel.Text = currentCount.ToString();
+        }
+
         
     }
 }
