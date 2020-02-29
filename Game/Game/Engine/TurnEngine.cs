@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using Game.Helpers;
 using Game.Models;
+using Game.Models.Enum;
 
 namespace Game.Engine
 {
@@ -54,11 +55,35 @@ namespace Game.Engine
 
             // Todo: Add Move, Skill options
 
-            var result = Attack(Attacker);
+            var result = TurnChoice();
+                
+                Attack(Attacker);
 
             Referee.BattleScore.TurnCount++;
 
-            return result;
+            return true;
+        }
+
+        /// <summary>
+        /// Get user choice from BattleViewModel
+        /// </summary>
+        /// <returns></returns>
+        public TurnChoiceEnum TurnChoice()
+        {
+
+            if (Referee.AutoBattleEnabled)
+            {
+                // if enemies in range
+                //// if skill countdown == 0, UseSkill()
+                //// else attack
+                // else move closer to enemy
+                
+                // Return Attack for now 
+                // TODO: remove this hardcoded result
+                return TurnChoiceEnum.Attack;
+            }
+
+            return TurnChoiceEnum.Unknown;
         }
 
         /// <summary>
