@@ -18,6 +18,9 @@ namespace Game.Engine
         // The Grid that keeps track of player locations
         //public BattleGridCellModel BattleGrid;
 
+
+        private List<DungeonFighterModel> Fighters;
+
         // Which round we are on
         public int RoundCount = 1;
 
@@ -38,19 +41,10 @@ namespace Game.Engine
         /// Also initializes the Referee and RoundEngine
         /// </summary>
         /// <param name="party"></param>
-        public BattleEngine(List<CharacterModel> party, bool autoBattleEnabled = false)
+        public BattleEngine(List<CharacterModel> party)
         {
-            
-            var dungeonFighterModels = new List<DungeonFighterModel>();
-            
-            foreach (CharacterModel character in party)
-            {
-                dungeonFighterModels.Add(new DungeonFighterModel(character));
-            }
-            
-            Referee = new RefereeModel(dungeonFighterModels);
-            Referee.AutoBattleEnabled = autoBattleEnabled;
 
+            SetParty(party);
         }
 
         /// <summary>
@@ -100,5 +94,23 @@ namespace Game.Engine
             return false;
         }
 
+        public void SetParty(List<CharacterModel> party)
+        {
+            var dungeonFighterModels = new List<DungeonFighterModel>();
+
+            foreach (CharacterModel character in party)
+            {
+                dungeonFighterModels.Add(new DungeonFighterModel(character));
+            }
+
+            Fighters = dungeonFighterModels;
+            Referee = new RefereeModel(Fighters);
+
+        }
+
+        public void SetAutoBattle(bool toggle)
+        {
+            Referee.AutoBattleEnabled = toggle;
+        }
     }
 }
