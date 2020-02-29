@@ -47,7 +47,7 @@ namespace Game.Views
             // Clear the Database List and the Party List to start
             EngineViewModel.PartyCharacterList.Clear();
 
-            UpdateNextButtonState();
+            
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Game.Views
                 EngineViewModel.PartyCharacterList.Add(data);
             }
 
-            UpdateNextButtonState();
+            
         }
 
         /// <summary>
@@ -88,36 +88,13 @@ namespace Game.Views
                 return;
             }
 
-            // Manually deselect Character.
-            PartyListView.SelectedItem = null;
-
             // Remove the character from the list
             EngineViewModel.PartyCharacterList.Remove(data);
 
-            UpdateNextButtonState();
+            
         }
 
-        /// <summary>
-        /// Next Button is based on the count
-        /// 
-        /// If no selected characters, disable
-        /// 
-        /// Show the Count of the party
-        /// 
-        /// </summary>
-        private void UpdateNextButtonState()
-        {
-            // If no characters disable Next button
-            BeginBattleButton.IsEnabled = true;
-
-            var currentCount = EngineViewModel.PartyCharacterList.Count();
-            if (currentCount == 0)
-            {
-                BeginBattleButton.IsEnabled = false;
-            }
-
-            PartyCountLabel.Text = currentCount.ToString();
-        }
+        
 
         /// <summary>
         /// Jump to the Battle
@@ -164,7 +141,7 @@ namespace Game.Views
             // Force the Binding to Update
             BindingContext = EngineViewModel;
 
-            UpdateNextButtonState();
+            
         }
     }
 }
