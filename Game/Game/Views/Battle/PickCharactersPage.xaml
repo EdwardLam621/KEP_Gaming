@@ -71,6 +71,23 @@
                     </StackLayout>
                 </StackLayout>
 
+                <StackLayout HorizontalOptions="CenterAndExpand">
+
+                    <Label Text="Count" Style="{StaticResource CenterMessageStyle}"/>
+
+                    <Label Style="{StaticResource CenterMessageStyle}" 
+                        x:Name="PartyCountLabel"
+                        Text="0"/>
+
+                    <Button 
+                        x:Name="BeginBattleButton"
+                        Clicked="BattleButton_Clicked" 
+                        Text="Begin Battle"
+                        IsEnabled="False"
+                        HorizontalOptions="Center"/>
+
+                </StackLayout>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
