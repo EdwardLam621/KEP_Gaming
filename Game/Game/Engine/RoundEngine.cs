@@ -69,7 +69,6 @@ namespace Game.Engine
             GetNewMonsters();
             Referee.Monsters = MonsterList;
 
-
             // Make a list of characters+monsters for turn order
             MakeList();
 
@@ -134,7 +133,6 @@ namespace Game.Engine
         /// <returns></returns>
         public RoundEnum RoundNextTurn()
         {
-            RoundEnum roundResult = RoundEnum.NextTurn;
 
             // Decide Who gets next turn
             // Remember who just went...
@@ -158,7 +156,7 @@ namespace Game.Engine
                 return RoundEnum.NewRound;
             }
 
-            return roundResult;
+            return RoundEnum.NextTurn;
         }
 
         /// <summary>
