@@ -11,11 +11,11 @@
 
                 <Grid.RowDefinitions>
                     <!--Round message box grid-->
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
                     <!--Battlefield Grid-->
                     <RowDefinition Height="6*" />
                     <!--character action boxes grid-->
-                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
 
                 <!--Round message box-->
@@ -30,7 +30,15 @@
                 <Image Grid.Row="1" Source="https://mithun.com/wp-content/uploads/2020/02/0820400_N25.jpg"/>
 
 
-
+                <Grid Grid.Row="2">
+                    <Grid>
+                        <ImageButton Grid.Column="0" Grid.ColumnSpan="2" Source="d12.png"/>
+                        <Image Grid.Column="1" Grid.Row="0" Source="demo_char.png" />
+                        <Image Grid.Column="2" Grid.Row="0" Source="demo_char.png" />
+                        <Image Grid.Column="3" Grid.Row="0" Source="demo_char.png" />
+                    </Grid>
+                    
+                </Grid>
 
 
 

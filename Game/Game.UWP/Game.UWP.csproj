@@ -109,6 +109,7 @@
     <Content Include="cauldren.png" />
     <Content Include="classroom.png" />
     <Content Include="d12.png" />
+    <Content Include="demo_char.png" />
     <Content Include="dice_20.png" />
     <Content Include="door.png" />
     <Content Include="dungeon_door.png" />
