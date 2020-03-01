@@ -13,9 +13,9 @@
                     <!--Round message box grid-->
                     <RowDefinition Height="auto" />
                     <!--Battlefield Grid-->
-                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="auto" />
                     <!--character action boxes grid-->
-                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
                 <!--Round message box-->
@@ -29,15 +29,26 @@
                 
                 <Image Grid.Row="1" Source="https://mithun.com/wp-content/uploads/2020/02/0820400_N25.jpg"/>
 
-
+                
                 <Grid Grid.Row="2">
-                    <Grid>
-                        <ImageButton Grid.Column="0" Grid.ColumnSpan="2" Source="d12.png"/>
-                        <Image Grid.Column="1" Grid.Row="0" Source="demo_char.png" />
-                        <Image Grid.Column="2" Grid.Row="0" Source="demo_char.png" />
-                        <Image Grid.Column="3" Grid.Row="0" Source="demo_char.png" />
-                    </Grid>
-                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height = "*"/>
+                        <RowDefinition Height = "*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="battle_start_button.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                    <Image Grid.Column="1" Grid.Row="0" Source="demo_char.png" />
+                    <Image Grid.Column="2" Grid.Row="0" Source="demo_char.png" />
+                    <Image Grid.Column="3" Grid.Row="0" Source="demo_char.png" />
+                    <Image Grid.Column="1" Grid.Row="1" Source="demo_char.png" />
+                    <Image Grid.Column="2" Grid.Row="1" Source="demo_char.png" />
+                    <Image Grid.Column="3" Grid.Row="1" Source="demo_char.png" />
+
                 </Grid>
 
 

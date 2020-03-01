@@ -106,6 +106,7 @@
   <ItemGroup>
     <Content Include="autostudy.png" />
     <Content Include="battleboard.jpg" />
+    <Content Include="battle_start_button.png" />
     <Content Include="cauldren.png" />
     <Content Include="classroom.png" />
     <Content Include="d12.png" />
