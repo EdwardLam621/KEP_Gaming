@@ -10,30 +10,27 @@
             <Grid>
 
                 <Grid.RowDefinitions>
-                    <!--Round message box grid-->
-                    <RowDefinition Height="auto" />
                     <!--Battlefield Grid-->
                     <RowDefinition Height="auto" />
                     <!--character action boxes grid-->
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
+                <!--Battlefield image-->
+                <Image Grid.Row="0" Source="https://mithun.com/wp-content/uploads/2020/02/0820400_N25.jpg"/>
+
                 <!--Round message box-->
                 <Label Text="Round 1" 
                        Grid.Row="0" 
-                       HorizontalTextAlignment="Center" 
-                       VerticalTextAlignment="Center" 
-                       TextColor="White"
-                       FontSize="Default"/>
-                
-                
-                <Image Grid.Row="1" Source="https://mithun.com/wp-content/uploads/2020/02/0820400_N25.jpg"/>
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       TextColor="Black"
+                       FontSize="40"/>
 
-                
-                <Grid Grid.Row="2">
+                <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height = "*"/>
-                        <RowDefinition Height = "*"/>
+                        <RowDefinition Height = "auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -41,23 +38,37 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="battle_start_button.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-                    <Image Grid.Column="1" Grid.Row="0" Source="demo_char.png" />
-                    <Image Grid.Column="2" Grid.Row="0" Source="demo_char.png" />
-                    <Image Grid.Column="3" Grid.Row="0" Source="demo_char.png" />
-                    <Image Grid.Column="1" Grid.Row="1" Source="demo_char.png" />
-                    <Image Grid.Column="2" Grid.Row="1" Source="demo_char.png" />
-                    <Image Grid.Column="3" Grid.Row="1" Source="demo_char.png" />
+
+                    <!--Start button-->
+                    <ImageButton Grid.Column="0" 
+                        Grid.Row="0"
+                        Grid.RowSpan="2" 
+                        Source="small-button-clip-art-clkerm-vector-clip-art-37.png" 
+                        VerticalOptions="FillAndExpand" 
+                        HorizontalOptions="FillAndExpand" 
+                        BackgroundColor="Transparent" 
+                        BorderColor="Transparent"/>
+                    <!--Start button text-->
+                    <Label Grid.Column="0" 
+                        Grid.Row="0"
+                        Grid.RowSpan="2" 
+                        Text="START"
+                        VerticalOptions="CenterAndExpand" 
+                        HorizontalOptions="CenterAndExpand" 
+                        BackgroundColor="Transparent" 
+                        FontSize="Default"
+                        />
+
+                    <!--character act image-->
+                    <ImageButton Grid.Column="1" Grid.Row="0" Source="demo_char.png" BorderWidth="1" />
+                    <ImageButton Grid.Column="2" Grid.Row="0" Source="demo_char.png" BorderWidth="1"/>
+                    <ImageButton Grid.Column="3" Grid.Row="0" Source="demo_char.png" BorderWidth="1"/>
+                    <ImageButton Grid.Column="1" Grid.Row="1" Source="demo_char.png" BorderWidth="1"/>
+                    <ImageButton Grid.Column="2" Grid.Row="1" Source="demo_char.png" BorderWidth="1"/>
+                    <ImageButton Grid.Column="3" Grid.Row="1" Source="demo_char.png" BorderWidth="1"/>
 
                 </Grid>
-
-
-
-
-
             </Grid>
         </ScrollView>
-      
-        
     </ContentPage.Content>
 </ContentPage>
