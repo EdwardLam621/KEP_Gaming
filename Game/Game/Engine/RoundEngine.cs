@@ -51,6 +51,16 @@ namespace Game.Engine
             FighterList = new List<DungeonFighterModel>();
             MonsterList = new List<DungeonFighterModel>();
 
+            // Populate round with monsters
+            GetNewMonsters();
+            Referee.Monsters = MonsterList;
+
+            // Make a list of characters+monsters for turn order
+            MakeList();
+
+            // Order fight as per game rules
+            OrderFight();
+
         }
 
        
@@ -65,17 +75,10 @@ namespace Game.Engine
             // Switch from Unknown to NextTurn
             var roundResult = RoundEnum.NextTurn;
             
-            // Populate round with monsters
-            GetNewMonsters();
-            Referee.Monsters = MonsterList;
-
-            // Make a list of characters+monsters for turn order
-            MakeList();
-
-            // Order fight as per game rules
-            OrderFight();
+            
 
             // Turn fight loop, go until monsters or characters are dead
+            
             
             while (roundResult.Equals(RoundEnum.NextTurn))
             {
@@ -138,9 +141,16 @@ namespace Game.Engine
             // Remember who just went...
             CurrentPlayer = GetNextPlayerInList();
 
-            // Do the turn....
-            var turn = new TurnEngine(CurrentPlayer, Referee);
-            turn.TakeTurn();
+            // Auto and manual diverge
+
+            if (Referee.AutoBattleEnabled || CurrentPlayer.PlayerType.Equals(CreatureEnum.Monster))
+            {
+                var turn = new TurnEngine(CurrentPlayer, Referee);
+                turn.TakeTurn();
+            }
+
+
+
 
             // No characters, game is over...
             if (Referee.Characters.Count < 1)
@@ -158,6 +168,9 @@ namespace Game.Engine
 
             return RoundEnum.NextTurn;
         }
+
+
+
 
         /// <summary>
         /// Create monsters for a new round, with levels scaled to the round number
