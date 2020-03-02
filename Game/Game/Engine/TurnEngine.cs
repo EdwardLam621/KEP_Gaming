@@ -57,7 +57,10 @@ namespace Game.Engine
 
             var result = TurnChoice();
                 
+            if (result.Equals(TurnChoiceEnum.Attack))
+            {
                 Attack(Attacker);
+            }
 
             Referee.BattleScore.TurnCount++;
 
