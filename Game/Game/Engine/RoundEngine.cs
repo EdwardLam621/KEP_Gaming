@@ -66,7 +66,7 @@ namespace Game.Engine
             
         }
 
-        public void RoundNextTurnAttack()
+        public void RoundNextTurnFromVM()
         {
             CurrentPlayer = GetNextPlayerInList();
 
@@ -77,7 +77,7 @@ namespace Game.Engine
         public void RoundNextTurn()
         {
             // See whose turn it is
-            CurrentPlayer = GetNextPlayerInList();
+            CurrentPlayer = GetNextPlayerTurn();
             
             if (CurrentPlayer.PlayerType.Equals(CreatureEnum.Monster))
             {
@@ -89,7 +89,7 @@ namespace Game.Engine
         public void MonsterNextTurn()
         {
 
-            var nextPlayer = GetNextPlayerInList();
+            var nextPlayer = GetNextPlayerTurn();
 
             // Loop through monster attacks
             while (nextPlayer.PlayerType.Equals(CreatureEnum.Monster))
@@ -146,6 +146,32 @@ namespace Game.Engine
             // Set up turn engine and do the turn
             var turn = new TurnEngine(Referee, CurrentPlayer, choice);
             turn.TakeTurn();
+        }
+
+
+        /// <summary>
+        /// Get the Next Player to have a turn
+        /// </summary>
+        /// <returns></returns>
+        public DungeonFighterModel GetNextPlayerTurn()
+        {
+            // Remove the Dead
+            RemoveDeadPlayersFromList();
+
+            // Get Next Player
+            var PlayerCurrent = GetNextPlayerInList();
+
+            return PlayerCurrent;
+        }
+
+        /// <summary>
+        /// Remove Dead Players from the List
+        /// </summary>
+        /// <returns></returns>
+        public List<DungeonFighterModel> RemoveDeadPlayersFromList()
+        {
+            FighterList = FighterList.Where(m => m.Alive == true).ToList();
+            return FighterList;
         }
 
         /// <summary>
