@@ -23,6 +23,9 @@ namespace Game.Engine
         
         // Referee object to help manage the turn
         public RefereeModel Referee;
+        
+        // Action choice (Move, Attack, Skill)
+        public TurnChoiceEnum ActionChoice;
 
         /// <summary>
         /// Default constructor
@@ -33,14 +36,16 @@ namespace Game.Engine
         }
 
         /// <summary>
-        /// Constructor taking an Attacker and Referee
+        /// Constructor taking a Referee, attacker, and the turn choice of the attacker
         /// </summary>
-        /// <param name="attacker"></param>
         /// <param name="referee"></param>
-        public TurnEngine(DungeonFighterModel attacker, RefereeModel referee)
+        /// <param name="attacker"></param>
+        /// <param name="choice"></param>
+        public TurnEngine(RefereeModel referee, DungeonFighterModel attacker, TurnChoiceEnum choice)
         {
-            Attacker = attacker;
             Referee = referee;
+            Attacker = attacker;
+            ActionChoice = choice;
         }
 
 
