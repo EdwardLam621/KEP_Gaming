@@ -37,29 +37,30 @@ namespace Game.Views
 
 			BindingContext = BattleEngine;
 
-			List<CharacterModel> testFighter = new List<CharacterModel>();
+			//List<CharacterModel> testFighter = new List<CharacterModel>();
 
-			testFighter.Add(new CharacterModel
-			{
-				Name = "The Delinquent",
-				MaxHealth = 20,
-				CurrentHealth = 20,
-				Level = 1,
-				Description = "The mischief class skipper. Low in defense but high in attack",
-				ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
-				DefenseAttribute = 1,
-				OffenseAttribute = 2,
-				SpeedAttribute = 1,
-				Skill = CreatureSkillEnum.None,
-				//Equipments = equipments
-			});
+			//testFighter.Add(new CharacterModel
+			//{
+			//	Name = "The Delinquent",
+			//	MaxHealth = 20,
+			//	CurrentHealth = 20,
+			//	Level = 1,
+			//	Description = "The mischief class skipper. Low in defense but high in attack",
+			//	ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
+			//	DefenseAttribute = 1,
+			//	OffenseAttribute = 2,
+			//	SpeedAttribute = 1,
+			//	Skill = CreatureSkillEnum.None,
+			//	//Equipments = equipments
+			//});
 
-			BattleEngine.Engine.SetParty(testFighter);
+			BattleEngine.Engine.SetParty(BattleEngine.Engine.CharacterList);
 			BattleEngine.Engine.startBattle();
 
 
 
 		}
+
 
 		/// <summary>
 		/// Attack Action
@@ -136,6 +137,11 @@ namespace Game.Views
 			{
 				await Navigation.PopModalAsync();
 			}
+		}
+
+		private void ImageButton_Clicked(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
