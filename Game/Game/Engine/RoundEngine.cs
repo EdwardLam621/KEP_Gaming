@@ -79,34 +79,20 @@ namespace Game.Engine
             
             CurrentPlayer = GetNextPlayerInList();
 
-
             // Turn fight loop, go until monsters or characters are dead
 
             while (RoundResult.Equals(RoundEnum.NextTurn))
             {
                 
                 // Fight still going    
-                RoundResult = TakeAutoTurn();
+                var turn = TakeAutoTurn();
+                RoundResult = GetRoundState();
             }
 
 
-            // Round is over, find result
-            if (RoundResult.Equals(RoundEnum.GameOver))
-            {
-                // Monsters won
-                return RoundEnum.GameOver;
-            }
+            // Round is over, return result to BattleEngine
 
-
-            if (RoundResult.Equals(RoundEnum.NewRound))
-            {
-                // Characters won, start a new round
-                RoundCount++;
-                Debug.Write("Starting round " + RoundCount);
-                return RoundEnum.NewRound;
-            }
-
-            return RoundEnum.Unknown;
+            return RoundResult;
 
         }
 
