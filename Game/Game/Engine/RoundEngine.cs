@@ -63,11 +63,21 @@ namespace Game.Engine
             
         }
 
-        // RoundEngine.nextTurn, RoundEngine.NextTurnAttack, etc
+        public void StartRoundManual()
+        {
 
+        }
+
+        public void NextTurn()
+        {
+            // See whose turn it is
+            CurrentPlayer = GetNextPlayerInList();
+
+
+        }
 
         /// <summary>
-        /// Start a new round and returns result to BattleEngine
+        /// Start a new autobattle round and returns round result to BattleEngine
         /// </summary>
         /// <returns></returns>
         public RoundEnum StartRoundAuto()
@@ -77,7 +87,17 @@ namespace Game.Engine
             while (RoundResult.Equals(RoundEnum.NextTurn))
             {
                 // Fight still going    
-                var turn = TakeAutoTurn();
+
+                // See whose turn it is
+                CurrentPlayer = GetNextPlayerInList();
+
+                // Select turn choice (move, attack, skill)
+                var choice = TurnChoice();
+
+                // Do the turn with the current player
+                TakeTurn(choice);
+
+                // Check the round result
                 RoundResult = GetRoundState();
             }
 
@@ -87,25 +107,14 @@ namespace Game.Engine
         }
 
         /// <summary>
-        /// Starts the AutoBattle Turn
+        /// Perform the next turn using the specified choice
         /// </summary>
-        /// <returns></returns>
-        public bool TakeAutoTurn()
+        public void TakeTurn(TurnChoiceEnum choice)
         {
-            // See whose turn it is
-            CurrentPlayer = GetNextPlayerInList();
-            
-            // Select turn choice (move, attack, skill)
-            var choice = TurnChoice();
-
-            // Do the turn
+            // Set up turn engine and do the turn
             var turn = new TurnEngine(Referee, CurrentPlayer, choice);
             turn.TakeTurn();
-            
-            
-            return true;
         }
-
 
         /// <summary>
         /// Get the current state of the Round
