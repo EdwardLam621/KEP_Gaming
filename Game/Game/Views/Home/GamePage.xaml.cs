@@ -73,6 +73,7 @@ namespace Game.Views
 			});
 
 			BattleEngine battle = new BattleEngine(testFighter);
+			battle.Referee.AutoBattleEnabled = true;
 			battle.startBattle();
 		}
 	}
