@@ -28,7 +28,7 @@ namespace Game.Engine
         private List<DungeonFighterModel> Fighters;
 
         // Which round we are on
-        public int RoundCount = 1;
+        public int RoundCount = 0;
 
         // Current round
         public RoundEngine CurrentRound;
@@ -54,41 +54,30 @@ namespace Game.Engine
         }
 
         /// <summary>
-        /// Start the round(s)!
+        /// Start the battle
         /// </summary>
-        public void startBattle()
-        {
-            
-            var roundResult = BeginAutoBattle();
-            
-            //referee.getScores <- to be implemented
-        }
-
-        /// <summary>
-        /// Begin starts round 1, and takes care of looping through rounds
-        /// </summary>
-        /// <returns></returns>
-        private bool BeginAutoBattle()
+        public bool startBattle()
         {
 
-            // Set up first round
-            CurrentRound = new RoundEngine(Referee, RoundCount);
+            NewRound();
 
-            // Round fight loop
-            var roundResult = CurrentRound.StartRoundAuto();
-            
-            while (roundResult.Equals(RoundEnum.NewRound))
+            // Autobattle 
+            if (Referee.AutoBattleEnabled)
             {
-                RoundCount++;
-                
-                // Start new round
-                CurrentRound = new RoundEngine(Referee, RoundCount);
-                
-                // Fight while characters keep entering new rounds
-                roundResult = CurrentRound.StartRoundAuto();
-            }
+                // Start autobattle
+                var roundResult = CurrentRound.StartRoundAuto();
 
-            if (roundResult.Equals(RoundEnum.GameOver))
+                while (roundResult.Equals(RoundEnum.NewRound))
+                {
+                    // Fight while characters keep entering new rounds
+                    NewRound();
+                    roundResult = CurrentRound.StartRoundAuto();
+                }
+            }
+            
+
+
+            if (CurrentRound.GetRoundState().Equals(RoundEnum.GameOver))
             {
                 // display game over screen with statistics
                 Debug.WriteLine("GAME OVER");
@@ -100,6 +89,22 @@ namespace Game.Engine
             }
 
             return false;
+
+
+
+
+        }
+
+
+        /// <summary>
+        /// Start a new round
+        /// </summary>
+        public void NewRound()
+        {
+            RoundCount++;
+
+            // Start new round
+            CurrentRound = new RoundEngine(Referee, RoundCount);
         }
 
         public void SetParty(List<CharacterModel> party)
