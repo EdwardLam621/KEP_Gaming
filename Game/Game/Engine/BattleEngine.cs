@@ -58,7 +58,9 @@ namespace Game.Engine
         /// </summary>
         public void startBattle()
         {
-            var roundResult = Begin();
+            
+            var roundResult = BeginAutoBattle();
+            
             //referee.getScores <- to be implemented
         }
 
@@ -66,14 +68,14 @@ namespace Game.Engine
         /// Begin starts round 1, and takes care of looping through rounds
         /// </summary>
         /// <returns></returns>
-        private bool Begin()
+        private bool BeginAutoBattle()
         {
 
             // Set up first round
             CurrentRound = new RoundEngine(Referee, RoundCount);
 
             // Round fight loop
-            var roundResult = CurrentRound.StartRound();
+            var roundResult = CurrentRound.StartRoundAuto();
             
             while (roundResult.Equals(RoundEnum.NewRound))
             {
@@ -83,7 +85,7 @@ namespace Game.Engine
                 CurrentRound = new RoundEngine(Referee, RoundCount);
                 
                 // Fight while characters keep entering new rounds
-                roundResult = CurrentRound.StartRound();
+                roundResult = CurrentRound.StartRoundAuto();
             }
 
             if (roundResult.Equals(RoundEnum.GameOver))
