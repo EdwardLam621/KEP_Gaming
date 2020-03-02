@@ -339,7 +339,7 @@ namespace Game.Engine
 
             if (currentItem == null)
             {
-                //SwapCharacterItem(fighter, itemLocation, items.FirstOrDefault());
+                SwapCharacterItem(fighter, itemLocation, items.FirstOrDefault());
                 return true;
             }
 
@@ -347,7 +347,7 @@ namespace Game.Engine
             {
                 if (droppedItem.Value > currentItem.Value)
                 {
-                    //SwapCharacterItem(fighter, itemLocation, PoolItem);
+                    SwapCharacterItem(fighter, itemLocation, currentItem);
                     return true;
                 }
             }
@@ -356,5 +356,36 @@ namespace Game.Engine
         }
 
 
+        /// <summary>
+        /// Swap the Item the character has for one from the pool
+        /// 
+        /// Drop the current item back into the Pool
+        /// 
+        /// </summary>
+        /// <param name="character"></param>
+        /// <param name="setLocation"></param>
+        /// <param name="newItem"></param>
+        /// <returns></returns>
+        private ItemModel SwapCharacterItem(DungeonFighterModel character, ItemLocationEnum setLocation, ItemModel newItem)
+        {
+            // Put on the new ItemModel, which drops the one back to the pool
+            var droppedItem = character.AddItem(setLocation, newItem.Id);
+
+            // Add the PoolItem to the list of selected items
+            // ?
+            //ItemModelSelectList.Add(newItem);
+
+            // Remove the ItemModel just put on from the pool
+            Referee.ItemPool.Remove(newItem);
+
+            if (droppedItem != null)
+            {
+                // Add the dropped ItemModel to the pool
+                Referee.ItemPool.Add(droppedItem);
+            }
+
+            return droppedItem;
+        }
     }
+}
 }
