@@ -146,7 +146,8 @@ namespace Game.Engine
         public void TakeTurn(TurnChoiceEnum choice)
         {
             // Set up turn engine and do the turn
-            var turn = new TurnEngine(Referee, CurrentPlayer, choice);
+            Target = ChooseTarget(CurrentPlayer);
+            var turn = new TurnEngine(Referee, CurrentPlayer, Target, choice);
             turn.TakeTurn();
         }
 

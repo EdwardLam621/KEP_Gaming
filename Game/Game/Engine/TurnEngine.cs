@@ -19,7 +19,7 @@ namespace Game.Engine
         public DungeonFighterModel Attacker;
         
         // Current defender
-        public DungeonFighterModel Defender;
+        public DungeonFighterModel Target;
         
         // Referee object to help manage the turn
         public RefereeModel Referee;
@@ -41,10 +41,14 @@ namespace Game.Engine
         /// <param name="referee"></param>
         /// <param name="attacker"></param>
         /// <param name="choice"></param>
-        public TurnEngine(RefereeModel referee, DungeonFighterModel attacker, TurnChoiceEnum choice)
+        public TurnEngine(RefereeModel referee, 
+            DungeonFighterModel attacker, 
+            DungeonFighterModel target, 
+            TurnChoiceEnum choice)
         {
             Referee = referee;
             Attacker = attacker;
+            Target = target;
             ActionChoice = choice;
         }
 
@@ -86,8 +90,6 @@ namespace Game.Engine
         /// <returns></returns>
         public bool Attack(DungeonFighterModel Attacker)
         {
-            // For Attack, Choose Who
-            var Target = AttackChoice(Attacker);
 
             if (Target == null)
             {
