@@ -28,6 +28,9 @@ namespace Game.Engine
         // Player whose turn it is currently
         public DungeonFighterModel CurrentPlayer;
 
+        // Recipient of the attack
+        public DungeonFighterModel Target;
+
         // The Referee object that handles scores/items/skills
         public RefereeModel Referee;
 
@@ -63,17 +66,46 @@ namespace Game.Engine
             
         }
 
-        public void StartRoundManual()
+        public void RoundNextTurnAttack()
         {
-
-        }
-
-        public void NextTurn()
-        {
-            // See whose turn it is
             CurrentPlayer = GetNextPlayerInList();
 
 
+        }
+
+
+        public void RoundNextTurn()
+        {
+            // See whose turn it is
+            CurrentPlayer = GetNextPlayerInList();
+            
+            if (CurrentPlayer.PlayerType.Equals(CreatureEnum.Monster))
+            {
+                MonsterNextTurn();
+            }
+
+        }
+
+        public void MonsterNextTurn()
+        {
+
+            var nextPlayer = GetNextPlayerInList();
+
+            // Loop through monster attacks
+            while (nextPlayer.PlayerType.Equals(CreatureEnum.Monster))
+            {
+                NextTurnAuto();
+            }
+        }
+
+        public void NextTurnAuto()
+        {
+            
+            // Select turn choice using same method as autobattle
+            var choice = TurnChoice();
+
+            // Do the turn
+            TakeTurn(choice);
         }
 
         /// <summary>
@@ -398,6 +430,8 @@ namespace Game.Engine
 
             return TurnChoiceEnum.Unknown;
         }
+
+
 
     }
 }
