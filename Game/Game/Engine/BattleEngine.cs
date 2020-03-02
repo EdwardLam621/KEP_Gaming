@@ -38,20 +38,9 @@ namespace Game.Engine
         /// </summary>
         public BattleEngine()
         {
-
+            Referee = new RefereeModel();
         }
 
-        
-        /// <summary>
-        /// Constructor that takes the party of characters and converts them to fighters
-        /// Also initializes the Referee and RoundEngine
-        /// </summary>
-        /// <param name="party"></param>
-        public BattleEngine(List<CharacterModel> party)
-        {
-
-            SetParty(party);
-        }
 
         /// <summary>
         /// Start the battle
@@ -59,6 +48,8 @@ namespace Game.Engine
         public bool startBattle()
         {
 
+            SetParty(CharacterList);
+            
             NewRound();
 
             // Autobattle 
@@ -116,8 +107,7 @@ namespace Game.Engine
                 dungeonFighterModels.Add(new DungeonFighterModel(character));
             }
 
-            Fighters = dungeonFighterModels;
-            Referee = new RefereeModel(Fighters);
+            Referee.Characters = dungeonFighterModels;
 
         }
 
