@@ -293,7 +293,7 @@ namespace Game.Engine
         /// <summary>
         /// Pickup Items Dropped
         /// </summary>
-        /// <param name="character"></param>
+        /// <param name="fighter"></param>
         public bool PickupItemsFromPool(DungeonFighterModel fighter)
         {
 
@@ -315,5 +315,46 @@ namespace Game.Engine
             //}
             return true;
         }
+
+        /// <summary>
+        /// Swap out the item if it is better
+        /// 
+        /// Uses Value to determine
+        /// </summary>
+        /// <param name="fighter"></param>
+        /// <param name="itemLocation"></param>
+        public bool GetItemFromPoolIfBetter(DungeonFighterModel fighter, ItemLocationEnum itemLocation)
+        {
+            var items = Referee.ItemPool.Where(a => a.Location == itemLocation)
+                .OrderByDescending(a => a.Value)
+                .ToList();
+
+            // If no items in the list, return...
+            if (!items.Any())
+            {
+                return false;
+            }
+
+            var currentItem = fighter.GetItemByLocation(itemLocation);
+
+            if (currentItem == null)
+            {
+                //SwapCharacterItem(fighter, itemLocation, items.FirstOrDefault());
+                return true;
+            }
+
+            foreach (var droppedItem in items)
+            {
+                if (droppedItem.Value > currentItem.Value)
+                {
+                    //SwapCharacterItem(fighter, itemLocation, PoolItem);
+                    return true;
+                }
+            }
+
+            return true;
+        }
+
+
     }
 }
