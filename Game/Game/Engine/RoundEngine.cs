@@ -92,9 +92,17 @@ namespace Game.Engine
         /// <returns></returns>
         public bool TakeAutoTurn()
         {
+            // See whose turn it is
             CurrentPlayer = GetNextPlayerInList();
-            var turn = new TurnEngine(Referee, CurrentPlayer, TurnChoiceEnum.Attack);
+            
+            // Select turn choice (move, attack, skill)
+            var choice = TurnChoice();
+
+            // Do the turn
+            var turn = new TurnEngine(Referee, CurrentPlayer, choice);
             turn.TakeTurn();
+            
+            
             return true;
         }
 
