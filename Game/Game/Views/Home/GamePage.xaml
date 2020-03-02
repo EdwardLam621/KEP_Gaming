@@ -30,7 +30,7 @@
                     <ImageButton
                         Source="study.png"
                         Style="{StaticResource ImageLargeStyle}"
-                        Clicked="DungeonButton_Clicked"/>
+                        Clicked="ManualBattleButton_Clicked"/>
 
                     <Label 
                         Text="Study"

@@ -26,7 +26,7 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-        async void DungeonButton_Clicked(object sender, EventArgs e)
+        async void ManualBattleButton_Clicked(object sender, EventArgs e)
         {
 			await Navigation.PushAsync(new PickCharactersPage());
 		}
