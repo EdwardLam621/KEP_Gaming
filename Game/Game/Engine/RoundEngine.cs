@@ -30,6 +30,8 @@ namespace Game.Engine
         // The Referee object that handles scores/items/skills
         public RefereeModel Referee;
 
+        // Current Round state
+        public RoundEnum RoundResult = RoundEnum.NextTurn;
 
         /// <summary>
         /// Default empty constructor
@@ -56,44 +58,47 @@ namespace Game.Engine
             Referee.Monsters = MonsterList;
 
             // Make a list of characters+monsters for turn order
-            MakeList();
-
-            // Order fight as per game rules
-            OrderFight();
-
+            OrderFighters();
+            
         }
 
        
+
+        // RoundEngine.nextTurn, RoundEngine.NextTurnAttack, etc
+
+
+        //public Rou
 
         /// <summary>
         /// Start a new round
         /// </summary>
         /// <param name="round"></param>
         /// <returns></returns>
-        public RoundEnum StartRound()
+        public RoundEnum StartRoundAuto()
         {
-            // Switch from Unknown to NextTurn
-            var roundResult = RoundEnum.NextTurn;
             
-            
+            CurrentPlayer = GetNextPlayerInList();
+
 
             // Turn fight loop, go until monsters or characters are dead
-            
-            
-            while (roundResult.Equals(RoundEnum.NextTurn))
+
+            while (RoundResult.Equals(RoundEnum.NextTurn))
             {
-                // Fight still going
-                roundResult = RoundNextTurn();
+                
+                // Fight still going    
+                RoundResult = RoundNextTurn();
             }
 
-            if (roundResult.Equals(RoundEnum.GameOver))
+
+            // Round is over, find result
+            if (RoundResult.Equals(RoundEnum.GameOver))
             {
                 // Monsters won
                 return RoundEnum.GameOver;
             }
 
 
-            if (roundResult.Equals(RoundEnum.NewRound))
+            if (RoundResult.Equals(RoundEnum.NewRound))
             {
                 // Characters won, start a new round
                 RoundCount++;
@@ -103,25 +108,6 @@ namespace Game.Engine
 
             return RoundEnum.Unknown;
 
-        }
-
-        /// <summary>
-        /// At the end of the round
-        /// Clear the ItemModel List
-        /// </summary>
-        /// <returns></returns>
-        public bool EndRound()
-        {
-            // Have each character pickup items...
-            foreach (var character in Referee.Characters)
-            {
-                //PickupItemsFromPool(character);
-            }
-
-            // Reset Monster and Item Lists
-            Referee.Monsters.Clear();
-            Referee.ItemPool.Clear();
-            return true;
         }
 
         /// <summary>
@@ -137,21 +123,6 @@ namespace Game.Engine
         public RoundEnum RoundNextTurn()
         {
 
-            // Decide Who gets next turn
-            // Remember who just went...
-            CurrentPlayer = GetNextPlayerInList();
-
-            // Auto and manual diverge
-
-            if (Referee.AutoBattleEnabled || CurrentPlayer.PlayerType.Equals(CreatureEnum.Monster))
-            {
-                var turn = new TurnEngine(CurrentPlayer, Referee);
-                turn.TakeTurn();
-            }
-
-
-
-
             // No characters, game is over...
             if (Referee.Characters.Count < 1)
             {
@@ -165,6 +136,9 @@ namespace Game.Engine
                 // If over, New Round
                 return RoundEnum.NewRound;
             }
+
+            var turn = new TurnEngine(CurrentPlayer, Referee);
+            turn.TakeTurn();
 
             return RoundEnum.NextTurn;
         }
@@ -206,10 +180,30 @@ namespace Game.Engine
         }
 
 
+
+        /// <summary>
+        /// At the end of the round
+        /// Clear the ItemModel List
+        /// </summary>
+        /// <returns></returns>
+        public bool EndRound()
+        {
+            // Have each character pickup items...
+            foreach (var character in Referee.Characters)
+            {
+                //PickupItemsFromPool(character);
+            }
+
+            // Reset Monster and Item Lists
+            Referee.Monsters.Clear();
+            Referee.ItemPool.Clear();
+            return true;
+        }
+
         /// <summary>
         /// Who is Playing this round?
         /// </summary>
-        public void MakeList()
+        public void OrderFighters()
         {
             // Start from a clean list of players
             FighterList.Clear();
@@ -236,6 +230,8 @@ namespace Game.Engine
                     order++;
                 }
             }
+
+            OrderFight();
 
         }
 
