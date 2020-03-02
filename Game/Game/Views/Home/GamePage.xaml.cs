@@ -57,22 +57,22 @@ namespace Game.Views
 			// Battle testing
 			List<CharacterModel> testFighter = new List<CharacterModel>();
 			
-			testFighter.Add(new CharacterModel
-			{
-				Name = "The Delinquent",
-				MaxHealth = 20,
-				CurrentHealth = 20,
-				Level = 1,
-				Description = "The mischief class skipper. Low in defense but high in attack",
-				ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
-				DefenseAttribute = 1,
-				OffenseAttribute = 2,
-				SpeedAttribute = 1,
-				Skill = CreatureSkillEnum.None,
-				//Equipments = equipments
-			});
+			//testFighter.Add(new CharacterModel
+			//{
+			//	Name = "The Delinquent",
+			//	MaxHealth = 20,
+			//	CurrentHealth = 20,
+			//	Level = 1,
+			//	Description = "The mischief class skipper. Low in defense but high in attack",
+			//	ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
+			//	DefenseAttribute = 1,
+			//	OffenseAttribute = 2,
+			//	SpeedAttribute = 1,
+			//	Skill = CreatureSkillEnum.None,
+			//	//Equipments = equipments
+			//});
 
-			BattleEngine battle = new BattleEngine(testFighter);
+			BattleEngine battle = new BattleEngine();
 			battle.Referee.AutoBattleEnabled = true;
 			battle.startBattle();
 		}
