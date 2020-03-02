@@ -62,38 +62,27 @@ namespace Game.Engine
             
         }
 
-       
-
         // RoundEngine.nextTurn, RoundEngine.NextTurnAttack, etc
 
 
-        //public Rou
-
         /// <summary>
-        /// Start a new round
+        /// Start a new round and returns result to BattleEngine
         /// </summary>
-        /// <param name="round"></param>
         /// <returns></returns>
         public RoundEnum StartRoundAuto()
         {
             
-            CurrentPlayer = GetNextPlayerInList();
-
             // Turn fight loop, go until monsters or characters are dead
-
             while (RoundResult.Equals(RoundEnum.NextTurn))
             {
-                
                 // Fight still going    
                 var turn = TakeAutoTurn();
                 RoundResult = GetRoundState();
             }
 
-
             // Round is over, return result to BattleEngine
 
             return RoundResult;
-
         }
 
         /// <summary>
@@ -102,7 +91,7 @@ namespace Game.Engine
         /// <returns></returns>
         public bool TakeAutoTurn()
         {
-
+            CurrentPlayer = GetNextPlayerInList();
             var turn = new TurnEngine(CurrentPlayer, Referee);
             turn.TakeTurn();
             return true;
