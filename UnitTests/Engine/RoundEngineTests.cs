@@ -70,7 +70,7 @@ namespace UnitTests.Engine
 
             // Act
             var engine = Engine;
-            RoundEnum result = engine.RoundNextTurn();
+            RoundEnum result = engine.TakeAutoTurn();
 
             // Reset
 
@@ -86,7 +86,7 @@ namespace UnitTests.Engine
             // Act
             var engine = Engine;
             engine.Referee.Characters.Add(new DungeonFighterModel());
-            RoundEnum result = engine.RoundNextTurn();
+            RoundEnum result = engine.TakeAutoTurn();
 
             // Reset
 
@@ -104,7 +104,7 @@ namespace UnitTests.Engine
             engine.Referee.Characters.Add(new DungeonFighterModel());
             engine.MonsterList.Add(new DungeonFighterModel());
             engine.FighterList.Add(new DungeonFighterModel());
-            RoundEnum result = engine.RoundNextTurn();
+            RoundEnum result = engine.TakeAutoTurn();
 
             // Reset
 

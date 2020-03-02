@@ -86,7 +86,7 @@ namespace Game.Engine
             {
                 
                 // Fight still going    
-                RoundResult = RoundNextTurn();
+                RoundResult = TakeAutoTurn();
             }
 
 
@@ -111,18 +111,24 @@ namespace Game.Engine
         }
 
         /// <summary>
-        /// Manage Next Turn
-        /// 
-        /// Decides Who's Turn
-        /// Remembers Current Player
-        /// 
-        /// Starts the Turn
-        /// 
+        /// Starts the AutoBattle Turn
         /// </summary>
         /// <returns></returns>
-        public RoundEnum RoundNextTurn()
+        public bool TakeAutoTurn()
         {
 
+            var turn = new TurnEngine(CurrentPlayer, Referee);
+            turn.TakeTurn();
+            return true;
+        }
+
+
+        /// <summary>
+        /// Get the current state of the Round
+        /// </summary>
+        /// <returns></returns>
+        public RoundEnum GetRoundState()
+        {
             // No characters, game is over...
             if (Referee.Characters.Count < 1)
             {
@@ -137,14 +143,8 @@ namespace Game.Engine
                 return RoundEnum.NewRound;
             }
 
-            var turn = new TurnEngine(CurrentPlayer, Referee);
-            turn.TakeTurn();
-
             return RoundEnum.NextTurn;
         }
-
-
-
 
         /// <summary>
         /// Create monsters for a new round, with levels scaled to the round number
