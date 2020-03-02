@@ -431,7 +431,16 @@ namespace Game.Engine
             return TurnChoiceEnum.Unknown;
         }
 
-
+        /// <summary>
+        /// Set the target of the attack. Used in manual mode.
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public bool SetTarget(DungeonFighterModel target)
+        {
+            Target = target;
+            return true;
+        }
 
     }
 }
