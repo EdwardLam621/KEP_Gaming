@@ -301,18 +301,17 @@ namespace Game.Engine
 
             // I use the same logic for Auto Battle as I do for Manual Battle
 
-            //if (BattleScore.AutoBattle)
-            //{
-            //    // Have the character, walk the items in the pool, and decide if any are better than current one.
+            // Have the character, walk the items in the pool, and decide if any are better than current one.
 
-            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.Head);
-            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.Necklass);
-            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.PrimaryHand);
-            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.OffHand);
-            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.RightFinger);
-            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.LeftFinger);
-            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.Feet);
-            //}
+            // Use Mike's auto apply for now
+            GetItemFromPoolIfBetter(fighter, ItemLocationEnum.Head);
+            GetItemFromPoolIfBetter(fighter, ItemLocationEnum.Body);
+            GetItemFromPoolIfBetter(fighter, ItemLocationEnum.PrimaryHand);
+            GetItemFromPoolIfBetter(fighter, ItemLocationEnum.OffHand);
+            GetItemFromPoolIfBetter(fighter, ItemLocationEnum.RightFinger);
+            GetItemFromPoolIfBetter(fighter, ItemLocationEnum.LeftFinger);
+            GetItemFromPoolIfBetter(fighter, ItemLocationEnum.Feet);
+   
             return true;
         }
 
