@@ -289,5 +289,31 @@ namespace Game.Engine
             return FighterList[index + 1];
 
         }
+
+        /// <summary>
+        /// Pickup Items Dropped
+        /// </summary>
+        /// <param name="character"></param>
+        public bool PickupItemsFromPool(DungeonFighterModel fighter)
+        {
+
+            // TODO: Teams, You need to implement your own Logic if not using auto apply
+
+            // I use the same logic for Auto Battle as I do for Manual Battle
+
+            //if (BattleScore.AutoBattle)
+            //{
+            //    // Have the character, walk the items in the pool, and decide if any are better than current one.
+
+            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.Head);
+            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.Necklass);
+            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.PrimaryHand);
+            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.OffHand);
+            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.RightFinger);
+            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.LeftFinger);
+            //    GetItemFromPoolIfBetter(character, ItemLocationEnum.Feet);
+            //}
+            return true;
+        }
     }
 }
