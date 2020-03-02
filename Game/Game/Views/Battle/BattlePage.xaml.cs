@@ -1,6 +1,10 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Game.ViewModels;
+using Game.Models;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Game.Views
 {
@@ -10,12 +14,51 @@ namespace Game.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BattlePage: ContentPage
 	{
+
+		private BattleEngineViewModel BattleEngine = BattleEngineViewModel.Instance;
+
+		private List<CharacterModel> Party;
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		public BattlePage ()
 		{
 			InitializeComponent ();
+
+			BindingContext = BattleEngine;
+
+			
+		}
+
+		public BattlePage(List<CharacterModel> party)
+		{
+			InitializeComponent();
+
+			BindingContext = BattleEngine;
+
+			List<CharacterModel> testFighter = new List<CharacterModel>();
+
+			testFighter.Add(new CharacterModel
+			{
+				Name = "The Delinquent",
+				MaxHealth = 20,
+				CurrentHealth = 20,
+				Level = 1,
+				Description = "The mischief class skipper. Low in defense but high in attack",
+				ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
+				DefenseAttribute = 1,
+				OffenseAttribute = 2,
+				SpeedAttribute = 1,
+				Skill = CreatureSkillEnum.None,
+				//Equipments = equipments
+			});
+
+			BattleEngine.Engine.SetParty(testFighter);
+			BattleEngine.Engine.startBattle();
+
+
+
 		}
 
 		/// <summary>
@@ -25,7 +68,10 @@ namespace Game.Views
 		/// <param name="e"></param>
 		void AttackButton_Clicked(object sender, EventArgs e)
 		{
-			DisplayAlert("SU", "Attack !!!", "OK");
+			Debug.WriteLine("Attack clicked");
+
+
+
 		}
 
 		/// <summary>
