@@ -191,7 +191,7 @@ namespace Game.Engine
             // Have each character pickup items...
             foreach (var character in Referee.Characters)
             {
-                //PickupItemsFromPool(character);
+                PickupItemsFromPool(character);
             }
 
             // Reset Monster and Item Lists
@@ -205,8 +205,6 @@ namespace Game.Engine
         /// </summary>
         public void OrderFighters()
         {
-            // Start from a clean list of players
-            FighterList.Clear();
 
             // Remember the Insert order, used for Sorting
             var order = 0;
