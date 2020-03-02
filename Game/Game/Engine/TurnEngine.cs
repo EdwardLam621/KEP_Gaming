@@ -72,27 +72,7 @@ namespace Game.Engine
             return true;
         }
 
-        /// <summary>
-        /// Get user choice from BattleViewModel
-        /// </summary>
-        /// <returns></returns>
-        public TurnChoiceEnum TurnChoice()
-        {
-
-            if (Referee.AutoBattleEnabled)
-            {
-                // if enemies in range
-                //// if skill countdown == 0, UseSkill()
-                //// else attack
-                // else move closer to enemy
-                
-                // Return Attack for now 
-                // TODO: remove this hardcoded result
-                return TurnChoiceEnum.Attack;
-            }
-
-            return TurnChoiceEnum.Unknown;
-        }
+        
 
         /// <summary>
         /// Attack as a Turn

@@ -4,6 +4,7 @@ using System.Text;
 using Game.Models;
 using System.Linq;
 using System.Diagnostics;
+using Game.Models.Enum;
 
 namespace Game.Engine
 {
@@ -92,7 +93,7 @@ namespace Game.Engine
         public bool TakeAutoTurn()
         {
             CurrentPlayer = GetNextPlayerInList();
-            var turn = new TurnEngine(CurrentPlayer, Referee);
+            var turn = new TurnEngine(Referee, CurrentPlayer, TurnChoiceEnum.Attack);
             turn.TakeTurn();
             return true;
         }
@@ -358,6 +359,29 @@ namespace Game.Engine
 
             return droppedItem;
         }
+
+        /// <summary>
+        /// Get user choice from BattleViewModel
+        /// </summary>
+        /// <returns></returns>
+        public TurnChoiceEnum TurnChoice()
+        {
+
+            if (Referee.AutoBattleEnabled)
+            {
+                // if enemies in range
+                //// if skill countdown == 0, UseSkill()
+                //// else attack
+                // else move closer to enemy
+
+                // Return Attack for now 
+                // TODO: remove this hardcoded result
+                return TurnChoiceEnum.Attack;
+            }
+
+            return TurnChoiceEnum.Unknown;
+        }
+
     }
 }
 
