@@ -50,19 +50,16 @@ namespace Game.Engine
 
 
         /// <summary>
-        /// CharacterModel Attacks...
+        /// Do the turn
         /// </summary>
         /// <param name="Attacker"></param>
         /// <returns></returns>
         public bool TakeTurn()
         {
-            // Choose Action.  Such as Move, Attack etc.
 
-            // Todo: Add Move, Skill options
-
-            var result = TurnChoice();
+            // Todo: Add Move, Skill options and helper methods
                 
-            if (result.Equals(TurnChoiceEnum.Attack))
+            if (ActionChoice.Equals(TurnChoiceEnum.Attack))
             {
                 Attack(Attacker);
             }
