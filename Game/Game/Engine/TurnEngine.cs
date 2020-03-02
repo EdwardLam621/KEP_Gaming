@@ -100,75 +100,9 @@ namespace Game.Engine
             return true;
         }
 
-        /// <summary>
-        /// Decide which to attack
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        public DungeonFighterModel AttackChoice(DungeonFighterModel data)
-        {
-            switch (data.PlayerType)
-            {
-                case CreatureEnum.Monster:
-                    return SelectCharacterToAttack();
+        
 
-                case CreatureEnum.Character:
-                    return SelectMonsterToAttack();
-
-                default:
-                    return null;
-            }
-        }
-
-        /// <summary>
-        /// Pick the Character to Attack
-        /// </summary>
-        /// <returns></returns>
-        public DungeonFighterModel SelectCharacterToAttack()
-        {
-            if (Referee.Characters == null)
-            {
-                return null;
-            }
-
-            if (Referee.Characters.Count < 1)
-            {
-                return null;
-            }
-
-            // Select first in the list
-            var Defender = Referee.Characters
-                .Where(m => m.Alive)
-                .OrderBy(m => m.ListOrder).FirstOrDefault();
-
-            return Defender;
-        }
-
-
-        /// <summary>
-        /// Pick the Monster to Attack
-        /// </summary>
-        /// <returns></returns>
-        public DungeonFighterModel SelectMonsterToAttack()
-        {
-            if (Referee.Monsters == null)
-            {
-                return null;
-            }
-
-            if (Referee.Monsters.Count < 1)
-            {
-                return null;
-            }
-
-            // Select first one to hit in the list for now...
-            // Attack the Weakness (lowest HP) MonsterModel first 
-            var Defender = Referee.Monsters
-                .Where(m => m.Alive)
-                .OrderBy(m => m.CurrentHealth).FirstOrDefault();
-
-            return Defender;
-        }
+        
 
         /// <summary>
         /// // MonsterModel Attacks CharacterModel

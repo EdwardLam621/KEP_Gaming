@@ -444,7 +444,7 @@ namespace Game.Engine
         public TurnChoiceEnum TurnChoice()
         {
 
-            if (Referee.AutoBattleEnabled)
+            if (Referee.AutoBattleEnabled || CurrentPlayer.PlayerType.Equals(CreatureEnum.Monster))
             {
                 // if enemies in range
                 //// if skill countdown == 0, UseSkill()
@@ -457,6 +457,77 @@ namespace Game.Engine
             }
 
             return TurnChoiceEnum.Unknown;
+        }
+
+
+        /// <summary>
+        /// Decide whom to attack
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public DungeonFighterModel ChooseTarget(DungeonFighterModel data)
+        {
+            switch (data.PlayerType)
+            {
+                case CreatureEnum.Monster:
+                    return SelectCharacterToAttack();
+
+                case CreatureEnum.Character:
+                    return SelectMonsterToAttack();
+
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// Pick the Character to Attack
+        /// </summary>
+        /// <returns></returns>
+        public DungeonFighterModel SelectCharacterToAttack()
+        {
+            if (Referee.Characters == null)
+            {
+                return null;
+            }
+
+            if (Referee.Characters.Count < 1)
+            {
+                return null;
+            }
+
+            // Select first in the list
+            var Defender = Referee.Characters
+                .Where(m => m.Alive)
+                .OrderBy(m => m.ListOrder).FirstOrDefault();
+
+            return Defender;
+        }
+
+
+        /// <summary>
+        /// Pick the Monster to Attack
+        /// </summary>
+        /// <returns></returns>
+        public DungeonFighterModel SelectMonsterToAttack()
+        {
+            if (Referee.Monsters == null)
+            {
+                return null;
+            }
+
+            if (Referee.Monsters.Count < 1)
+            {
+                return null;
+            }
+
+            // Select first one to hit in the list for now...
+            // Attack the Weakness (lowest HP) MonsterModel first 
+            var Defender = Referee.Monsters
+                .Where(m => m.Alive)
+                .OrderBy(m => m.CurrentHealth).FirstOrDefault();
+
+            return Defender;
         }
 
         /// <summary>
