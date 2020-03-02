@@ -66,11 +66,13 @@ namespace Game.Engine
             
         }
 
-        public void RoundNextTurnFromVM()
+        public void AttackClicked(DungeonFighterModel target)
         {
-            CurrentPlayer = GetNextPlayerInList();
-
-
+            
+            var tar = SetTarget(target);
+            TakeTurn(TurnChoiceEnum.Attack);
+            RoundResult = GetRoundState();
+            RoundNextTurn();
         }
 
 
