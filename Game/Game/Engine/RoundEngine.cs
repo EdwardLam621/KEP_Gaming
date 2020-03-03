@@ -137,8 +137,10 @@ namespace Game.Engine
                 RoundResult = GetRoundState();
             }
 
-            // Round is over, return result to BattleEngine
+            
+            Referee.BattleScore.RoundCount++;
 
+            // Round is over, return result to BattleEngine
             return RoundResult;
         }
 
