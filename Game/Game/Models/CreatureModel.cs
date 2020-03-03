@@ -277,7 +277,7 @@ namespace Game.Models
         /// <returns></returns>
         public int GetCurrentHealth()
         {
-            /*
+            
             // Base CurrentHealth
             var myReturn = CurrentHealth;
 
@@ -288,8 +288,7 @@ namespace Game.Models
             myReturn += GetCurrentHealthItemBonus;
 
             return myReturn;
-            */
-            return 0;
+            
         }
         #endregion GetAttributesValue
         
