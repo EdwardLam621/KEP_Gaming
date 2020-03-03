@@ -42,7 +42,6 @@ namespace Game.Views
             InitializeComponent();
 
             BindingContext = EngineViewModel;
-            //BindingContext = EngineViewModel;
 
             // Clear the Database List and the Party List to start
             EngineViewModel.PartyCharacterList.Clear();
@@ -124,11 +123,27 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void BattleButton_Clicked(object sender, EventArgs e)
         {
+            // 
             CreateEngineCharacterList();
 
             await Navigation.PushModalAsync(new NavigationPage(new BattlePageMike()));
             await Navigation.PopAsync();
         }
+
+        public async void AutoBattleButton_Clicked(object sender, EventArgs e)
+        {
+            // 
+            CreateEngineCharacterList();
+            EngineViewModel.Engine.Referee.AutoBattleEnabled = true;
+            EngineViewModel.Engine.startBattle();
+
+
+
+            await Navigation.PushModalAsync(new NavigationPage(new ScorePage()));
+            await Navigation.PopAsync();
+        }
+
+
 
         /// <summary>
         /// Clear out the old list and make the new list
@@ -160,7 +175,6 @@ namespace Game.Views
             // Force the Binding to Update
             BindingContext = EngineViewModel;
 
-            
         }
     }
 }

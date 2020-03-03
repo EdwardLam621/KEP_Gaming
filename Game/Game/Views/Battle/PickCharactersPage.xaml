@@ -80,16 +80,25 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                    </StackLayout>
-                </StackLayout>
-
-                <Button 
+                        <Button 
                         x:Name="BeginBattleButton"
                         Clicked="BattleButton_Clicked" 
                         Text="Begin Battle"
                         IsEnabled="True"
                         HorizontalOptions="Center"
                         />
+                        <Button 
+                        x:Name="BeginAutoBattleButton"
+                        Clicked="AutoBattleButton_Clicked" 
+                        Text="Begin AutoBattle"
+                        IsEnabled="true"
+                        HorizontalOptions="Center"
+                        />
+                    </StackLayout>
+                    
+                </StackLayout>
+
+                
   
             </StackLayout>
  
