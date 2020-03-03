@@ -115,7 +115,7 @@ namespace Game.Services
                   new ItemModel {
                     Name = "Optical Glasses",
                     Description = "Everyone can be Hawkeye now!",
-                    ImageURI = "https://i.pinimg.com/originals/9b/e5/fb/9be5fb721401e89db678fd934833a35a.png",
+                    ImageURI = "https://lh3.googleusercontent.com/proxy/gCbJ6VbiERpDmCf8q45dWhd_yeTo0v_EeR8Tus1XJ9y4lPVjRWZKPu2IksHM2VVqlfSdehlIIn5swHzbp6cvhAgRT4BX6pSFESeQYQ",
                     Range = 0,
                     Damage = 0,
                     Value = 7,
