@@ -62,7 +62,7 @@
                                                 CheckChanged="checkbox_CheckChanged"
                                                 BindingContext="{Binding .}"/>
 
-                                        <Label Grid.Column="1" Grid.Row="0"
+                                        <Label Grid.Column="1" Grid.Row="0" FontSize="Medium"
                                                    Text="{Binding Path=Name, StringFormat='{0:G}'}" 
                                                    Style="{StaticResource ListStyle}"/>
 
