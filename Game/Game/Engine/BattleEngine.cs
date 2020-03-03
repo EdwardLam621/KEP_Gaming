@@ -38,9 +38,16 @@ namespace Game.Engine
         /// </summary>
         public BattleEngine()
         {
+            // Initialize Referee
             Referee = new RefereeModel();
 
+            // Convert characters to fighters
             SetParty(CharacterList);
+
+            // Keep track of battle count/date
+            Referee.BattleScore.GameDate = System.DateTime.Now;
+
+            // Battle count not implemented
 
         }
 
