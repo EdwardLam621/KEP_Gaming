@@ -81,7 +81,7 @@ namespace Game.Views
             var PlayerLevelLabel = new Label
             {
                 Text = "Level : " + data.Level,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                Style = (Style)Application.Current.Resources["ValueStyle"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
                 Padding = 0,
@@ -130,7 +130,7 @@ namespace Game.Views
             var PlayerLevelLabel = new Label
             {
                 Text = "Level : " + data.Level,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                Style = (Style)Application.Current.Resources["ValueStyle"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
                 Padding = 0,

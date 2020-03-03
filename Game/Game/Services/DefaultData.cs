@@ -19,8 +19,8 @@ namespace Game.Services
                     Name = "Doctor Letter",
                     Description = "a file used to write a note on a given patient to prove that they were indeed sick",
                     ImageURI = "https://iconbug.com/data/6b/512/27307b4de000a17aac101e8bbbb48a6d.png",
-                    Range = 0,
-                    Damage = 9,
+                    Range = 1,
+                    Damage = 5,
                     Value = 9,
                     Location = ItemLocationEnum.PrimaryHand,
                     Attribute = AttributeEnum.Defense},
@@ -29,7 +29,7 @@ namespace Game.Services
                     Name = "Doctor Prescription",
                     Description = "More convincing than Doctor Letter",
                     ImageURI = "http://clipart-library.com/img/1244579.png",
-                    Range = 0,
+                    Range = 1,
                     Damage = 9,
                     Value = 9,
                     Location = ItemLocationEnum.PrimaryHand,
@@ -47,7 +47,7 @@ namespace Game.Services
 
                  new ItemModel {
                     Name = "Rain Coat",
-                    Description = "Stay wet from raining in seattle",
+                    Description = "Stay dry from raining in seattle",
                     ImageURI = "https://i.pinimg.com/originals/e8/14/71/e8147125c3fd38997fbd76f93aff0b2e.png",
                     Range = 0,
                     Damage = 0,
@@ -79,7 +79,7 @@ namespace Game.Services
                  },
 
                  new ItemModel {
-                    Name = "Unknown right",
+                    Name = "Just a ring",
                     Description = "5 dollars from Amazon",
                     ImageURI = "https://pngimage.net/wp-content/uploads/2018/06/ring-cartoon-png-.png",
                     Range = 0,
@@ -93,13 +93,37 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Nike!",
                     Description = "Impossible is nothing",
-                    ImageURI = "https://lh3.googleusercontent.com/proxy/41Y3uhLlswkFbVBvSiNI3-ig0ckGpQIPzihf-C71aSNPqDwaxqMXyY5UdC8V8JHfcGJUAKAHvBOUAOfLBIbUQs1DkCKfY86WDWQipZZsa4rlTMlONTJnd9iR3YeGi0VYkUT_rGGFHzMORNGoLqR7QL0Phroa-g",
+                    ImageURI = "https://www.pikpng.com/pngl/b/130-1304070_nike-clipart-footwear-free-collection-cartoon-nike-shoes.png",
                     Range = 0,
                     Damage = 0,
                     Value = 1,
                     Location = ItemLocationEnum.Feet,
+                    Attribute = AttributeEnum.Speed
+                 },
+
+                 new ItemModel {
+                    Name = "Super Pencil",
+                    Description = "Easy to write and clean",
+                    ImageURI = "https://i.pinimg.com/originals/9b/e5/fb/9be5fb721401e89db678fd934833a35a.png",
+                    Range = 3,
+                    Damage = 3,
+                    Value = 5,
+                    Location = ItemLocationEnum.Feet,
+                    Attribute = AttributeEnum.Speed
+                 },
+
+                  new ItemModel {
+                    Name = "Optical Glasses",
+                    Description = "Everyone can be Hawkeye now!",
+                    ImageURI = "https://i.pinimg.com/originals/9b/e5/fb/9be5fb721401e89db678fd934833a35a.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 7,
+                    Location = ItemLocationEnum.Head,
                     Attribute = AttributeEnum.Attack
                  },
+
+
             };
 
             return datalist;
