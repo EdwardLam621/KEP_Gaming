@@ -253,8 +253,7 @@ namespace Game.Engine
         public int DropItems(DungeonFighterModel Target)
         {
             // Drop Items to ItemModel Pool
-            var myItemList = new List<ItemModel>();
-            //var myItemList = Target.DropAllItems();
+            var myItemList = Target.DropAllItems();
 
             // I feel generous, even when characters die, random drops happen :-)
             // If Random drops are enabled, then add some....
