@@ -39,6 +39,13 @@ namespace Game.Models
         // Remaining target health
         public int TargetHealth = 0;
 
+        // Beginning of the Html Block for html formatting
+        public string htmlHead = @"<html><body bgcolor=""#E8D0B6""><p>";
+
+        // Ending of the Html Block for Html formatting
+        public string htmlTail = @"</p></body></html>";
+
+
         public void ClearMessages()
         {
             PlayerType = CreatureEnum.Unknown;
@@ -96,5 +103,63 @@ namespace Game.Models
             return AttackerName + GetSwingResult() + TargetName;
         }
 
+        /// <summary>
+        /// Returns a blank HTML page, used for clearing the output window
+        /// </summary>
+        /// <returns></returns>
+        public string GetHTMLBlankMessage()
+        {
+            var myResult = htmlHead + htmlTail;
+            return myResult;
+        }
+
+        /// <summary>
+        /// Output the Turn as a HTML string
+        /// </summary>
+        /// <returns></returns>
+        public string GetHTMLFormattedTurnMessage()
+        {
+            var myResult = string.Empty;
+
+            var AttackerStyle = @"<span style=""color:blue"">";
+            var DefenderStyle = @"<span style=""color:green"">";
+
+            if (PlayerType == CreatureEnum.Monster)
+            {
+                // If monster, swap the colors
+                DefenderStyle = @"<span style=""color:blue"">";
+                AttackerStyle = @"<span style=""color:green"">";
+            }
+
+            var SwingResult = string.Empty;
+            switch (HitStatus)
+            {
+                case HitStatusEnum.Miss:
+                    SwingResult = @"<span style=""color:yellow"">";
+                    break;
+
+                case HitStatusEnum.CriticalMiss:
+                    SwingResult = @"<span bold style=""color:yellow; font-weight:bold;"">";
+                    break;
+
+                case HitStatusEnum.CriticalHit:
+                    SwingResult = @"<span bold style=""color:red; font-weight:bold;"">";
+                    break;
+
+                case HitStatusEnum.Hit:
+                default:
+                    SwingResult = @"<span style=""color:red"">";
+                    break;
+            }
+
+            var htmlBody = string.Empty;
+            htmlBody += string.Format(@"{0}{1}</span>", AttackerStyle, AttackerName);
+            htmlBody += string.Format(@"{0}{1}</span>", SwingResult, GetSwingResult());
+            htmlBody += string.Format(@"{0}{1}</span>", DefenderStyle, TargetName);
+            htmlBody += string.Format(@"<span>{0}</span>", TurnMessageSpecial);
+
+            myResult = htmlHead + htmlBody + htmlTail;
+            return myResult;
+        }
     }
 }
