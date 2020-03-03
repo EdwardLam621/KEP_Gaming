@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Game.ViewModels;
 
 namespace Game.Views
 {
@@ -10,6 +11,10 @@ namespace Game.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewRoundPage: ContentPage
 	{
+
+		// This uses the Instance so it can be shared with other Battle Pages as needed
+		public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
