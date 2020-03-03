@@ -61,6 +61,9 @@ namespace Game.Engine
             // Autobattle 
             if (Referee.AutoBattleEnabled)
             {
+                // Record battle was auto
+                Referee.BattleScore.AutoBattle = true;
+                
                 // Start autobattle
                 NewRound();
                 var roundResult = CurrentRound.StartRoundAuto();
