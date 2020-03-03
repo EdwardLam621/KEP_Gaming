@@ -93,7 +93,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Nike!",
                     Description = "Impossible is nothing",
-                    ImageURI = "https://www.pikpng.com/pngl/b/130-1304070_nike-clipart-footwear-free-collection-cartoon-nike-shoes.png",
+                    ImageURI = "https://clipartart.com/images/baseball-shoes-clipart-13.png",
                     Range = 0,
                     Damage = 0,
                     Value = 1,
