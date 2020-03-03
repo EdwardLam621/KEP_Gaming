@@ -70,9 +70,11 @@ namespace Game.Engine
         {
             
             var tar = SetTarget(target);
+            
             TakeTurn(TurnChoiceEnum.Attack);
+            
             RoundResult = GetRoundState();
-            RoundNextTurn();
+        
         }
 
 
@@ -145,9 +147,15 @@ namespace Game.Engine
         /// </summary>
         public void TakeTurn(TurnChoiceEnum choice)
         {
-            // Set up turn engine and do the turn
-            Target = ChooseTarget(CurrentPlayer);
+            // autobattle selects target automatically
+            if (Referee.AutoBattleEnabled)
+            {
+                Target = ChooseTarget(CurrentPlayer);
+            }
+
+            // otherwise we are setting Target externally
             var turn = new TurnEngine(Referee, CurrentPlayer, Target, choice);
+
             turn.TakeTurn();
         }
 
