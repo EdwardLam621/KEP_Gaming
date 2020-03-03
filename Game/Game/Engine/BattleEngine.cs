@@ -39,6 +39,9 @@ namespace Game.Engine
         public BattleEngine()
         {
             Referee = new RefereeModel();
+
+            SetParty(CharacterList);
+
         }
 
 
@@ -48,14 +51,11 @@ namespace Game.Engine
         public bool startBattle()
         {
 
-            SetParty(CharacterList);
-            
-            NewRound();
-
             // Autobattle 
             if (Referee.AutoBattleEnabled)
             {
                 // Start autobattle
+                NewRound();
                 var roundResult = CurrentRound.StartRoundAuto();
 
                 while (roundResult.Equals(RoundEnum.NewRound))
@@ -64,18 +64,22 @@ namespace Game.Engine
                     NewRound();
                     roundResult = CurrentRound.StartRoundAuto();
                 }
-            }
+            } 
             
 
 
             if (CurrentRound.GetRoundState().Equals(RoundEnum.GameOver))
             {
                 // display game over screen with statistics
+
+                // 
+
                 Debug.WriteLine("GAME OVER");
                 Debug.WriteLine("Total turns taken: " + Referee.BattleScore.TurnCount);
                 Debug.WriteLine("Monsters killed: " + Referee.BattleScore.MonsterSlainNumber);
                 Debug.WriteLine("Highest round: " + RoundCount);
 
+                // 
                 return true;
             }
 
