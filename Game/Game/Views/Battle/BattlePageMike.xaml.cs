@@ -39,17 +39,19 @@ namespace Game.Views
             BindingContext = EngineViewModel;
 
             // Start the Battle Engine
-            EngineViewModel.Engine.startBattle();
+            EngineViewModel.Engine.NewRound();
 
+            // Load current round into local namespace
             CurrentRound = EngineViewModel.Engine.CurrentRound;
 
+            // Todo! 
             // Show the New Round Screen
             //ShowModalNewRoundPage();
 
-            // Ask the Game engine to select who goes first
-            CurrentRound.CurrentPlayer = null;
 
+            // Ask the Game engine to select who goes first
             // Game Starts with No Attacker or Defender selected
+            CurrentRound.CurrentPlayer = null;
 
             // Add Players to Display
             DrawGameAttackerDefenderBoard();
@@ -243,11 +245,12 @@ namespace Game.Views
             // Get the turn, set the current player and attacker to match
             SetAttackerAndDefender();
 
+            EngineViewModel.Engine.CurrentRound.AttackClicked(EngineViewModel.Engine.CurrentRound.Target);
             // Hold the current state
             var RoundCondition = EngineViewModel.Engine.CurrentRound.GetRoundState();
 
             // Output the Message of what happened.
-            //GameMessage();
+            GameMessage();
 
             // Show the outcome on the Board
             DrawGameAttackerDefenderBoard();
@@ -347,7 +350,7 @@ namespace Game.Views
                 BattleMessages.Text = string.Format("{0} \n {1}", EngineViewModel.Engine.Referee.BattleMessages.LevelUpMessage, BattleMessages.Text);
             }
 
-            //htmlSource.Html = EngineViewModel.Engine.Referee.BattleMessages.GetHTMLFormattedTurnMessage();
+            htmlSource.Html = EngineViewModel.Engine.Referee.BattleMessages.GetHTMLFormattedTurnMessage();
             HtmlBox.Source = HtmlBox.Source = htmlSource;
         }
 
