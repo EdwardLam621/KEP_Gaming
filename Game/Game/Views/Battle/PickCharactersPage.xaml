@@ -9,12 +9,11 @@
              x:Class="Game.Views.PickCharactersPage"
              Title="{Binding Title}">
 
-    <ContentPage.Content>
+    <ScrollView>
+
         <StackLayout Style="{StaticResource OuterBoxStack}">
 
             <Label Text="Let's the study party started" Style="{StaticResource CenterMessageStyle}"/>
-
-
 
             <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand">
 
@@ -108,5 +107,5 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>
