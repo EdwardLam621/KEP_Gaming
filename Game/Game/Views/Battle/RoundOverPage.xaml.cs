@@ -118,7 +118,7 @@ namespace Game.Views
 			DrawSelectedItems();
 
 			// Only need to update the selected, the Dropped is set in the constructor
-			TotalSelected.Text = BattleEngineViewModel.Instance.Engine.BattleScore.ItemModelSelectList.Count().ToString();
+			TotalSelected.Text = BattleEngineViewModel.Instance.Engine.Referee.BattleScore.ItemModelSelectList.Count().ToString();
 		}
 
 		/// <summary>
@@ -133,7 +133,7 @@ namespace Game.Views
 				ItemListFoundFrame.Children.Remove(data);
 			}
 
-			foreach (var data in BattleEngineViewModel.Instance.Engine.BattleScore.ItemModelDropList)
+			foreach (var data in BattleEngineViewModel.Instance.Engine.Referee.BattleScore.ItemModelDropList)
 			{
 				ItemListFoundFrame.Children.Add(GetItemToDisplay(data));
 			}
