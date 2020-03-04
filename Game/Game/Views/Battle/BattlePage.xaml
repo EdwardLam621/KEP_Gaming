@@ -17,25 +17,92 @@
                 </Grid.RowDefinitions>
 
                 <!--Battlefield image-->
-                <Image Grid.Row="0" Source="https://clipartart.com/images/battlefield-clipart-1.jpg" Aspect="AspectFill"/>
-                <Label Text="Battle Message" 
-                       Grid.Row="0" 
-                       VerticalOptions="End" 
-                       HorizontalOptions="Center" 
-                       BackgroundColor="WhiteSmoke" 
-                       Padding="5,5,5,5"
-                       TextColor="Black"
-                       Margin="20"/>
+                <Grid>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                <!--Round message box-->
-                <Label Text="Round 1" 
+                    <Image
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="5"
+                        Grid.RowSpan="5"
+                        Source="https://clipartart.com/images/battlefield-clipart-1.jpg" Aspect="AspectFill"/>
+                    
+                    <!--Battle Message, need to be the last row of battlefield grid-->
+                    <Label Text="Battle Message" 
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            VerticalOptions="End" 
+                            HorizontalOptions="Center" 
+                            BackgroundColor="WhiteSmoke" 
+                            Padding="5,5,5,5"
+                            TextColor="Black"
+                            Margin="20"/>
+
+                    <!--Round message box-->
+                    <Label Text="Round 1" 
                        Grid.Row="0" 
+                           Grid.Column="0"
+                           Grid.ColumnSpan="5"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        TextColor="Black"
                        FontSize="40"/>
 
-                <!--Message, need to be the last row of battlefield grid-->
+                    <!--Monster demo-->
+                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="4"
+                           Grid.Row="1"
+                           Aspect="AspectFit"
+                           Margin="5"/>
+                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="4"
+                           Grid.Row="2"
+                           Aspect="AspectFit"
+                           Margin="5"/>
+                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="4"
+                           Grid.Row="3"
+                           Aspect="AspectFit"
+                           Margin="5"/>
+                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="3"
+                           Grid.Row="1"
+                           Aspect="AspectFit"
+                           Margin="5"/>
+                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="3"
+                           Grid.Row="2"
+                           Aspect="AspectFit"
+                           Margin="5"/>
+                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="3"
+                           Grid.Row="3"
+                           Aspect="AspectFit"
+                           Margin="5"/>
+                    
+
+                </Grid>
+                
+                
+
+                
+
+                
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height = "*"/>
