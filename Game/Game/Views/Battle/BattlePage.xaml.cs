@@ -28,6 +28,8 @@ namespace Game.Views
 
 			BindingContext = BattleEngine;
 
+
+
 			
 		}
 
@@ -139,7 +141,14 @@ namespace Game.Views
 			}
 		}
 
-		private void ImageButton_Clicked(object sender, EventArgs e)
+
+		//below are just for demo, please erase during final turn in
+		private void ShowDeadButton_Clicked(object sender, EventArgs e)
+		{
+			monster_1.Source = "https://lh3.googleusercontent.com/proxy/7caqmNL_b6e1C70tV6CU7hmaZGL9t-hvar2QHUo1JabVoEfhw456zFAt9zhG2GYx3zOEK_-kOG7Xb8qveL18MGMfE_Qpq1gj";
+		}
+
+		private void ShowLevelUpButton_Clicked(object sender, EventArgs e)
 		{
 
 		}

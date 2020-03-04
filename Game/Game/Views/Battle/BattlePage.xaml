@@ -5,6 +5,7 @@
 
     <ContentPage.Content>
         
+        
         <!-- should be absolute layout during finish-->
         <ScrollView>
             <Grid>
@@ -18,7 +19,7 @@
 
                 <!--Battlefield image-->
                 <Grid>
-                    
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="100"/>
@@ -40,7 +41,7 @@
                         Grid.ColumnSpan="5"
                         Grid.RowSpan="5"
                         Source="https://clipartart.com/images/battlefield-clipart-1.jpg" Aspect="AspectFill"/>
-                    
+
                     <!--Battle Message, need to be the last row of battlefield grid-->
                     <Label Text="Battle Message" 
                             Grid.Row="4"
@@ -64,11 +65,15 @@
                        FontSize="40"/>
 
                     <!--Monster demo-->
-                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                    <Image
+                        x:Name="monster_1"
+                        Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
                            Grid.Column="4"
                            Grid.Row="1"
                            Aspect="AspectFit"
                            Margin="5"/>
+
+
                     <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
                            Grid.Column="4"
                            Grid.Row="2"
@@ -94,15 +99,15 @@
                            Grid.Row="3"
                            Aspect="AspectFit"
                            Margin="5"/>
-                    
+
 
                 </Grid>
-                
-                
 
-                
 
-                
+
+
+
+
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height = "*"/>
@@ -125,7 +130,7 @@
                         BackgroundColor="Transparent" 
                         BorderColor="Transparent"
                         Clicked="AttackButton_Clicked"/>
-                    
+
                     <!--Attack button text-->
                     <Label Grid.Column="0" 
                         Grid.Row="0"
@@ -147,6 +152,9 @@
                     <ImageButton Grid.Column="3" Grid.Row="1" Source="demo_char.png" BorderWidth="1"/>
 
                 </Grid>
+                <StackLayout Grid.Row="2">
+                    <Button Text="Test Monster Dead" Clicked="ShowDeadButton_Clicked"/>
+                </StackLayout>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
