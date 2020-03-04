@@ -123,17 +123,27 @@ namespace Game.Services
                     Attribute = AttributeEnum.Attack
                  },
 
-                   new ItemModel {
+                 new ItemModel {
                     Name = "Laptop",
                     Description = "Take note faster, read faster, work faster!",
                     ImageURI = "https://lh3.googleusercontent.com/proxy/UzwB2kbG93nLPTxevLj6wJNjoIqhK1aKFNS8Vpd4QP-lJXs8kcpSyKikOA-DA24yfgH3_9A16QPzx_QKa55Yz6E",
                     Range = 2,
                     Damage = 8,
                     Value = 8,
-                    Location = ItemLocationEnum.Head,
-                    Attribute = AttributeEnum.Attack
+                    Location = ItemLocationEnum.PrimaryHand,
+                    Attribute = AttributeEnum.Speed
                  },
 
+                 new ItemModel {
+                    Name = "Leather Shoes",
+                    Description = "Extra (impression) credit!",
+                    ImageURI = "https://cdn.clipart.email/547e692ba33b7151dda27263b33d3212_black-elegant-men-shoes-png-clipart-best-web-clipart_2500-1292.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 7,
+                    Location = ItemLocationEnum.PrimaryHand,
+                    Attribute = AttributeEnum.Speed
+                 },
             };
 
             return datalist;
