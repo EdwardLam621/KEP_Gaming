@@ -34,12 +34,6 @@ namespace Game.Views
         public void DrawOutput()
         {
 
-            // Draw the Characters
-            foreach (var data in EngineViewModel.Engine.Referee.Characters)
-            {
-                CharacterListFrame.Children.Add(CreateCharacterDisplayBox(data));
-            }
-
             // Draw the Monsters
             foreach (var data in EngineViewModel.Engine.Referee.Monsters)
             {
