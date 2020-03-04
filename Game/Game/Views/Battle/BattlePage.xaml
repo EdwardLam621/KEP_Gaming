@@ -81,9 +81,10 @@
                            Margin="5"/>
 
 
-                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                    <Image Source="https://vignette.wikia.nocookie.net/roblox/images/9/9b/Level_Up_Logo.png/revision/latest?cb=20171101220707"
                            Grid.Column="4"
                            Grid.Row="2"
+                           Aspect="AspectFit"
                            x:Name="LevelUp"
                            IsVisible="False">
                     </Image>
