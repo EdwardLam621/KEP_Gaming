@@ -310,5 +310,19 @@ namespace Game.Views
 			return PlayerStack;
 		}
 
+
+		/// <summary>
+		/// Start next Round, returning to the battle screen
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public void AutoAssignButton_Clicked(object sender, EventArgs e)
+		{
+			// Distribute the Items
+			BattleEngineViewModel.Instance.Engine.PickupItemsForAllCharacters();
+
+			// Show what was picked up
+			DrawItemLists();
+		}
 	}
 }
