@@ -98,7 +98,7 @@ namespace Game.Views
 			}
 
 			// Draw the Characters
-			foreach (var data in BattleEngineViewModel.Instance.Engine.CharacterList)
+			foreach (var data in BattleEngineViewModel.Instance.Engine.Fighters)
 			{
 				CharacterListFrame.Children.Add(CreatePlayerDisplayBox(data));
 			}
@@ -151,7 +151,7 @@ namespace Game.Views
 				ItemListSelectedFrame.Children.Remove(data);
 			}
 
-			foreach (var data in BattleEngineViewModel.Instance.Engine.BattleScore.ItemModelSelectList)
+			foreach (var data in BattleEngineViewModel.Instance.Engine.Referee.BattleScore.ItemModelSelectList)
 			{
 				ItemListSelectedFrame.Children.Add(GetItemToDisplay(data));
 			}

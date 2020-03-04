@@ -25,7 +25,7 @@ namespace Game.Engine
         //public BattleGridCellModel BattleGrid;
 
 
-        private List<DungeonFighterModel> Fighters;
+        public List<DungeonFighterModel> Fighters;
 
         // Which round we are on
         public int RoundCount = 0;
