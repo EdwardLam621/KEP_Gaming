@@ -238,7 +238,7 @@ namespace Game.Services
                 },
 
                  new CharacterModel {
-                    Name = "The Delinquent",
+                    Name = "Delinquent",
                     MaxHealth = 20,
                     Level = 1,
                     Description = "The mischief class skipper. Low in defense but high in attack",
@@ -246,6 +246,47 @@ namespace Game.Services
                     DefenseAttribute = 1,
                     OffenseAttribute = 10,
                     SpeedAttribute = 15,
+                    Skill = CreatureSkillEnum.None,
+                    //Equipments = equipments
+                },
+
+                 new CharacterModel {
+                    Name = "Slacker",
+                    MaxHealth = 30,
+                    Level = 1,
+                    Description = "A student who always avoid work of effort",
+                    ImageURI = "https://webstockreview.net/images/lazy-clipart-perezosa-11.png",
+                    DefenseAttribute = 1,
+                    OffenseAttribute = 10,
+                    SpeedAttribute = 15,
+                    Skill = CreatureSkillEnum.None,
+                    //Equipments = equipments
+                },
+
+                new CharacterModel
+                {
+                    Name = "Teacher's pet",
+                    MaxHealth = 40,
+                    Level = 1,
+                    Description = "a pupil who has won the teacher's special favor.",
+                    ImageURI = "https://i.ya-webdesign.com/images/drawing-technology-high-school-5.png",
+                    DefenseAttribute = 1,
+                    OffenseAttribute = 15,
+                    SpeedAttribute = 5,
+                    Skill = CreatureSkillEnum.None,
+                    //Equipments = equipments
+                },
+
+                new CharacterModel
+                {
+                    Name = "Daydreaming",
+                    MaxHealth = 40,
+                    Level = 1,
+                    Description = "dreamer, escapist, wishful thinker. a person who escapes into a world of fantasy",
+                    ImageURI = "https://i.ya-webdesign.com/images/daydreaming-clipart-12.png",
+                    DefenseAttribute = 1,
+                    OffenseAttribute = 15,
+                    SpeedAttribute = 5,
                     Skill = CreatureSkillEnum.None,
                     //Equipments = equipments
                 }
