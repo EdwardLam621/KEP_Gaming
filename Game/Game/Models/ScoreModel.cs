@@ -46,6 +46,8 @@ namespace Game.Models
         // Only use Get only, set will be done by the Add feature.
         public string ItemsDroppedList { get; set; }
 
+        // Add the Selected Items to the List for Score, New Round, and Easier testing
+        public List<ItemModel> ItemModelSelectList { get; set; } = new List<ItemModel>();
 
         public List<CharacterModel> CharacterDeadList { get; set; }
 
