@@ -30,15 +30,7 @@ namespace Game.Views
 
             BindingContext = this.ViewModel = data;
 
-            CharacterDeadListView.ItemsSource = characterDeadView;
-
-            if (data.Data.CharacterDeadList != null)
-            {
-                for (int i = 0; i < data.Data.CharacterDeadList.Count; i++)
-                {
-                    characterDeadView.Add(data.Data.CharacterDeadList[i]);
-                }
-            }
+   
         }
 
         /// <summary>

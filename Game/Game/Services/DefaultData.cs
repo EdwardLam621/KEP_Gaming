@@ -362,9 +362,9 @@ namespace Game.Services
                 new ScoreModel {
                     Name = "First Score",
                     Description = "Test Data",
-                    CharacterDeadList = new List<CharacterModel>()
+                    CharacterModelDeathList = new List<DungeonFighterModel>()
                     {
-                        new CharacterModel {
+                        new DungeonFighterModel {
                             Name = "Wiki Expert",
                             MaxHealth = 20,
                             Level = 1,
@@ -376,7 +376,7 @@ namespace Game.Services
                             Skill = CreatureSkillEnum.TeachersPet,
                         },
 
-                         new CharacterModel {
+                         new DungeonFighterModel {
                             Name = "Unknown",
                             MaxHealth = 10,
                             Level = 1,
@@ -393,9 +393,9 @@ namespace Game.Services
                 new ScoreModel {
                     Name = "Second Score",
                     Description = "Test Data 2",
-                    CharacterDeadList = new List<CharacterModel>()
+                    CharacterModelDeathList = new List<DungeonFighterModel>()
                     {
-                        new CharacterModel {
+                        new DungeonFighterModel {
                             Name = "Straight A",
                             MaxHealth = 10,
                             Level = 20,
@@ -407,7 +407,7 @@ namespace Game.Services
                             Skill = CreatureSkillEnum.Bookworm,
                         },
 
-                         new CharacterModel {
+                         new DungeonFighterModel {
                             Name = "The Delinquent",
                             MaxHealth = 20,
                             Level = 1,
