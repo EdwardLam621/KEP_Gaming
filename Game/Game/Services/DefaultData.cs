@@ -123,6 +123,16 @@ namespace Game.Services
                     Attribute = AttributeEnum.Attack
                  },
 
+                   new ItemModel {
+                    Name = "Laptop",
+                    Description = "Take note faster, read faster, work faster!",
+                    ImageURI = "https://lh3.googleusercontent.com/proxy/UzwB2kbG93nLPTxevLj6wJNjoIqhK1aKFNS8Vpd4QP-lJXs8kcpSyKikOA-DA24yfgH3_9A16QPzx_QKa55Yz6E",
+                    Range = 2,
+                    Damage = 8,
+                    Value = 8,
+                    Location = ItemLocationEnum.Head,
+                    Attribute = AttributeEnum.Attack
+                 },
 
             };
 
