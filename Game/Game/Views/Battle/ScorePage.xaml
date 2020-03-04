@@ -7,20 +7,54 @@
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
             <StackLayout Style="{StaticResource VerticalStack}">
 
-                <Label Text="Score Page" Style="{StaticResource CenterMessageStyle}"/>
+                <Label Text="GAME OVER !!!" Style="{StaticResource CenterMessageStyle}"/>
 
-                <Frame CornerRadius="5"  
-                   OutlineColor="White"
-                   BackgroundColor="#AA0000">
+                <Frame
+                    CornerRadius="5"  
+                    OutlineColor="White"
+                    BackgroundColor="#AA0000">
 
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                        <Label 
-                            Text="YOUR SCORE: " 
+                    <StackLayout Orientation="Vertical" >
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Label 
+                            Text="ROUND " 
+                            Style="{StaticResource HeaderStyle}"/>
+                        <Label
+                            Text="0"
+                            x:Name="RoundNumber"
+                            Style="{StaticResource HeaderStyle}"/>
+                        </StackLayout>
+      
+                        <StackLayout Orientation="Horizontal">
+                            <Label 
+                            Text="Your Score: " 
                             Style="{StaticResource HeaderStyle}"/>
                         <Label
                             Text="0"
                             x:Name="TotalScore"
                             Style="{StaticResource HeaderStyle}"/>
+                        </StackLayout>
+
+                        <Label
+                            Text="Items:"
+                            Style="{StaticResource HeaderStyle}"
+                            HorizontalOptions="StartAndExpand"/>
+
+                        <StackLayout Style="{StaticResource HorizontalStack}">
+                            <Label
+                                Text="Collected : "
+                                Style="{StaticResource LabelStyle}"/>
+                            <Label
+                                Text="0"
+                                x:Name="TotalCollected"
+                                Style="{StaticResource ValueStyle}"/>
+                            <FlexLayout x:Name="ItemListFrame"
+                                    JustifyContent="Start"
+                                    AlignContent="Start"
+                                    Wrap="Wrap"/>
+                        </StackLayout>
+                        
                     </StackLayout>
 
                 </Frame>
@@ -51,28 +85,6 @@
                 </StackLayout>
 
                 <FlexLayout x:Name="MonsterListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
-
-                <Label
-                    Text="Items"
-                    Style="{StaticResource HeaderStyle}"
-                    HorizontalOptions="StartAndExpand"/>
-
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label
-                        Text="Collected : "
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Label
-                        Text="0"
-                        x:Name="TotalCollected"
-                        Style="{StaticResource ValueStyle}"/>
-
-                </StackLayout>
-
-                <FlexLayout x:Name="ItemListFrame"
                                     JustifyContent="Start"
                                     AlignContent="Start"
                                     Wrap="Wrap"/>
