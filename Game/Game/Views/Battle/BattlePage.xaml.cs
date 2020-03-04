@@ -150,6 +150,9 @@ namespace Game.Views
 
 		private void ShowLevelUpButton_Clicked(object sender, EventArgs e)
 		{
+			LevelUp.IsVisible = true;
+			LevelUp.FadeTo(0,1000);
+			LevelUp.IsVisible = false;
 
 		}
 	}

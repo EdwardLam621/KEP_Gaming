@@ -79,6 +79,16 @@
                            Grid.Row="2"
                            Aspect="AspectFit"
                            Margin="5"/>
+
+
+                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="4"
+                           Grid.Row="2"
+                           x:Name="LevelUp"
+                           IsVisible="False">
+                    </Image>
+                    
+                    
                     <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
                            Grid.Column="4"
                            Grid.Row="3"
@@ -154,6 +164,7 @@
                 </Grid>
                 <StackLayout Grid.Row="2">
                     <Button Text="Test Monster Dead" Clicked="ShowDeadButton_Clicked"/>
+                    <Button Text="Test Level Up" Clicked="ShowLevelUpButton_Clicked"/>
                 </StackLayout>
             </Grid>
         </ScrollView>
