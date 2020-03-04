@@ -9,12 +9,11 @@
              x:Class="Game.Views.PickCharactersPage"
              Title="{Binding Title}">
 
-    <ContentPage.Content>
+    <ScrollView>
+
         <StackLayout Style="{StaticResource OuterBoxStack}">
 
             <Label Text="Let's the study party started" Style="{StaticResource CenterMessageStyle}"/>
-
-
 
             <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand">
 
@@ -36,7 +35,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid ColumnSpacing="5" RowSpacing="1">
+                                    <Grid ColumnSpacing="3" RowSpacing="1" BackgroundColor="DarkRed">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="*"/>
@@ -62,7 +61,7 @@
                                                 CheckChanged="checkbox_CheckChanged"
                                                 BindingContext="{Binding .}"/>
 
-                                        <Label Grid.Column="1" Grid.Row="0"
+                                        <Label Grid.Column="1" Grid.Row="0" FontSize="Medium"
                                                    Text="{Binding Path=Name, StringFormat='{0:G}'}" 
                                                    Style="{StaticResource ListStyle}"/>
 
@@ -80,7 +79,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                         <StackLayout Orientation="Vertical">
                             <ImageButton 
                                 x:Name="BeginBattleButton"
@@ -88,9 +87,11 @@
                                 IsEnabled="True"
                                 HorizontalOptions="Center"
                                 Source="study.png"
-                                WidthRequest="60"
+                                WidthRequest="80"
+                                HeightRequest="80"
                                 />
-                            <Label Text="Study"></Label>
+                            <Label HorizontalOptions="Center"
+                                   Text="Study"></Label>
                         </StackLayout>
 
                         <StackLayout Orientation="Vertical">
@@ -100,13 +101,15 @@
                                 IsEnabled="true"
                                 HorizontalOptions="Center"
                                 Source="autostudy.png"
-                                WidthRequest="60"
+                                WidthRequest="80"
+                                HeightRequest="80"
                                 />
-                            <Label Text="AutoStudy"></Label>
+                            <Label HorizontalOptions="Center"
+                                   Text="AutoStudy"/>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>
