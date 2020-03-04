@@ -324,5 +324,16 @@ namespace Game.Views
 			// Show what was picked up
 			DrawItemLists();
 		}
+
+
+		/// <summary>
+		/// Close the popup
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public void ClosePopup_Clicked(object sender, EventArgs e)
+		{
+			PopupLoadingView.IsVisible = false;
+		}
 	}
 }
