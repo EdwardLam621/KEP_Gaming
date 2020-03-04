@@ -1,11 +1,20 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 
 namespace Game.Models
 {
     /// <summary>
-    /// Scores for the Game
+    /// Item for the Game
     /// 
+    /// The Items that a character can use, a Monster may drop, or may be randomly available.
+    /// The items are stored in the DB, and during game time a random item is selected.
+    /// The system supports CRUDi operatoins on the items
+    /// When in test mode, a test set of items is loaded
+    /// When in run mode the items from from the database
+    /// When in online mode, the items come from an api call to a webservice
+    /// 
+    /// When characters or monsters die, they drop items into the Items Pool for the Battle
     /// 
     /// </summary>
     public class ScoreModel : BaseModel<ScoreModel>
@@ -36,21 +45,31 @@ namespace Game.Models
 
         // A list of all the characters at the time of death and their stats.  
         // Only use Get only, set will be done by the Add feature.
-        public string CharacterAtDeathList { get; set; }
+        public string CharacterAtDeathList { get; set; } = string.Empty;
 
         // All of the monsters killed and their stats. 
         // Only use Get only, set will be done by the Add feature.
-        public string MonstersKilledList { get; set; }
+        public string MonstersKilledList { get; set; } = string.Empty;
 
         // All of the items dropped and their stats. 
         // Only use Get only, set will be done by the Add feature.
-        public string ItemsDroppedList { get; set; }
+        public string ItemsDroppedList { get; set; } = string.Empty;
+
+        // Add Characters to the List for Score, New Round, and Easier testing
+        [Ignore]
+        public List<DungeonFighterModel> CharacterModelDeathList { get; set; } = new List<DungeonFighterModel>();
+
+        // Add Monsters to the List for Score, New Round, and Easier testing
+        [Ignore]
+        public List<DungeonFighterModel> MonsterModelDeathList { get; set; } = new List<DungeonFighterModel>();
+
+        // Add Item to the List for Score, New Round, and Easier testing
+        [Ignore]
+        public List<ItemModel> ItemModelDropList { get; set; } = new List<ItemModel>();
 
         // Add the Selected Items to the List for Score, New Round, and Easier testing
+        [Ignore]
         public List<ItemModel> ItemModelSelectList { get; set; } = new List<ItemModel>();
-
-        public List<CharacterModel> CharacterDeadList { get; set; }
-
 
         /// <summary>
         /// Instantiate new Score 
@@ -60,15 +79,10 @@ namespace Game.Models
             GameDate = DateTime.Now;    // Set to be now by default.
             AutoBattle = false;         //assume user battle
 
-            CharacterAtDeathList = null;
-            MonstersKilledList = null;
-            ItemsDroppedList = null;
-
             TurnCount = 0;
             RoundCount = 0;
             ExperienceGainedTotal = 0;
             MonsterSlainNumber = 0;
-            CharacterAtDeathList = null;
         }
 
         /// <summary>
@@ -78,7 +92,7 @@ namespace Game.Models
         /// <param name="data"></param>
         public ScoreModel(ScoreModel data)
         {
-            Id = data.Id;
+            // Id = data.Id;
             Update(data);
         }
 
@@ -96,7 +110,7 @@ namespace Game.Models
             // Update all the fields in the Data, except for the Id
             Name = newData.Name;
             Description = newData.Description;
-            CharacterAtDeathList = newData.CharacterAtDeathList;
+
             BattleNumber = newData.BattleNumber;
             ScoreTotal = newData.ScoreTotal;
             GameDate = newData.GameDate;
@@ -112,27 +126,16 @@ namespace Game.Models
 
         #region ScoreItems
 
-        //public bool AddToList(CharacterModel data)
-        //{
-        //    if (data == null)
-        //    {
-        //        return false;
-        //    }
+        /// <summary>
+        /// Calculate the Final Score
+        /// </summary>
+        /// <returns></returns>
+        public int CalculateScore()
+        {
+            int result = ExperienceGainedTotal;
 
-        //    CharacterAtDeathList += data.FormatOutput() + "\n";
-        //    return true;
-        //}
-
-        //public bool AddToList(MonsterModel data)
-        //{
-        //    if (data == null)
-        //    {
-        //        return false;
-        //    }
-
-        //    MonstersKilledList += data.FormatOutput() + "\n";
-        //    return true;
-        //}
+            return result;
+        }
 
         /// <summary>
         /// All an item to the list of items for score and their stats
