@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Game.Models;
+using Game.ViewModels;
+using System;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 
 namespace Game.Views
 {
@@ -15,6 +19,15 @@ namespace Game.Views
 		/// </summary>
 		public RoundOverPage()
 		{
+			// Update the Round Count
+			TotalRound.Text = BattleEngineViewModel.Instance.Engine.Referee.BattleScore.RoundCount.ToString();
+
+			// Update the Found Number
+			TotalFound.Text = BattleEngineViewModel.Instance.Engine.Referee.BattleScore.ItemsDroppedList.Count().ToString();
+
+			// Update the Selected Number, this gets updated later when selected refresh happens
+			TotalSelected.Text = BattleEngineViewModel.Instance.Engine.Referee.BattleScore.ItemModelSelectList.Count().ToString();
+
 			InitializeComponent ();
 		}
 

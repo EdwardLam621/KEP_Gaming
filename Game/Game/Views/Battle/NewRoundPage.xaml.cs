@@ -21,8 +21,20 @@ namespace Game.Views
 		/// </summary>
 		public NewRoundPage ()
 		{
-			InitializeComponent ();
-		}
+            InitializeComponent ();
+
+            // Draw the Characters
+            foreach (var data in EngineViewModel.Engine.Referee.Characters)
+            {
+                PartyListFrame.Children.Add(CreatePlayerDisplayBox(data));
+            }
+
+            // Draw the Monsters
+            foreach (var data in EngineViewModel.Engine.Referee.Monsters)
+            {
+                MonsterListFrame.Children.Add(CreatePlayerDisplayBox(data));
+            }
+        }
 
 		/// <summary>
 		/// Start next Round, returning to the battle screen
