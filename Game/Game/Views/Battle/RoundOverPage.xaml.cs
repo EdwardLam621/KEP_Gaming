@@ -50,5 +50,14 @@ namespace Game.Views
 		{
 			await Navigation.PushModalAsync(new PickItemsPage());
 		}
+
+		public void CloseButton_Clicked(object sender, EventArgs e)
+		{
+			// Reset to a new Round
+			BattleEngineViewModel.Instance.Engine.NewRound();
+
+			// Show the New Round Screen
+			//ShowModalNewRoundPage();
+		}
 	}
 }
