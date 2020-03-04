@@ -51,13 +51,34 @@ namespace Game.Views
 			await Navigation.PushModalAsync(new PickItemsPage());
 		}
 
+		/// <summary>
+		/// Closes the Round Over Popup
+		/// 
+		/// Launches the Next Round Popup
+		/// 
+		/// Resets the Game Round
+		/// 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		public void CloseButton_Clicked(object sender, EventArgs e)
 		{
 			// Reset to a new Round
 			BattleEngineViewModel.Instance.Engine.NewRound();
 
 			// Show the New Round Screen
-			//ShowModalNewRoundPage();
+			ShowModalNewRoundPage();
+		}
+
+		/// <summary>
+		/// Show the Page for New Round
+		/// 
+		/// Upcomming Monsters
+		/// 
+		/// </summary>
+		public async void ShowModalNewRoundPage()
+		{
+			await Navigation.PopModalAsync();
 		}
 	}
 }
