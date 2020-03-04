@@ -214,5 +214,23 @@ namespace Game.Views
 			return ItemStack;
 		}
 
+		/// <summary>
+		/// Show the Popup for the Item
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		public bool ShowPopup(ItemModel data)
+		{
+			PopupLoadingView.IsVisible = true;
+			PopupItemImage.Source = data.ImageURI;
+
+			PopupItemName.Text = data.Name;
+			PopupItemDescription.Text = data.Description;
+			PopupItemLocation.Text = data.Location.ToMessage();
+			PopupItemAttribute.Text = data.Attribute.ToMessage();
+			PopupItemValue.Text = " + " + data.Value.ToString();
+			return true;
+		}
+
 	}
 }
