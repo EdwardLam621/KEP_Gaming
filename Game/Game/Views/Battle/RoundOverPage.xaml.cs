@@ -29,6 +29,10 @@ namespace Game.Views
 			TotalSelected.Text = BattleEngineViewModel.Instance.Engine.Referee.BattleScore.ItemModelSelectList.Count().ToString();
 
 			InitializeComponent ();
+
+			DrawCharacterList();
+
+			DrawItemLists();
 		}
 
 		/// <summary>
@@ -79,6 +83,42 @@ namespace Game.Views
 		public async void ShowModalNewRoundPage()
 		{
 			await Navigation.PopModalAsync();
+		}
+
+		/// <summary>
+		/// Clear and Add the Characters that survived
+		/// </summary>
+		public void DrawCharacterList()
+		{
+			// Clear and Populate the Characters Remaining
+			var FlexList = CharacterListFrame.Children.ToList();
+			foreach (var data in FlexList)
+			{
+				CharacterListFrame.Children.Remove(data);
+			}
+
+			// Draw the Characters
+			foreach (var data in BattleEngineViewModel.Instance.Engine.CharacterList)
+			{
+				CharacterListFrame.Children.Add(CreatePlayerDisplayBox(data));
+			}
+		}
+
+		/// <summary>
+		/// Draw the List of Items
+		/// 
+		/// The Ones Dropped
+		/// 
+		/// The Ones Selected
+		/// 
+		/// </summary>
+		public void DrawItemLists()
+		{
+			DrawDroppedItems();
+			DrawSelectedItems();
+
+			// Only need to update the selected, the Dropped is set in the constructor
+			TotalSelected.Text = BattleEngineViewModel.Instance.Engine.BattleScore.ItemModelSelectList.Count().ToString();
 		}
 	}
 }
