@@ -5,7 +5,7 @@
 
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-            <StackLayout Style="{StaticResource VerticalStack}">
+            <StackLayout Style="{StaticResource OuterBoxStack}">
 
                 <Label Text="GAME OVER !!!" Style="{StaticResource CenterMessageStyle}"/>
 
@@ -54,40 +54,27 @@
                                     AlignContent="Start"
                                     Wrap="Wrap"/>
                         </StackLayout>
-                        
+
+                        <Label Text="Monsters"
+                           Style="{StaticResource HeaderStyle}"
+                           HorizontalOptions="StartAndExpand"/>
+
+                        <StackLayout Style="{StaticResource HorizontalStack}">
+                            <Label
+                                Text="Killed : "
+                                Style="{StaticResource LabelStyle}"/>
+                            <Label Text="0"
+                                   x:Name="TotalKilled"
+                                   Style="{StaticResource ValueStyle}"/>
+                        </StackLayout>
+
+                        <FlexLayout x:Name="MonsterListFrame"
+                                            JustifyContent="Start"
+                                            AlignContent="Start"
+                                            Wrap="Wrap"/>
                     </StackLayout>
 
                 </Frame>
-
-                <Label
-                    Text="Characters"
-                    Style="{StaticResource HeaderStyle}"
-                    HorizontalOptions="StartAndExpand"/>
-
-                <FlexLayout x:Name="CharacterListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
-
-                <Label Text="Monsters"
-                       Style="{StaticResource HeaderStyle}"
-                       HorizontalOptions="StartAndExpand"/>
-
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label
-                        Text="Killed : "
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Label Text="0"
-                           x:Name="TotalKilled"
-                           Style="{StaticResource ValueStyle}"/>
-
-                </StackLayout>
-
-                <FlexLayout x:Name="MonsterListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
 
                 <Button Clicked="CloseButton_Clicked" Text="Close"/>
 
