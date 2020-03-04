@@ -319,7 +319,7 @@ namespace Game.Views
 		public void AutoAssignButton_Clicked(object sender, EventArgs e)
 		{
 			// Distribute the Items
-			BattleEngineViewModel.Instance.Engine.PickupItemsForAllCharacters();
+			//BattleEngineViewModel.Instance.Engine.PickupItemsForAllCharacters();
 
 			// Show what was picked up
 			DrawItemLists();
