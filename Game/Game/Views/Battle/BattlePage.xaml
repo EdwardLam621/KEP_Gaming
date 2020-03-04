@@ -17,7 +17,15 @@
                 </Grid.RowDefinitions>
 
                 <!--Battlefield image-->
-                <Image Grid.Row="0" Source="https://clipartart.com/images/battlefield-clipart-1.jpg"/>
+                <Image Grid.Row="0" Source="https://clipartart.com/images/battlefield-clipart-1.jpg" Aspect="AspectFill"/>
+                <Label Text="Battle Message" 
+                       Grid.Row="0" 
+                       VerticalOptions="End" 
+                       HorizontalOptions="Center" 
+                       BackgroundColor="WhiteSmoke" 
+                       Padding="5,5,5,5"
+                       TextColor="Black"
+                       Margin="20"/>
 
                 <!--Round message box-->
                 <Label Text="Round 1" 
@@ -27,6 +35,7 @@
                        TextColor="Black"
                        FontSize="40"/>
 
+                <!--Message, need to be the last row of battlefield grid-->
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height = "*"/>
