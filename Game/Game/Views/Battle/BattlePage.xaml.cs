@@ -15,7 +15,9 @@ namespace Game.Views
 	public partial class BattlePage: ContentPage
 	{
 
-		private BattleEngineViewModel BattleEngine = BattleEngineViewModel.Instance;
+		public BattleEngineViewModel BattleEngine = BattleEngineViewModel.Instance;
+
+		public Engine.RoundEngine CurrentRound;
 
 		private List<CharacterModel> Party;
 
@@ -28,9 +30,14 @@ namespace Game.Views
 
 			BindingContext = BattleEngine;
 
+			BattleEngine.Engine.NewRound();
+
+			CurrentRound = BattleEngine.Engine.CurrentRound;
+
+			AddBattlefieldGridCharacter();
 
 
-			
+
 		}
 
 		public BattlePage(List<CharacterModel> party)
@@ -141,6 +148,21 @@ namespace Game.Views
 			}
 		}
 
+		private void AddBattlefieldGridCharacter()
+		{
+			// Clear the currett list
+			BattleEngine.Engine.CharacterList.Clear();
+
+			// Load the Characters into the Engine
+			foreach (var data in BattleEngine.PartyCharacterList)
+			{
+				if (!BattleEngine.Engine.CharacterList.Contains(data)){
+					BattleEngine.Engine.CharacterList.Add(data);
+				}
+				
+			}
+		}
+
 
 		//below are just for demo, please erase during final turn in
 		private void ShowDeadButton_Clicked(object sender, EventArgs e)
@@ -154,6 +176,18 @@ namespace Game.Views
 				LevelUp.IsVisible = true;
 			else LevelUp.IsVisible = false;
 
+		}
+
+		/// <summary>
+		/// Show the Game Over Screen
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="args"></param>
+		public async void ShowScoreButton_Clicked(object sender, EventArgs args)
+		{
+			Debug.WriteLine("Showing Score Page : " + BattleEngine.Engine.Referee.BattleScore.ScoreTotal.ToString());
+
+			await Navigation.PushModalAsync(new ScorePage());
 		}
 	}
 }

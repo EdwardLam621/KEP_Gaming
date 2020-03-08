@@ -64,6 +64,29 @@
                        TextColor="Black"
                        FontSize="40"/>
 
+                    <!--Character View-->
+                    <ListView Grid.Column="0" Grid.Row="1" Grid.RowSpan="3"
+                                x:Name="CharacterBattleGridView" 
+                                ItemsSource="{Binding PartyCharacterList}"
+                                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                                RefreshCommand="{Binding LoadItemsCommand}"
+                                CachingStrategy="RecycleElement"
+                                HasUnevenRows="true"
+                                Margin="5,0,5,0"
+                                RowHeight="80">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Image
+                                        Source="{Binding ImageURI}"
+                                        Style="{StaticResource ImageMediumStyle}"
+                                        VerticalOptions="CenterAndExpand"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    
                     <!--Monster demo-->
                     <Image
                         x:Name="monster_1"
@@ -166,6 +189,7 @@
                 <StackLayout Grid.Row="2">
                     <Button Text="Test Monster Dead" Clicked="ShowDeadButton_Clicked"/>
                     <Button Text="Test Level Up" Clicked="ShowLevelUpButton_Clicked"/>
+                    <Button x:Name="ShowScoreButton" Clicked="ShowScoreButton_Clicked" Text="Test Score Page"/>
                 </StackLayout>
             </Grid>
         </ScrollView>
