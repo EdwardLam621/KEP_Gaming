@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              x:Class="Game.Views.BattlePage">
 
     <ContentPage.Content>
@@ -65,7 +66,29 @@
                        FontSize="40"/>
 
                     <!--Character View-->
-                    <ListView Grid.Column="0" Grid.Row="1" Grid.RowSpan="3"
+                    <StackLayout Padding="10" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3">
+                        <flv:FlowListView FlowColumnCount="2"   
+                        SeparatorVisibility="Default"   
+                        HasUnevenRows="True"  
+                        FlowItemTappedCommand="{Binding ItemTappedCommand}"   
+                        FlowItemsSource="{Binding PartyCharacterList}">
+
+                            <flv:FlowListView.FlowColumnTemplate>
+                                <DataTemplate>
+                                    <Frame>
+                                        <Image
+                                            Source="{Binding ImageURI}"
+                                            Style="{StaticResource ImageMediumStyle}"
+                                            VerticalOptions="CenterAndExpand"
+                                            Aspect="AspectFit"/>
+                                    </Frame>
+                                </DataTemplate>
+                            </flv:FlowListView.FlowColumnTemplate>
+                        </flv:FlowListView>
+                    </StackLayout>
+
+
+                    <!--<ListView Grid.Column="0" Grid.Row="1" Grid.RowSpan="3"
                                 x:Name="CharacterBattleGridView" 
                                 ItemsSource="{Binding PartyCharacterList}"
                                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
@@ -85,7 +108,7 @@
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                    </ListView>
+                    </ListView>-->
                     
                     <!--Monster demo-->
                     <Image
