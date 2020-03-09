@@ -49,7 +49,7 @@
                         Source="https://clipartart.com/images/battlefield-clipart-1.jpg" Aspect="AspectFill"/>
 
                     <!--Battle Message, need to be the last row of battlefield grid-->
-
+                    <!--
                     <Label Text="Battle Message" 
                             Grid.Row="4"
                             Grid.Column="0"
@@ -60,6 +60,7 @@
                             Padding="5,5,5,5"
                             TextColor="Black"
                             Margin="20"/>
+                    -->
 
                     <!--Round message box-->
                     <Label Text="Round 1" 
