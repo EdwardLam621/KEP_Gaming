@@ -18,6 +18,8 @@
                     <RowDefinition Height="auto" />
                     <!--buttons-->
                     <RowDefinition Height="auto"/>
+                    <!-- display box row-->
+                    <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
 
                 <!--Battlefield image-->
@@ -198,43 +200,19 @@
                     </StackLayout>
 
                 </Grid>
-                    -->
+                -->
 
+                <!-- buttons -->
                 <Button Grid.Row="2" x:Name="AttackButton" Clicked="AttackButton_Clicked" Text="Next Attack" IsVisible="False"/>
                 <Button Grid.Row="2" x:Name="NextRoundButton" Clicked="NextRoundButton_Clicked" Text="Next Round" IsVisible="False"/>
                 <Button Grid.Row="2" x:Name="StartBattleButton" Clicked="StartButton_Clicked" Text="Start Battle" IsVisible="True"/>
 
+                
+                
             </Grid>
             
-            
 
-
-            <!--The Bottom of the Battle UI  Holds the Player to Player boxes, Buttons, and the Messages-->
-            
-                <Frame x:Name="BattlePlayerInfomationBox"
-                                IsVisible="False">
-
-                    <StackLayout x:Name="BattlePlayerBox">
-
-                        <StackLayout x:Name="AttackerBox" HorizontalOptions="Start">
-                            <Image x:Name="AttackerImage" Source="knight.png"/>
-                            <Label x:Name="AttackerName" Text=""/>
-                            <Label x:Name="AttackerHealth" Text=""/>
-                        </StackLayout>
-
-                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                            <Label x:Name="BattlePlayerBoxVersus" Text="vs"
-                                   Padding="0,5,0,0"
-                                   VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                        </StackLayout>
-
-                        <StackLayout x:Name="DefenderBox" HorizontalOptions="End">
-                            <Image x:Name="DefenderImage" Source="troll.png" />
-                            <Label x:Name="DefenderName" Text="" />
-                            <Label x:Name="DefenderHealth" Text="" />
-                        </StackLayout>
-                    </StackLayout>
-                </Frame>
+          
 
             <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand">
 
