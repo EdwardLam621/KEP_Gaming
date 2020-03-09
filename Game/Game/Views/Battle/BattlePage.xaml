@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              x:Class="Game.Views.BattlePage">
 
     <ContentPage.Content>
         
+        
         <!-- should be absolute layout during finish-->
-        <ScrollView>
+        <AbsoluteLayout>
             <Grid>
 
                 <Grid.RowDefinitions>
@@ -18,12 +20,12 @@
 
                 <!--Battlefield image-->
                 <Grid>
-                    
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="85"/>
+                        <RowDefinition Height="85"/>
+                        <RowDefinition Height="85"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -40,7 +42,7 @@
                         Grid.ColumnSpan="5"
                         Grid.RowSpan="5"
                         Source="https://clipartart.com/images/battlefield-clipart-1.jpg" Aspect="AspectFill"/>
-                    
+
                     <!--Battle Message, need to be the last row of battlefield grid-->
                     <Label Text="Battle Message" 
                             Grid.Row="4"
@@ -63,50 +65,112 @@
                        TextColor="Black"
                        FontSize="40"/>
 
-                    <!--Monster demo-->
-                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
-                           Grid.Column="4"
-                           Grid.Row="1"
-                           Aspect="AspectFit"
-                           Margin="5"/>
-                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
-                           Grid.Column="4"
-                           Grid.Row="2"
-                           Aspect="AspectFit"
-                           Margin="5"/>
-                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
-                           Grid.Column="4"
-                           Grid.Row="3"
-                           Aspect="AspectFit"
-                           Margin="5"/>
-                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
-                           Grid.Column="3"
-                           Grid.Row="1"
-                           Aspect="AspectFit"
-                           Margin="5"/>
-                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
-                           Grid.Column="3"
-                           Grid.Row="2"
-                           Aspect="AspectFit"
-                           Margin="5"/>
-                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
-                           Grid.Column="3"
-                           Grid.Row="3"
-                           Aspect="AspectFit"
-                           Margin="5"/>
+                    <!--Character View-->
+
+                    <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3" >
+                        <flv:FlowListView FlowColumnCount="2"
+                            SeparatorVisibility="Default"   
+                            HasUnevenRows="True"  
+                            FlowItemTappedCommand="{Binding ItemTappedCommand}"   
+                            FlowItemsSource="{Binding PartyCharacterList}"
+                            VerticalScrollBarVisibility="Never">
+                            
+                            <flv:FlowListView.FlowColumnTemplate>
+                                <DataTemplate>
+                                    <Frame>
+                                        <Image
+                                            Source="{Binding ImageURI}"
+                                            Style="{StaticResource ImageMediumStyle}"
+                                            VerticalOptions="CenterAndExpand"
+                                            Aspect="AspectFit"/>
+                                    </Frame>
+                                </DataTemplate>
+                            </flv:FlowListView.FlowColumnTemplate>
+                        </flv:FlowListView>
+                    </StackLayout>
+
+
+                    <!--<ListView Grid.Column="0" Grid.Row="1" Grid.RowSpan="3"
+                                x:Name="CharacterBattleGridView" 
+                                ItemsSource="{Binding PartyCharacterList}"
+                                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                                RefreshCommand="{Binding LoadItemsCommand}"
+                                CachingStrategy="RecycleElement"
+                                HasUnevenRows="true"
+                                Margin="5,0,5,0"
+                                RowHeight="80">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Image
+                                        Source="{Binding ImageURI}"
+                                        Style="{StaticResource ImageMediumStyle}"
+                                        VerticalOptions="CenterAndExpand"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>-->
                     
+                    <!--Monster demo-->
+                    <Image
+                        x:Name="monster_1"
+                        Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="4"
+                           Grid.Row="1"
+                           Aspect="AspectFit"
+                           Margin="5"/>
+
+
+                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="4"
+                           Grid.Row="2"
+                           Aspect="AspectFit"
+                           Margin="5"/>
+
+
+                    <Image Source="https://vignette.wikia.nocookie.net/roblox/images/9/9b/Level_Up_Logo.png/revision/latest?cb=20171101220707"
+                           Grid.Column="4"
+                           Grid.Row="2"
+                           Aspect="AspectFit"
+                           x:Name="LevelUp"
+                           IsVisible="False">
+                    </Image>
+                    
+                    
+                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="4"
+                           Grid.Row="3"
+                           Aspect="AspectFit"
+                           Margin="5"/>
+                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="3"
+                           Grid.Row="1"
+                           Aspect="AspectFit"
+                           Margin="5"/>
+                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="3"
+                           Grid.Row="2"
+                           Aspect="AspectFit"
+                           Margin="5"/>
+                    <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
+                           Grid.Column="3"
+                           Grid.Row="3"
+                           Aspect="AspectFit"
+                           Margin="5"/>
+
 
                 </Grid>
-                
-                
 
-                
 
-                
+
+
+
+
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height = "*"/>
                         <RowDefinition Height = "auto"/>
+                        <RowDefinition Height = "*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -118,18 +182,19 @@
                     <!--Start button-->
                     <ImageButton Grid.Column="0" 
                         Grid.Row="0"
-                        Grid.RowSpan="2" 
+                        Grid.RowSpan="1" 
+                        Aspect="AspectFit"
                         Source="small-button-clip-art-clkerm-vector-clip-art-37.png" 
-                        VerticalOptions="FillAndExpand" 
-                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="CenterAndExpand" 
+                        HorizontalOptions="CenterAndExpand" 
                         BackgroundColor="Transparent" 
                         BorderColor="Transparent"
                         Clicked="AttackButton_Clicked"/>
-                    
+
                     <!--Attack button text-->
                     <Label Grid.Column="0" 
                         Grid.Row="0"
-                        Grid.RowSpan="2" 
+                        Grid.RowSpan="1" 
                         Text="START"
                         VerticalOptions="CenterAndExpand" 
                         HorizontalOptions="CenterAndExpand" 
@@ -139,15 +204,32 @@
                         />
 
                     <!--character act image-->
-                    <ImageButton Grid.Column="1" Grid.Row="0" Source="demo_char.png" BorderWidth="1" />
-                    <ImageButton Grid.Column="2" Grid.Row="0" Source="demo_char.png" BorderWidth="1"/>
-                    <ImageButton Grid.Column="3" Grid.Row="0" Source="demo_char.png" BorderWidth="1"/>
-                    <ImageButton Grid.Column="1" Grid.Row="1" Source="demo_char.png" BorderWidth="1"/>
-                    <ImageButton Grid.Column="2" Grid.Row="1" Source="demo_char.png" BorderWidth="1"/>
-                    <ImageButton Grid.Column="3" Grid.Row="1" Source="demo_char.png" BorderWidth="1"/>
+                    <StackLayout Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
+                        <flv:FlowListView FlowColumnCount="3"   
+                        SeparatorVisibility="Default"   
+                        HasUnevenRows="True"  
+                        FlowItemTappedCommand="{Binding ItemTappedCommand}"   
+                        FlowItemsSource="{Binding PartyCharacterList}">
+
+                            <flv:FlowListView.FlowColumnTemplate>
+                                <DataTemplate>
+                                    <ImageButton
+                                            Source="{Binding ImageURI}"
+                                            Style="{StaticResource ImageMediumStyle}"
+                                            VerticalOptions="CenterAndExpand"
+                                            Aspect="AspectFit"/>
+                                </DataTemplate>
+                            </flv:FlowListView.FlowColumnTemplate>
+                        </flv:FlowListView>
+                    </StackLayout>
 
                 </Grid>
+                <!--<StackLayout Grid.Row="2">
+                    <Button Text="Test Monster Dead" Clicked="ShowDeadButton_Clicked"/>
+                    <Button Text="Test Level Up" Clicked="ShowLevelUpButton_Clicked"/>
+                    <Button x:Name="ShowScoreButton" Clicked="ShowScoreButton_Clicked" Text="Test Score Page"/>
+                </StackLayout>-->
             </Grid>
-        </ScrollView>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

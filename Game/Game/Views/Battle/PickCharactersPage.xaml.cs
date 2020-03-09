@@ -54,27 +54,31 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
+        /// *************************************
         public void OnDatabaseCharacterItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
            
-            CharacterModel data = args.SelectedItem as CharacterModel;
-            if (data == null)
-            {
-                return;
-            }
+            //CharacterModel data = args.SelectedItem as CharacterModel;
+            //if (data == null)
+            //{
+            //    return;
+            //}
 
-            // Manually deselect Character.
-            CharactersListView.SelectedItem = null;
+            //// Manually deselect Character.
+            //CharactersListView.SelectedItem = null;
 
-            // Don't add more than the party max
-            if (EngineViewModel.PartyCharacterList.Count() < EngineViewModel.Engine.MaxNumberPartyCharacters)
-            {
-                EngineViewModel.PartyCharacterList.Add(data);
-            }
+            //// Don't add more than the party max
+            //if (EngineViewModel.PartyCharacterList.Count() < EngineViewModel.Engine.MaxNumberPartyCharacters)
+            //{
+            //    EngineViewModel.PartyCharacterList.Add(data);
+            //}
 
             
         }
 
+
+
+        //****************************
         public void checkbox_CheckChanged(object sender, EventArgs e)
         {
             var checkbox = (Plugin.InputKit.Shared.Controls.CheckBox)sender;
@@ -85,11 +89,33 @@ namespace Game.Views
             {
                 return;
             }
-
-            // Don't add more than the party max
-            if (EngineViewModel.PartyCharacterList.Count() < EngineViewModel.Engine.MaxNumberPartyCharacters)
+            //checked character
+            if (checkbox.IsChecked)
             {
-                EngineViewModel.PartyCharacterList.Add(ob);
+                // Don't add more than the party max
+                if (EngineViewModel.PartyCharacterList.Count() < EngineViewModel.Engine.MaxNumberPartyCharacters)
+                {
+                    EngineViewModel.PartyCharacterList.Add(ob);
+                }
+            }
+
+            //uncheck character
+            else
+            {
+                bool uncheck = false;
+                while (!uncheck)
+                {
+                    for (int i = 0; i < EngineViewModel.PartyCharacterList.Count; i++)
+                    {
+                        if (EngineViewModel.PartyCharacterList[i].Name == ob.Name)
+                        {
+                            EngineViewModel.PartyCharacterList[i] = null;
+                            EngineViewModel.PartyCharacterList.RemoveAt(i);
+                            uncheck = true;
+                        }
+                    }
+                }
+                
             }
         }
 

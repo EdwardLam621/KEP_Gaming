@@ -5,7 +5,6 @@ using Game.ViewModels;
 using Game.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Game.Engine;
 
 namespace Game.Views
 {
@@ -16,33 +15,58 @@ namespace Game.Views
 	public partial class BattlePage: ContentPage
 	{
 
-		private BattleEngineViewModel BattleEngine = BattleEngineViewModel.Instance;
+		public BattleEngineViewModel BattleEngine = BattleEngineViewModel.Instance;
+
+		public Engine.RoundEngine CurrentRound;
 
 		private List<CharacterModel> Party;
-
-		public RoundEngine CurrentRound;
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
+		public BattlePage ()
+		{
+			InitializeComponent ();
 
-		public BattlePage()
+			BindingContext = BattleEngine;
+
+			BattleEngine.Engine.NewRound();
+
+			CurrentRound = BattleEngine.Engine.CurrentRound;
+
+			AddBattlefieldGridCharacter();
+
+
+
+		}
+
+		public BattlePage(List<CharacterModel> party)
 		{
 			InitializeComponent();
 
 			BindingContext = BattleEngine;
 
+			//List<CharacterModel> testFighter = new List<CharacterModel>();
+
+			//testFighter.Add(new CharacterModel
+			//{
+			//	Name = "The Delinquent",
+			//	MaxHealth = 20,
+			//	CurrentHealth = 20,
+			//	Level = 1,
+			//	Description = "The mischief class skipper. Low in defense but high in attack",
+			//	ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
+			//	DefenseAttribute = 1,
+			//	OffenseAttribute = 2,
+			//	SpeedAttribute = 1,
+			//	Skill = CreatureSkillEnum.None,
+			//	//Equipments = equipments
+			//});
+
 			BattleEngine.Engine.SetParty(BattleEngine.Engine.CharacterList);
+			BattleEngine.Engine.startBattle();
 
-			// Start the Battle Engine
-			BattleEngine.Engine.NewRound();
 
-			// Load current round into local namespace
-			CurrentRound = BattleEngine.Engine.CurrentRound;
-
-			// Ask the Game engine to select who goes first
-			// Game Starts with No Attacker or Defender selected
-			CurrentRound.CurrentPlayer = null;
 
 		}
 
@@ -124,9 +148,46 @@ namespace Game.Views
 			}
 		}
 
-		private void ImageButton_Clicked(object sender, EventArgs e)
+		private void AddBattlefieldGridCharacter()
 		{
+			// Clear the currett list
+			BattleEngine.Engine.CharacterList.Clear();
 
+			// Load the Characters into the Engine
+			foreach (var data in BattleEngine.PartyCharacterList)
+			{
+				if (!BattleEngine.Engine.CharacterList.Contains(data)){
+					BattleEngine.Engine.CharacterList.Add(data);
+				}
+				
+			}
+		}
+
+
+		//below are just for demo, please erase during final turn in
+		private void ShowDeadButton_Clicked(object sender, EventArgs e)
+		{
+			monster_1.Source = "https://lh3.googleusercontent.com/proxy/7caqmNL_b6e1C70tV6CU7hmaZGL9t-hvar2QHUo1JabVoEfhw456zFAt9zhG2GYx3zOEK_-kOG7Xb8qveL18MGMfE_Qpq1gj";
+		}
+
+		private void ShowLevelUpButton_Clicked(object sender, EventArgs e)
+		{
+			if (LevelUp.IsVisible == false)
+				LevelUp.IsVisible = true;
+			else LevelUp.IsVisible = false;
+
+		}
+
+		/// <summary>
+		/// Show the Game Over Screen
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="args"></param>
+		public async void ShowScoreButton_Clicked(object sender, EventArgs args)
+		{
+			Debug.WriteLine("Showing Score Page : " + BattleEngine.Engine.Referee.BattleScore.ScoreTotal.ToString());
+
+			await Navigation.PushModalAsync(new ScorePage());
 		}
 	}
 }
