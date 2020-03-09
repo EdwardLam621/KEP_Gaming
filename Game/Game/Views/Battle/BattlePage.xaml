@@ -204,7 +204,7 @@
                 -->
 
                 <!-- buttons -->
-                <Button Grid.Row="2" x:Name="AttackButton" Clicked="AttackButton_Clicked" Text="Next Attack" IsVisible="False"/>
+                <Button Grid.Row="2" x:Name="AttackButton" Clicked="AttackButton_Clicked" Text="Next Attack" IsVisible="False" />
                 <Button Grid.Row="2" x:Name="NextRoundButton" Clicked="NextRoundButton_Clicked" Text="Next Round" IsVisible="False"/>
                 <Button Grid.Row="2" x:Name="StartBattleButton" Clicked="StartButton_Clicked" Text="Start Battle" IsVisible="True"/>
 
@@ -223,7 +223,7 @@
 
 
                         <StackLayout Grid.Row="0" Grid.Column="0" x:Name="AttackerBox" HorizontalOptions="Start">
-                            <Image x:Name="AttackerImage" Source="knight.png" Style="{StaticResource ImageBattleMediumStyle}"/>
+                            <Image x:Name="AttackerImage" Source="https://cn.i.cdn.ti-platform.com/cnapac/content/438/showpage/teen-titans-go%21/sa/showicon.png" Style="{StaticResource ImageBattleMediumStyle}"/>
                             <Label x:Name="AttackerName" Text=""/>
                             <Label x:Name="AttackerHealth" Text=""/>
                         </StackLayout>
@@ -235,7 +235,7 @@
                         </StackLayout>
 
                         <StackLayout Grid.Row="0" Grid.Column="2" x:Name="DefenderBox" HorizontalOptions="End">
-                            <Image x:Name="DefenderImage" Source="troll.png" Style="{StaticResource ImageBattleMediumStyle}"/>
+                            <Image x:Name="DefenderImage" Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png" Style="{StaticResource ImageBattleMediumStyle}"/>
                             <Label x:Name="DefenderName" Text="" />
                             <Label x:Name="DefenderHealth" Text="" />
                         </StackLayout>
