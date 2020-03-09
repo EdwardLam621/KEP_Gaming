@@ -70,6 +70,35 @@ namespace Game.Views
 
 		}
 
+		public void NextRoundButton_Clicked(object sender, EventArgs e)
+		{
+			
+		}
+
+		/// <summary>
+		/// The Start Button
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public void StartButton_Clicked(object sender, EventArgs e)
+		{
+			HideUIElements();
+
+			// Set for a trun to begin
+			AttackButton.IsVisible = true;
+			MessageDisplayBox.IsVisible = true;
+			BattlePlayerInfomationBox.IsVisible = true;
+		}
+
+		public void HideUIElements()
+		{
+			NextRoundButton.IsVisible = false;
+			StartBattleButton.IsVisible = false;
+			AttackButton.IsVisible = false;
+			MessageDisplayBox.IsVisible = false;
+			BattlePlayerInfomationBox.IsVisible = false;
+		}
+
 
 		/// <summary>
 		/// Attack Action

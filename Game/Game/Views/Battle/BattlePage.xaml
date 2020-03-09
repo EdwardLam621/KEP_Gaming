@@ -16,6 +16,8 @@
                     <RowDefinition Height="auto" />
                     <!--character action boxes grid-->
                     <RowDefinition Height="auto" />
+                    <!--buttons-->
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <!--Battlefield image-->
@@ -27,6 +29,7 @@
                         <RowDefinition Height="85"/>
                         <RowDefinition Height="85"/>
                         <RowDefinition Height="auto"/>
+                        
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -44,6 +47,7 @@
                         Source="https://clipartart.com/images/battlefield-clipart-1.jpg" Aspect="AspectFill"/>
 
                     <!--Battle Message, need to be the last row of battlefield grid-->
+
                     <Label Text="Battle Message" 
                             Grid.Row="4"
                             Grid.Column="0"
@@ -74,7 +78,7 @@
                             FlowItemTappedCommand="{Binding ItemTappedCommand}"   
                             FlowItemsSource="{Binding PartyCharacterList}"
                             VerticalScrollBarVisibility="Never">
-                            
+
                             <flv:FlowListView.FlowColumnTemplate>
                                 <DataTemplate>
                                     <Frame>
@@ -89,29 +93,6 @@
                         </flv:FlowListView>
                     </StackLayout>
 
-
-                    <!--<ListView Grid.Column="0" Grid.Row="1" Grid.RowSpan="3"
-                                x:Name="CharacterBattleGridView" 
-                                ItemsSource="{Binding PartyCharacterList}"
-                                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                                RefreshCommand="{Binding LoadItemsCommand}"
-                                CachingStrategy="RecycleElement"
-                                HasUnevenRows="true"
-                                Margin="5,0,5,0"
-                                RowHeight="80">
-
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Image
-                                        Source="{Binding ImageURI}"
-                                        Style="{StaticResource ImageMediumStyle}"
-                                        VerticalOptions="CenterAndExpand"/>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>-->
-                    
                     <!--Monster demo-->
                     <Image
                         x:Name="monster_1"
@@ -136,8 +117,8 @@
                            x:Name="LevelUp"
                            IsVisible="False">
                     </Image>
-                    
-                    
+
+
                     <Image Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png"
                            Grid.Column="4"
                            Grid.Row="3"
@@ -162,11 +143,7 @@
 
                 </Grid>
 
-
-
-
-
-
+                <!--
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height = "auto"/>
@@ -179,7 +156,6 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <!--Start button-->
                     <ImageButton Grid.Column="0" 
                         Grid.Row="0"
                         Grid.RowSpan="1" 
@@ -191,7 +167,6 @@
                         BorderColor="Transparent"
                         Clicked="AttackButton_Clicked"/>
 
-                    <!--Attack button text-->
                     <Label Grid.Column="0" 
                         Grid.Row="0"
                         Grid.RowSpan="1" 
@@ -203,7 +178,6 @@
                         
                         />
 
-                    <!--character act image-->
                     <StackLayout Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
                         <flv:FlowListView FlowColumnCount="3"   
                         SeparatorVisibility="Default"   
@@ -224,12 +198,72 @@
                     </StackLayout>
 
                 </Grid>
-                <!--<StackLayout Grid.Row="2">
-                    <Button Text="Test Monster Dead" Clicked="ShowDeadButton_Clicked"/>
-                    <Button Text="Test Level Up" Clicked="ShowLevelUpButton_Clicked"/>
-                    <Button x:Name="ShowScoreButton" Clicked="ShowScoreButton_Clicked" Text="Test Score Page"/>
-                </StackLayout>-->
+                    -->
+
+                <Button Grid.Row="2" x:Name="AttackButton" Clicked="AttackButton_Clicked" Text="Next Attack" IsVisible="False"/>
+                <Button Grid.Row="2" x:Name="NextRoundButton" Clicked="NextRoundButton_Clicked" Text="Next Round" IsVisible="False"/>
+                <Button Grid.Row="2" x:Name="StartBattleButton" Clicked="StartButton_Clicked" Text="Start Battle" IsVisible="True"/>
+
             </Grid>
+            
+            
+
+
+            <!--The Bottom of the Battle UI  Holds the Player to Player boxes, Buttons, and the Messages-->
+            
+                <Frame x:Name="BattlePlayerInfomationBox"
+                                IsVisible="False">
+
+                    <StackLayout x:Name="BattlePlayerBox">
+
+                        <StackLayout x:Name="AttackerBox" HorizontalOptions="Start">
+                            <Image x:Name="AttackerImage" Source="knight.png"/>
+                            <Label x:Name="AttackerName" Text=""/>
+                            <Label x:Name="AttackerHealth" Text=""/>
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Label x:Name="BattlePlayerBoxVersus" Text="vs"
+                                   Padding="0,5,0,0"
+                                   VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+
+                        <StackLayout x:Name="DefenderBox" HorizontalOptions="End">
+                            <Image x:Name="DefenderImage" Source="troll.png" />
+                            <Label x:Name="DefenderName" Text="" />
+                            <Label x:Name="DefenderHealth" Text="" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+            <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand">
+
+            </StackLayout>
+
+                <StackLayout 
+                            Style="{StaticResource VerticalStack}" 
+                            HeightRequest="100"
+                            HorizontalOptions="CenterAndExpand">
+
+                    <StackLayout x:Name="MessageDisplayBox" 
+                            IsVisible="false"
+                            Style="{StaticResource VerticalStack}" 
+                                    VerticalOptions="StartAndExpand"
+                                    HorizontalOptions="CenterAndExpand">
+
+                        <Label x:Name="BattleMessages" 
+                                    HorizontalOptions="FillAndExpand" 
+                                    LineBreakMode="WordWrap" 
+                                    MaxLines="3"
+                                    LineHeight="1"
+                                    CharacterSpacing="1"
+                                    Style="{StaticResource LabelStyle}"
+                                    FontSize="Micro"/>
+                    </StackLayout>
+                </StackLayout>
+
+
+
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
