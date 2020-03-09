@@ -5,6 +5,7 @@ using Game.ViewModels;
 using Game.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Game.Engine;
 
 namespace Game.Views
 {
@@ -19,45 +20,29 @@ namespace Game.Views
 
 		private List<CharacterModel> Party;
 
+		public RoundEngine CurrentRound;
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public BattlePage ()
-		{
-			InitializeComponent ();
 
-			BindingContext = BattleEngine;
-
-			
-		}
-
-		public BattlePage(List<CharacterModel> party)
+		public BattlePage()
 		{
 			InitializeComponent();
 
 			BindingContext = BattleEngine;
 
-			//List<CharacterModel> testFighter = new List<CharacterModel>();
-
-			//testFighter.Add(new CharacterModel
-			//{
-			//	Name = "The Delinquent",
-			//	MaxHealth = 20,
-			//	CurrentHealth = 20,
-			//	Level = 1,
-			//	Description = "The mischief class skipper. Low in defense but high in attack",
-			//	ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
-			//	DefenseAttribute = 1,
-			//	OffenseAttribute = 2,
-			//	SpeedAttribute = 1,
-			//	Skill = CreatureSkillEnum.None,
-			//	//Equipments = equipments
-			//});
-
 			BattleEngine.Engine.SetParty(BattleEngine.Engine.CharacterList);
-			BattleEngine.Engine.startBattle();
 
+			// Start the Battle Engine
+			BattleEngine.Engine.NewRound();
 
+			// Load current round into local namespace
+			CurrentRound = BattleEngine.Engine.CurrentRound;
+
+			// Ask the Game engine to select who goes first
+			// Game Starts with No Attacker or Defender selected
+			CurrentRound.CurrentPlayer = null;
 
 		}
 
