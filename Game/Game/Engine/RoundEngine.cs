@@ -99,6 +99,7 @@ namespace Game.Engine
             while (nextPlayer.PlayerType.Equals(CreatureEnum.Monster))
             {
                 NextTurnAuto();
+                nextPlayer = GetNextPlayerTurn();
             }
         }
 
