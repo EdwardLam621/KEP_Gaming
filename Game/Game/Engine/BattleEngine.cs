@@ -30,12 +30,6 @@ namespace Game.Engine
         // Current round
         public RoundEngine CurrentRound;
 
-        // Enable critical hits for hackathon
-        public bool CriticalHitsEnabled { get; set; } = false;
-
-        // Enable resurrection for hackathon
-        public bool ResurrectionEnabled { get; set; } = false;
-
         /// <summary>
         /// Default constructor
         /// </summary>

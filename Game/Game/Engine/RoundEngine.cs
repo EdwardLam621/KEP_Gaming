@@ -40,6 +40,12 @@ namespace Game.Engine
         // Time warp boolean, true = slower character moves, false = faster goes
         public bool TimeWarp = false;
 
+        // Enable critical hits for hackathon
+        public bool CriticalHitsEnabled { get; set; } = false;
+
+        // Enable resurrection for hackathon
+        public bool ResurrectionEnabled { get; set; } = false;
+
         /// <summary>
         /// Default empty constructor
         /// </summary>
