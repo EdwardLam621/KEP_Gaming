@@ -417,6 +417,9 @@ namespace Scenario
             DiceHelper.EnableForcedRolls();
             DiceHelper.SetForcedRollValue(20);
 
+            //set timewarp true
+            BattleEngine.CurrentRound.TimeWarp = true;
+
             //Act
             var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
 
@@ -425,8 +428,11 @@ namespace Scenario
             BattleEngine.NewRound();
 
             //Assert
-            Assert.AreEqual(true, result);
-            Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.Referee.BattleMessages.HitStatus);
+            //monster should make damage to character, so CurrentHealth < MaxHealth
+            //monster should have same CurrentHealth as MaxHealth since no damage is taken
+
+            Assert.IsTrue(CharacterPlayerMike.MaxHealth < CharacterPlayerMike.CurrentHealth);
+            Assert.IsTrue(MonsterPlayer.MaxHealth < MonsterPlayer.CurrentHealth);
         }
 
 
