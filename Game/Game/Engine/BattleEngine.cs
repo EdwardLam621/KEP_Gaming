@@ -24,14 +24,17 @@ namespace Game.Engine
         // The Grid that keeps track of player locations
         //public BattleGridCellModel BattleGrid;
 
-
-        public List<DungeonFighterModel> Fighters;
-
         // Which round we are on
         public int RoundCount = 0;
 
         // Current round
         public RoundEngine CurrentRound;
+
+        // Enable critical hits for hackathon
+        public bool CriticalHitsEnabled { get; set; } = false;
+
+        // Enable resurrection for hackathon
+        public bool ResurrectionEnabled { get; set; } = false;
 
         /// <summary>
         /// Default constructor
