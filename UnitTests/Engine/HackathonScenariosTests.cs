@@ -340,6 +340,59 @@ namespace Scenario
             Assert.AreEqual(true, result);
             Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.Referee.BattleMessages.HitStatus);
         }
+        
+        public void HackathonScenario_Scenario_9_Character_Revived_After_Death()
+        {
+            /* 
+             * Scenario Number:  
+             *  9
+             * 
+             * Description: 
+             *  
+             *  Miracle Max steps in and helps characters who are Mostly Dead avoid Total Death.
+             *  If the damaged received would make the currentHealth points Zero or below, then 
+             *  Miracle Max steps in and helps out. One time per battle, a character may be revived 
+             *  by magic to their maxhealth. This happens instead of death. Because this is allowed 
+             *  only one time per battle per character, they can have more fun storming the castle.
+             *  
+             *  Miracle Max loves it when you advertise his business in the output window
+
+             *  
+             * 
+             *      Make a weak character with 1 health and a strong monster with high speed
+             *      After monster attack, check if character is alive
+             *      After another monster attack, check if character is dead
+             *      
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *      
+             *      
+             *      
+             *      (Change to Turn Engine
+             *      (Changed TurnAsAttack method
+             *      (Check for Name of Bob and return miss
+             *                 
+             * Test Algrorithm:
+             *  Create Character with 1 health and -1 speed
+             *  Create Monster with level 20 and 10 speed
+             *  Call Turn
+             *  Call Turn again
+             * 
+             * Test Conditions:
+             *  Test with Character health
+             * 
+             * Validation:
+             *      Verify character death count has increased
+             *      Verify character revive count has increased
+             *      Verify character cannot revive more than once
+             *  
+             */
+        }
+
+
+
+
+
         public void HackathonScenario_Scenario_15_Slower_Character_Moves_First()
         {
 
