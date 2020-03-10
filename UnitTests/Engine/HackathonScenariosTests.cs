@@ -63,7 +63,7 @@ namespace Scenario
 
 
             // Act
-            var result = EngineViewModel;
+            var result = BattleEngine;
 
             // Reset
 
@@ -107,7 +107,7 @@ namespace Scenario
 
             // Set Character Conditions
 
-            EngineViewModel.Engine.MaxNumberPartyCharacters = 1;
+            BattleEngine.MaxNumberPartyCharacters = 1;
 
             var CharacterPlayerMike = new CharacterModel
                             {
@@ -122,9 +122,9 @@ namespace Scenario
             var playerList = new List<CharacterModel>();
             playerList.Add(CharacterPlayerMike);
 
-            EngineViewModel.Engine.SetParty(playerList);
+            BattleEngine.SetParty(playerList);
 
-            EngineViewModel.Engine.SetAutoBattle(true);
+            BattleEngine.SetAutoBattle(true);
 
             // Set Monster Conditions
 
@@ -132,98 +132,114 @@ namespace Scenario
 
 
             //Act
-            var result = EngineViewModel.Engine.startBattle();
+            var result = BattleEngine.startBattle();
 
             //Reset
 
             //Assert
             Assert.AreEqual(true, result);
-            Assert.AreEqual(null, EngineViewModel.Engine.Referee.Characters.Find(m => m.Name.Equals("Mike")));
-            Assert.AreEqual(1, EngineViewModel.Engine.Referee.BattleScore.RoundCount);
+            Assert.AreEqual(null, BattleEngine.Referee.Characters.Find(m => m.Name.Equals("Mike")));
+            Assert.AreEqual(1, BattleEngine.Referee.BattleScore.RoundCount);
         }
 
-        //[Test]
-        //public void HackathonScenario_Scenario_2_Character_Bob_Should_Miss()
-        //{
-        //    /* 
-        //     * Scenario Number:  
-        //     *  2
-        //     *  
-        //     * Description: 
-        //     *      Make a Character called Bob
-        //     *      Bob Always Misses
-        //     *      Other Characters Always Hit
-        //     * 
-        //     * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
-        //     *      Change to Turn Engine
-        //     *      Changed TurnAsAttack method
-        //     *      Check for Name of Bob and return miss
-        //     *                 
-        //     * Test Algrorithm:
-        //     *  Create Character named Bob
-        //     *  Create Monster
-        //     *  Call TurnAsAttack
-        //     * 
-        //     * Test Conditions:
-        //     *  Test with Character of Named Bob
-        //     *  Test with Character of any other name
-        //     * 
-        //     * Validation:
-        //     *      Verify Enum is Miss
-        //     *  
-        //     */
+        [Test]
+        public void HackathonScenario_Scenario_2_Character_Bob_Should_Miss()
+        {
+            /* 
+             * Scenario Number:  
+             *  2
+             *  
+             * Description: 
+             *      Make a Character called Bob
+             *      Bob Always Misses
+             *      Other Characters Always Hit
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *      Change to Turn Engine
+             *      Changed TurnAsAttack method
+             *      Check for Name of Bob and return miss
+             *                 
+             * Test Algrorithm:
+             *  Create Character named Bob
+             *  Create Monster
+             *  Call TurnAsAttack
+             * 
+             * Test Conditions:
+             *  Test with Character of Named Bob
+             *  Test with Character of any other name
+             * 
+             * Validation:
+             *      Verify Enum is Miss
+             *  
+             */
 
-        //    //Arrange
+            //Arrange
 
-        //    // Set Character Conditions
+            // Set Character Conditions
 
-        //    BattleEngine.MaxNumberPartyCharacters = 1;
 
-        //    var CharacterPlayer = new PlayerInfoModel(
-        //                    new CharacterModel
-        //                    {
-        //                        Speed = 200,
-        //                        Level = 10,
-        //                        CurrentHealth = 100,
-        //                        ExperienceTotal = 100,
-        //                        ExperienceRemaining = 1,
-        //                        Name = "Bob",
-        //                    });
+            BattleEngine.NewRound();
 
-        //    BattleEngine.CharacterList.Add(CharacterPlayer);
+            var CharacterPlayerBob = new CharacterModel
+            {
+                SpeedAttribute = 200,
+                Level = 10,
+                CurrentHealth = 100,
+                ExperiencePoints = 100,
+                Name = "Bob",
+            };
 
-        //    // Set Monster Conditions
+            // Add Bob to the list of players
+            var playerList = new List<CharacterModel>();
+            playerList.Add(CharacterPlayerBob);
 
-        //    // Add a monster to attack
-        //    BattleEngine.MaxNumberPartyCharacters = 1;
+            // Convert to DungeonFighter
+            EngineViewModel.Engine.SetParty(playerList);
 
-        //    var MonsterPlayer = new PlayerInfoModel(
-        //        new MonsterModel
-        //        {
-        //            Speed = 1,
-        //            Level = 1,
-        //            CurrentHealth = 1,
-        //            ExperienceTotal = 1,
-        //            ExperienceRemaining = 1,
-        //            Name = "Monster",
-        //        });
+               
+            // Set Monster Conditions
 
-        //    BattleEngine.CharacterList.Add(MonsterPlayer);
+            // Add a monster to attack
 
-        //    // Have dice rull 19
-        //    DiceHelper.EnableForcedRolls();
-        //    DiceHelper.SetForcedRollValue(19);
+            var MonsterPlayer = new DungeonFighterModel(
+                new MonsterModel
+                {
+                    SpeedAttribute = 1,
+                    Level = 1,
+                    CurrentHealth = 1,
+                    ExperiencePoints = 1,
+                    Name = "Monster",
+                });
 
-        //    //Act
-        //    var result = BattleEngine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
+            
 
-        //    //Reset
-        //    DiceHelper.DisableForcedRolls();
+            // Remove auto added monsters
+            BattleEngine.Referee.Monsters.Clear();
 
-        //    //Assert
-        //    Assert.AreEqual(true, result);
-        //    Assert.AreEqual(HitStatusEnum.Miss, BattleEngine.BattleMessagesModel.HitStatus);
-        //}
+            // Add this monster instead
+            BattleEngine.Referee.Monsters.Add(MonsterPlayer);
+
+            // Have dice rull 19
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(19);
+
+            // Set up turn
+
+            // Choose Bob
+            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
+
+            // Choose Monster
+            BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
+            //Act
+            var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
+
+            //Reset
+            DiceHelper.DisableForcedRolls();
+
+            //Assert
+            Assert.AreEqual(true, result);
+            Assert.AreEqual(HitStatusEnum.Miss, BattleEngine.Referee.BattleMessages.HitStatus);
+        }
 
         //[Test]
         //public void HackathonScenario_Scenario_2_Character_Not_Bob_Should_Hit()
