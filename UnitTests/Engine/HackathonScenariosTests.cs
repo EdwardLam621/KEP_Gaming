@@ -352,8 +352,8 @@ namespace Scenario
              *      Check for Name of Bob and return miss
              *                 
              * Test Algrorithm:
-             *  Create Character with slower speed attribute (1)
-             *  Create Monster with higher speed attribute (20)
+             *  Create Character with higher speed attribute (20)
+             *  Create Monster with lower speed attribute (1)
              *  Call TurnAsAttack
              * 
              * Test Conditions:
@@ -361,7 +361,7 @@ namespace Scenario
              *  Test with Monster health
              * 
              * Validation:
-             *      Verify character has taken first move
+             *      Verify monster has taken first move
              *  
              */
 
