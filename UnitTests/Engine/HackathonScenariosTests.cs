@@ -532,6 +532,98 @@ namespace Scenario
         }
 
         [Test]
+        public void HackathonScenario_Scenario_15_If_TimeWarp_False_Faster_Character_Moves_First()
+        {
+
+            /* 
+             * Scenario Number:  
+             *  15
+             *  
+             * Description: 
+             *      Make a character and a monster, Character has higher speed than monster
+             *      Time warp boolean
+             *      If true character acts first, if false monster moves first
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *      Change to Turn Engine
+             *      Changed TurnAsAttack method
+             *      Check for Name of Bob and return miss
+             *                 
+             * Test Algrorithm:
+             *  Create Character with higher speed attribute (20)
+             *  Create Monster with lower speed attribute (1)
+             *  Call TurnAsAttack
+             * 
+             * Test Conditions:
+             *  Test with Character health
+             *  Test with Monster health
+             * 
+             * Validation:
+             *      Verify monster has taken first move
+             *  
+             */
+
+
+            // Set Character Conditions
+
+            var CharacterPlayerMike = new CharacterModel
+
+            {
+                SpeedAttribute = 200,
+                Level = 10,
+                MaxHealth = 100,
+                CurrentHealth = 100,
+                ExperiencePoints = 100,
+                Name = "Mike",
+            };
+
+            // Make new player list
+            var playerList = new List<CharacterModel>();
+
+            // Add Mike
+            playerList.Add(CharacterPlayerMike);
+
+            // Give player list to BattleEngine
+            BattleEngine.SetParty(playerList);
+
+            // Set Monster Conditions
+
+            // Add a monster to attack
+
+            var MonsterPlayer = new DungeonFighterModel(
+                new MonsterModel
+                {
+                    SpeedAttribute = 1,
+                    Level = 1,
+                    CurrentHealth = 5,
+                    ExperiencePoints = 1,
+                    Name = "ABC",
+                });
+
+
+            // Remove the automatically added monsters from the RoundEngine
+            BattleEngine.CurrentRound.MonsterList.Clear();
+
+            // Add this monster instead
+            BattleEngine.CurrentRound.MonsterList.Add(MonsterPlayer);
+
+            // Have dice roll 20
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+
+            //set timewarp true
+            BattleEngine.CurrentRound.TimeWarp = false;
+            BattleEngine.CurrentRound.OrderFighters();
+
+            // Choose only character in party
+            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.CurrentRound.FighterList.FirstOrDefault();
+
+            //After sort the first player's name should be monster
+            Assert.IsTrue(BattleEngine.CurrentRound.CurrentPlayer.Name.Equals("Mike"));
+        }
+
+
+        [Test]
         public void HackathonScenario_Scenario_5_Critical_Hit_Enable_Should_Double_Damage()
         {
             /* 
