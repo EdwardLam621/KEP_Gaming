@@ -37,6 +37,9 @@ namespace Game.Engine
         // Current Round state
         public RoundEnum RoundResult = RoundEnum.NextTurn;
 
+        // Time warp boolean, true = slower character moves, false = faster goes
+        public bool TimeWarp = false;
+
         /// <summary>
         /// Default empty constructor
         /// </summary>
@@ -307,13 +310,29 @@ namespace Game.Engine
         /// </summary>
         public void OrderFight()
         {
-            FighterList = FighterList.OrderByDescending(a => a.SpeedAttribute)
-                .ThenByDescending(a => a.Level)
-                .ThenByDescending(a => a.ExperiencePoints)
-                .ThenByDescending(a => a.PlayerType)
-                .ThenBy(a => a.Name)
-                .ThenBy(a => a.ListOrder)
-                .ToList();
+            if (TimeWarp)
+            {
+                FighterList = FighterList.OrderBy(a => a.SpeedAttribute)
+               .ThenByDescending(a => a.Level)
+               .ThenByDescending(a => a.ExperiencePoints)
+               .ThenByDescending(a => a.PlayerType)
+               .ThenBy(a => a.Name)
+               .ThenBy(a => a.ListOrder)
+               .ToList();
+            }
+            else
+            {
+                FighterList = FighterList.OrderByDescending(a => a.SpeedAttribute)
+               .ThenByDescending(a => a.Level)
+               .ThenByDescending(a => a.ExperiencePoints)
+               .ThenByDescending(a => a.PlayerType)
+               .ThenBy(a => a.Name)
+               .ThenBy(a => a.ListOrder)
+               .ToList();
+            }
+
+            //reset TimeWarp
+            TimeWarp = false;
         }
 
         

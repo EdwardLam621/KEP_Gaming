@@ -435,10 +435,11 @@ namespace Scenario
                 Name = "Mike",
             };
 
-            // set a character with speed attribute 1
+            
             var playerList = new List<CharacterModel>();
             playerList.Add(CharacterPlayerMike);
 
+            // set a monster with speed attribute 1
             var MonsterPlayer = new DungeonFighterModel(
                 new MonsterModel
                 {
@@ -448,6 +449,37 @@ namespace Scenario
                     ExperiencePoints = 1,
                     Name = "Monster",
                 });
+
+            // Remove auto added monsters
+            BattleEngine.Referee.Monsters.Clear();
+
+            // Add this monster instead
+            BattleEngine.Referee.Monsters.Add(MonsterPlayer);
+
+            // Have dice roll 20
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+
+            // Choose only character in party
+            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
+
+            // Choose only monster as enemy
+            BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
+
+            // Have dice roll 20
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+
+            //Act
+            var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
+
+            //Reset
+            DiceHelper.DisableForcedRolls();
+            BattleEngine.NewRound();
+
+            //Assert
+            Assert.AreEqual(true, result);
+            Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.Referee.BattleMessages.HitStatus);
         }
 
 
