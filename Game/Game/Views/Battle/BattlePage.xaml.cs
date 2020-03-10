@@ -35,9 +35,6 @@ namespace Game.Views
 			CurrentRound = BattleEngine.Engine.CurrentRound;
 
 			AddBattlefieldGridCharacter();
-
-
-
 		}
 
 		public BattlePage(List<CharacterModel> party)
@@ -65,9 +62,6 @@ namespace Game.Views
 
 			BattleEngine.Engine.SetParty(BattleEngine.Engine.CharacterList);
 			BattleEngine.Engine.startBattle();
-
-
-
 		}
 
 		public void NextRoundButton_Clicked(object sender, EventArgs e)
@@ -107,10 +101,21 @@ namespace Game.Views
 		/// <param name="e"></param>
 		void AttackButton_Clicked(object sender, EventArgs e)
 		{
+			//showing default message for now, change it latter
+			GameMessage();
 			Debug.WriteLine("Attack clicked");
 
+		}
 
 
+		/// <summary>
+		/// Builds up the output message
+		/// </summary>
+		/// <param name="message"></param>
+		public void GameMessage()
+		{
+			// Output The Message that happened.
+			BattleMessages.Text = string.Format("battle message");
 		}
 
 		/// <summary>
