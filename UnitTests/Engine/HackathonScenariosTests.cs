@@ -356,27 +356,17 @@ namespace Scenario
              *  only one time per battle per character, they can have more fun storming the castle.
              *  
              *  Miracle Max loves it when you advertise his business in the output window
-
-             *  
-             * 
-             *      Make a weak character with 1 health and a strong monster with high speed
-             *      After monster attack, check if character is alive
-             *      After another monster attack, check if character is dead
              *      
              * 
              * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
              *      
              *      
-             *      
-             *      (Change to Turn Engine
-             *      (Changed TurnAsAttack method
-             *      (Check for Name of Bob and return miss
              *                 
              * Test Algrorithm:
              *  Create Character with 1 health and -1 speed
              *  Create Monster with level 20 and 10 speed
-             *  Call Turn
-             *  Call Turn again
+             *  Call Turn, check if character is alive
+             *  Call Turn again, check if character is dead
              * 
              * Test Conditions:
              *  Test with Character health
@@ -387,6 +377,56 @@ namespace Scenario
              *      Verify character cannot revive more than once
              *  
              */
+
+
+            var CharacterPlayerMike = new CharacterModel
+            {
+                SpeedAttribute = -1, // Will go last...
+                Level = 1,
+                CurrentHealth = 1,
+                ExperiencePoints = 1,
+                Name = "Mike",
+            };
+
+            // Make list of players
+            var playerList = new List<CharacterModel>();
+
+            // Add Mike to player list
+            playerList.Add(CharacterPlayerMike);
+
+            // Give player list to BattleEngine
+            BattleEngine.SetParty(playerList);
+
+            // Create strong monster
+            var MonsterPlayer = new DungeonFighterModel(
+                new MonsterModel
+                {
+                    SpeedAttribute = 10,
+                    Level = 20,
+                    CurrentHealth = 100,
+                    ExperiencePoints = 100,
+                    Name = "Monster",
+                });
+
+            // Remove auto added monsters
+            BattleEngine.CurrentRound.MonsterList.Clear();
+
+            // Add this monster instead
+            BattleEngine.CurrentRound.MonsterList.Add(MonsterPlayer);
+            
+            // Have dice roll 20
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+
+            // Choose Not Bob
+            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
+
+            // Choose Monster
+            BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
+
+            //Act
+            var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
+
         }
 
 

@@ -37,7 +37,7 @@ namespace Game.Models
         public int MaxHealth { get; set; } = 0;
         // Current Health
         public int CurrentHealth { get; set; } = 0;
-        //Spped value of a creature
+        //Speed value of a creature
         public int SpeedAttribute { get; set; } = 0;
         //Attack value of a creature
         public int OffenseAttribute { get; set; } = 0;
@@ -49,6 +49,9 @@ namespace Game.Models
         public CreatureSkillEnum Skill { get; set; } = CreatureSkillEnum.None;
         //experience points player has used
         public int ExperiencePoints { get; set; } = 0;
+        //resurrection count of the player
+        public int ResurrectionCount { get; set; } = 0;
+        
         #endregion PlayerAttributes
 
         #region ItemsAttributes
