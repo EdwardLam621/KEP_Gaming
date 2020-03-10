@@ -135,6 +135,7 @@ namespace Scenario
             var result = BattleEngine.startBattle();
 
             //Reset
+            BattleEngine.Referee.AutoBattleEnabled = false;
 
             //Assert
             Assert.AreEqual(true, result);
@@ -224,100 +225,114 @@ namespace Scenario
             DiceHelper.SetForcedRollValue(19);
 
             // Set up turn
-
+            
             // Choose Bob
             BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
 
             // Choose Monster
             BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
+            
             //Act
             var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
 
             //Reset
             DiceHelper.DisableForcedRolls();
+            BattleEngine.NewRound();
 
             //Assert
             Assert.AreEqual(true, result);
             Assert.AreEqual(HitStatusEnum.Miss, BattleEngine.Referee.BattleMessages.HitStatus);
         }
 
-        //[Test]
-        //public void HackathonScenario_Scenario_2_Character_Not_Bob_Should_Hit()
-        //{
-        //    /* 
-        //     * Scenario Number:  
-        //     *      2
-        //     *      
-        //     * Description: 
-        //     *      See Default Test
-        //     * 
-        //     * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
-        //     *      See Defualt Test
-        //     *                 
-        //     * Test Algrorithm:
-        //     *      Create Character named Mike
-        //     *      Create Monster
-        //     *      Call TurnAsAttack so Mike can attack Monster
-        //     * 
-        //     * Test Conditions:
-        //     *      Control Dice roll so natural hit
-        //     *      Test with Character of not named Bob
-        //     *  
-        //     *  Validation
-        //     *      Verify Enum is Hit
-        //     *      
-        //     */
+        [Test]
+        public void HackathonScenario_Scenario_2_Character_Not_Bob_Should_Hit()
+        {
+            /* 
+             * Scenario Number:  
+             *      2
+             *      
+             * Description: 
+             *      See Default Test
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *      See Defualt Test
+             *                 
+             * Test Algrorithm:
+             *      Create Character named Mike
+             *      Create Monster
+             *      Call TurnAsAttack so Mike can attack Monster
+             * 
+             * Test Conditions:
+             *      Control Dice roll so natural hit
+             *      Test with Character of not named Bob
+             *  
+             *  Validation
+             *      Verify Enum is Hit
+             *      
+             */
 
-        //    //Arrange
+            //Arrange
 
-        //    // Set Character Conditions
 
-        //    BattleEngine.MaxNumberPartyCharacters = 1;
+            // Set Character Conditions
 
-        //    var CharacterPlayer = new PlayerInfoModel(
-        //                    new CharacterModel
-        //                    {
-        //                        Speed = 200,
-        //                        Level = 10,
-        //                        CurrentHealth = 100,
-        //                        ExperienceTotal = 100,
-        //                        ExperienceRemaining = 1,
-        //                        Name = "Mike",
-        //                    });
+            var CharacterPlayerMike = new CharacterModel
+            {
+                SpeedAttribute = 200, 
+                Level = 10,
+                CurrentHealth = 100,
+                ExperiencePoints = 100,
+                Name = "Mike",
+            };
 
-        //    BattleEngine.CharacterList.Add(CharacterPlayer);
 
-        //    // Set Monster Conditions
+            var playerList = new List<CharacterModel>();
+            playerList.Add(CharacterPlayerMike);
 
-        //    // Add a monster to attack
-        //    BattleEngine.MaxNumberPartyCharacters = 1;
+            BattleEngine.SetParty(playerList);
 
-        //    var MonsterPlayer = new PlayerInfoModel(
-        //        new MonsterModel
-        //        {
-        //            Speed = 1,
-        //            Level = 1,
-        //            CurrentHealth = 1,
-        //            ExperienceTotal = 1,
-        //            ExperienceRemaining = 1,
-        //            Name = "Monster",
-        //        });
+            // Set Monster Conditions
 
-        //    BattleEngine.CharacterList.Add(MonsterPlayer);
+            // Add a monster to attack
 
-        //    // Have dice roll 20
-        //    DiceHelper.EnableForcedRolls();
-        //    DiceHelper.SetForcedRollValue(20);
+            var MonsterPlayer = new DungeonFighterModel(
+                new MonsterModel
+                {
+                    SpeedAttribute = 1,
+                    Level = 1,
+                    CurrentHealth = 1,
+                    ExperiencePoints = 1,
+                    Name = "Monster",
+                });
 
-        //    //Act
-        //    var result = BattleEngine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
 
-        //    //Reset
-        //    DiceHelper.DisableForcedRolls();
 
-        //    //Assert
-        //    Assert.AreEqual(true, result);
-        //    Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.BattleMessagesModel.HitStatus);
-        //}
+            // Remove auto added monsters
+            BattleEngine.Referee.Monsters.Clear();
+
+            // Add this monster instead
+            BattleEngine.Referee.Monsters.Add(MonsterPlayer);
+
+            // Have dice roll 20
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+
+            // Choose Not Bob
+            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
+
+            // Choose Monster
+            BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
+
+            //Act
+            var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
+
+            //Reset
+            DiceHelper.DisableForcedRolls();
+            BattleEngine.NewRound();
+
+            //Assert
+            Assert.AreEqual(true, result);
+            Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.Referee.BattleMessages.HitStatus);
+        }
     }
 }
