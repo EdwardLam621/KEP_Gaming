@@ -359,7 +359,9 @@ namespace Scenario
              *      
              * 
              * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
-             *      
+             *      AboutPage: Add debug switch for resurrections
+             *      CreatureModel: Add field for resurrection count
+             *      TurnEngine
              *      
              *                 
              * Test Algrorithm:
