@@ -365,20 +365,30 @@ namespace Scenario
              *  
              */
 
+
+            // set a character with speed attribute 20
             var CharacterPlayerMike = new CharacterModel
             {
-                SpeedAttribute = 1,
+                SpeedAttribute = 20,
                 Level = 1,
                 CurrentHealth = 100,
                 ExperiencePoints = 100,
                 Name = "Mike",
             };
 
-
+            // set a character with speed attribute 1
             var playerList = new List<CharacterModel>();
             playerList.Add(CharacterPlayerMike);
 
-
+            var MonsterPlayer = new DungeonFighterModel(
+                new MonsterModel
+                {
+                    SpeedAttribute = 1,
+                    Level = 1,
+                    CurrentHealth = 1,
+                    ExperiencePoints = 1,
+                    Name = "Monster",
+                });
         }
 
 
