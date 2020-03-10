@@ -398,6 +398,12 @@ namespace Scenario
                     Name = "Monster",
                 });
 
+            //enable critical hit
+            TurnEngine.criticalHitEnable = true;
+
+            //do not enable autobattle
+            BattleEngine.Referee.AutoBattleEnabled = false;
+
             // Remove auto added monsters
             BattleEngine.Referee.Monsters.Clear();
 
@@ -413,16 +419,21 @@ namespace Scenario
 
             // Choose Monster
             BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
+            MonsterPlayer.CurrentHealth = 100;
 
             //Act
             var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
 
             //Reset
+            TurnEngine.criticalHitEnable = false;
             DiceHelper.DisableForcedRolls();
             BattleEngine.NewRound();
 
             //Assert
-            Assert.AreEqual(BattleEngine.Referee.BattleMessages.DamageAmount * 2, 100 - BattleEngine.Referee.Monsters.FirstOrDefault().CurrentHealth);
+            Assert.AreEqual(result, true);
+            Assert.AreEqual(BattleEngine.Referee.BattleMessages.DamageAmount * 2, (100 - MonsterPlayer.CurrentHealth));
+
+          
         }
     }
 }
