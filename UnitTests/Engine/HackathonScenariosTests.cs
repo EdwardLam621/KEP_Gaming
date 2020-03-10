@@ -430,6 +430,11 @@ namespace Scenario
             //Act
             var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
 
+            //Reset
+            DiceHelper.DisableForcedRolls();
+            BattleEngine.NewRound();
+
+
         }
 
 
@@ -475,6 +480,7 @@ namespace Scenario
             {
                 SpeedAttribute = 200,
                 Level = 10,
+                MaxHealth = 100,
                 CurrentHealth = 100,
                 ExperiencePoints = 100,
                 Name = "Mike",
@@ -498,7 +504,7 @@ namespace Scenario
                 {
                     SpeedAttribute = 1,
                     Level = 1,
-                    CurrentHealth = 1,
+                    CurrentHealth = 5,
                     ExperiencePoints = 1,
                     Name = "Monster",
                 });
@@ -520,12 +526,14 @@ namespace Scenario
             // Choose only monster as enemy
             BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
 
+            //set timewarp true
+            BattleEngine.CurrentRound.TimeWarp = true;
+
+            BattleEngine.CurrentRound.OrderFight();
+
             // Have dice roll 20
             DiceHelper.EnableForcedRolls();
             DiceHelper.SetForcedRollValue(20);
-
-            //set timewarp true
-            BattleEngine.CurrentRound.TimeWarp = true;
 
             //Act
             var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
@@ -538,8 +546,8 @@ namespace Scenario
             //monster should make damage to character, so CurrentHealth < MaxHealth
             //monster should have same CurrentHealth as MaxHealth since no damage is taken
 
-            Assert.IsTrue(CharacterPlayerMike.MaxHealth < CharacterPlayerMike.CurrentHealth);
-            Assert.IsTrue(MonsterPlayer.MaxHealth < MonsterPlayer.CurrentHealth);
+            Assert.IsTrue(CharacterPlayerMike.MaxHealth > CharacterPlayerMike.CurrentHealth);
+            Assert.IsTrue(MonsterPlayer.MaxHealth == MonsterPlayer.CurrentHealth);
         }
 
         [Test]
