@@ -148,7 +148,7 @@ namespace Game.Engine
         /// <summary>
         /// Perform the next turn using the specified choice
         /// </summary>
-        public void TakeTurn(TurnChoiceEnum choice)
+        public bool TakeTurn(TurnChoiceEnum choice)
         {
             // autobattle selects target automatically
             if (Referee.AutoBattleEnabled)
@@ -160,6 +160,8 @@ namespace Game.Engine
             var turn = new TurnEngine(Referee, CurrentPlayer, Target, choice);
 
             turn.TakeTurn();
+
+            return true;
         }
 
 
