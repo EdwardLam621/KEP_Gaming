@@ -110,13 +110,13 @@ namespace Scenario
             BattleEngine.MaxNumberPartyCharacters = 1;
 
             var CharacterPlayerMike = new CharacterModel
-                            {
-                                SpeedAttribute = -1, // Will go last...
-                                Level = 1,
-                                CurrentHealth = 1,
-                                ExperiencePoints = 1,
-                                Name = "Mike",
-                            };
+            {
+                SpeedAttribute = -1, // Will go last...
+                Level = 1,
+                CurrentHealth = 1,
+                ExperiencePoints = 1,
+                Name = "Mike",
+            };
 
 
             // Make list of players
@@ -203,7 +203,7 @@ namespace Scenario
             // Give list to BattleEngine
             BattleEngine.SetParty(playerList);
 
-               
+
             // Set Monster Conditions
 
             // Add a monster to attack
@@ -229,13 +229,13 @@ namespace Scenario
             DiceHelper.SetForcedRollValue(19);
 
             // Set up turn
-            
+
             // Choose Bob
             BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
 
             // Choose Monster
             BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
-            
+
             //Act
             var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
 
@@ -282,7 +282,7 @@ namespace Scenario
 
             var CharacterPlayerMike = new CharacterModel
             {
-                SpeedAttribute = 200, 
+                SpeedAttribute = 200,
                 Level = 10,
                 CurrentHealth = 100,
                 ExperiencePoints = 100,
@@ -340,5 +340,63 @@ namespace Scenario
             Assert.AreEqual(true, result);
             Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.Referee.BattleMessages.HitStatus);
         }
+        public void HackathonScenario_Scenario_15_Slower_Character_Moves_First()
+        {
+
+            /* 
+             * Scenario Number:  
+             *  15
+             *  
+             * Description: 
+             *      Make a character and a monster, Character has higher speed than monster
+             *      Time warp boolean
+             *      If true character acts first, if false monster moves first
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *      Change to Turn Engine
+             *      Changed TurnAsAttack method
+             *      Check for Name of Bob and return miss
+             *                 
+             * Test Algrorithm:
+             *  Create Character with higher speed attribute (20)
+             *  Create Monster with lower speed attribute (1)
+             *  Call TurnAsAttack
+             * 
+             * Test Conditions:
+             *  Test with Character health
+             *  Test with Monster health
+             * 
+             * Validation:
+             *      Verify monster has taken first move
+             *  
+             */
+
+
+            // set a character with speed attribute 20
+            var CharacterPlayerMike = new CharacterModel
+            {
+                SpeedAttribute = 20,
+                Level = 1,
+                CurrentHealth = 100,
+                ExperiencePoints = 100,
+                Name = "Mike",
+            };
+
+            // set a character with speed attribute 1
+            var playerList = new List<CharacterModel>();
+            playerList.Add(CharacterPlayerMike);
+
+            var MonsterPlayer = new DungeonFighterModel(
+                new MonsterModel
+                {
+                    SpeedAttribute = 1,
+                    Level = 1,
+                    CurrentHealth = 1,
+                    ExperiencePoints = 1,
+                    Name = "Monster",
+                });
+        }
+
+
     }
 }
