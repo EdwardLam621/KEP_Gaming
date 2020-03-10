@@ -334,5 +334,95 @@ namespace Scenario
             Assert.AreEqual(true, result);
             Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.Referee.BattleMessages.HitStatus);
         }
+
+        [Test]
+        public void HackathonScenario_Scenario_5_Character_Critical_Hits_Should_Double_Damage()
+        {
+            /* 
+             * Scenario Number:  
+             *      5
+             *      
+             * Description: 
+             *      The attacker will automatically hit and cause double damage
+             *      if the tohit roll is a natural 20 
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *      TurnEngine:
+             *          Create bool to enable critical hit
+             *          TurnAsAttack method: added critical hit case
+             *      HitStatusEnum: added status for critical hit
+             *                 
+             * Test Algrorithm:
+             *      Create an character BigBoy with attack score = 10
+             *      Create a monster with defense score = 1 (so the monsters's
+             *      defense is always < character's attack score
+             *      Let the character BigBoy rolls 20 and attack monster
+             * 
+             * Test Conditions:
+             *      Check if monster get double damage from character
+             *  
+             *  Validation
+             *      Verify monster gets double damage compared to the damage
+             *      amount the character rolls
+             *      
+             */
+
+            //Arrange
+
+
+            // Set Character Conditions
+
+            var CharacterPlayerBigBoy = new CharacterModel
+            {
+                SpeedAttribute = 200,
+                Level = 10,
+                CurrentHealth = 100,
+                ExperiencePoints = 100,
+                Name = "BigBoy",
+            };
+
+
+            var playerList = new List<CharacterModel>();
+            playerList.Add(CharacterPlayerBigBoy);
+
+            BattleEngine.SetParty(playerList);
+
+            // Set Monster Conditions
+            var MonsterPlayer = new DungeonFighterModel(
+                new MonsterModel
+                {
+                    SpeedAttribute = 1,
+                    Level = 1,
+                    CurrentHealth = 100,
+                    ExperiencePoints = 1,
+                    Name = "Monster",
+                });
+
+            // Remove auto added monsters
+            BattleEngine.Referee.Monsters.Clear();
+
+            // Add this monster instead
+            BattleEngine.Referee.Monsters.Add(MonsterPlayer);
+
+            // Have dice roll 20
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+
+            // Choose BigBoy
+            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
+
+            // Choose Monster
+            BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
+
+            //Act
+            var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
+
+            //Reset
+            DiceHelper.DisableForcedRolls();
+            BattleEngine.NewRound();
+
+            //Assert
+            Assert.AreEqual(BattleEngine.Referee.BattleMessages.DamageAmount * 2, 100 - BattleEngine.Referee.Monsters.FirstOrDefault().CurrentHealth);
+        }
     }
 }

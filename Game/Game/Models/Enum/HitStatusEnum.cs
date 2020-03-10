@@ -42,7 +42,7 @@
                     break;
 
                 case HitStatusEnum.CriticalHit:
-                    Message = " hits really hard ";
+                    Message = " critical hit! double the damage ";
                     break;
 
                 case HitStatusEnum.Miss:
