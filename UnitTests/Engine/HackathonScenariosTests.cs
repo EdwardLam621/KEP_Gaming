@@ -392,7 +392,7 @@ namespace Scenario
 
 
 
-
+        [Test]
         public void HackathonScenario_Scenario_15_Slower_Character_Moves_First()
         {
 
@@ -425,21 +425,30 @@ namespace Scenario
              */
 
 
-            // set a character with speed attribute 20
+            // Set Character Conditions
+
             var CharacterPlayerMike = new CharacterModel
             {
-                SpeedAttribute = 20,
-                Level = 1,
+                SpeedAttribute = 200,
+                Level = 10,
                 CurrentHealth = 100,
                 ExperiencePoints = 100,
                 Name = "Mike",
             };
 
-            
+            // Make new player list
             var playerList = new List<CharacterModel>();
+
+            // Add Mike
             playerList.Add(CharacterPlayerMike);
 
-            // set a monster with speed attribute 1
+            // Give player list to BattleEngine
+            BattleEngine.SetParty(playerList);
+
+            // Set Monster Conditions
+
+            // Add a monster to attack
+
             var MonsterPlayer = new DungeonFighterModel(
                 new MonsterModel
                 {
@@ -450,11 +459,13 @@ namespace Scenario
                     Name = "Monster",
                 });
 
-            // Remove auto added monsters
-            BattleEngine.Referee.Monsters.Clear();
+
+
+            // Remove the automatically added monsters from the RoundEngine
+            BattleEngine.CurrentRound.MonsterList.Clear();
 
             // Add this monster instead
-            BattleEngine.Referee.Monsters.Add(MonsterPlayer);
+            BattleEngine.CurrentRound.MonsterList.Add(MonsterPlayer);
 
             // Have dice roll 20
             DiceHelper.EnableForcedRolls();
