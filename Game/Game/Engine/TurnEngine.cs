@@ -150,8 +150,14 @@ namespace Game.Engine
             var AttackScore = Attacker.Level + Attacker.GetAttack();
             var DefenseScore = Target.GetDefense() + Target.Level;
 
-
-            Referee.BattleMessages.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
+            // Poor Bob always misses
+            if (Attacker.Name.Equals("Bob"))
+            {
+                Referee.BattleMessages.HitStatus = HitStatusEnum.Miss;
+            } else
+            {
+                Referee.BattleMessages.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
+            }
 
             switch (Referee.BattleMessages.HitStatus)
             {
@@ -178,7 +184,7 @@ namespace Game.Engine
                     RemoveIfDead(Target);
                     break;
             }
-            Referee.BattleMessages.ClearMessages();
+            //Referee.BattleMessages.ClearMessages();
             //Thread.Sleep(1000);
 
             return true;
