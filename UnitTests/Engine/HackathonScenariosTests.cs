@@ -441,7 +441,7 @@ namespace Scenario
 
 
         [Test]
-        public void HackathonScenario_Scenario_15_Slower_Character_Moves_First()
+        public void HackathonScenario_Scenario_15_If_TimeWarp_True_Slower_Character_Moves_First()
         {
 
             /* 
@@ -506,7 +506,7 @@ namespace Scenario
                     Level = 1,
                     CurrentHealth = 5,
                     ExperiencePoints = 1,
-                    Name = "Monster",
+                    Name = "ABC",
                 });
 
 
@@ -520,34 +520,15 @@ namespace Scenario
             DiceHelper.EnableForcedRolls();
             DiceHelper.SetForcedRollValue(20);
 
-            // Choose only character in party
-            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
-
-            // Choose only monster as enemy
-            BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
-
             //set timewarp true
             BattleEngine.CurrentRound.TimeWarp = true;
+            BattleEngine.CurrentRound.OrderFighters();
 
-            BattleEngine.CurrentRound.OrderFight();
+            // Choose only character in party
+            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.CurrentRound.FighterList.FirstOrDefault();
 
-            // Have dice roll 20
-            DiceHelper.EnableForcedRolls();
-            DiceHelper.SetForcedRollValue(20);
-
-            //Act
-            var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
-
-            //Reset
-            DiceHelper.DisableForcedRolls();
-            BattleEngine.NewRound();
-
-            //Assert
-            //monster should make damage to character, so CurrentHealth < MaxHealth
-            //monster should have same CurrentHealth as MaxHealth since no damage is taken
-
-            Assert.IsTrue(CharacterPlayerMike.MaxHealth > CharacterPlayerMike.CurrentHealth);
-            Assert.IsTrue(MonsterPlayer.MaxHealth == MonsterPlayer.CurrentHealth);
+            //After sort the first player's name should be monster
+            Assert.IsTrue(BattleEngine.CurrentRound.CurrentPlayer.Name.Equals("ABC"));
         }
 
         [Test]
