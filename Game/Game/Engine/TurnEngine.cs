@@ -27,6 +27,9 @@ namespace Game.Engine
         // Action choice (Move, Attack, Skill)
         public TurnChoiceEnum ActionChoice;
 
+        //turn on to enable critical hits for double damage
+        public static bool criticalHitEnable = false;
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -102,9 +105,6 @@ namespace Game.Engine
             return true;
         }
 
-        
-
-        
 
         /// <summary>
         /// // MonsterModel Attacks CharacterModel
@@ -150,6 +150,7 @@ namespace Game.Engine
             var AttackScore = Attacker.Level + Attacker.GetAttack();
             var DefenseScore = Target.GetDefense() + Target.Level;
 
+
             // Poor Bob always misses
             if (Attacker.Name.Equals("Bob"))
             {
@@ -183,6 +184,24 @@ namespace Game.Engine
 
                     RemoveIfDead(Target);
                     break;
+
+                case HitStatusEnum.CriticalHit:
+                    // It's a Hit
+                    //Calculate Damage
+                    Debug.WriteLine("It's a critical hit! Double damage");
+
+                    Referee.BattleMessages.DamageAmount = Attacker.GetDamageRollValue();
+
+                    Target.TakeDamage(Referee.BattleMessages.DamageAmount * 2);
+
+
+                    Referee.BattleMessages.TargetHealth = Target.CurrentHealth;
+                    Debug.WriteLine(Referee.BattleMessages.GetHitMessage());
+                    Debug.WriteLine(Referee.BattleMessages.GetCurrentHealthMessage());
+
+                    RemoveIfDead(Target);
+                    break;
+
             }
             //Referee.BattleMessages.ClearMessages();
             //Thread.Sleep(1000);
@@ -296,6 +315,13 @@ namespace Game.Engine
 
             if (d20 == 20)
             {
+                //check if criticalHit enable, double the damage
+                if (criticalHitEnable)
+                {
+                    Referee.BattleMessages.HitStatus = HitStatusEnum.CriticalHit;
+                    return Referee.BattleMessages.HitStatus;
+                }
+
                 // Force Hit
                 Referee.BattleMessages.HitStatus = HitStatusEnum.Hit;
                 return Referee.BattleMessages.HitStatus;

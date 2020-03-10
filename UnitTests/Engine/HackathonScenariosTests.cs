@@ -421,6 +421,7 @@ namespace Scenario
             DiceHelper.SetForcedRollValue(20);
 
             // Choose Not Bob
+
             BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
 
             // Choose Monster
@@ -470,6 +471,7 @@ namespace Scenario
             // Set Character Conditions
 
             var CharacterPlayerMike = new CharacterModel
+
             {
                 SpeedAttribute = 200,
                 Level = 10,
@@ -500,7 +502,6 @@ namespace Scenario
                     ExperiencePoints = 1,
                     Name = "Monster",
                 });
-
 
 
             // Remove the automatically added monsters from the RoundEngine
@@ -540,7 +541,6 @@ namespace Scenario
             Assert.IsTrue(CharacterPlayerMike.MaxHealth < CharacterPlayerMike.CurrentHealth);
             Assert.IsTrue(MonsterPlayer.MaxHealth < MonsterPlayer.CurrentHealth);
         }
-
 
     }
 }
