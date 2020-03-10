@@ -112,7 +112,7 @@ namespace Game.Engine
             CurrentRound = new RoundEngine(Referee, RoundCount);
         }
 
-        public void SetParty(List<CharacterModel> party)
+        public bool SetParty(List<CharacterModel> party)
         {
             var dungeonFighterModels = new List<DungeonFighterModel>();
 
@@ -123,6 +123,7 @@ namespace Game.Engine
 
             Referee.Characters = dungeonFighterModels;
 
+            return true;
         }
 
         public void SetAutoBattle(bool toggle)
