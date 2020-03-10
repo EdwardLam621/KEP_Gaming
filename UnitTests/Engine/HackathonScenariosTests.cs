@@ -340,7 +340,7 @@ namespace Scenario
             Assert.AreEqual(true, result);
             Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.Referee.BattleMessages.HitStatus);
         }
-        
+        [Test]
         public void HackathonScenario_Scenario_9_Character_Revived_After_Death()
         {
             /* 
