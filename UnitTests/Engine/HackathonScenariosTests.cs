@@ -119,23 +119,28 @@ namespace Scenario
                             };
 
 
+            // Make list of players
             var playerList = new List<CharacterModel>();
+            
+            // Add Mike to player list
             playerList.Add(CharacterPlayerMike);
 
+            // Give player list to BattleEngine
             BattleEngine.SetParty(playerList);
 
+            // Enable auto battle
             BattleEngine.SetAutoBattle(true);
 
             // Set Monster Conditions
 
-            // Auto Battle will add the monsters
-
+            // (Auto Battle will add the monsters)
 
             //Act
             var result = BattleEngine.startBattle();
 
             //Reset
             BattleEngine.Referee.AutoBattleEnabled = false;
+            BattleEngine.NewRound();
 
             //Assert
             Assert.AreEqual(true, result);
@@ -179,8 +184,7 @@ namespace Scenario
             // Set Character Conditions
 
 
-            BattleEngine.NewRound();
-
+            // Create Bob
             var CharacterPlayerBob = new CharacterModel
             {
                 SpeedAttribute = 200,
@@ -190,12 +194,14 @@ namespace Scenario
                 Name = "Bob",
             };
 
-            // Add Bob to the list of players
+            // Create new player list
             var playerList = new List<CharacterModel>();
+
+            // Add Bob to the list of players
             playerList.Add(CharacterPlayerBob);
 
-            // Convert to DungeonFighter
-            EngineViewModel.Engine.SetParty(playerList);
+            // Give list to BattleEngine
+            BattleEngine.SetParty(playerList);
 
                
             // Set Monster Conditions
@@ -212,13 +218,11 @@ namespace Scenario
                     Name = "Monster",
                 });
 
-            
-
-            // Remove auto added monsters
-            BattleEngine.Referee.Monsters.Clear();
+            // Remove the automatically added monsters from the RoundEngine
+            BattleEngine.CurrentRound.MonsterList.Clear();
 
             // Add this monster instead
-            BattleEngine.Referee.Monsters.Add(MonsterPlayer);
+            BattleEngine.CurrentRound.MonsterList.Add(MonsterPlayer);
 
             // Have dice rull 19
             DiceHelper.EnableForcedRolls();
@@ -285,10 +289,13 @@ namespace Scenario
                 Name = "Mike",
             };
 
-
+            // Make new player list
             var playerList = new List<CharacterModel>();
+            
+            // Add Mike
             playerList.Add(CharacterPlayerMike);
 
+            // Give player list to BattleEngine
             BattleEngine.SetParty(playerList);
 
             // Set Monster Conditions
@@ -306,12 +313,11 @@ namespace Scenario
                 });
 
 
-
             // Remove auto added monsters
-            BattleEngine.Referee.Monsters.Clear();
+            BattleEngine.CurrentRound.MonsterList.Clear();
 
             // Add this monster instead
-            BattleEngine.Referee.Monsters.Add(MonsterPlayer);
+            BattleEngine.CurrentRound.MonsterList.Add(MonsterPlayer);
 
             // Have dice roll 20
             DiceHelper.EnableForcedRolls();
