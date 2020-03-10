@@ -19,19 +19,19 @@ namespace Game.Helpers
         private static int _ForcedRandomValue = 1;
 
         // What number should return for random numbers (1 is good choice...)
-        public static void SetForcedRandomValue(int value)
+        public static void SetForcedRollValue(int value)
         {
             _ForcedRandomValue = value;
         }
 
         // Turn Random State Off
-        public static void DisableRandomValues()
+        public static void DisableForcedRolls()
         {
             ForceRollsToNotRandom = false;
         }
 
         // Turn Random State On
-        public static void EnableRandomValues()
+        public static void EnableForcedRolls()
         {
             ForceRollsToNotRandom = true;
         }
