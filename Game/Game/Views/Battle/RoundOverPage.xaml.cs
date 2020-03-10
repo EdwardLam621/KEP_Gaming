@@ -98,7 +98,7 @@ namespace Game.Views
 			}
 
 			// Draw the Characters
-			foreach (var data in BattleEngineViewModel.Instance.Engine.Fighters)
+			foreach (var data in BattleEngineViewModel.Instance.Engine.Referee.Characters)
 			{
 				CharacterListFrame.Children.Add(CreatePlayerDisplayBox(data));
 			}
