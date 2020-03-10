@@ -340,6 +340,9 @@ namespace Scenario
             Assert.AreEqual(true, result);
             Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.Referee.BattleMessages.HitStatus);
         }
+
+
+
         [Test]
         public void HackathonScenario_Scenario_9_Character_Revived_After_Death()
         {
@@ -420,8 +423,7 @@ namespace Scenario
             DiceHelper.EnableForcedRolls();
             DiceHelper.SetForcedRollValue(20);
 
-            // Choose Not Bob
-
+            // Choose Character
             BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
 
             // Choose Monster
@@ -430,11 +432,13 @@ namespace Scenario
             //Act
             var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
 
+            // Assert Mike not dead
+
             //Reset
             DiceHelper.DisableForcedRolls();
             BattleEngine.NewRound();
 
-
+            
         }
 
 
