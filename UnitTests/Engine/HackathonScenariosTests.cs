@@ -454,21 +454,20 @@ namespace Scenario
              *      If true character acts first, if false monster moves first
              * 
              * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
-             *      Change to Turn Engine
-             *      Changed TurnAsAttack method
-             *      Check for Name of Bob and return miss
+             *      Change to Round Engine
+             *      Changed OrderFight method
+             *      Check for First fighter's name
              *                 
              * Test Algrorithm:
-             *  Create Character with higher speed attribute (20)
+             *  Create Character with higher speed attribute (200)
              *  Create Monster with lower speed attribute (1)
-             *  Call TurnAsAttack
+             *  Order FighterList and see who moves first
              * 
              * Test Conditions:
-             *  Test with Character health
-             *  Test with Monster health
+             *  Test Current Figher's name
              * 
              * Validation:
-             *      Verify monster has taken first move
+             *      Verify Current player's name is Monster's name "ABC"
              *  
              */
 
@@ -545,21 +544,20 @@ namespace Scenario
              *      If true character acts first, if false monster moves first
              * 
              * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
-             *      Change to Turn Engine
-             *      Changed TurnAsAttack method
-             *      Check for Name of Bob and return miss
+             *      Change to Round Engine
+             *      Changed OrderFight method
+             *      Check for First fighter's name
              *                 
              * Test Algrorithm:
-             *  Create Character with higher speed attribute (20)
+             *  Create Character with higher speed attribute (200)
              *  Create Monster with lower speed attribute (1)
-             *  Call TurnAsAttack
+             *  Order FighterList and see who moves first
              * 
              * Test Conditions:
-             *  Test with Character health
-             *  Test with Monster health
+             *  Test Current Figher's name
              * 
              * Validation:
-             *      Verify monster has taken first move
+             *      Verify Mike has taken first move
              *  
              */
 
