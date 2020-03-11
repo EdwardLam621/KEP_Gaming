@@ -954,14 +954,15 @@ namespace Scenario
              *      Check for First fighter's name
              *                 
              * Test Algrorithm:
-             *  
-             *  
+             *      Create a character
+             *      Create two monster, one with higher speed and health and one with lowers.
+             *      Check for the orders.
              * 
              * Test Conditions:
-             *  Test Fighters' name in order
+             *      Test Fighters' name in order
              * 
              * Validation:
-             *      Verify Current player's name is Monster's name "ABC"
+             *      Verify order of characters' name is MonsterB > Character > MonsterA
              *  
              */
 
@@ -1053,7 +1054,7 @@ namespace Scenario
              *      Character has 100 health and 2 speed  but since it is character it should go first
              *      Monster A has only 1 speed but 1 health, so it moves 2nd place
              *      Monster B has 50 speed and 50 health, so it moves third
-             *      Normal: Monster B > Character > Monster A <<--This case
+             *      Normal: Monster B > Character > Monster A
              *      Round in 5th Character> Monster A > Monster B
              * 
              * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
@@ -1062,14 +1063,15 @@ namespace Scenario
              *      Check for First fighter's name
              *                 
              * Test Algrorithm:
-             *  
-             *  
+             *      Create a character
+             *      Create two monster, one with higher speed and health and one with lowers.
+             *      Check for the orders.
              * 
              * Test Conditions:
-             *  Test Fighters' name in order
+             *      Test Fighters' name in order
              * 
              * Validation:
-             *      Verify Current player's name is Monster's name "ABC"
+             *      Verify order of characters' name is MonsterB > Character > MonsterA
              *  
              */
 
