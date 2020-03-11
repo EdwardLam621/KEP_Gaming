@@ -29,6 +29,7 @@ namespace Game.Models
 
         public CreatureEnum PlayerType { get; set; } = CreatureEnum.Unknown;
 
+        public CreatureEnum PlayerCreatureType { get; set; } = CreatureEnum.Unknown;
 
         /// <summary>
         /// Empty constructor

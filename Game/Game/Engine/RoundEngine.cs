@@ -289,6 +289,7 @@ namespace Game.Engine
             {
                 if (hero.Alive)
                 {
+                    hero.PlayerCreatureType = CreatureEnum.Character;
                     hero.ListOrder = order;
                     FighterList.Add(hero);
                     order++;
@@ -299,6 +300,7 @@ namespace Game.Engine
             {
                 if (mob.Alive)
                 {
+                    mob.PlayerCreatureType = CreatureEnum.Monster;
                     mob.ListOrder = order;
                     FighterList.Add(mob);
                     order++;
@@ -316,26 +318,42 @@ namespace Game.Engine
         /// </summary>
         public void OrderFight()
         {
-            if (TimeWarp)
+            if(RoundCount % 5 == 0)
             {
-                FighterList = FighterList.OrderBy(a => a.SpeedAttribute)
-               .ThenByDescending(a => a.Level)
-               .ThenByDescending(a => a.ExperiencePoints)
-               .ThenByDescending(a => a.PlayerType)
-               .ThenBy(a => a.Name)
-               .ThenBy(a => a.ListOrder)
-               .ToList();
+                FighterList = FighterList.OrderByDescending(a => a.PlayerCreatureType == CreatureEnum.Character)
+                   .ThenBy(a => a.CurrentHealth)
+                   .ThenBy(a => a.SpeedAttribute)
+                   .ThenByDescending(a => a.Level)
+                   .ThenByDescending(a => a.ExperiencePoints)
+                   .ThenByDescending(a => a.PlayerType)
+                   .ThenBy(a => a.Name)
+                   .ThenBy(a => a.ListOrder)
+                   .ToList();
             }
             else
             {
-                FighterList = FighterList.OrderByDescending(a => a.SpeedAttribute)
-               .ThenByDescending(a => a.Level)
-               .ThenByDescending(a => a.ExperiencePoints)
-               .ThenByDescending(a => a.PlayerType)
-               .ThenBy(a => a.Name)
-               .ThenBy(a => a.ListOrder)
-               .ToList();
+                if (TimeWarp)
+                {
+                    FighterList = FighterList.OrderBy(a => a.SpeedAttribute)
+                   .ThenByDescending(a => a.Level)
+                   .ThenByDescending(a => a.ExperiencePoints)
+                   .ThenByDescending(a => a.PlayerType)
+                   .ThenBy(a => a.Name)
+                   .ThenBy(a => a.ListOrder)
+                   .ToList();
+                }
+                else
+                {
+                    FighterList = FighterList.OrderByDescending(a => a.SpeedAttribute)
+                   .ThenByDescending(a => a.Level)
+                   .ThenByDescending(a => a.ExperiencePoints)
+                   .ThenByDescending(a => a.PlayerType)
+                   .ThenBy(a => a.Name)
+                   .ThenBy(a => a.ListOrder)
+                   .ToList();
+                }
             }
+            
 
             //reset TimeWarp
             TimeWarp = false;
