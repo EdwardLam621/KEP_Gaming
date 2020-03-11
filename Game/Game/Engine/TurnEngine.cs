@@ -36,6 +36,9 @@ namespace Game.Engine
         //percentage for a monster to return to life this turn if it is killed
         public static int returnToLiveAsZombie = 20;    //50% default
 
+        
+
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -224,9 +227,33 @@ namespace Game.Engine
             // Check for alive
             if (Target.CurrentHealth <= 0)
             {
+
+                // check if miracle max is enabled
+                if (Referee.ResurrectionsEnabled)
+                {
+                    int resurrected;
+
+                    // works on characters only
+                    if (Referee.UsedResurrection.TryGetValue(Target, out resurrected))
+                    {
+                        // If character has not resurrected before
+                        if (resurrected == 0)
+                        {
+                            // Set health back to max
+                            Target.CurrentHealth = Target.MaxHealth;
+
+                            // Toggle resurrection
+                            Referee.UsedResurrection[Target] = 1;
+
+                            return false;
+                        }
+                    }
+                }
+
                 
+
                 //check if monster can return to live
-                if(zombieMonstersEnable)
+                if(zombieMonstersEnable && Target.PlayerType.Equals(CreatureEnum.Monster))
                 {
                     Random rnd = new Random();
                     int random = rnd.Next(0, 100 + 1);
@@ -266,9 +293,11 @@ namespace Game.Engine
             switch (Target.PlayerType)
             {
                 case CreatureEnum.Character:
+
+                    Target.Alive = false;
                     Referee.Characters.Remove(Target);
 
-                    Referee.BattleScore.MonsterSlainNumber++;
+                    Referee.BattleScore.CharacterModelDeathList.Add(Target);
 
                     // Add the MonsterModel to the killed list
                     Referee.BattleScore.CharacterAtDeathList += Target.FormatOutput() + "\n";

@@ -344,7 +344,7 @@ namespace Scenario
 
 
         [Test]
-        public void HackathonScenario_Scenario_9_Character_Revived_After_Death()
+        public void HackathonScenario_Scenario_9_Character_Revives_After_Death()
         {
             /* 
              * Scenario Number:  
@@ -363,7 +363,6 @@ namespace Scenario
              * 
              * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
              *      AboutPage: Add debug switch for resurrections
-             *      CreatureModel: Add field for resurrection count
              *      TurnEngine
              *      
              *                 
@@ -386,12 +385,14 @@ namespace Scenario
 
             var CharacterPlayerMike = new CharacterModel
             {
-                SpeedAttribute = -1, // Will go last...
+                SpeedAttribute = -1,
                 Level = 1,
+                MaxHealth = 1,
                 CurrentHealth = 1,
                 ExperiencePoints = 1,
                 Name = "Mike",
             };
+
 
             // Make list of players
             var playerList = new List<CharacterModel>();
@@ -408,6 +409,7 @@ namespace Scenario
                 {
                     SpeedAttribute = 10,
                     Level = 20,
+                    MaxHealth = 100,
                     CurrentHealth = 100,
                     ExperiencePoints = 100,
                     Name = "Monster",
@@ -418,30 +420,44 @@ namespace Scenario
 
             // Add this monster instead
             BattleEngine.CurrentRound.MonsterList.Add(MonsterPlayer);
-            
+
+            BattleEngine.Referee.SetResurrection(true);
+
             // Have dice roll 20
             DiceHelper.EnableForcedRolls();
             DiceHelper.SetForcedRollValue(20);
 
-            // Choose Character
-            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
+            // Choose Monster as current
+            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.CurrentRound.MonsterList.FirstOrDefault();
 
-            // Choose Monster
-            BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
+            // Choose Mike as target
+            BattleEngine.CurrentRound.Target = BattleEngine.Referee.Characters.Find(character => character.Name.Equals("Mike"));
+
 
             //Act
             var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
 
             // Assert Mike not dead
+            Assert.AreEqual(true, result);
+            Assert.IsTrue(CharacterPlayerMike.Alive);
+
+            // Act again
+            var nextResult = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
 
             //Reset
             DiceHelper.DisableForcedRolls();
             BattleEngine.NewRound();
+            BattleEngine.Referee.SetResurrection(false);
 
-            
+            // Assert Mike dead this time
+            BattleEngine.Referee.BattleScore.CharacterModelDeathList.Find(name => name.Equals("Mike"));
+
+            var deadMike = BattleEngine.Referee.BattleScore.CharacterModelDeathList.Find(character => character.Name.Equals("Mike"));
+
+            Assert.AreEqual(true, nextResult);
+            Assert.IsFalse(deadMike.Alive);
+
         }
-
-
 
 
         [Test]
@@ -717,6 +733,7 @@ namespace Scenario
             //Reset
             TurnEngine.criticalHitEnable = false;
             DiceHelper.DisableForcedRolls();
+            BattleEngine.Referee.Characters.Clear();
             BattleEngine.NewRound();
 
             //Assert
