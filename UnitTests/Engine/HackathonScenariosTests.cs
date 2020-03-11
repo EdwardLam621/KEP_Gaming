@@ -362,8 +362,9 @@ namespace Scenario
              *      
              * 
              * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
-             *      AboutPage: Add debug switch for resurrections
-             *      TurnEngine
+             *      
+             *      TurnEngine: Add logic for dealing with resurrections
+             *      Referee: Add dictionary that keeps track of resurrections
              *      
              *                 
              * Test Algrorithm:
@@ -373,12 +374,11 @@ namespace Scenario
              *  Call Turn again, check if character is dead
              * 
              * Test Conditions:
-             *  Test with Character health
+             *  Test with Character health at 1
              * 
              * Validation:
-             *      Verify character death count has increased
-             *      Verify character revive count has increased
-             *      Verify character cannot revive more than once
+             *      Verify character does not die when health <= 0
+             *      Verify character dies after one resurrection
              *  
              */
 
@@ -433,7 +433,6 @@ namespace Scenario
             // Choose Mike as target
             BattleEngine.CurrentRound.Target = BattleEngine.Referee.Characters.Find(character => character.Name.Equals("Mike"));
 
-
             //Act
             var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
 
@@ -450,8 +449,6 @@ namespace Scenario
             BattleEngine.Referee.SetResurrection(false);
 
             // Assert Mike dead this time
-            BattleEngine.Referee.BattleScore.CharacterModelDeathList.Find(name => name.Equals("Mike"));
-
             var deadMike = BattleEngine.Referee.BattleScore.CharacterModelDeathList.Find(character => character.Name.Equals("Mike"));
 
             Assert.AreEqual(true, nextResult);
