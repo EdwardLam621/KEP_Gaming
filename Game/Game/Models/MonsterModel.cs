@@ -6,6 +6,7 @@ namespace Game.Models
 {
     public class MonsterModel : CreatureModel<MonsterModel>
     {
+
         //list of a drop items of a monster
         public List<ItemModel> DropItems;
 

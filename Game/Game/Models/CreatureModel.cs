@@ -51,7 +51,8 @@ namespace Game.Models
         public int ExperiencePoints { get; set; } = 0;
         //resurrection count of the player
         public int ResurrectionCount { get; set; } = 0;
-        
+        //enraged mode
+        public bool isEnraged = false;
         #endregion PlayerAttributes
 
         #region ItemsAttributes

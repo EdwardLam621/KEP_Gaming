@@ -26,7 +26,15 @@ namespace Game.Models
         // Hold the Battle Messages as they happen
         public BattleMessagesModel BattleMessages = new BattleMessagesModel();
 
+        // Whether auto battle is enabled
         public bool AutoBattleEnabled { get; set; } = false;
+
+        // Whether resurrections are enabled
+        public bool ResurrectionsEnabled { get; set; } = false;
+
+        public Dictionary<DungeonFighterModel, int> UsedResurrection = new Dictionary<DungeonFighterModel, int>();
+
+        public List<DungeonFighterModel> DeadCharacters = new List<DungeonFighterModel>();
 
         /// <summary>
         /// Default constructor
@@ -43,6 +51,26 @@ namespace Game.Models
         public RefereeModel(List<DungeonFighterModel> characters)
         {
             Characters = characters;
+        }
+
+        public bool SetResurrection(bool toggle)
+        {
+            if (toggle)
+            {
+                ResurrectionsEnabled = true;
+                foreach (DungeonFighterModel character in Characters)
+                {
+                    UsedResurrection.Add(character, 0);
+                }
+
+                return true;
+            } else
+            {
+                UsedResurrection.Clear();
+                ResurrectionsEnabled = false;
+                return true;
+            }
+
         }
     }
 }

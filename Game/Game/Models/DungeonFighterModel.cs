@@ -111,6 +111,7 @@ namespace Game.Models
             DropItems = monster.DropItems;
             CurrentHealth = MaxHealth;
             PlayerType = CreatureEnum.Monster;
+
         }
     }
 }
