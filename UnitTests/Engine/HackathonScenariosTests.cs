@@ -934,6 +934,8 @@ namespace Scenario
             var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
 
             //Reset
+            TurnEngine.zombieMonstersEnable = false;
+            TurnEngine.returnToLiveAsZombie = 20;
             DiceHelper.DisableForcedRolls();
             BattleEngine.NewRound();
 
@@ -1161,5 +1163,125 @@ namespace Scenario
             Assert.IsTrue(BattleEngine.CurrentRound.FighterList[2].Name.Equals("MonsterA"));
         }
 
+
+        [Test]
+        public void HackathonScenario_Scenario_23_Enraged_Makes_Extra_Damage()
+        {
+            /* 
+             * Scenario Number:  
+             *      23
+             *      
+             * Description: 
+             *      When a monster recieve damage, the monster is anraged 
+             *      and does d20 extra damage on its next attack
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *      CreatureModel: added boolean isEnraged to monsterModel. set default = false
+             *      TurnEngine:
+             *          TurnAsAttack method:
+                 *          when a monster is a target of an attack, generate a random number from 1 - 100
+                 *              if number < 20 (20%): enable monster enraged mode
+                 *          when a monster is an attacker
+                 *              check if monster is enraged: double the damage, then disable enrage mode of that monster
+                 *      added a switch to enable enraged mode
+                 *      added an integer to contain % of chance that a monster will get enraged
+             *                 
+             * Test Algrorithm:
+             *      Create an character 
+             *      Create a monster
+             *      Let character attacks monster, make sure monster is still alive
+             *      Force monster to be enraged
+             *      Next turn, monster is enraged and makes an attack. 
+             * 
+             * Test Conditions:
+             *      With enraged mode on, monster will have double attack
+             *  
+             *  Validation
+             *      Verify if monster makes double damage attack on its turn
+             *      
+             */
+
+            //Arrange
+
+            // Set Character Conditions
+            var CharacterPlayerBigBoy = new CharacterModel
+            {
+                SpeedAttribute = 200,
+                Level = 10,
+                CurrentHealth = 100,
+                ExperiencePoints = 100,
+                Name = "Character",
+                MaxHealth = 100
+            };
+
+            //added character to character list
+            var playerList = new List<CharacterModel>();
+            playerList.Add(CharacterPlayerBigBoy);
+
+            BattleEngine.SetParty(playerList);
+
+            // Set Monster Conditions
+            var MonsterPlayer = new DungeonFighterModel(
+                new MonsterModel
+                {
+                    SpeedAttribute = 1,
+                    Level = 1,
+                    CurrentHealth = 100,
+                    ExperiencePoints = 1,
+                    Name = "Monster",
+                });
+
+            // Remove auto added monsters
+            BattleEngine.Referee.Monsters.Clear();
+
+            // Add this monster instead
+            BattleEngine.Referee.Monsters.Add(MonsterPlayer);
+
+            //do not enable autobattle
+            BattleEngine.Referee.AutoBattleEnabled = false;
+
+            //enable monster enraged mode
+            TurnEngine.monsterEnragedModeEnable = true;
+
+            //set chance for monster to be enraged = 100%
+            TurnEngine.enragedChance = 100;
+
+            // Have dice roll 20
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+
+            // Choose Character
+            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
+
+            // Choose Monster
+            BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
+
+            //Act
+            //character is attacker
+            BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
+
+            // Have dice roll 20
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+            // Choose monster
+            BattleEngine.CurrentRound.CurrentPlayer = MonsterPlayer;
+
+            // Choose target
+            BattleEngine.CurrentRound.Target = BattleEngine.Referee.Characters.FirstOrDefault();
+
+            //Act
+            //monster is now an anraged attacker - make double damage
+            BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
+
+            //Reset
+            TurnEngine.monsterEnragedModeEnable = false;
+            TurnEngine.enragedChance = 20;
+            DiceHelper.DisableForcedRolls();
+            BattleEngine.NewRound();
+
+            //Assert
+            Assert.AreEqual(BattleEngine.Referee.BattleMessages.DamageAmount * 2, (100 - BattleEngine.Referee.Characters.FirstOrDefault().CurrentHealth));
+
+        }
     }
 }

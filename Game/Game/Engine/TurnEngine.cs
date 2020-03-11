@@ -30,11 +30,18 @@ namespace Game.Engine
         //turn on to enable critical hits for double damage
         public static bool criticalHitEnable = false;
 
-        //turn on to enable monsters return to live as zombie
+        //turn on to enable the chance that monsters return to live as zombie
         public static bool zombieMonstersEnable = false;
 
         //percentage for a monster to return to life this turn if it is killed
-        public static int returnToLiveAsZombie = 20;    //50% default
+        public static int returnToLiveAsZombie = 20;    //20% default
+
+        //turn on to enable the chance that monsters is enraged
+        public static bool monsterEnragedModeEnable = false;
+
+        //percentage of monster to enter enraged mode
+        public static int enragedChance = 20;
+
 
         
 
@@ -150,10 +157,8 @@ namespace Game.Engine
             Referee.BattleMessages.TargetName = Target.Name;
 
 
-
             Debug.WriteLine(Referee.BattleMessages.GetPreamble());
             
-
 
             // Set Attack and Defense
             var AttackScore = Attacker.Level + Attacker.GetAttack();
@@ -184,7 +189,35 @@ namespace Game.Engine
 
                     Referee.BattleMessages.DamageAmount = Attacker.GetDamageRollValue();
 
-                    Target.TakeDamage(Referee.BattleMessages.DamageAmount);
+                    //if the enrage mode is on
+                    if(monsterEnragedModeEnable)
+                    {
+                        //if attacker is monster and enraged
+                        if (Attacker.PlayerType == CreatureEnum.Monster && Attacker.isEnraged)
+                        {
+                            Target.TakeDamage(Referee.BattleMessages.DamageAmount * 2);
+                            Attacker.isEnraged = false;
+                        }
+
+                        //if target is monster
+                        if (Target.PlayerType == CreatureEnum.Monster)
+                        {
+                            //random a number
+                            Random rnd = new Random();
+                            int random = rnd.Next(1, 101);
+                            //if random number is <= 20 (20%)
+                            //monster is enraged
+                            if (random <= enragedChance)
+                            {
+                                Target.isEnraged = true;
+                            }
+                        }
+                    }
+                    
+                    else
+                    {
+                        Target.TakeDamage(Referee.BattleMessages.DamageAmount);
+                    }
                     
                     
                     Referee.BattleMessages.TargetHealth = Target.CurrentHealth;
@@ -253,7 +286,8 @@ namespace Game.Engine
                 
 
                 //check if monster can return to live
-                if(zombieMonstersEnable && Target.PlayerType.Equals(CreatureEnum.Monster))
+
+                if(zombieMonstersEnable && Target.PlayerType == CreatureEnum.Monster)
                 {
                     Random rnd = new Random();
                     int random = rnd.Next(0, 100 + 1);
