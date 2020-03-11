@@ -135,7 +135,7 @@ namespace Game.Engine
                 // Fight still going    
 
                 // See whose turn it is
-                CurrentPlayer = GetNextPlayerInList();
+                CurrentPlayer = GetNextPlayerTurn();
 
                 // Select turn choice (move, attack, skill)
                 var choice = TurnChoice();
@@ -183,10 +183,35 @@ namespace Game.Engine
             // Remove the Dead
             RemoveDeadPlayersFromList();
 
-            // Get Next Player
-            var PlayerCurrent = GetNextPlayerInList();
 
-            return PlayerCurrent;
+            // Walk the list from top to bottom
+            // If Player is found, then see if next player exist, if so return that.
+            // If not, return first player (looped)
+
+            // If List is empty, return null
+            if (FighterList.Count == 0)
+            {
+                return null;
+            }
+
+            // No current player, so set the first one
+            if (CurrentPlayer == null)
+            {
+                return FighterList.FirstOrDefault();
+            }
+
+            // Find current player in the list
+            var index = FighterList.FindIndex(m => m.Id.Equals(CurrentPlayer.Id));
+
+            // If at the end of the list, return the first element
+            if (index == FighterList.Count() - 1)
+            {
+                return FighterList.FirstOrDefault();
+            }
+
+            // Return the next element
+            return FighterList[index + 1];
+
         }
 
         /// <summary>
@@ -368,33 +393,7 @@ namespace Game.Engine
         /// <returns></returns>
         public DungeonFighterModel GetNextPlayerInList()
         {
-            // Walk the list from top to bottom
-            // If Player is found, then see if next player exist, if so return that.
-            // If not, return first player (looped)
-
-            // If List is empty, return null
-            if (FighterList.Count == 0)
-            {
-                return null;
-            }
-
-            // No current player, so set the first one
-            if (CurrentPlayer == null)
-            {
-                return FighterList.FirstOrDefault();
-            }
-
-            // Find current player in the list
-            var index = FighterList.FindIndex(m => m.Id.Equals(CurrentPlayer.Id));
-
-            // If at the end of the list, return the first element
-            if (index == FighterList.Count() - 1)
-            {
-                return FighterList.FirstOrDefault();
-            }
-
-            // Return the next element
-            return FighterList[index + 1];
+            
 
         }
 
