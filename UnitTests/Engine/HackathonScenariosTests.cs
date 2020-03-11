@@ -515,7 +515,7 @@ namespace Scenario
 
             // Remove the automatically added monsters from the RoundEngine
             BattleEngine.CurrentRound.MonsterList.Clear();
-
+            
             // Add this monster instead
             BattleEngine.CurrentRound.MonsterList.Add(MonsterPlayer);
 
@@ -924,6 +924,109 @@ namespace Scenario
             Assert.AreEqual(true, MonsterPlayer.Alive);
         }
 
+        [Test]
+        public void HackathonScenario_Scenario_32_If_RoundCount_Is_5_True_Slower_Character_Moves_First()
+        {
 
+            /* 
+             * Scenario Number:  
+             *  32
+             *  
+             * Description:
+             *      Every 5th round, the sort order for turn order changes and list is sorted by Characters first, 
+             *      then lowest health, then lowest speed
+             * 
+             *      Make one characters and two monsters,
+             *      Character has 100 health and 2 speed  but since it is character it should go first
+             *      Monster A has only 1 speed but 1 health, so it moves 2nd place
+             *      Monster B has 50 speed and 50 health, so it moves third
+             *      Normal: Monster B > Character > Monster A 
+             *      Round in 5th Character> Monster A > Monster B
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *      Change to Round Engine
+             *      Changed OrderFight method
+             *      Check for First fighter's name
+             *                 
+             * Test Algrorithm:
+             *  
+             *  
+             * 
+             * Test Conditions:
+             *  Test Fighters' name in order
+             * 
+             * Validation:
+             *      Verify Current player's name is Monster's name "ABC"
+             *  
+             */
+
+
+            // Set Character Conditions
+
+            var CharacterPlayerMike = new CharacterModel
+
+            {
+                SpeedAttribute = 2,
+                Level = 10,
+                MaxHealth = 100,
+                CurrentHealth = 100,
+                ExperiencePoints = 100,
+                Name = "Character",
+            };
+
+            // Make new player list
+            var playerList = new List<CharacterModel>();
+
+            // Add Mike
+            playerList.Add(CharacterPlayerMike);
+
+            // Give player list to BattleEngine
+            BattleEngine.SetParty(playerList);
+
+            // Set Monster Conditions
+
+            // Add a monster to attack
+
+            var MonsterPlayerA = new DungeonFighterModel(
+                new MonsterModel
+                {
+                    SpeedAttribute = 1,
+                    Level = 1,
+                    CurrentHealth = 5,
+                    ExperiencePoints = 1,
+                    Name = "MonsterA",
+                });
+            var MonsterPlayerB = new DungeonFighterModel(
+                new MonsterModel
+                {
+                    SpeedAttribute = 1,
+                    Level = 1,
+                    CurrentHealth = 5,
+                    ExperiencePoints = 1,
+                    Name = "MonsterB",
+                });
+
+
+            // Remove the automatically added monsters from the RoundEngine
+            BattleEngine.CurrentRound.MonsterList.Clear();
+
+            // Add this monster instead
+            BattleEngine.CurrentRound.MonsterList.Add(MonsterPlayerA);
+            BattleEngine.CurrentRound.MonsterList.Add(MonsterPlayerB);
+
+            // Have dice roll 20
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+
+            BattleEngine.CurrentRound.OrderFighters();
+
+            // Choose only character in party
+            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.CurrentRound.FighterList.FirstOrDefault();
+
+            //After sort the first player's name should be monster
+            Assert.IsTrue(BattleEngine.CurrentRound.FighterList[0].Name.Equals("Character"));
+            Assert.IsTrue(BattleEngine.CurrentRound.FighterList[1].Name.Equals("Monster A"));
+            Assert.IsTrue(BattleEngine.CurrentRound.FighterList[1].Name.Equals("Monster B"));
+        }
     }
 }
