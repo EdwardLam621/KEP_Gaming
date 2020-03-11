@@ -1033,8 +1033,8 @@ namespace Scenario
 
             //After sort the first player's name should be monster
             Assert.IsTrue(BattleEngine.CurrentRound.FighterList[0].Name.Equals("Character"));
-            //Assert.IsTrue(BattleEngine.CurrentRound.FighterList[1].Name.Equals("Monster A"));
-            //Assert.IsTrue(BattleEngine.CurrentRound.FighterList[1].Name.Equals("Monster B"));
+            Assert.IsTrue(BattleEngine.CurrentRound.FighterList[1].Name.Equals("MonsterA"));
+            Assert.IsTrue(BattleEngine.CurrentRound.FighterList[2].Name.Equals("MonsterB"));
         }
 
         
