@@ -231,28 +231,49 @@ namespace Game.Engine
             // Clear out monster list
             MonsterList.Clear();
 
-            // Fill up round with the maximum number of monsters
-            //for (int i = 0; i < MAX_NUM_MONSTERS; i++)
-            //{
-            //    // unimplemented
-            //    // need to scale monsters to appropriate level based on round
-            //}
-            
-            // FOR DEBUG
-            MonsterList.Add(new DungeonFighterModel(new MonsterModel
+            int TargetLevel = 1;
+
+            if (Referee.Characters.Count() > 0)
             {
-                Name = "The Coronavirus",
-                MaxHealth = 5,
-                CurrentHealth = 1,
-                Level = 1,
-                Description = "Human disaster",
-                ImageURI = "https://pngimg.com/uploads/coronavirus/coronavirus_PNG33.png",
-                DefenseAttribute = 1,
-                OffenseAttribute = 1,
-                SpeedAttribute = 1,
-                Skill = CreatureSkillEnum.Boss,
-                DropItems = new List<ItemModel>(), 
-            }));
+                // Get the Min Character Level (linq is soo cool....)
+                TargetLevel = Convert.ToInt32(Referee.Characters.Min(m => m.Level));
+            }
+
+            for (var i = 0; i < MAX_NUM_MONSTERS; i++)
+            {
+                var data = Helpers.RandomPlayerHelper.GetRandomMonster(TargetLevel);
+
+                // Help identify which Monster it is
+                data.Name += " " + MonsterList.Count() + 1;
+
+                MonsterList.Add(new PlayerInfoModel(data));
+            }
+
+            return MonsterList.Count();
+
+
+            //// Fill up round with the maximum number of monsters
+            ////for (int i = 0; i < MAX_NUM_MONSTERS; i++)
+            ////{
+            ////    // unimplemented
+            ////    // need to scale monsters to appropriate level based on round
+            ////}
+
+            //// FOR DEBUG
+            //MonsterList.Add(new DungeonFighterModel(new MonsterModel
+            //{
+            //    Name = "The Coronavirus",
+            //    MaxHealth = 5,
+            //    CurrentHealth = 1,
+            //    Level = 1,
+            //    Description = "Human disaster",
+            //    ImageURI = "https://pngimg.com/uploads/coronavirus/coronavirus_PNG33.png",
+            //    DefenseAttribute = 1,
+            //    OffenseAttribute = 1,
+            //    SpeedAttribute = 1,
+            //    Skill = CreatureSkillEnum.Boss,
+            //    DropItems = new List<ItemModel>(), 
+            //}));
         }
 
 

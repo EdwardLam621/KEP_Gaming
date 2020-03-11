@@ -76,7 +76,7 @@ namespace Game.Models
 
         #endregion Attributes
 
-
+        public DifficultyEnum Difficulty { get; set; } = DifficultyEnum.Unknown;
 
         #region AttributesDisplay
 
@@ -642,6 +642,34 @@ namespace Game.Models
 
 
             return myReturn.Trim();
+        }
+
+        // Level up to a number, say Level 3
+        public int LevelUpToValue(int Value)
+        {
+            // Adjust the experience to the min for that level.
+            // That will trigger level up to happen
+
+            if (Value < 0)
+            {
+                // Skip, and return old level
+                return Level;
+            }
+
+            if (Value <= Level)
+            {
+                // Skip, and return old level
+                return Level;
+            }
+
+            if (Value > LevelTableHelper.MaxLevel)
+            {
+                return Level;
+            }
+
+            AddExperience(LevelTableHelper.Instance.LevelDetailsList[Value].Experience + 1);
+
+            return Level;
         }
     }
 }

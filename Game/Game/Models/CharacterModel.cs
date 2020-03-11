@@ -44,6 +44,11 @@ public class CharacterModel : CreatureModel<CharacterModel>
             this.Description = "this is Character Description";
         }
 
+        public CharacterModel(CharacterModel data)
+        {
+            Update(data);
+        }
+
         public ItemModel GetItem(string itemString)
         {
             return ItemIndexViewModel.Instance.GetItem(itemString);
@@ -156,5 +161,6 @@ public class CharacterModel : CreatureModel<CharacterModel>
             return myReturn;
         }
 
+        
     }
 }

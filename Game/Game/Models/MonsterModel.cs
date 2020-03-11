@@ -7,6 +7,8 @@ namespace Game.Models
     public class MonsterModel : CreatureModel<MonsterModel>
     {
 
+        public int ExperienceRemaining { get; set; }
+
         //list of a drop items of a monster
         public List<ItemModel> DropItems;
 
@@ -16,6 +18,11 @@ namespace Game.Models
             this.Name = "this is Name";
             this.Description = "this is Monster Description";
             DropItems = new List<ItemModel>();
+        }
+
+        public MonsterModel(MonsterModel data)
+        {
+            Update(data);
         }
 
         public ItemModel GetDropItems(string id)
@@ -45,5 +52,7 @@ namespace Game.Models
             Skill = newData.Skill;
             DropItems = newData.DropItems;
         }
+
+
     }
 }
