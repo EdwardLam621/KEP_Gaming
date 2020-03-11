@@ -964,7 +964,7 @@ namespace Scenario
              *      Monster A has 100 health and 4 speed  but since it has lowest health in monster so it goes fourth
              *      Monster B has 200 health and 5 speed  same health with CharacterC but lower speed so it goes fifth
              *      MonsterC has 200 health and 6 speed  but it has higher speed so it goes last
-             *      Normal: Monster C > Monster A > Monster B > Character C > Character A > Character B
+             *      Normal: Monster C > Monster B > Monster A > Character C > Character A > Character B
              *      Round in times of 5: Character A > Character B > Character C > Monster A > Monster B > Monster C
              * 
              * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
@@ -981,7 +981,7 @@ namespace Scenario
              *      Test Fighters' name in order
              * 
              * Validation:
-             *      Verify order of characters' name is MonsterB > Character > MonsterA
+             *      Verify order of characters' name is Character A > Character B > Character C > Monster A > Monster B > Monster C
              *  
              */
 
@@ -1107,12 +1107,15 @@ namespace Scenario
              *      Every 5th round, the sort order for turn order changes and list is sorted by Characters first, 
              *      then lowest health, then lowest speed
              * 
-             *      Make one characters and two monsters,
-             *      Character has 100 health and 2 speed  but since it is character it should go first
-             *      Monster A has only 1 speed but 1 health, so it moves 2nd place
-             *      Monster B has 50 speed and 50 health, so it moves third
-             *      Normal: Monster B > Character > Monster A
-             *      Round in 5th Character> Monster A > Monster B
+             *     Make 3 characters and 3 monsters,
+             *      CharacterA has 100 health and 2 speed  but since it has lowest health in character so it goes first
+             *      CharacterB has 200 health and 1 speed  same health with CharacterC but lower speed so it goes faster
+             *      CharacterC has 200 health and 3 speed  but since it is character it should go third
+             *      Monster A has 100 health and 4 speed  but since it has lowest health in monster so it goes fourth
+             *      Monster B has 200 health and 5 speed  same health with CharacterC but lower speed so it goes fifth
+             *      MonsterC has 200 health and 6 speed  but it has higher speed so it goes last
+             *      Normal: Monster C > Monster B > Monster A > Character C > Character A > Character B
+             *      Round in times of 5: Character A > Character B > Character C > Monster A > Monster B > Monster C
              * 
              * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
              *      Change to Round Engine
@@ -1135,7 +1138,7 @@ namespace Scenario
 
             // Set Character Conditions
 
-            var CharacterPlayerMike = new CharacterModel
+            var CharacterPlayerA = new CharacterModel
 
             {
                 SpeedAttribute = 2,
@@ -1143,14 +1146,38 @@ namespace Scenario
                 MaxHealth = 100,
                 CurrentHealth = 100,
                 ExperiencePoints = 100,
-                Name = "Character",
+                Name = "CharacterA",
+            };
+
+            var CharacterPlayerB = new CharacterModel
+
+            {
+                SpeedAttribute = 1,
+                Level = 10,
+                MaxHealth = 200,
+                CurrentHealth = 100,
+                ExperiencePoints = 100,
+                Name = "CharacterB",
+            };
+
+            var CharacterPlayerC = new CharacterModel
+
+            {
+                SpeedAttribute = 3,
+                Level = 10,
+                MaxHealth = 200,
+                CurrentHealth = 100,
+                ExperiencePoints = 100,
+                Name = "CharacterC",
             };
 
             // Make new player list
             var playerList = new List<CharacterModel>();
 
-            // Add Mike
-            playerList.Add(CharacterPlayerMike);
+            // Add Characters
+            playerList.Add(CharacterPlayerA);
+            playerList.Add(CharacterPlayerB);
+            playerList.Add(CharacterPlayerC);
 
             // Give player list to BattleEngine
             BattleEngine.SetParty(playerList);
@@ -1162,23 +1189,33 @@ namespace Scenario
             var MonsterPlayerA = new DungeonFighterModel(
                 new MonsterModel
                 {
-                    SpeedAttribute = 1,
-                    Level = 1,
-                    CurrentHealth = 5,
+                    SpeedAttribute = 4,
+                    Level = 10,
+                    CurrentHealth = 100,
                     ExperiencePoints = 1,
                     Name = "MonsterA",
                 });
             var MonsterPlayerB = new DungeonFighterModel(
                 new MonsterModel
                 {
-                    SpeedAttribute = 50,
-                    Level = 1,
-                    CurrentHealth = 50,
+                    SpeedAttribute = 5,
+                    Level = 10,
+                    CurrentHealth = 200,
                     ExperiencePoints = 1,
                     Name = "MonsterB",
                 });
 
-            //Set current round count = 5
+            var MonsterPlayerC = new DungeonFighterModel(
+                new MonsterModel
+                {
+                    SpeedAttribute = 6,
+                    Level = 1,
+                    CurrentHealth = 200,
+                    ExperiencePoints = 1,
+                    Name = "MonsterC",
+                });
+
+            //Set current round count = 1
             BattleEngine.CurrentRound.RoundCount = 1;
 
             // Remove the automatically added monsters from the RoundEngine
@@ -1188,6 +1225,7 @@ namespace Scenario
             // Add this monster instead
             BattleEngine.CurrentRound.MonsterList.Add(MonsterPlayerA);
             BattleEngine.CurrentRound.MonsterList.Add(MonsterPlayerB);
+            BattleEngine.CurrentRound.MonsterList.Add(MonsterPlayerC);
 
             // Have dice roll 20
             DiceHelper.EnableForcedRolls();
@@ -1199,9 +1237,12 @@ namespace Scenario
             BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.CurrentRound.FighterList.FirstOrDefault();
 
             //After sort the first player's name should be monster
-            Assert.IsTrue(BattleEngine.CurrentRound.FighterList[0].Name.Equals("MonsterB"));
-            Assert.IsTrue(BattleEngine.CurrentRound.FighterList[1].Name.Equals("Character"));
+            Assert.IsTrue(BattleEngine.CurrentRound.FighterList[0].Name.Equals("MonsterC"));
+            Assert.IsTrue(BattleEngine.CurrentRound.FighterList[1].Name.Equals("MonsterB"));
             Assert.IsTrue(BattleEngine.CurrentRound.FighterList[2].Name.Equals("MonsterA"));
+            Assert.IsTrue(BattleEngine.CurrentRound.FighterList[3].Name.Equals("CharacterC"));
+            Assert.IsTrue(BattleEngine.CurrentRound.FighterList[4].Name.Equals("CharacterA"));
+            Assert.IsTrue(BattleEngine.CurrentRound.FighterList[5].Name.Equals("CharacterB"));
         }
 
 
