@@ -19,8 +19,6 @@ namespace Game.Views
 
 		public Engine.RoundEngine CurrentRound;
 
-		private List<CharacterModel> Party;
-
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -91,20 +89,6 @@ namespace Game.Views
 			AttackButton.IsVisible = false;
 			MessageDisplayBox.IsVisible = false;
 			BattlePlayerInfomationBox.IsVisible = false;
-		}
-
-
-		/// <summary>
-		/// Attack Action
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		void AttackButton_Clicked(object sender, EventArgs e)
-		{
-			//showing default message for now, change it latter
-			GameMessage();
-			Debug.WriteLine("Attack clicked");
-
 		}
 
 
@@ -223,5 +207,30 @@ namespace Game.Views
 
 			await Navigation.PushModalAsync(new ScorePage());
 		}
+
+
+
+		// Battle section
+
+		/// <summary>
+		/// Attack Action
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void AttackButton_Clicked(object sender, EventArgs e)
+		{
+			
+			
+
+			//showing default message for now, change it latter
+			GameMessage();
+			Debug.WriteLine("Attack clicked");
+
+		}
+
+
+
+
+
 	}
 }
