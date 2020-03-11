@@ -901,8 +901,12 @@ namespace Scenario
 
             // Choose Monster
             BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
+
             //set monster health = 1 so it will die after next attack
             MonsterPlayer.CurrentHealth = 1;
+
+            //enable feature that monster can return to live as zombies
+            TurnEngine.zombieMonstersEnable = true;
 
             //set % of return to live of target of this round = 100%
             TurnEngine.returnToLiveAsZombie = 100;
