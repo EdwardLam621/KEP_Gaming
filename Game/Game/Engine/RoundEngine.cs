@@ -384,18 +384,6 @@ namespace Game.Engine
             TimeWarp = false;
         }
 
-        
-
-
-        /// <summary>
-        /// Get the player whose turn it is
-        /// </summary>
-        /// <returns></returns>
-        public DungeonFighterModel GetNextPlayerInList()
-        {
-            
-
-        }
 
         /// <summary>
         /// Pickup Items Dropped
