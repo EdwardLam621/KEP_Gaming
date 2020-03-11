@@ -833,7 +833,12 @@ namespace Scenario
              *      When a monster is killed, it returns from the dead and continue attacking as a zombie monster
              * 
              * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
-             *      
+             *      Added a switch to enable zombie mode to Turn Engine
+             *      Add default percentage for a monster to return to live as a zombie = 20%
+             *      Added check condition to RemoveIfDie in Turn Engine
+             *          When a monster is killed:
+             *          Roll a random number from 1 to 100, if number is < 20%, monster is back to life
+             *          Else, monster is dead
              *                 
              * Test Algrorithm:
              *      Create an character 
@@ -1031,5 +1036,7 @@ namespace Scenario
             //Assert.IsTrue(BattleEngine.CurrentRound.FighterList[1].Name.Equals("Monster A"));
             //Assert.IsTrue(BattleEngine.CurrentRound.FighterList[1].Name.Equals("Monster B"));
         }
+
+        
     }
 }
