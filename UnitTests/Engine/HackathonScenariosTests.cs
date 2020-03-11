@@ -822,5 +822,104 @@ namespace Scenario
             Assert.AreEqual(BattleEngine.Referee.BattleMessages.DamageAmount, (100 - MonsterPlayer.CurrentHealth));
         }
 
+        [Test]
+        public void HackathonScenario_Scenario_16_Monster_Becomes_Zombie()
+        {
+            /* 
+             * Scenario Number:  
+             *      16
+             *      
+             * Description: 
+             *      When a monster is killed, it returns from the dead and continue attacking as a zombie monster
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *      
+             *                 
+             * Test Algrorithm:
+             *      Create an character 
+             *      Create a monster
+             *      Set % of monster return to live = 100%
+             *      Let character attacks monster, and monster is killed after the attack  
+             * 
+             * Test Conditions:
+             *      With 100% chance to return to live, check if monster is still alive
+             *      after being killed
+             *  
+             *  Validation
+             *      Verify monster is alive (alive = true)
+             *      Verify a new HP = 1/2 original HP
+             *      Verify new name = Zombie Monster
+             *      
+             */
+
+            //Arrange
+
+
+            // Set Character Conditions
+            var CharacterPlayerBigBoy = new CharacterModel
+            {
+                SpeedAttribute = 200,
+                Level = 10,
+                CurrentHealth = 100,
+                ExperiencePoints = 100,
+                Name = "BigBoy",
+            };
+
+            //added character to character list
+            var playerList = new List<CharacterModel>();
+            playerList.Add(CharacterPlayerBigBoy);
+
+            BattleEngine.SetParty(playerList);
+
+            // Set Monster Conditions with health = 1
+            var MonsterPlayer = new DungeonFighterModel(
+                new MonsterModel
+                {
+                    SpeedAttribute = 1,
+                    Level = 1,
+                    CurrentHealth = 1,
+                    ExperiencePoints = 1,
+                    Name = "Monster",
+                    MaxHealth = 100
+                }) ;
+
+            // Remove auto added monsters
+            BattleEngine.Referee.Monsters.Clear();
+
+            // Add this monster instead
+            BattleEngine.Referee.Monsters.Add(MonsterPlayer);
+
+            //do not enable autobattle
+            BattleEngine.Referee.AutoBattleEnabled = false;
+
+            // Have dice roll 20
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+
+            // Choose BigBoy
+            BattleEngine.CurrentRound.CurrentPlayer = BattleEngine.Referee.Characters.FirstOrDefault();
+
+            // Choose Monster
+            BattleEngine.CurrentRound.Target = BattleEngine.Referee.Monsters.FirstOrDefault();
+            //set monster health = 1 so it will die after next attack
+            MonsterPlayer.CurrentHealth = 1;
+
+            //set % of return to live of target of this round = 100%
+            TurnEngine.returnToLiveAsZombie = 100;
+
+            //Act
+            var result = BattleEngine.CurrentRound.TakeTurn(Game.Models.Enum.TurnChoiceEnum.Attack);
+
+            //Reset
+            DiceHelper.DisableForcedRolls();
+            BattleEngine.NewRound();
+
+            //Assert
+            Assert.AreEqual("Zombie Monster", MonsterPlayer.Name);
+            Assert.AreEqual(50, MonsterPlayer.CurrentHealth);
+            Assert.AreEqual(true, MonsterPlayer.Alive);
+        }
+
+
     }
 }

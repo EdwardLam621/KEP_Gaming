@@ -30,6 +30,9 @@ namespace Game.Engine
         //turn on to enable critical hits for double damage
         public static bool criticalHitEnable = false;
 
+        //percentage for a monster to return to life this turn if it is killed
+        public static int returnToLiveAsZombie = 20;    //50% default
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -218,6 +221,17 @@ namespace Game.Engine
             // Check for alive
             if (Target.CurrentHealth <= 0)
             {
+                //check if monster can return to live
+                Random rnd = new Random();
+                int random = rnd.Next(0, 100+1);
+
+                if(random <= returnToLiveAsZombie)
+                {
+                    Target.CurrentHealth = Target.MaxHealth / 2;
+                    Target.Alive = true;
+                    Target.Name = "Zombie " + Target.Name;
+                }
+
                 TargedDied(Target);
                 return true;
             }
