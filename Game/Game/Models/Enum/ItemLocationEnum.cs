@@ -8,8 +8,8 @@
         // The head includes, Hats, Helms, Caps, Crowns, Hair Ribbons, Bunny Ears, and anything else that sits on the head
         Head = 10,
 
-        // Things to be equipped on body, an armor
-        Body = 12,
+        // Things to be equipped on necklace
+        Necklass = 12,
 
         // The primary hand used for fighting with a sword or a staff.  
         PrimaryHand = 20,
@@ -51,7 +51,7 @@
                     Message = "Head";
                     break;
 
-                case ItemLocationEnum.Body:
+                case ItemLocationEnum.Necklass:
                     Message = "Body";
                     break;
 
