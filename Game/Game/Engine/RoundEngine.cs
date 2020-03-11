@@ -46,6 +46,9 @@ namespace Game.Engine
         // Enable resurrection for hackathon
         public bool ResurrectionEnabled { get; set; } = false;
 
+        // generate random number
+        Random rand = new Random();
+
         /// <summary>
         /// Default empty constructor
         /// </summary>
@@ -241,23 +244,13 @@ namespace Game.Engine
 
             for (var i = 0; i < MAX_NUM_MONSTERS; i++)
             {
-                var data = Helpers.RandomPlayerHelper.GetRandomMonster(TargetLevel);
+                var data = Helpers.RandomPlayerHelper.GetRandomMonster(TargetLevel - 1 + rand.Next(1, 3));
 
                 // Help identify which Monster it is
-                data.Name += " " + MonsterList.Count() + 1;
+                data.Name += " " + MonsterList.Count() + 1 + "Lv. " + data.Level;
 
                 MonsterList.Add(new DungeonFighterModel(data));
             }
-
-            //return MonsterList.Count();
-
-
-            //// Fill up round with the maximum number of monsters
-            ////for (int i = 0; i < MAX_NUM_MONSTERS; i++)
-            ////{
-            ////    // unimplemented
-            ////    // need to scale monsters to appropriate level based on round
-            ////}
 
             //// FOR DEBUG
             //MonsterList.Add(new DungeonFighterModel(new MonsterModel
