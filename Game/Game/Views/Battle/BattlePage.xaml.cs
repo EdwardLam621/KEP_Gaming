@@ -5,6 +5,7 @@ using Game.ViewModels;
 using Game.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Game.Views
 {
@@ -268,8 +269,11 @@ namespace Game.Views
 		/// <param name="e"></param>
 		void AttackButton_Clicked(object sender, EventArgs e)
 		{
-			
-			
+			// auto select first monster that isn't dead
+			var target = BattleEngine.Engine.CurrentRound.FighterList.First(m => m.Alive == true);
+
+			// do attack
+			BattleEngine.Engine.CurrentRound.AttackClicked(target);
 
 			//showing default message for now, change it latter
 			GameMessage();
