@@ -15,9 +15,19 @@ namespace Game.Views
 	public partial class BattlePage: ContentPage
 	{
 
+		// Battle Engine instance
 		public BattleEngineViewModel BattleEngine = BattleEngineViewModel.Instance;
 
+		// Round holds state
 		public Engine.RoundEngine CurrentRound;
+
+		// Which player is currently attacking
+		public DungeonFighterModel CurrentlySelectedPlayer;
+
+		// The target 
+		public DungeonFighterModel SelectedTarget;
+
+		private const int PLAYER_GRID_HEIGHT = 3;
 
 		/// <summary>
 		/// Constructor
@@ -28,6 +38,9 @@ namespace Game.Views
 
 			BindingContext = BattleEngine;
 
+			// Load in characters set from PickCharactersPage
+			BattleEngine.Engine.SetParty(BattleEngine.Engine.CharacterList);
+
 			BattleEngine.Engine.NewRound();
 
 			CurrentRound = BattleEngine.Engine.CurrentRound;
@@ -35,32 +48,7 @@ namespace Game.Views
 			AddBattlefieldGridCharacter();
 		}
 
-		public BattlePage(List<CharacterModel> party)
-		{
-			InitializeComponent();
-
-			BindingContext = BattleEngine;
-
-			//List<CharacterModel> testFighter = new List<CharacterModel>();
-
-			//testFighter.Add(new CharacterModel
-			//{
-			//	Name = "The Delinquent",
-			//	MaxHealth = 20,
-			//	CurrentHealth = 20,
-			//	Level = 1,
-			//	Description = "The mischief class skipper. Low in defense but high in attack",
-			//	ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
-			//	DefenseAttribute = 1,
-			//	OffenseAttribute = 2,
-			//	SpeedAttribute = 1,
-			//	Skill = CreatureSkillEnum.None,
-			//	//Equipments = equipments
-			//});
-
-			BattleEngine.Engine.SetParty(BattleEngine.Engine.CharacterList);
-			BattleEngine.Engine.startBattle();
-		}
+		
 
 		public void NextRoundButton_Clicked(object sender, EventArgs e)
 		{
@@ -99,7 +87,7 @@ namespace Game.Views
 		public void GameMessage()
 		{
 			// Output The Message that happened.
-			BattleMessages.Text = string.Format("battle message");
+			//BattleMessages.Text = string.Format("battle message");
 		}
 
 		/// <summary>
@@ -179,6 +167,16 @@ namespace Game.Views
 				}
 				
 			}
+
+			for (int i = 0; i < BattleEngine.Engine.CharacterList.Count; i++)
+			{
+
+				var xLocation = i / PLAYER_GRID_HEIGHT;
+				var yLocation = 1 + (i % PLAYER_GRID_HEIGHT);
+				BattleGrid.Children.Add(new Image { Source = BattleEngine.Engine.CharacterList[i].ImageURI }, 
+					xLocation, yLocation);
+			}
+			
 		}
 
 
@@ -211,6 +209,39 @@ namespace Game.Views
 
 
 		// Battle section
+
+		/// <summary>
+		/// Run through a turn. 
+		/// If it's a monster, the monster will do a turn. 
+		/// Characters will be prompted for the next action.
+		/// </summary>
+		void DoNextTurn()
+		{
+			
+			// See whos turn it is
+			CurrentlySelectedPlayer = CurrentRound.GetNextPlayerTurn();
+
+			// If it's a monster, let them do their attack
+			if (CurrentlySelectedPlayer.PlayerType.Equals(CreatureEnum.Monster))
+			{
+				// Find the monster in the battle grid 
+				
+				// Make their image jiggle or something to show an attack animation
+
+				// update round state
+
+				
+			} else
+			// otherwise, update battlepage state to show actions
+			{
+				AttackerImage.Source = CurrentlySelectedPlayer.ImageURI;
+
+
+			}
+
+
+		}
+
 
 		/// <summary>
 		/// Attack Action
