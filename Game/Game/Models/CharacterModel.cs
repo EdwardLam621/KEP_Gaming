@@ -61,7 +61,7 @@ public class CharacterModel : CreatureModel<CharacterModel>
                 case ItemLocationEnum.Head:
                     return GetItem(Head);
 
-                case ItemLocationEnum.Necklass:
+                case ItemLocationEnum.Body:
                     return GetItem(Body);
 
                 case ItemLocationEnum.PrimaryHand:
@@ -133,7 +133,7 @@ public class CharacterModel : CreatureModel<CharacterModel>
                     Head = itemID;
                     break;
 
-                case ItemLocationEnum.Necklass:
+                case ItemLocationEnum.Body:
                     Body = itemID;
                     break;
 

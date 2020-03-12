@@ -203,7 +203,7 @@ namespace Game.Helpers
 
                 // Randomize an Item for Location
                 Head = GetItem(ItemLocationEnum.Head),
-                Necklass = GetItem(ItemLocationEnum.Necklass),
+                Necklass = GetItem(ItemLocationEnum.Body),
                 PrimaryHand = GetItem(ItemLocationEnum.PrimaryHand),
                 OffHand = GetItem(ItemLocationEnum.OffHand),
                 RightFinger = GetItem(ItemLocationEnum.Finger),

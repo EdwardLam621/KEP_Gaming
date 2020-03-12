@@ -394,7 +394,7 @@ namespace Game.Models
                 case ItemLocationEnum.Head:
                     return GetItem(Head);
 
-                case ItemLocationEnum.Necklass:
+                case ItemLocationEnum.Body:
                     return GetItem(Body);
 
                 case ItemLocationEnum.PrimaryHand:
@@ -437,7 +437,7 @@ namespace Game.Models
                     Head = itemID;
                     break;
 
-                case ItemLocationEnum.Necklass:
+                case ItemLocationEnum.Body:
                     Body = itemID;
                     break;
 
@@ -497,7 +497,7 @@ namespace Game.Models
                 myReturn.Add(myItem);
             }
 
-            myItem = RemoveItem(ItemLocationEnum.Necklass);
+            myItem = RemoveItem(ItemLocationEnum.Body);
             if (myItem != null)
             {
                 myReturn.Add(myItem);
