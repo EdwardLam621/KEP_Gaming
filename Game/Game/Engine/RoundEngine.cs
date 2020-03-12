@@ -425,7 +425,7 @@ namespace Game.Engine
 
             // Use Mike's auto apply for now
             GetItemFromPoolIfBetter(fighter, ItemLocationEnum.Head);
-            GetItemFromPoolIfBetter(fighter, ItemLocationEnum.Body);
+            GetItemFromPoolIfBetter(fighter, ItemLocationEnum.Necklass);
             GetItemFromPoolIfBetter(fighter, ItemLocationEnum.PrimaryHand);
             GetItemFromPoolIfBetter(fighter, ItemLocationEnum.OffHand);
             GetItemFromPoolIfBetter(fighter, ItemLocationEnum.RightFinger);

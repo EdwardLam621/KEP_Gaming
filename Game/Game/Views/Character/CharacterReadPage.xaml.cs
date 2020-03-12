@@ -55,7 +55,7 @@ namespace Game.Views
             }
 
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Head));
-            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Body));
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Necklass));
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.PrimaryHand));
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.OffHand));
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.RightFinger));

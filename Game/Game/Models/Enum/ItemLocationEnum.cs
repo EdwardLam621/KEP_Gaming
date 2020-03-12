@@ -9,7 +9,7 @@
         Head = 10,
 
         // Things to be equipped on necklace
-        Body = 12,
+        Necklass = 12,
 
         // The primary hand used for fighting with a sword or a staff.  
         PrimaryHand = 20,
@@ -51,7 +51,7 @@
                     Message = "Head";
                     break;
 
-                case ItemLocationEnum.Body:
+                case ItemLocationEnum.Necklass:
                     Message = "Body";
                     break;
 

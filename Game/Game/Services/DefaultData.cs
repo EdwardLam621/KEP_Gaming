@@ -52,7 +52,7 @@ namespace Game.Services
                     Range = 0,
                     Damage = 0,
                     Value = 3,
-                    Location = ItemLocationEnum.Body,
+                    Location = ItemLocationEnum.Necklass,
                     Attribute = AttributeEnum.MaxHealth
                  },
 
@@ -171,7 +171,7 @@ namespace Game.Services
 
             try
             {
-                BodyString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.Body).FirstOrDefault().Id;
+                BodyString = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.Necklass).FirstOrDefault().Id;
             }
             catch (Exception e) { }
 
