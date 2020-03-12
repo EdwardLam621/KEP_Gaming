@@ -27,7 +27,12 @@ namespace Game.Views
 		// The target 
 		public DungeonFighterModel SelectedTarget;
 
+		// Height of the playable area
+		// Not the same as battle grid height...
 		private const int PLAYER_GRID_HEIGHT = 3;
+
+		// Width of the playable area
+		private const int PLAYER_GRID_WIDTH = 6;
 
 		/// <summary>
 		/// Constructor
@@ -66,7 +71,7 @@ namespace Game.Views
 
 			// Set for a trun to begin
 			AttackButton.IsVisible = true;
-			MessageDisplayBox.IsVisible = true;
+			//MessageDisplayBox.IsVisible = true;
 			BattlePlayerInfomationBox.IsVisible = true;
 		}
 
@@ -75,7 +80,7 @@ namespace Game.Views
 			NextRoundButton.IsVisible = false;
 			StartBattleButton.IsVisible = false;
 			AttackButton.IsVisible = false;
-			MessageDisplayBox.IsVisible = false;
+			//MessageDisplayBox.IsVisible = false;
 			BattlePlayerInfomationBox.IsVisible = false;
 		}
 
@@ -168,6 +173,7 @@ namespace Game.Views
 				
 			}
 
+			// Draw Characters
 			for (int i = 0; i < BattleEngine.Engine.CharacterList.Count; i++)
 			{
 
@@ -176,21 +182,31 @@ namespace Game.Views
 				BattleGrid.Children.Add(new Image { Source = BattleEngine.Engine.CharacterList[i].ImageURI }, 
 					xLocation, yLocation);
 			}
-			
+
+			// Draw Monsters
+			for (int i = 0; i < BattleEngine.Engine.CurrentRound.MonsterList.Count; i++)
+			{
+
+				var xLocation = PLAYER_GRID_WIDTH - (i / PLAYER_GRID_HEIGHT);
+				var yLocation = 1 + (i % PLAYER_GRID_HEIGHT);
+				BattleGrid.Children.Add(new Image { Source = BattleEngine.Engine.CurrentRound.MonsterList[i].ImageURI },
+					xLocation, yLocation);
+			}
+
 		}
 
 
 		//below are just for demo, please erase during final turn in
 		private void ShowDeadButton_Clicked(object sender, EventArgs e)
 		{
-			monster_1.Source = "https://lh3.googleusercontent.com/proxy/7caqmNL_b6e1C70tV6CU7hmaZGL9t-hvar2QHUo1JabVoEfhw456zFAt9zhG2GYx3zOEK_-kOG7Xb8qveL18MGMfE_Qpq1gj";
+			//monster_1.Source = "https://lh3.googleusercontent.com/proxy/7caqmNL_b6e1C70tV6CU7hmaZGL9t-hvar2QHUo1JabVoEfhw456zFAt9zhG2GYx3zOEK_-kOG7Xb8qveL18MGMfE_Qpq1gj";
 		}
 
 		private void ShowLevelUpButton_Clicked(object sender, EventArgs e)
 		{
-			if (LevelUp.IsVisible == false)
-				LevelUp.IsVisible = true;
-			else LevelUp.IsVisible = false;
+			//if (LevelUp.IsVisible == false)
+			//	LevelUp.IsVisible = true;
+			//else LevelUp.IsVisible = false;
 
 		}
 
