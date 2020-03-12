@@ -187,7 +187,7 @@ namespace Game.Views
 			for (int i = 0; i < BattleEngine.Engine.CurrentRound.MonsterList.Count; i++)
 			{
 
-				var xLocation = PLAYER_GRID_WIDTH - (i / PLAYER_GRID_HEIGHT);
+				var xLocation = PLAYER_GRID_WIDTH - 1 - (i / PLAYER_GRID_HEIGHT);
 				var yLocation = 1 + (i % PLAYER_GRID_HEIGHT);
 				BattleGrid.Children.Add(new Image { Source = BattleEngine.Engine.CurrentRound.MonsterList[i].ImageURI },
 					xLocation, yLocation);
