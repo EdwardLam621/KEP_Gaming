@@ -51,6 +51,8 @@ namespace Game.Views
 			CurrentRound = BattleEngine.Engine.CurrentRound;
 
 			AddBattlefieldGridCharacter();
+
+			DoNextTurn();
 		}
 
 		

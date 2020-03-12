@@ -172,12 +172,13 @@
                                 IsVisible="False" HorizontalOptions="CenterAndExpand">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="700"/>
+                            <RowDefinition Height="100"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
                         </Grid.ColumnDefinitions>
 
 
@@ -187,16 +188,17 @@
                             <Label x:Name="AttackerHealth" Text=""/>
                         </StackLayout>
 
-                        <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Label x:Name="BattlePlayerBoxVersus" Text="vs"
-                                   Padding="0,5,0,0"
-                                   VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                        <StackLayout Grid.Row="0" Grid.Column="1" On>
+                            <Image Source="offense.png"
+                                   />
                         </StackLayout>
 
-                        <StackLayout Grid.Row="0" Grid.Column="2" x:Name="DefenderBox" HorizontalOptions="End">
-                            <Image x:Name="DefenderImage" Source="https://i.pinimg.com/originals/02/60/52/0260529fd45b5dc9d87ffab3ec5f0f4b.png" Style="{StaticResource ImageBattleMediumStyle}"/>
-                            <Label x:Name="DefenderName" Text="" />
-                            <Label x:Name="DefenderHealth" Text="" />
+                        <StackLayout Grid.Row="0" Grid.Column="2">
+                            <Image Source="speed.png"/>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="0" Grid.Column="3">
+                            <Image Source="students.png"/>
                         </StackLayout>
 
                     </Grid>
