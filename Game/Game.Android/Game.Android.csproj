@@ -208,7 +208,10 @@
     <AndroidResource Include="Resources\drawable\students.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\attack.png" />
     <Content Include="Resources\drawable\demo_char.png" />
+    <AndroidResource Include="Resources\drawable\move.png" />
+    <AndroidResource Include="Resources\drawable\skills.png" />
     <Content Include="Resources\drawable\small-button-clip-art-clkerm-vector-clip-art-37.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

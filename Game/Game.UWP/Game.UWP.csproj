@@ -104,6 +104,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="attack.png" />
     <Content Include="autostudy.png" />
     <Content Include="battleboard.jpg" />
     <Content Include="battle_start_button.png" />
@@ -128,6 +129,7 @@
     <Content Include="icon_new.png" />
     <Content Include="MetaDungeonMain.jpg" />
     <Content Include="monsterbook.png" />
+    <Content Include="move.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
@@ -157,6 +159,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="score.png" />
+    <Content Include="skills.png" />
     <Content Include="small-button-clip-art-clkerm-vector-clip-art-37.png" />
     <Content Include="splashscreen.jpg" />
     <Content Include="students.png" />
