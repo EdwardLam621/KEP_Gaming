@@ -72,16 +72,16 @@ namespace Game.Views
 			HideUIElements();
 
 			// Set for a trun to begin
-			AttackButton.IsVisible = true;
+			//AttackButton.IsVisible = true;
 			//MessageDisplayBox.IsVisible = true;
 			BattlePlayerInfomationBox.IsVisible = true;
 		}
 
 		public void HideUIElements()
 		{
-			NextRoundButton.IsVisible = false;
+			//NextRoundButton.IsVisible = false;
 			StartBattleButton.IsVisible = false;
-			AttackButton.IsVisible = false;
+			//AttackButton.IsVisible = false;
 			//MessageDisplayBox.IsVisible = false;
 			BattlePlayerInfomationBox.IsVisible = false;
 		}
