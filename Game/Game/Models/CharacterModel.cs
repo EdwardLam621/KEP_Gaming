@@ -21,8 +21,8 @@ public class CharacterModel : CreatureModel<CharacterModel>
         // Feet is a string referencing the database table
         public string Feet { get; set; } = null;
 
-        // Body is a string referencing the database table
-        public string Body { get; set; } = null;
+        // Necklass is a string referencing the database table
+        public string Necklass { get; set; } = null;
 
         // PrimaryHand is a string referencing the database table
         public string PrimaryHand { get; set; } = null;
@@ -44,6 +44,11 @@ public class CharacterModel : CreatureModel<CharacterModel>
             this.Description = "this is Character Description";
         }
 
+        public CharacterModel(CharacterModel data)
+        {
+            Update(data);
+        }
+
         public ItemModel GetItem(string itemString)
         {
             return ItemIndexViewModel.Instance.GetItem(itemString);
@@ -56,7 +61,7 @@ public class CharacterModel : CreatureModel<CharacterModel>
                 case ItemLocationEnum.Head:
                     return GetItem(Head);
 
-                case ItemLocationEnum.Body:
+                case ItemLocationEnum.Necklass:
                     return GetItem(Body);
 
                 case ItemLocationEnum.PrimaryHand:
@@ -128,7 +133,7 @@ public class CharacterModel : CreatureModel<CharacterModel>
                     Head = itemID;
                     break;
 
-                case ItemLocationEnum.Body:
+                case ItemLocationEnum.Necklass:
                     Body = itemID;
                     break;
 
@@ -156,5 +161,6 @@ public class CharacterModel : CreatureModel<CharacterModel>
             return myReturn;
         }
 
+        
     }
 }

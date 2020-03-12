@@ -76,7 +76,7 @@ namespace Game.Models
 
         #endregion Attributes
 
-
+        public DifficultyEnum Difficulty { get; set; } = DifficultyEnum.Unknown;
 
         #region AttributesDisplay
 
@@ -394,7 +394,7 @@ namespace Game.Models
                 case ItemLocationEnum.Head:
                     return GetItem(Head);
 
-                case ItemLocationEnum.Body:
+                case ItemLocationEnum.Necklass:
                     return GetItem(Body);
 
                 case ItemLocationEnum.PrimaryHand:
@@ -437,7 +437,7 @@ namespace Game.Models
                     Head = itemID;
                     break;
 
-                case ItemLocationEnum.Body:
+                case ItemLocationEnum.Necklass:
                     Body = itemID;
                     break;
 
@@ -497,7 +497,7 @@ namespace Game.Models
                 myReturn.Add(myItem);
             }
 
-            myItem = RemoveItem(ItemLocationEnum.Body);
+            myItem = RemoveItem(ItemLocationEnum.Necklass);
             if (myItem != null)
             {
                 myReturn.Add(myItem);
@@ -642,6 +642,34 @@ namespace Game.Models
 
 
             return myReturn.Trim();
+        }
+
+        // Level up to a number, say Level 3
+        public int LevelUpToValue(int Value)
+        {
+            // Adjust the experience to the min for that level.
+            // That will trigger level up to happen
+
+            if (Value < 0)
+            {
+                // Skip, and return old level
+                return Level;
+            }
+
+            if (Value <= Level)
+            {
+                // Skip, and return old level
+                return Level;
+            }
+
+            if (Value > LevelTableHelper.MaxLevel)
+            {
+                return Level;
+            }
+
+            AddExperience(LevelTableHelper.Instance.LevelDetailsList[Value].Experience + 1);
+
+            return Level;
         }
     }
 }
