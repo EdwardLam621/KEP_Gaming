@@ -81,7 +81,11 @@ namespace Game.Engine
         {
 
             // Todo: Add Move, Skill options and helper methods
-                
+            if (Attacker == null)
+            {
+                return false;
+            }
+
             if (ActionChoice.Equals(TurnChoiceEnum.Attack))
             {
                 Attack(Attacker);
@@ -143,21 +147,21 @@ namespace Game.Engine
             }
 
             // Set Messages to empty
-            Referee.BattleMessages.TurnMessage = string.Empty;
-            Referee.BattleMessages.TurnMessageSpecial = string.Empty;
-            Referee.BattleMessages.AttackStatus = string.Empty;
+            Referee.BattleMessages.ClearMessages();
 
-            // Remember Current Player
+            // Load current player info
             Referee.BattleMessages.AttackerName = Attacker.Name;
             Referee.BattleMessages.PlayerType = Attacker.PlayerType;
             Referee.BattleMessages.AttackerHealth = Attacker.CurrentHealth;
+
+            // Load target info
+            Referee.BattleMessages.TargetName = Target.Name;
             Referee.BattleMessages.TargetHealth = Target.CurrentHealth;
 
-            // Choose who to attack
-            Referee.BattleMessages.TargetName = Target.Name;
+            
 
 
-            Debug.WriteLine(Referee.BattleMessages.GetPreamble());
+            //Debug.WriteLine(Referee.BattleMessages.GetPreamble());
             
 
             // Set Attack and Defense
@@ -169,6 +173,7 @@ namespace Game.Engine
             if (Attacker.Name.Equals("Bob"))
             {
                 Referee.BattleMessages.HitStatus = HitStatusEnum.Miss;
+
             } else
             {
                 Referee.BattleMessages.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
@@ -178,7 +183,8 @@ namespace Game.Engine
             {
                 case HitStatusEnum.Miss:
                     // It's a Miss
-                    Debug.WriteLine("It's a miss!");
+                    //Debug.WriteLine("It's a miss!");
+                    
 
                     break;
 
@@ -221,8 +227,8 @@ namespace Game.Engine
                     
                     
                     Referee.BattleMessages.TargetHealth = Target.CurrentHealth;
-                    Debug.WriteLine(Referee.BattleMessages.GetHitMessage());
-                    Debug.WriteLine(Referee.BattleMessages.GetCurrentHealthMessage());
+
+                    string turnString = Referee.BattleMessages.GetHTMLFormattedTurnMessage();
 
                     RemoveIfDead(Target);
                     break;
