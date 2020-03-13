@@ -20,6 +20,7 @@
                     <RowDefinition Height="auto"/>
                     <!-- message row-->
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <!--Battlefield image-->
@@ -172,13 +173,13 @@
                 </Frame>
 
                 <!--message box -->
-                <StackLayout Grid.Row="5" x:Name="MessageDisplayBox" 
-                            IsVisible="false"
+                <StackLayout Grid.Row="4" x:Name="MessageDisplayBox" 
+                            IsVisible="true"
                             Style="{StaticResource VerticalStack}" 
                                     VerticalOptions="StartAndExpand"
                                     HorizontalOptions="CenterAndExpand">
 
-                    <Label x:Name="BattleMessages2" 
+                    <Label x:Name="BattleMessages" 
                                     HorizontalOptions="FillAndExpand" 
                                     LineBreakMode="WordWrap" 
                                     MaxLines="3"
@@ -187,6 +188,7 @@
                                     Style="{StaticResource LabelStyle}"
                                     FontSize="Large"
                                     TextColor="Black"/>
+                    
                 </StackLayout>
                
             </Grid>
