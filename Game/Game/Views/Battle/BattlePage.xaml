@@ -186,8 +186,8 @@
                                     LineHeight="1"
                                     CharacterSpacing="1"
                                     Style="{StaticResource LabelStyle}"
-                                    FontSize="Large"
-                                    TextColor="Black"/>
+                                    FontSize="Small"
+                                    TextColor="White"/>
                     
                 </StackLayout>
                
