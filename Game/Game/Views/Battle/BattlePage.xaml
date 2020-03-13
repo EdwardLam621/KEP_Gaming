@@ -182,13 +182,12 @@
                     <Label x:Name="BattleMessages" 
                                     HorizontalOptions="FillAndExpand" 
                                     LineBreakMode="WordWrap" 
-                                    MaxLines="1"
+                                    MaxLines="2"
                                     LineHeight="1"
                                     CharacterSpacing="1"
                                     Style="{StaticResource LabelStyle}"
                                     FontSize="Small"
                                     TextColor="White"/>
-                    
                 </StackLayout>
                
             </Grid>

@@ -98,7 +98,7 @@ namespace Game.Views
 		public void GameMessage()
 		{
 			// Output The Message that happened.
-			BattleMessages.Text = string.Format("{0} \n{1}", BattleEngine.Engine.Referee.BattleMessages.GetHitMessage(), BattleMessages.Text);
+			BattleMessages.Text = string.Format("{0} \n{1}", BattleEngine.Engine.Referee.BattleMessages.GetHitMessage() + BattleEngine.Engine.Referee.BattleMessages.GetCurrentHealthMessage(), BattleMessages.Text);
 			
 
 			if (!string.IsNullOrEmpty(BattleEngine.Engine.Referee.BattleMessages.LevelUpMessage))
