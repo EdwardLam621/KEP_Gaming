@@ -157,6 +157,8 @@ namespace Game.Engine
         /// </summary>
         public bool TakeTurn(TurnChoiceEnum choice)
         {
+            CurrentPlayer = GetNextPlayerTurn();
+
             // autobattle selects target automatically
             if (Referee.AutoBattleEnabled)
             {
