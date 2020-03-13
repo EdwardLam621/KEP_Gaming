@@ -159,8 +159,8 @@ namespace Game.Engine
         {
             CurrentPlayer = GetNextPlayerTurn();
 
-            // autobattle selects target automatically
-            if (Referee.AutoBattleEnabled)
+            // Select target automatically if monster is currently attacking or autobattle is enabled
+            if (Referee.AutoBattleEnabled || CurrentPlayer.PlayerType.Equals(CreatureEnum.Monster))
             {
                 Target = ChooseTarget(CurrentPlayer);
             }
