@@ -105,14 +105,14 @@ namespace Game.Engine
         public void MonsterNextTurn()
         {
 
-            var nextPlayer = GetNextPlayerTurn();
-
-            // Loop through monster attacks
-            while (nextPlayer.PlayerType.Equals(CreatureEnum.Monster))
+            DungeonFighterModel nextPlayer;
+            do
             {
                 NextTurnAuto();
                 nextPlayer = GetNextPlayerTurn();
-            }
+                // Loop through monster attacks 
+            } while (nextPlayer.PlayerType.Equals(CreatureEnum.Monster));
+
         }
 
         public void NextTurnAuto()
