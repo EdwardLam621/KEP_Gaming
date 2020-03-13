@@ -251,7 +251,10 @@ namespace Game.Views
 		/// </summary>
 		void DoNextTurn()
 		{
-			
+
+			// Remember player count
+			var currentPlayerCount = BattleEngine.Engine.CurrentRound.FighterList.Count;
+
 			// See whos turn it is
 			CurrentlySelectedPlayer = CurrentRound.GetNextPlayerTurn();
 
@@ -259,18 +262,30 @@ namespace Game.Views
 			if (CurrentlySelectedPlayer.PlayerType.Equals(CreatureEnum.Monster))
 			{
 				// Find the monster in the battle grid 
-				
+
 				// Make their image jiggle or something to show an attack animation
 
 				// update round state
+				BattleEngine.Engine.CurrentRound.MonsterNextTurn();
 
-				
+				// redraw board if anyone died
+				if (BattleEngine.Engine.CurrentRound.FighterList.Count < currentPlayerCount)
+				{
+					AddBattlefieldGridCharacter();
+				}
+
+				// display hit information
+				GameMessage();
+
+				// Recurse until monsters are through attacking
+				DoNextTurn();
+
 			} else
 			// otherwise, update battlepage state to show actions
 			{
 				AttackerImage.Source = CurrentlySelectedPlayer.ImageURI;
-
-
+				BattleEngine.Engine.CurrentRound.CurrentPlayer = CurrentlySelectedPlayer;
+				// wait for attack/move/skill...
 			}
 
 
@@ -290,11 +305,9 @@ namespace Game.Views
 			// do attack
 			BattleEngine.Engine.CurrentRound.AttackClicked(target);
 
-			//showing default message for now, change it latter
-			GameMessage();
+			DoNextTurn();
 
 		}
-
 
 
 

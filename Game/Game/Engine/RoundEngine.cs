@@ -80,8 +80,9 @@ namespace Game.Engine
 
         public void AttackClicked(DungeonFighterModel target)
         {
-            
-            var tar = SetTarget(target);
+
+
+            SetTarget(target);
             
             TakeTurn(TurnChoiceEnum.Attack);
             
@@ -105,13 +106,7 @@ namespace Game.Engine
         public void MonsterNextTurn()
         {
 
-            DungeonFighterModel nextPlayer;
-            do
-            {
-                NextTurnAuto();
-                nextPlayer = GetNextPlayerTurn();
-                // Loop through monster attacks 
-            } while (nextPlayer.PlayerType.Equals(CreatureEnum.Monster));
+            NextTurnAuto();
 
         }
 
@@ -167,6 +162,8 @@ namespace Game.Engine
             {
                 Target = ChooseTarget(CurrentPlayer);
             }
+
+
 
             // otherwise we are setting Target externally
             var turn = new TurnEngine(Referee, CurrentPlayer, Target, choice);
