@@ -183,7 +183,7 @@ namespace Game.Engine
             {
                 case HitStatusEnum.Miss:
                     // It's a Miss
-                    //Debug.WriteLine("It's a miss!");
+                    Debug.WriteLine("It's a miss!");
                     
 
                     break;
@@ -252,11 +252,15 @@ namespace Game.Engine
 
             }
             Referee.BattleMessages.TurnMessage = Attacker.Name + Referee.BattleMessages.AttackStatus + Target.Name + Referee.BattleMessages.TurnMessageSpecial;
-            Debug.WriteLine(Referee.BattleMessages.TurnMessage);
+            
+            // Must get this right!
+
+            //Debug.WriteLine(Referee.BattleMessages.TurnMessage);
+
 
             //Referee.BattleMessages.ClearMessages();
             //Thread.Sleep(1000);
-
+            
             return true;
         }
 
