@@ -14,7 +14,7 @@ namespace Game.Engine
     public class RoundEngine
     {
         // Maximum number of monsters to fight
-        public const int MAX_NUM_MONSTERS = 6;
+        public const int MAX_NUM_MONSTERS = 1;
 
         // Which round we are on
         public int RoundCount = 1;
@@ -78,46 +78,32 @@ namespace Game.Engine
             
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void AttackClicked()
         {
 
-
+            // Auto select target
             Target = SelectMonsterToAttack();
             
+            // Do the turn
             TakeTurn(TurnChoiceEnum.Attack);
             
+            // Update round state
             RoundResult = GetRoundState();
         
         }
 
 
-        public void RoundNextTurn()
-        {
-            // See whose turn it is
-            CurrentPlayer = GetNextPlayerTurn();
-            
-            if (CurrentPlayer.PlayerType.Equals(CreatureEnum.Monster))
-            {
-                MonsterNextTurn();
-            }
-
-        }
-
         public void MonsterNextTurn()
         {
-
-            NextTurnAuto();
-
-        }
-
-        public void NextTurnAuto()
-        {
-            
             // Select turn choice using same method as autobattle
             var choice = TurnChoice();
 
             // Do the turn
             TakeTurn(choice);
+
         }
 
         /// <summary>
@@ -147,6 +133,10 @@ namespace Game.Engine
 
             
             Referee.BattleScore.RoundCount++;
+            if (Referee.BattleScore.RoundCount > 100)
+            {
+                return RoundEnum.GameOver;
+            }
 
             // Round is over, return result to BattleEngine
             return RoundResult;
@@ -157,7 +147,7 @@ namespace Game.Engine
         /// </summary>
         public bool TakeTurn(TurnChoiceEnum choice)
         {
-            CurrentPlayer = GetNextPlayerTurn();
+            //CurrentPlayer = GetNextPlayerTurn();
 
             // Select target automatically if monster is currently attacking or autobattle is enabled
             if (Referee.AutoBattleEnabled || CurrentPlayer.PlayerType.Equals(CreatureEnum.Monster))
@@ -284,7 +274,7 @@ namespace Game.Engine
                 var monster = new DungeonFighterModel(new MonsterModel
                 {
                     Name = "The Coronavirus",
-                    MaxHealth = 5,
+                    MaxHealth = 1,
                     CurrentHealth = 1,
                     Level = 1,
                     Description = "Human disaster",
@@ -292,15 +282,14 @@ namespace Game.Engine
                     DefenseAttribute = 1,
                     OffenseAttribute = 1,
                     SpeedAttribute = 1,
-                    Skill = CreatureSkillEnum.Boss,
+                    Skill = CreatureSkillEnum.None,
                     DropItems = new List<ItemModel>(),
                 });
 
-                monster.Name += " " + i + 1;
+                monster.Name += " " + (i + 1);
 
                 MonsterList.Add(monster);
             }
-
                 
         }
 
