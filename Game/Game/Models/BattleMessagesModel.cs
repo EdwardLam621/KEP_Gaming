@@ -53,6 +53,9 @@ namespace Game.Models
             AttackerName = string.Empty;
             TargetName = string.Empty;
             AttackStatus = string.Empty;
+            TurnMessage = string.Empty;
+            TurnMessageSpecial = string.Empty;
+            LevelUpMessage = string.Empty;
         }
 
         public string GetPreamble()
