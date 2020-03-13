@@ -19,7 +19,7 @@ namespace Game.Engine
         public int MaxNumberPartyCharacters = 6;
 
         // List of Characters
-        public List<CharacterModel> CharacterList = new List<CharacterModel>();
+        public List<CharacterModel> PickedCharacters = new List<CharacterModel>();
 
         // The Grid that keeps track of player locations
         //public BattleGridCellModel BattleGrid;
@@ -38,9 +38,6 @@ namespace Game.Engine
             // Initialize Referee
             Referee = new RefereeModel();
 
-            // Convert characters to fighters
-            SetParty(CharacterList);
-
             // Keep track of battle count/date
             Referee.BattleScore.GameDate = System.DateTime.Now;
 
@@ -54,6 +51,8 @@ namespace Game.Engine
         /// </summary>
         public bool startBattle()
         {
+
+            Referee.SetParty(PickedCharacters);
 
             // Autobattle 
             if (Referee.AutoBattleEnabled)
@@ -74,7 +73,7 @@ namespace Game.Engine
             } 
             
 
-
+            // stop if characters dead or round count goes too high
             if (CurrentRound.GetRoundState().Equals(RoundEnum.GameOver))
             {
                 // display game over screen with statistics
@@ -105,23 +104,25 @@ namespace Game.Engine
         {
             RoundCount++;
 
+            Debug.WriteLine("Round " + RoundCount.ToString());
+
             // Start new round
             CurrentRound = new RoundEngine(Referee, RoundCount);
         }
 
-        public bool SetParty(List<CharacterModel> party)
-        {
-            var dungeonFighterModels = new List<DungeonFighterModel>();
+        //public bool SetParty(List<CharacterModel> party)
+        //{
+        //    var dungeonFighterModels = new List<DungeonFighterModel>();
 
-            foreach (CharacterModel character in party)
-            {
-                dungeonFighterModels.Add(new DungeonFighterModel(character));
-            }
+        //    foreach (CharacterModel character in party)
+        //    {
+        //        dungeonFighterModels.Add(new DungeonFighterModel(character));
+        //    }
 
-            Referee.Characters = dungeonFighterModels;
+        //    Referee.Characters = dungeonFighterModels;
 
-            return true;
-        }
+        //    return true;
+        //}
 
         public void SetAutoBattle(bool toggle)
         {

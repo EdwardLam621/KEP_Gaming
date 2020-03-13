@@ -38,6 +38,8 @@ namespace Game.Views
 		// Width of the playable area
 		private const int PLAYER_GRID_WIDTH = 6;
 
+		public List<DungeonFighterModel> PartyMembers;
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -48,9 +50,11 @@ namespace Game.Views
 			BindingContext = BattleEngine;
 
 			// Load in characters set from PickCharactersPage
-			BattleEngine.Engine.SetParty(BattleEngine.Engine.CharacterList);
+			BattleEngine.Engine.Referee.SetParty(BattleEngine.Engine.PickedCharacters);
 
-			
+			// Keep reference to character list for drawing purposes
+			PartyMembers = BattleEngine.Engine.Referee.Characters;
+
 			SetupRound();
 
 			DoNextTurn();
@@ -179,22 +183,22 @@ namespace Game.Views
 			BattleGrid.Children.Clear();
 
 			// Load the Characters into the Engine
-			foreach (var data in BattleEngine.Engine.CharacterList)
+			foreach (var data in BattleEngine.Engine.Referee.Characters)
 			{
-
-				if (!BattleEngine.Engine.CharacterList.Contains(data) && data.Alive){
-					BattleEngine.Engine.CharacterList.Add(data);
+				// 
+				if (!BattleEngine.Engine.Referee.Characters.Contains(data) && data.Alive){
+					BattleEngine.Engine.Referee.Characters.Add(data);
 				}
 				
 			}
 
 			// Draw Characters
-			for (int i = 0; i < BattleEngine.Engine.CharacterList.Count; i++)
+			for (int i = 0; i < BattleEngine.Engine.Referee.Characters.Count; i++)
 			{
 
 				var xLocation = i / PLAYER_GRID_HEIGHT;
 				var yLocation = 1 + (i % PLAYER_GRID_HEIGHT);
-				BattleGrid.Children.Add(new Image { Source = BattleEngine.Engine.CharacterList[i].ImageURI }, 
+				BattleGrid.Children.Add(new Image { Source = BattleEngine.Engine.Referee.Characters[i].ImageURI }, 
 					xLocation, yLocation);
 			}
 
@@ -252,14 +256,22 @@ namespace Game.Views
 			// Check for all characters dead
 			if (BattleEngine.Engine.CurrentRound.RoundResult.Equals(RoundEnum.GameOver))
 			{
+
+				Debug.WriteLine("GAME OVER");
+				Debug.WriteLine("Total turns taken: " + BattleEngine.Engine.Referee.BattleScore.TurnCount);
+				Debug.WriteLine("Monsters killed: " + BattleEngine.Engine.Referee.BattleScore.MonsterSlainNumber);
+				Debug.WriteLine("Highest round: " + BattleEngine.Engine.RoundCount);
 				await Navigation.PushAsync(new ScorePage());
 			}
 
 			// Check for all monsters dead
 			if (BattleEngine.Engine.CurrentRound.RoundResult.Equals(RoundEnum.NewRound))
 			{
-				// show some sort of "new round" graphic and reset board
-				
+				// show some sort of "new round" graphic
+				Debug.WriteLine("New Round");
+
+				// Tell Battle Engine to create new Round object, also update CurrentRound
+				SetupRound();
 			}
 
 

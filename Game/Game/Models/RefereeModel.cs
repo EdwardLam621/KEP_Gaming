@@ -70,7 +70,24 @@ namespace Game.Models
                 ResurrectionsEnabled = false;
                 return true;
             }
-
         }
+
+        /// <summary>
+        /// Convert from characters to fighters. Should only be set once at start of battle...
+        /// </summary>
+        /// <param name="party"></param>
+        /// <returns></returns>
+        public bool SetParty(List<CharacterModel> party)
+        {
+            Characters = new List<DungeonFighterModel>();
+
+            foreach (CharacterModel character in party)
+            {
+                Characters.Add(new DungeonFighterModel(character));
+            }
+
+            return true;
+        }
+
     }
 }
