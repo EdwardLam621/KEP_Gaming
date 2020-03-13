@@ -50,11 +50,8 @@ namespace Game.Views
 			// Load in characters set from PickCharactersPage
 			BattleEngine.Engine.SetParty(BattleEngine.Engine.CharacterList);
 
-			BattleEngine.Engine.NewRound();
-
-			CurrentRound = BattleEngine.Engine.CurrentRound;
-
-			AddBattlefieldGridCharacter();
+			
+			SetupRound();
 
 			DoNextTurn();
 		}
@@ -246,8 +243,22 @@ namespace Game.Views
 		/// If it's a monster, the monster will do a turn. 
 		/// Characters will be prompted for the next action.
 		/// </summary>
-		void DoNextTurn()
+		async void DoNextTurn()
 		{
+
+			// Check for all characters dead
+			if (BattleEngine.Engine.CurrentRound.RoundResult.Equals(RoundEnum.GameOver))
+			{
+				await Navigation.PushAsync(new ScorePage());
+			}
+
+			// Check for all monsters dead
+			if (BattleEngine.Engine.CurrentRound.RoundResult.Equals(RoundEnum.NewRound))
+			{
+				// show some sort of "new round" graphic and reset board
+				
+			}
+
 
 			// Remember player count
 			var currentPlayerCount = BattleEngine.Engine.CurrentRound.FighterList.Count;
@@ -294,7 +305,7 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		void AttackButton_Clicked(object sender, EventArgs e)
+		async void AttackButton_Clicked(object sender, EventArgs e)
 		{
 			// auto select first monster that isn't dead
 			var target = BattleEngine.Engine.CurrentRound.FighterList.First(m => m.Alive == true);
@@ -310,7 +321,16 @@ namespace Game.Views
 
 		}
 
+		async void SetupRound()
+		{
+			BattleEngine.Engine.NewRound();
 
+			CurrentRound = BattleEngine.Engine.CurrentRound;
+
+			RoundCountDisplay.Text = CurrentRound.RoundCount.ToString();
+
+			AddBattlefieldGridCharacter();
+		}
 
 
 	}

@@ -60,14 +60,26 @@
                         Source="https://clipartart.com/images/battlefield-clipart-1.jpg" Aspect="AspectFill"/>
 
                     <!--Round message box-->
-                    <Label Text="Round " 
-                       Grid.Row="0" 
-                           Grid.Column="0"
-                           Grid.ColumnSpan="6"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
-                       TextColor="Black"
-                       FontSize="24"/>
+                    <StackLayout Orientation="Horizontal" 
+                                 Grid.Row="0"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="6">
+
+                        <Label Text="Round "
+                            HorizontalOptions="Center"
+                            VerticalOptions="Start"
+                            TextColor="Black"
+                            FontSize="20"/>
+                        <Label x:Name="RoundCountDisplay"
+                               Text=""
+                            HorizontalOptions="Center"
+                            VerticalOptions="Start"
+                            TextColor="Black"
+                            FontSize="20"/>
+                    </StackLayout>
+                    
+                    
+                    
                     
                     <!--Character View-->
 
