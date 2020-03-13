@@ -161,7 +161,7 @@ namespace Game.Engine
             
 
 
-            //Debug.WriteLine(Referee.BattleMessages.GetPreamble());
+            Debug.WriteLine(Referee.BattleMessages.GetPreamble());
             
 
             // Set Attack and Defense
@@ -228,7 +228,7 @@ namespace Game.Engine
                     
                     Referee.BattleMessages.TargetHealth = Target.CurrentHealth;
 
-                    string turnString = Referee.BattleMessages.GetHTMLFormattedTurnMessage();
+                    Referee.BattleMessages.TurnMessage = Referee.BattleMessages.GetHTMLFormattedTurnMessage();
 
                     RemoveIfDead(Target);
                     break;

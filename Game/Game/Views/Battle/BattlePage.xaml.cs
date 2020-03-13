@@ -103,8 +103,6 @@ namespace Game.Views
 			// Output The Message that happened.
 			BattleMessages.Text = string.Format("{0} \n{1}", BattleEngine.Engine.Referee.BattleMessages.TurnMessage, BattleMessages.Text);
 
-			Debug.WriteLine(BattleMessages.Text);
-
 			if (!string.IsNullOrEmpty(BattleEngine.Engine.Referee.BattleMessages.LevelUpMessage))
 			{
 				BattleMessages.Text = string.Format("{0} \n{1}", BattleEngine.Engine.Referee.BattleMessages.LevelUpMessage, BattleMessages.Text);
