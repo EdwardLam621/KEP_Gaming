@@ -97,8 +97,7 @@ namespace Game.Views
 		/// <param name="message"></param>
 		public void GameMessage()
 		{
-			// Output The Message that happened.
-			//BattleMessages.Text = string.Format("battle message");
+		
 
 			// Output The Message that happened.
 			BattleMessages.Text = string.Format("{0} \n{1}", BattleEngine.Engine.Referee.BattleMessages.TurnMessage, BattleMessages.Text);
@@ -302,6 +301,7 @@ namespace Game.Views
 
 			// do attack
 			BattleEngine.Engine.CurrentRound.AttackClicked(target);
+			GameMessage();
 
 			DoNextTurn();
 
