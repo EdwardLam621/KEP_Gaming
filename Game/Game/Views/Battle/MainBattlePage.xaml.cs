@@ -245,7 +245,7 @@ namespace Game.Views
             // Get the turn, set the current player and attacker to match
             SetAttackerAndDefender();
 
-            EngineViewModel.Engine.CurrentRound.AttackClicked(EngineViewModel.Engine.CurrentRound.Target);
+            EngineViewModel.Engine.CurrentRound.AttackClicked();
             // Hold the current state
             var RoundCondition = EngineViewModel.Engine.CurrentRound.GetRoundState();
 

@@ -300,9 +300,12 @@ namespace Game.Views
 			var target = BattleEngine.Engine.CurrentRound.FighterList.First(m => m.Alive == true);
 
 			// do attack
-			BattleEngine.Engine.CurrentRound.AttackClicked(target);
+			BattleEngine.Engine.CurrentRound.AttackClicked();
+			
+			// display messages
 			GameMessage();
 
+			// run the next turns
 			DoNextTurn();
 
 		}

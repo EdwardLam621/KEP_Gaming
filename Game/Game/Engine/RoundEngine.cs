@@ -78,11 +78,11 @@ namespace Game.Engine
             
         }
 
-        public void AttackClicked(DungeonFighterModel target)
+        public void AttackClicked()
         {
 
 
-            SetTarget(target);
+            Target = SelectMonsterToAttack();
             
             TakeTurn(TurnChoiceEnum.Attack);
             
