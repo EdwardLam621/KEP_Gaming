@@ -16,6 +16,9 @@ namespace Game.Views
 	public partial class BattlePage: ContentPage
 	{
 
+		// HTML Formatting for message output box
+		public HtmlWebViewSource htmlSource = new HtmlWebViewSource();
+
 		// Battle Engine instance
 		public BattleEngineViewModel BattleEngine = BattleEngineViewModel.Instance;
 
@@ -96,6 +99,18 @@ namespace Game.Views
 		{
 			// Output The Message that happened.
 			//BattleMessages.Text = string.Format("battle message");
+
+			// Output The Message that happened.
+			BattleMessages.Text = string.Format("{0} \n{1}", BattleEngine.Engine.Referee.BattleMessages.TurnMessage, BattleMessages.Text);
+
+			Debug.WriteLine(BattleMessages.Text);
+
+			if (!string.IsNullOrEmpty(BattleEngine.Engine.Referee.BattleMessages.LevelUpMessage))
+			{
+				BattleMessages.Text = string.Format("{0} \n{1}", BattleEngine.Engine.Referee.BattleMessages.LevelUpMessage, BattleMessages.Text);
+			}
+
+
 		}
 
 		/// <summary>
