@@ -176,13 +176,13 @@ namespace Game.Views
         /// </summary>
         public void CreateEngineCharacterList()
         {
-            // Clear the currett list
-            EngineViewModel.Engine.CharacterList.Clear();
+            // Clear the current list
+            EngineViewModel.Engine.PickedCharacters.Clear();
 
             // Load the Characters into the Engine
             foreach (var data in EngineViewModel.PartyCharacterList)
             {
-                EngineViewModel.Engine.CharacterList.Add(data);
+                EngineViewModel.Engine.PickedCharacters.Add(data);
             }
         }
 
