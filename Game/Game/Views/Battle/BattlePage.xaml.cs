@@ -172,13 +172,17 @@ namespace Game.Views
 
 		private void AddBattlefieldGridCharacter()
 		{
-			// Clear the currett list
-			BattleEngine.Engine.CharacterList.Clear();
+			// Clear the current list
+			//BattleEngine.Engine.CharacterList.Clear();
+
+			// Clear the display
+			BattleGrid.Children.Clear();
 
 			// Load the Characters into the Engine
-			foreach (var data in BattleEngine.PartyCharacterList)
+			foreach (var data in BattleEngine.Engine.CharacterList)
 			{
-				if (!BattleEngine.Engine.CharacterList.Contains(data)){
+
+				if (!BattleEngine.Engine.CharacterList.Contains(data) && data.Alive){
 					BattleEngine.Engine.CharacterList.Add(data);
 				}
 				
