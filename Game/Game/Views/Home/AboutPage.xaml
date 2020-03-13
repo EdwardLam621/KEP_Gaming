@@ -94,10 +94,73 @@
 
                 <StackLayout Style="{StaticResource HorizontalStack}"
                                     Padding="50,0,0,0">
+                  
+                        <Label Text="Dice Fixing Settings" />
+                        <Switch
+                            x:Name="DiceSettingsSwitch"
+                            HorizontalOptions="EndAndExpand"
+                            Toggled="DiceSettingSwitch_OnToggled"
+                            IsToggled="False"/>
 
-                    <Label Text="More Debug Settings to come..." />
+         
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource VerticalStack}"
+                                 x:Name="DiceFixingFrame"
+                                 IsVisible="False"
+                                 Padding="50,0,0,0">
+                    
+                    <!--Dice Fixing-->
+                    <Frame BackgroundColor="Aqua" Padding="20,0,0,0">
+                        <StackLayout Orientation="Vertical">
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Characters roll 1s" />
+                                <Switch
+                                    x:Name="CharacterRollOneSwitch"
+                                    HorizontalOptions="EndAndExpand"
+                                    Toggled="CharacterRollOneSwitch_OnToggled"
+                                    IsToggled="False"/>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Characters roll 20s" />
+                                <Switch
+                                    x:Name="CharacterRollTwentySwitch"
+                                    HorizontalOptions="EndAndExpand"
+                                    Toggled="CharacterRollTwentySwitch_OnToggled"
+                                    IsToggled="False"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="Orange" Padding="20,0,0,0">
+                        <StackLayout Orientation="Vertical">
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Monsters roll 1s" />
+                                <Switch
+                                    x:Name="MonsterRollOneSwitch"
+                                    HorizontalOptions="EndAndExpand"
+                                    Toggled="MonsterRollOneSwitch_OnToggled"
+                                    IsToggled="False"/>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Monsters roll 20s" />
+                                <Switch
+                                    x:Name="MonsterRollTwentySwitch"
+                                    HorizontalOptions="EndAndExpand"
+                                    Toggled="MonsterRollTwentySwitch_OnToggled"
+                                    IsToggled="False"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    
 
                 </StackLayout>
+
+
             </StackLayout>
         </StackLayout>
     </ScrollView>

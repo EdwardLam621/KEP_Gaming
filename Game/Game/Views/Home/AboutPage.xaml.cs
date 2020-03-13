@@ -23,6 +23,8 @@ namespace Game.Views
             // Turn off the Settings Frame
             DebugSettingsFrame.IsVisible = false;
 
+            DiceFixingFrame.IsVisible = false;
+
             // Set to the curent date and time
             CurrentDateTime.Text = DateTime.Now.ToString("MM/dd/yy hh:mm:ss");
         }
@@ -50,6 +52,82 @@ namespace Game.Views
         }
 
         /// <summary>
+        /// Sow or hide the Dice Fixing Settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DiceSettingSwitch_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // Show or hide the Dice fixing Settings
+            DiceFixingFrame.IsVisible = (e.Value);
+        }
+
+        /// <summary>
+        /// Toggle 1 rolls for Character
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CharacterRollOneSwitch_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // Can't have both 1 and 20 toggled at same time
+            if (CharacterRollTwentySwitch.IsToggled)
+            {
+                CharacterRollTwentySwitch.IsToggled = false;
+            }
+
+            // Send message
+        }
+
+        /// <summary>
+        /// Toggle 20 rolls for Character
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CharacterRollTwentySwitch_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // Can't have both 1 and 20 toggled at same time
+            if (CharacterRollOneSwitch.IsToggled)
+            {
+                CharacterRollOneSwitch.IsToggled = false;
+            }
+
+            // Send message
+        }
+
+
+        /// <summary>
+        /// Toggle 1 rolls for Monster
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MonsterRollOneSwitch_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // Can't have both 1 and 20 toggled at same time
+            if (MonsterRollTwentySwitch.IsToggled)
+            {
+                MonsterRollTwentySwitch.IsToggled = false;
+            }
+
+            // Send message
+        }
+
+        /// <summary>
+        /// Toggle 20 rolls for Monster
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MonsterRollTwentySwitch_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // Can't have both 1 and 20 toggled at same time
+            if (MonsterRollOneSwitch.IsToggled)
+            {
+                MonsterRollOneSwitch.IsToggled = false;
+            }
+
+            // Send message
+        }
+
+        /// <summary>
         /// Data Source Toggle
         /// </summary>
         /// <param name="sender"></param>
@@ -66,6 +144,7 @@ namespace Game.Views
                 MessagingCenter.Send(this, "SetDataSource", 0);
             }
         }
+
 
         /// <summary>
         /// Button to delete the data store
