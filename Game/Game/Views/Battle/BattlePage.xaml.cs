@@ -292,7 +292,6 @@ namespace Game.Views
 
 			//showing default message for now, change it latter
 			GameMessage();
-			Debug.WriteLine("Attack clicked");
 
 		}
 
