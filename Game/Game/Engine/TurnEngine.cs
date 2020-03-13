@@ -251,6 +251,9 @@ namespace Game.Engine
                     break;
 
             }
+            Referee.BattleMessages.TurnMessage = Attacker.Name + Referee.BattleMessages.AttackStatus + Target.Name + Referee.BattleMessages.TurnMessageSpecial;
+            Debug.WriteLine(Referee.BattleMessages.TurnMessage);
+
             //Referee.BattleMessages.ClearMessages();
             //Thread.Sleep(1000);
 
@@ -429,6 +432,7 @@ namespace Game.Engine
             }
 
             // Hit
+            Referee.BattleMessages.AttackStatus = " hits ";
             Referee.BattleMessages.HitStatus = HitStatusEnum.Hit;
             return Referee.BattleMessages.HitStatus;
         }
