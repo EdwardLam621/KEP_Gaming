@@ -97,10 +97,9 @@ namespace Game.Views
 		/// <param name="message"></param>
 		public void GameMessage()
 		{
-		
-
 			// Output The Message that happened.
-			BattleMessages.Text = string.Format("{0} \n{1}", BattleEngine.Engine.Referee.BattleMessages.TurnMessage, BattleMessages.Text);
+			BattleMessages.Text = string.Format("{0} \n{1}", BattleEngine.Engine.Referee.BattleMessages.GetHitMessage(), BattleMessages.Text);
+			
 
 			if (!string.IsNullOrEmpty(BattleEngine.Engine.Referee.BattleMessages.LevelUpMessage))
 			{
