@@ -7,6 +7,18 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
+using System;
+using System.Diagnostics;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+using Game.Models;
+using Game.ViewModels;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Collections.Generic;
+
 namespace Game.Views
 {
 	/// <summary>
@@ -15,6 +27,9 @@ namespace Game.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BattlePage: ContentPage
 	{
+
+		// Wait time before proceeding
+		public int WaitTime = 1500;
 
 		// HTML Formatting for message output box
 		public HtmlWebViewSource htmlSource = new HtmlWebViewSource();
@@ -257,11 +272,24 @@ namespace Game.Views
 			if (BattleEngine.Engine.CurrentRound.RoundResult.Equals(RoundEnum.GameOver))
 			{
 
-				Debug.WriteLine("GAME OVER");
-				Debug.WriteLine("Total turns taken: " + BattleEngine.Engine.Referee.BattleScore.TurnCount);
-				Debug.WriteLine("Monsters killed: " + BattleEngine.Engine.Referee.BattleScore.MonsterSlainNumber);
-				Debug.WriteLine("Highest round: " + BattleEngine.Engine.RoundCount);
-				await Navigation.PushAsync(new ScorePage());
+				//Debug.WriteLine("GAME OVER");
+				//Debug.WriteLine("Total turns taken: " + BattleEngine.Engine.Referee.BattleScore.TurnCount);
+				//Debug.WriteLine("Monsters killed: " + BattleEngine.Engine.Referee.BattleScore.MonsterSlainNumber);
+				//Debug.WriteLine("Highest round: " + BattleEngine.Engine.RoundCount);
+				//await Navigation.PushAsync(new ScorePage());
+
+				BattleEngine.Engine.CurrentRound.RoundResult = RoundEnum.GameOver;
+
+				// Wrap up
+				BattleEngine.Engine.EndBattle();
+
+				// Pause
+				Task.Delay(WaitTime);
+
+				Debug.WriteLine("Game Over");
+
+				GameOver();
+				return;
 			}
 
 			// Check for all monsters dead
@@ -346,6 +374,29 @@ namespace Game.Views
 
 			AddBattlefieldGridCharacter();
 		}
+
+		/// <summary>
+        /// Game is over
+        /// 
+        /// Show Buttons
+        /// 
+        /// Clean up the Engine
+        /// 
+        /// Show the Score
+        /// 
+        /// Clear the Board
+        /// 
+        /// </summary>
+		public async void GameOver()
+		{
+			// Save the Score to the Score View Model, by sending a message to it.
+			var Score = BattleEngine.Engine.Referee.BattleScore;
+			MessagingCenter.Send(this, "AddData", Score);
+
+			await Navigation.PushModalAsync(new ScorePage());
+		}
+
+
 
 
 	}

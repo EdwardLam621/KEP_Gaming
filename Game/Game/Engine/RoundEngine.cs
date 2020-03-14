@@ -147,7 +147,7 @@ namespace Game.Engine
         /// </summary>
         public bool TakeTurn(TurnChoiceEnum choice)
         {
-            //CurrentPlayer = GetNextPlayerTurn();
+            CurrentPlayer = GetNextPlayerTurn();
 
             // Select target automatically if monster is currently attacking or autobattle is enabled
             if (Referee.AutoBattleEnabled || CurrentPlayer.PlayerType.Equals(CreatureEnum.Monster))

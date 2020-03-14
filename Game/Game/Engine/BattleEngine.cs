@@ -128,5 +128,16 @@ namespace Game.Engine
         {
             Referee.AutoBattleEnabled = toggle;
         }
+
+
+
+        public bool EndBattle()
+        {
+            //BattleRunning = false;
+
+            Referee.BattleScore.CalculateScore();
+
+            return true;
+        }
     }
 }
