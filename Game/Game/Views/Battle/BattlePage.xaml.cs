@@ -195,7 +195,7 @@ namespace Game.Views
 			//BattleEngine.Engine.CharacterList.Clear();
 
 			// Clear the display
-			BattleGrid.Children.Clear();
+			//BattleGrid.Children.Clear();
 
 			// Load the Characters into the Engine
 			foreach (var data in BattleEngine.Engine.Referee.Characters)
@@ -226,6 +226,7 @@ namespace Game.Views
 				BattleGrid.Children.Add(new Image { Source = BattleEngine.Engine.CurrentRound.MonsterList[i].ImageURI },
 					xLocation, yLocation);
 			}
+			
 
 		}
 

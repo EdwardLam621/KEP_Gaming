@@ -5,8 +5,6 @@
              x:Class="Game.Views.BattlePage">
 
     <ContentPage.Content>
-        
-        
         <!-- should be absolute layout during finish-->
         <AbsoluteLayout>
             <Grid x:Name="LayoutGrid">
@@ -23,8 +21,25 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
+                <!--Round message box-->
+                <StackLayout Orientation="Horizontal" 
+                                 Grid.Row="0">
+
+                    <Label Text="Round "
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            TextColor="White"
+                            FontSize="20"/>
+                    <Label x:Name="RoundCountDisplay"
+                               Text=""
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            TextColor="White"
+                            FontSize="20"/>
+                </StackLayout>
+
                 <!--Battlefield image-->
-                <Grid x:Name="BattleGrid">
+                <Grid Grid.Row="1" x:Name="BattleGrid" BackgroundColor="DarkRed">
 
                     <Grid.RowDefinitions>
                         <!--Round label-->
@@ -39,9 +54,9 @@
                         <RowDefinition Height="50"/>
                         <!--Battlefield row 1-->
                         <RowDefinition Height="50"/>
-
-
                     </Grid.RowDefinitions>
+                    
+                    
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -52,39 +67,17 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Battlefield Background-->
-                    <Image
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        Grid.ColumnSpan="6"
-                        Grid.RowSpan="6"
-                        Source="https://clipartart.com/images/battlefield-clipart-1.jpg" Aspect="AspectFill"/>
 
-                    <!--Round message box-->
-                    <StackLayout Orientation="Horizontal" 
-                                 Grid.Row="0"
-                                 Grid.Column="0"
-                                 Grid.ColumnSpan="6">
-
-                        <Label Text="Round "
-                            HorizontalOptions="Center"
-                            VerticalOptions="Start"
-                            TextColor="Black"
-                            FontSize="20"/>
-                        <Label x:Name="RoundCountDisplay"
-                               Text=""
-                            HorizontalOptions="Center"
-                            VerticalOptions="Start"
-                            TextColor="Black"
-                            FontSize="20"/>
-                    </StackLayout>
-                    
-                    
-                    
-                    
-                    <!--Character View-->
-
-
-                    
+                    <Image 
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand" 
+                        Aspect="AspectFill" 
+                        Source="https://clipartart.com/images/battlefield-clipart-1.jpg" 
+                        Grid.Row="0" 
+                        Grid.Column="0" 
+                        Grid.RowSpan="6" 
+                        Grid.ColumnSpan="6"/>
+  
                 </Grid>
     
                 
