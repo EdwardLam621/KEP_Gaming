@@ -26,13 +26,13 @@
                                  Grid.Row="0">
 
                     <Label Text="Round "
-                            HorizontalOptions="CenterAndExpand"
+                            HorizontalOptions="EndAndExpand"
                             VerticalOptions="CenterAndExpand"
                             TextColor="White"
                             FontSize="20"/>
                     <Label x:Name="RoundCountDisplay"
                                Text=""
-                            HorizontalOptions="CenterAndExpand"
+                            HorizontalOptions="StartAndExpand"
                             VerticalOptions="CenterAndExpand"
                             TextColor="White"
                             FontSize="20"/>
@@ -76,7 +76,8 @@
                         Grid.Row="0" 
                         Grid.Column="0" 
                         Grid.RowSpan="6" 
-                        Grid.ColumnSpan="6"/>
+                        Grid.ColumnSpan="6"
+                        />
   
                 </Grid>
     
