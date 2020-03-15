@@ -69,7 +69,17 @@ namespace Game.Models
             return AttackerName + " studies " + TargetName + " for " + DamageAmount + " damage.";
         }
 
+        public string GetMissMessage()
+        {
+            // Give monsters a different attack message
+            if (PlayerType.Equals(CreatureEnum.Monster))
+            {
+                return AttackerName + " ruins the studying time of " + TargetName + " for "
+                    + DamageAmount + " damage!";
+            } 
 
+            return AttackerName + " tries to understand " + TargetName + " and fails!";
+        }
 
         /// <summary>
         /// Remaining Health Message
@@ -104,7 +114,7 @@ namespace Game.Models
             switch (HitStatus) {
 
                 case HitStatusEnum.Miss:
-                    //msg.AppendLine(GetMissMessage());
+                    msg.AppendLine(GetMissMessage());
                     break;
 
                 case HitStatusEnum.Hit:
