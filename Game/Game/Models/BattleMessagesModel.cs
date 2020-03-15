@@ -68,6 +68,11 @@ namespace Game.Models
         {
             return AttackerName + " studies " + TargetName + " for " + DamageAmount + " damage.";
         }
+        
+        public string GetCriticalHitMessage()
+        {
+            return "It's a critical hit! Double damage";
+        }
 
         public string GetMissMessage()
         {
