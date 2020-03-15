@@ -114,7 +114,8 @@ namespace Game.Views
 		public void GameMessage()
 		{
 			// Output The Message that happened.
-			BattleMessages.Text = string.Format("{0} \n{1}", BattleEngine.Engine.Referee.BattleMessages.GetHitMessage() + BattleEngine.Engine.Referee.BattleMessages.GetCurrentHealthMessage(), BattleMessages.Text);
+			BattleMessages.Text = BattleEngine.Engine.Referee.BattleMessages.GetTurnMessage();
+			//	string.Format("{0} \n{1}", BattleEngine.Engine.Referee.BattleMessages.GetHitMessage(), BattleEngine.Engine.Referee.BattleMessages.GetCurrentHealthMessage());
 			
 
 			if (!string.IsNullOrEmpty(BattleEngine.Engine.Referee.BattleMessages.LevelUpMessage))
@@ -318,6 +319,7 @@ namespace Game.Views
 				// Make their image jiggle or something to show an attack animation
 
 				// update round state
+				BattleEngine.Engine.CurrentRound.CurrentPlayer = CurrentlySelectedPlayer;
 				BattleEngine.Engine.CurrentRound.MonsterNextTurn();
 
 				// redraw board if anyone died
@@ -329,8 +331,7 @@ namespace Game.Views
 				// display hit information
 				GameMessage();
 
-				// Recurse until monsters are through attacking
-				DoNextTurn();
+				
 
 			} else
 			// otherwise, update battlepage state to show actions
