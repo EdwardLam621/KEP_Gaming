@@ -256,15 +256,8 @@ namespace Game.Engine
                     break;
 
             }
-            Referee.BattleMessages.TurnMessage = Attacker.Name + Referee.BattleMessages.AttackStatus + Target.Name + Referee.BattleMessages.TurnMessageSpecial;
             
-            // Must get this right!
-
-            //Debug.WriteLine(Referee.BattleMessages.TurnMessage);
-
-
-            //Referee.BattleMessages.ClearMessages();
-            //Thread.Sleep(1000);
+            Debug.WriteLine(Referee.BattleMessages.TurnMessage);
             
             return true;
         }
