@@ -149,18 +149,18 @@ namespace Game.Engine
             // Set Messages to empty
             Referee.BattleMessages.ClearMessages();
 
-            // Load current player info
+            // Load current player info to battle messages
             Referee.BattleMessages.AttackerName = Attacker.Name;
             Referee.BattleMessages.PlayerType = Attacker.PlayerType;
             Referee.BattleMessages.AttackerHealth = Attacker.CurrentHealth;
 
-            // Load target info
+            // Load target info to battle messages
             Referee.BattleMessages.TargetName = Target.Name;
             Referee.BattleMessages.TargetHealth = Target.CurrentHealth;
 
             
 
-
+            // Attacker prepares to attack message
             Debug.WriteLine(Referee.BattleMessages.GetPreamble());
             
 
@@ -222,13 +222,18 @@ namespace Game.Engine
                     
                     else
                     {
+                        
                         Target.TakeDamage(Referee.BattleMessages.DamageAmount);
+
                     }
-                    
-                    
+
+                    // Update target's health for game display
                     Referee.BattleMessages.TargetHealth = Target.CurrentHealth;
 
-                    Referee.BattleMessages.TurnMessage = Referee.BattleMessages.GetHTMLFormattedTurnMessage();
+                    // Set
+                    Referee.BattleMessages.TurnMessage = Referee.BattleMessages.GetTurnMessage();
+
+                    //Referee.BattleMessages.TurnMessage = Referee.BattleMessages.GetHTMLFormattedTurnMessage();
 
                     RemoveIfDead(Target);
                     break;
@@ -236,7 +241,7 @@ namespace Game.Engine
                 case HitStatusEnum.CriticalHit:
                     // It's a Hit
                     //Calculate Damage
-                    Debug.WriteLine("It's a critical hit! Double damage");
+                    Debug.WriteLine(Referee.BattleMessages.GetCriticalHitMessage());
 
                     Referee.BattleMessages.DamageAmount = Attacker.GetDamageRollValue();
 
