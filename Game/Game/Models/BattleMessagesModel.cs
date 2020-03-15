@@ -66,8 +66,10 @@ namespace Game.Models
 
         public string GetHitMessage()
         {
-            return AttackerName + " hits " + TargetName + " for " + DamageAmount + " damage.";
+            return AttackerName + " studies " + TargetName + " for " + DamageAmount + " damage.";
         }
+
+
 
         /// <summary>
         /// Remaining Health Message
@@ -78,14 +80,6 @@ namespace Game.Models
             return TargetName + " has " + TargetHealth + " remaining health.";
         }
 
-        /// <summary>
-        /// Return formatted Damage
-        /// </summary>
-        /// <returns></returns>
-        public string GetDamageMessage()
-        {
-            return string.Format(" for {0} damage ", DamageAmount);
-        }
 
         /// <summary>
         /// Return formatted string
@@ -98,12 +92,31 @@ namespace Game.Models
         }
 
         /// <summary>
-        /// Returns the String Attacker Hit Defender
+        /// Returns the entire multiline string output of the turn
+        /// Displays on the battle page
         /// </summary>
         /// <returns></returns>
         public string GetTurnMessage()
         {
-            return AttackerName + GetSwingResult() + TargetName;
+            StringBuilder msg = new StringBuilder();
+
+            // Change message depending on what happened
+            switch (HitStatus) {
+
+                case HitStatusEnum.Miss:
+                    //msg.AppendLine(GetMissMessage());
+                    break;
+
+                case HitStatusEnum.Hit:
+                    msg.AppendLine(GetHitMessage());
+                    msg.AppendLine(GetCurrentHealthMessage());
+                    break;
+                default:
+                    msg.AppendLine("unknown action");
+                    break;
+            }
+            
+            return msg.ToString();
         }
 
         /// <summary>
