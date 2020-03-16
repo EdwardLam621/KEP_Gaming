@@ -235,7 +235,6 @@ namespace Game.Engine
 
                     //Referee.BattleMessages.TurnMessage = Referee.BattleMessages.GetHTMLFormattedTurnMessage();
 
-                    RemoveIfDead(Target);
                     break;
 
                 case HitStatusEnum.CriticalHit:
@@ -252,13 +251,12 @@ namespace Game.Engine
                     Debug.WriteLine(Referee.BattleMessages.GetHitMessage());
                     Debug.WriteLine(Referee.BattleMessages.GetCurrentHealthMessage());
 
-                    RemoveIfDead(Target);
                     break;
 
             }
             
-            Debug.WriteLine(Referee.BattleMessages.TurnMessage);
-            
+            RemoveIfDead(Target);
+
             return true;
         }
 
@@ -311,7 +309,8 @@ namespace Game.Engine
                         return false;
                     }
                 }
-                
+
+                Referee.BattleMessages.TurnMessageSpecial = Referee.BattleMessages.GetDeathMessage();
                 TargedDied(Target);
                 return true;
             }
@@ -329,14 +328,15 @@ namespace Game.Engine
         /// <param name="Target"></param>
         public bool TargedDied(DungeonFighterModel Target)
         {
-            // Mark Status in output
-            //Referee.BattleMessages.TurnMessageSpecial = " and causes death";
+
+            Referee.BattleMessages.TurnMessageSpecial = Referee.BattleMessages.GetDeathMessage();
 
             // Remove target from list...
 
             // Using a switch so in the future additional PlayerTypes can be added (Boss...)
             switch (Target.PlayerType)
             {
+                
                 case CreatureEnum.Character:
 
                     Target.Alive = false;
@@ -344,15 +344,14 @@ namespace Game.Engine
 
                     Referee.BattleScore.CharacterModelDeathList.Add(Target);
 
-                    // Add the MonsterModel to the killed list
+                    // Add the CharacterModel to the killed list
                     Referee.BattleScore.CharacterAtDeathList += Target.FormatOutput() + "\n";
 
                     DropItems(Target);
+                    break;
 
-                    return true;
-
-                case CreatureEnum.Monster:
                 default:
+
                     Referee.Monsters.Remove(Target);
 
                     // Add one to the monsters killed count...
@@ -362,9 +361,12 @@ namespace Game.Engine
                     Referee.BattleScore.MonstersKilledList += Target.FormatOutput() + "\n";
 
                     DropItems(Target);
-
-                    return true;
+                    break;
             }
+
+            Debug.WriteLine(Referee.BattleMessages.TurnMessageSpecial);
+            return true;
+
         }
 
         /// <summary>
