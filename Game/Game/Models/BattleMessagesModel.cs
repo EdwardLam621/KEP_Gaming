@@ -95,6 +95,17 @@ namespace Game.Models
             return TargetName + " has " + TargetHealth + " remaining health.";
         }
 
+        public string GetDeathMessage()
+        {
+            switch (PlayerType)
+            {                
+                case CreatureEnum.Character:
+                    return TargetName + " is eliminated";
+                default:
+                    return TargetName + " passes out from exhaustion";
+
+            }
+        }
 
         /// <summary>
         /// Return formatted string
@@ -125,6 +136,10 @@ namespace Game.Models
                 case HitStatusEnum.Hit:
                     msg.AppendLine(GetHitMessage());
                     msg.AppendLine(GetCurrentHealthMessage());
+                    if (!TurnMessageSpecial.Equals(""))
+                    {
+                        msg.AppendLine(TurnMessageSpecial);
+                    }
                     break;
                 default:
                     msg.AppendLine("unknown action");
