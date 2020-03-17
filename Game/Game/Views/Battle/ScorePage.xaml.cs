@@ -37,7 +37,7 @@ namespace Game.Views
         public void DrawOutput()
         {
             // Highest round achieved
-            RoundNumber.Text = EngineViewModel.Engine.Referee.BattleScore.RoundCount.ToString();
+            RoundNumber.Text = EngineViewModel.Engine.CurrentRound.RoundCount.ToString();
             // Monsters killed
             TotalKilled.Text = EngineViewModel.Engine.Referee.BattleScore.MonsterSlainNumber.ToString();
             // Turns taken
