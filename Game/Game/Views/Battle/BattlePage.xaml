@@ -194,11 +194,11 @@
                     <Label x:Name="BattleMessages" 
                                     HorizontalOptions="FillAndExpand" 
                                     LineBreakMode="WordWrap" 
-                                    MaxLines="2"
+                                    MaxLines="6"
                                     LineHeight="1"
                                     CharacterSpacing="1"
-                                    Style="{StaticResource LabelStyle}"
-                                    FontSize="Small"
+                                    
+                                    FontSize="Micro"
                                     TextColor="White"/>
                 </StackLayout>
                
