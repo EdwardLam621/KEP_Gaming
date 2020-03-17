@@ -22,6 +22,9 @@ namespace Game.Views
         public ScorePage()
         {
             InitializeComponent();
+
+            BindingContext = EngineViewModel;
+
             DrawOutput();
         }
 
@@ -33,6 +36,14 @@ namespace Game.Views
         /// </summary>
         public void DrawOutput()
         {
+            // Highest round achieved
+            RoundNumber.Text = EngineViewModel.Engine.Referee.BattleScore.RoundCount.ToString();
+            // Monsters killed
+            TotalKilled.Text = EngineViewModel.Engine.Referee.BattleScore.MonsterSlainNumber.ToString();
+            // Turns taken
+            TotalTurns.Text = EngineViewModel.Engine.Referee.BattleScore.TurnCount.ToString();
+            // EXP
+            TotalExperience.Text = EngineViewModel.Engine.Referee.BattleScore.ExperienceGainedTotal.ToString();
 
             // Draw the Monsters
             foreach (var data in EngineViewModel.Engine.Referee.Monsters)
