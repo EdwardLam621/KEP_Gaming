@@ -210,13 +210,13 @@ namespace Game.Services
 
                  new CharacterModel {
                     Name = "Wiki Expert",
-                    MaxHealth = 20,
+                    MaxHealth = 1,
                     Level = 1,
                     Description = "Search Wikipedia for everything!",
                     ImageURI = "https://cn.i.cdn.ti-platform.com/cnapac/content/438/showpage/teen-titans-go%21/sa/showicon.png",
-                    DefenseAttribute = 10,
-                    OffenseAttribute = 1,
-                    SpeedAttribute = 8,
+                    DefenseAttribute = 20,
+                    OffenseAttribute = 20,
+                    SpeedAttribute = 20,
                     Skill = CreatureSkillEnum.TeachersPet,
                     //Equipments = equipments
 
@@ -232,13 +232,13 @@ namespace Game.Services
 
                  new CharacterModel {
                     Name = "Unknown",
-                    MaxHealth = 10,
+                    MaxHealth = 100,
                     Level = 1,
                     Description = "No one ever saw him in the class. Does he/she even exist?",
                     ImageURI = "https://ya-webdesign.com/images250_/thief-clipart-sneak-11.png",
-                    DefenseAttribute = 7,
-                    OffenseAttribute = 4,
-                    SpeedAttribute = 3,
+                    DefenseAttribute = 20,
+                    OffenseAttribute = 20,
+                    SpeedAttribute = 20,
                     Skill = CreatureSkillEnum.Slacker,
                     //Equipments = equipments
 
@@ -246,20 +246,20 @@ namespace Game.Services
 
                  new CharacterModel {
                     Name = "Straight A",
-                    MaxHealth = 10,
+                    MaxHealth = 100,
                     Level = 20,
                     Description = "Finish every assignment with perfect grade. Instructor's favorite",
                     ImageURI = "https://pngimage.net/wp-content/uploads/2018/06/thai-student-png-5.png",
-                    DefenseAttribute = 10,
-                    OffenseAttribute = 10,
-                    SpeedAttribute = 10,
+                    DefenseAttribute = 20,
+                    OffenseAttribute = 20,
+                    SpeedAttribute = 1,
                     Skill = CreatureSkillEnum.Bookworm,
                     //Equipments = equipments
                 },
 
                  new CharacterModel {
                     Name = "Delinquent",
-                    MaxHealth = 20,
+                    MaxHealth = 200,
                     Level = 1,
                     Description = "The mischief class skipper. Low in defense but high in attack",
                     ImageURI = "https://clipartart.com/images/sleeping-at-school-clipart.png",
@@ -272,7 +272,7 @@ namespace Game.Services
 
                  new CharacterModel {
                     Name = "Slacker",
-                    MaxHealth = 30,
+                    MaxHealth = 300,
                     Level = 1,
                     Description = "A student who always avoid work of effort",
                     ImageURI = "https://webstockreview.net/images/lazy-clipart-perezosa-11.png",
@@ -286,7 +286,7 @@ namespace Game.Services
                 new CharacterModel
                 {
                     Name = "Teacher's pet",
-                    MaxHealth = 40,
+                    MaxHealth = 400,
                     Level = 1,
                     Description = "a pupil who has won the teacher's special favor.",
                     ImageURI = "https://i.ya-webdesign.com/images/drawing-technology-high-school-5.png",
@@ -300,7 +300,7 @@ namespace Game.Services
                 new CharacterModel
                 {
                     Name = "Daydreaming",
-                    MaxHealth = 40,
+                    MaxHealth = 400,
                     Level = 1,
                     Description = "dreamer, escapist, wishful thinker. a person who escapes into a world of fantasy",
                     ImageURI = "https://i.ya-webdesign.com/images/daydreaming-clipart-12.png",
@@ -337,8 +337,8 @@ namespace Game.Services
                 Description = "Human disaster",
                 ImageURI = "https://pngimg.com/uploads/coronavirus/coronavirus_PNG33.png",
                 DefenseAttribute = 1,
-                OffenseAttribute = 10,
-                SpeedAttribute = 15,
+                OffenseAttribute = 1,
+                SpeedAttribute = 1,
                 Skill = CreatureSkillEnum.Boss,
                 DropItems = test,
                 },
@@ -350,7 +350,7 @@ namespace Game.Services
                 Level = 2,
                 Description = "A demanding, and annoying boyfriend",
                 ImageURI = "https://i.ya-webdesign.com/images/poor-drawing-animated-1.png",
-                DefenseAttribute = 10,
+                DefenseAttribute = 1,
                 OffenseAttribute = 4,
                 SpeedAttribute = 10,
                 Skill = CreatureSkillEnum.PersonalIssue,
@@ -363,7 +363,7 @@ namespace Game.Services
                 Level = 4,
                 Description = "Never-ending Netflix Series",
                 ImageURI = "http://www.pngall.com/wp-content/uploads/4/Round-Netflix-Logo.png",
-                DefenseAttribute = 9,
+                DefenseAttribute = 1,
                 OffenseAttribute = 3,
                 SpeedAttribute = 6,
                 Skill = CreatureSkillEnum.PersonalIssue,

@@ -352,6 +352,7 @@ namespace Game.Engine
 
                 default:
 
+                    Target.Alive = false;
                     Referee.Monsters.Remove(Target);
 
                     // Add one to the monsters killed count...

@@ -43,10 +43,10 @@ namespace Game.Views
 
             BindingContext = EngineViewModel;
 
+
             // Clear the Database List and the Party List to start
             EngineViewModel.PartyCharacterList.Clear();
-
-            
+   
         }
 
         /// <summary>
@@ -202,5 +202,7 @@ namespace Game.Views
             BindingContext = EngineViewModel;
 
         }
+
+       
     }
 }
