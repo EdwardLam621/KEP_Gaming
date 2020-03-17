@@ -6,18 +6,7 @@ using Game.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-
-using System;
-using System.Diagnostics;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using Game.Models;
-using Game.ViewModels;
 using System.Threading.Tasks;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace Game.Views
 {
@@ -69,6 +58,7 @@ namespace Game.Views
 
 			// Keep reference to character list for drawing purposes
 			PartyMembers = BattleEngine.Engine.Referee.Characters;
+
 
 			SetupRound();
 
@@ -366,6 +356,9 @@ namespace Game.Views
 
 		}
 
+		/// <summary>
+		/// Update round statekium
+		/// </summary>
 		async void SetupRound()
 		{
 			BattleEngine.Engine.NewRound();
