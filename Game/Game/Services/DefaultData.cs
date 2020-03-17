@@ -362,7 +362,7 @@ namespace Game.Services
                 MaxHealth = 20,
                 Level = 4,
                 Description = "Never-ending Netflix Series",
-                ImageURI = "https://lh3.googleusercontent.com/proxy/mVvlJkxEHrUPZLMDjo5wy9VU5olB5QewTbyUsbUGEpL2ZhVoyNWLXXL31fqhOGJkxaVcaQhWYntj1ylFOK7TsFJsyjjp2NFeMcrDO1wS0LYefVPQnbh6Hc4",
+                ImageURI = "http://www.pngall.com/wp-content/uploads/4/Round-Netflix-Logo.png",
                 DefenseAttribute = 9,
                 OffenseAttribute = 3,
                 SpeedAttribute = 6,

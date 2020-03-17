@@ -239,22 +239,22 @@ namespace Game.Helpers
 
             var rnd = DiceHelper.RollDice(1, MonsterIndexViewModel.Instance.Dataset.Count);
 
-            var result = new MonsterModel(MonsterIndexViewModel.Instance.Dataset.ElementAt(rnd - 1))
+            var result = new MonsterModel(MonsterIndexViewModel.Instance.Dataset.ElementAt(rnd - 1));
             {
-                Level = DiceHelper.RollDice(1, MaxLevel),
+                //Level = DiceHelper.RollDice(1, MaxLevel),
 
-                // Randomize Name
-                Name = GetMonsterName(),
-                Description = GetMonsterDescription(),
+                //// Randomize Name
+                //Name = GetMonsterName(),
+                //Description = GetMonsterDescription(),
 
-                // Randomize the Attributes
-                OffenseAttribute = GetAbilityValue(),
-                SpeedAttribute = GetAbilityValue(),
-                DefenseAttribute = GetAbilityValue(),
+                //// Randomize the Attributes
+                //OffenseAttribute = GetAbilityValue(),
+                //SpeedAttribute = GetAbilityValue(),
+                //DefenseAttribute = GetAbilityValue(),
 
-                ImageURI = GetMonsterImage(),
+                //ImageURI = GetMonsterImage(),
 
-                Difficulty = GetMonsterDifficultyValue()
+                //Difficulty = GetMonsterDifficultyValue()
             };
 
             // Adjust values based on Difficulty
