@@ -326,8 +326,8 @@ namespace Game.Views
 			} else
 			// otherwise, update battlepage state to show actions
 			{
-				AttackerImage.Source = CurrentlySelectedPlayer.ImageURI;
 				BattleEngine.Engine.CurrentRound.CurrentPlayer = CurrentlySelectedPlayer;
+				AttackerImage.Source = CurrentlySelectedPlayer.ImageURI;
 				// wait for attack/move/skill...
 			}
 

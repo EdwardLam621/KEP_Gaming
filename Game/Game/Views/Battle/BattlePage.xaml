@@ -108,7 +108,7 @@
 
                         <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="Beige" Padding="0">
                             <StackLayout x:Name="AttackerBox" HorizontalOptions="Start">
-                                <Image x:Name="AttackerImage" Source="https://cn.i.cdn.ti-platform.com/cnapac/content/438/showpage/teen-titans-go%21/sa/showicon.png" 
+                                <Image x:Name="AttackerImage"
                                    HeightRequest="70"
                                        Aspect="AspectFill"
                                        VerticalOptions="CenterAndExpand"/>
