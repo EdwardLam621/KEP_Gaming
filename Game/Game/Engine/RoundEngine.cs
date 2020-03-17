@@ -154,7 +154,7 @@ namespace Game.Engine
                 Target = ChooseTarget(CurrentPlayer);
             }
                        
-            // otherwise we are setting Target externally
+            // otherwise the target is being set externally through the Battle Page
             var turn = new TurnEngine(Referee, CurrentPlayer, Target, choice);
 
             turn.TakeTurn();
