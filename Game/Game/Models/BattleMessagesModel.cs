@@ -100,9 +100,9 @@ namespace Game.Models
             switch (PlayerType)
             {                
                 case CreatureEnum.Character:
-                    return TargetName + " is eliminated";
+                    return TargetName + " is eliminated!";
                 default:
-                    return TargetName + " passes out from exhaustion";
+                    return TargetName + " passes out from exhaustion!";
 
             }
         }
