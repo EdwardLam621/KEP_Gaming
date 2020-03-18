@@ -7,7 +7,8 @@
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
             <StackLayout Style="{StaticResource OuterBoxStack}">
 
-                <Label Text="GAME OVER !!!" Style="{StaticResource CenterMessageStyle}"/>
+                <Label x:Name ="GameOverOrNextRound"
+                       Text="0" Style="{StaticResource CenterMessageStyle}"/>
 
                 <Frame
                     CornerRadius="5"  
@@ -104,7 +105,9 @@
 
                 <StackLayout HorizontalOptions="Center">
                     <Button Clicked="CloseButton_Clicked" Text="Exit"/>
-                    <Button Clicked="NextRoundButton_Clicked" Text="Next Round"/>
+                    <Button Clicked="NextRoundButton_Clicked" 
+                            x:Name="NextRoundButton"
+                            Text="Next Round"/>
                 </StackLayout>
                 
 

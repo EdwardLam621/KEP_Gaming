@@ -36,6 +36,8 @@ namespace Game.Views
         /// </summary>
         public void DrawOutput()
         {
+            ConfigurePage();
+
             // Highest round achieved
             RoundNumber.Text = EngineViewModel.Engine.CurrentRound.RoundCount.ToString();
             // Monsters killed
@@ -213,6 +215,26 @@ namespace Game.Views
         public async void NextRoundButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
+        }
+
+        /// <summary>
+        /// Show ScorePage header message
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ConfigurePage()
+        {
+            if(EngineViewModel.Engine.Referee.Characters.Count() > 0)
+            {
+                GameOverOrNextRound.Text = "Congrulations!";
+                NextRoundButton.IsVisible = true
+            }
+            else
+            {
+                GameOverOrNextRound.Text = "Game Over!";
+                NextRoundButton.IsVisible = false;
+
+            }
         }
     }
 }
