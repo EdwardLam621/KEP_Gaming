@@ -227,7 +227,7 @@ namespace Game.Views
             if(EngineViewModel.Engine.Referee.Characters.Count() > 0)
             {
                 GameOverOrNextRound.Text = "Congrulations!";
-                NextRoundButton.IsVisible = true
+                NextRoundButton.IsVisible = true;
             }
             else
             {
