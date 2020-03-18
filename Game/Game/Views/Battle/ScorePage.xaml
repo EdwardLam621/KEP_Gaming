@@ -33,7 +33,7 @@
                             Style="{StaticResource HeaderStyle}"/>
                         <Label
                             Text="0"
-                            x:Name="TotalScore"
+                            x:Name="TotalExperience"
                             Style="{StaticResource HeaderStyle}"/>
                         </StackLayout>
 
@@ -82,19 +82,7 @@
                                    Style="{StaticResource ValueStyle}"/>
                         </StackLayout>
 
-                        <Label Text="Experience"
-                           Style="{StaticResource HeaderStyle}"
-                           HorizontalOptions="StartAndExpand"/>
-
-                        <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label
-                                Text="Earned : "
-                                Style="{StaticResource LabelStyle}"/>
-                            <Label Text="0"
-                                   x:Name="TotalExperience"
-                                   Style="{StaticResource ValueStyle}"/>
-                        </StackLayout>
-
+                        
                         <FlexLayout x:Name="MonsterListFrame"
                                             JustifyContent="Start"
                                             AlignContent="Start"
