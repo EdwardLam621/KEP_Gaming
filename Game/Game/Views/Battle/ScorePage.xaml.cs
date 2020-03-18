@@ -203,10 +203,14 @@ namespace Game.Views
 
 			if (answer)
 			{
+                // create new score record
                 MessagingCenter.Send(this, "Create", EngineViewModel.Engine.Referee.BattleScore);
+
+                //reset battle engine
+                EngineViewModel.Engine = new Engine.BattleEngine();
+
                 await Navigation.PushModalAsync(new MainPage());
             }
-            //await Navigation.PushModalAsync(new MainPage());
         }
 
         /// <summary>

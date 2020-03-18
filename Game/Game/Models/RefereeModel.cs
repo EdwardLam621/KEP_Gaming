@@ -89,5 +89,20 @@ namespace Game.Models
             return true;
         }
 
+
+        /// <summary>
+        /// Reset RefereeModel
+        /// </summary>
+        /// <param name="party"></param>
+        /// <returns></returns>
+        public void Reset()
+        {
+            this.Characters.Clear();
+            this.Monsters.Clear();
+            this.ItemPool.Clear();
+            this.BattleScore = new ScoreModel();
+            this.UsedResurrection.Clear();
+            this.DeadCharacters.Clear();
+        }
     }
 }
