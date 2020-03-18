@@ -311,7 +311,6 @@ namespace Game.Views
 
 				// update round state
 				BattleEngine.Engine.CurrentRound.CurrentPlayer = CurrentlySelectedPlayer;
-				BattleEngine.Engine.CurrentRound.MonsterNextTurn();
 
 				// redraw board if anyone died
 				if (BattleEngine.Engine.CurrentRound.FighterList.Count < currentPlayerCount)
