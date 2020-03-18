@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Game.ViewModels;
 using System.Text;
+using Game.Helpers;
 
 namespace Game.Models
 {
@@ -42,6 +43,7 @@ public class CharacterModel : CreatureModel<CharacterModel>
         {
             this.Name = "this is Name";
             this.Description = "this is Character Description";
+            this.MaxHealth = DiceHelper.RollDice((int)Level, 10);
         }
 
         public CharacterModel(CharacterModel data)
@@ -95,6 +97,7 @@ public class CharacterModel : CreatureModel<CharacterModel>
             Name = newData.Name;
             Level = newData.Level;
             MaxHealth = newData.MaxHealth;
+            CurrentHealth = MaxHealth;
             Description = newData.Description;
             SpeedAttribute = newData.SpeedAttribute;
             OffenseAttribute = newData.OffenseAttribute;

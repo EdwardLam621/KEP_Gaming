@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Game.Helpers;
 
 namespace Game.Models
 {
@@ -18,6 +19,7 @@ namespace Game.Models
             this.Name = "this is Name";
             this.Description = "this is Monster Description";
             DropItems = new List<ItemModel>();
+            this.MaxHealth = DiceHelper.RollDice((int)Level, 10);
         }
 
         public MonsterModel(MonsterModel data)
