@@ -183,6 +183,9 @@
                         <Button
                                 Text="Get"
                                 Clicked="GetItemsGet_Command"/>
+                        <Button
+                                Text="Post"
+                                Clicked="GetItemsPost_Command"/>
                     </StackLayout>
 
                 </StackLayout>
