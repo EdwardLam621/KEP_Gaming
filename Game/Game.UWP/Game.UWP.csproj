@@ -104,6 +104,8 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
     <Content Include="attack.png" />
     <Content Include="autostudy.png" />
     <Content Include="battleboard.jpg" />

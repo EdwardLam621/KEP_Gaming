@@ -11,6 +11,7 @@
     Publisher="CN=2208144f-88ef-4857-99d7-534c39a8e559"
     Version="1.0.0.0" />
 
+  
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
@@ -44,7 +45,7 @@
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="#660000"/>
       </uap:VisualElements>
     </Application>
   </Applications>
