@@ -258,7 +258,7 @@ namespace Game.Engine
                 var data = Helpers.RandomPlayerHelper.GetRandomMonster(TargetLevel - 1 + rand.Next(1, 3));
 
                 // Help identify which Monster it is
-                data.Name += " " + MonsterList.Count() + 1 + "Lv. " + data.Level;
+                data.Name += " " + MonsterList.Count() + " Lv. " + data.Level;
 
                 MonsterList.Add(new DungeonFighterModel(data));
             }

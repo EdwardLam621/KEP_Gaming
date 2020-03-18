@@ -58,11 +58,6 @@ namespace Game.Views
             {
                 ItemListFrame.Children.Add(CreateItemDisplayBox(data));
             }
-
-            // Update Values in the UI
-            TotalKilled.Text = EngineViewModel.Engine.Referee.Monsters.Count().ToString();
-            TotalCollected.Text = EngineViewModel.Engine.Referee.ItemPool.Count().ToString();
-            TotalScore.Text = EngineViewModel.Engine.Referee.BattleScore.ExperienceGainedTotal.ToString();
         }
 
         /// <summary>
@@ -204,6 +199,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void CloseButton_Clicked(object sender, EventArgs e)
         {
+            
             await Navigation.PushModalAsync(new MainPage());
         }
 
