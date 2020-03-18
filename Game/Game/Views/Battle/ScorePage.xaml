@@ -42,16 +42,7 @@
                             Style="{StaticResource HeaderStyle}"
                             HorizontalOptions="StartAndExpand"/>
 
-                        <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label
-                                Text="Collected : "
-                                Style="{StaticResource LabelStyle}"/>
-                            <Label
-                                Text="0"
-                                x:Name="TotalCollected"
-                                Style="{StaticResource ValueStyle}"/>
-                            
-                        </StackLayout>
+                        
 
                         <FlexLayout x:Name="ItemListFrame"
                                     JustifyContent="Start"
