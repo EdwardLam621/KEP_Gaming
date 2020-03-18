@@ -54,7 +54,7 @@ namespace Game.Views
             }
 
             // Draw the Items
-            foreach (var data in EngineViewModel.Engine.Referee.ItemPool)
+            foreach (var data in EngineViewModel.Engine.Referee.BattleScore.ItemModelDropList)
             {
                 ItemListFrame.Children.Add(CreateItemDisplayBox(data));
             }

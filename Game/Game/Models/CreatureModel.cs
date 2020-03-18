@@ -492,7 +492,7 @@ namespace Game.Models
 
         // Drop All Items
         // Return a list of items for the pool of items
-        public List<ItemModel> DropAllItems()
+        public virtual List<ItemModel> DropAllItems()
         {
             var myReturn = new List<ItemModel>();
 

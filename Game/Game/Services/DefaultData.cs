@@ -354,6 +354,7 @@ namespace Game.Services
                 OffenseAttribute = 4,
                 SpeedAttribute = 10,
                 Skill = CreatureSkillEnum.PersonalIssue,
+                DropItems = test,
                 },
 
                 new MonsterModel
@@ -367,6 +368,7 @@ namespace Game.Services
                 OffenseAttribute = 3,
                 SpeedAttribute = 6,
                 Skill = CreatureSkillEnum.PersonalIssue,
+                DropItems = test,
                 }
 
             };

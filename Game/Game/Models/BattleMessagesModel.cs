@@ -48,6 +48,9 @@ namespace Game.Models
         // Turn Experience Earned Message
         public string ExperienceEarned = string.Empty;
 
+        // Message when something Drops
+        public string DroppedMessage = string.Empty;
+
         // Beginning of the Html Block for html formatting
         public string htmlHead = @"<html><body bgcolor=""#E8D0B6""><p>";
 

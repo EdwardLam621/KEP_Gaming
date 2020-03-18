@@ -116,5 +116,80 @@ namespace Game.Models
             PlayerType = CreatureEnum.Monster;
 
         }
+
+        public override List<ItemModel> DropAllItems()
+        {
+            var myReturn = new List<ItemModel>();
+
+            // Drop all Items
+            ItemModel myItem;
+
+            switch (this.PlayerType)
+            {
+
+                case CreatureEnum.Character:
+                    myItem = RemoveItem(ItemLocationEnum.Head);
+                    if (myItem != null)
+                    {
+                        myReturn.Add(myItem);
+                    }
+
+                    myItem = RemoveItem(ItemLocationEnum.Necklass);
+                    if (myItem != null)
+                    {
+                        myReturn.Add(myItem);
+                    }
+
+                    myItem = RemoveItem(ItemLocationEnum.PrimaryHand);
+                    if (myItem != null)
+                    {
+                        myReturn.Add(myItem);
+                    }
+
+                    myItem = RemoveItem(ItemLocationEnum.OffHand);
+                    if (myItem != null)
+                    {
+                        myReturn.Add(myItem);
+                    }
+
+                    myItem = RemoveItem(ItemLocationEnum.Finger);
+                    if (myItem != null)
+                    {
+                        myReturn.Add(myItem);
+                    }
+
+                    myItem = RemoveItem(ItemLocationEnum.RightFinger);
+                    if (myItem != null)
+                    {
+                        myReturn.Add(myItem);
+                    }
+
+                    myItem = RemoveItem(ItemLocationEnum.LeftFinger);
+                    if (myItem != null)
+                    {
+                        myReturn.Add(myItem);
+                    }
+
+                    myItem = RemoveItem(ItemLocationEnum.Feet);
+                    if (myItem != null)
+                    {
+                        myReturn.Add(myItem);
+                    }
+
+                    break;
+
+
+                default:
+                    foreach(var data in DropItems)
+                    {
+                        myReturn.Add(data);
+                    }
+
+                    break;
+            }
+
+            return myReturn;
+        }
+
     }
 }

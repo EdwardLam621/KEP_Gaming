@@ -50,11 +50,13 @@
                                 Text="0"
                                 x:Name="TotalCollected"
                                 Style="{StaticResource ValueStyle}"/>
-                            <FlexLayout x:Name="ItemListFrame"
+                            
+                        </StackLayout>
+
+                        <FlexLayout x:Name="ItemListFrame"
                                     JustifyContent="Start"
                                     AlignContent="Start"
                                     Wrap="Wrap"/>
-                        </StackLayout>
 
                         <Label Text="Monsters"
                            Style="{StaticResource HeaderStyle}"
