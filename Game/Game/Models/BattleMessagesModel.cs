@@ -27,6 +27,9 @@ namespace Game.Models
         // Turn Special Message
         public string TurnMessageSpecial = string.Empty;
 
+        // Message when something bad happens with Critical Miss
+        public string BadCriticalMissMessage = string.Empty;
+
         // Level Up Message
         public string LevelUpMessage = string.Empty;
 
@@ -38,6 +41,12 @@ namespace Game.Models
 
         // Remaining target health
         public int TargetHealth = 0;
+
+        // The Remaining Health Mesage
+        public int CurrentHealth = 0;
+
+        // Turn Experience Earned Message
+        public string ExperienceEarned = string.Empty;
 
         // Beginning of the Html Block for html formatting
         public string htmlHead = @"<html><body bgcolor=""#E8D0B6""><p>";
@@ -55,7 +64,12 @@ namespace Game.Models
             AttackStatus = string.Empty;
             TurnMessage = string.Empty;
             TurnMessageSpecial = string.Empty;
+            ExperienceEarned = string.Empty;
             LevelUpMessage = string.Empty;
+            BadCriticalMissMessage = string.Empty;
+
+            DamageAmount = 0;
+            CurrentHealth = 0;
         }
 
         public string GetPreamble()

@@ -463,5 +463,33 @@ namespace Game.Engine
             return myList;
         }
 
+        /// <summary>
+        /// Calculate Experience
+        /// Level up if needed
+        /// </summary>
+        /// <param name="Attacker"></param>
+        /// <param name="Target"></param>
+        public bool CalculateExperience(DungeonFighterModel Attacker, DungeonFighterModel Target)
+        {
+            if (Attacker.PlayerType == CreatureEnum.Character)
+            {
+                var experienceEarned = Target.CalculateExperienceEarned(Referee.BattleMessages.DamageAmount);
+                Referee.BattleMessages.ExperienceEarned = " Earned " + experienceEarned + " points";
+
+                var LevelUp = Attacker.AddExperience(experienceEarned);
+                if (LevelUp)
+                {
+                    Referee.BattleMessages.LevelUpMessage = Attacker.Name + " is now Level " + Attacker.Level + " With Health Max of " + Attacker.GetMaxHealthTotal;
+                    Debug.WriteLine(Referee.BattleMessages.LevelUpMessage);
+                }
+
+                // Add Experinece to the Score
+                Referee.BattleScore.ExperienceGainedTotal += experienceEarned;
+            }
+
+            return true;
+        }
+
+
     }
 }

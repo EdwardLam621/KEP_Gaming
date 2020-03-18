@@ -199,8 +199,14 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void CloseButton_Clicked(object sender, EventArgs e)
         {
-            
-            await Navigation.PushModalAsync(new MainPage());
+            bool answer = await DisplayAlert("Battle", "Are you sure you want to Quit?", "Yes", "No");
+
+			if (answer)
+			{
+                MessagingCenter.Send(this, "Create", EngineViewModel.Engine.Referee.BattleScore);
+                await Navigation.PushModalAsync(new MainPage());
+            }
+            //await Navigation.PushModalAsync(new MainPage());
         }
 
         /// <summary>
