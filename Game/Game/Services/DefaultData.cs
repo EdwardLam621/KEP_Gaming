@@ -332,7 +332,7 @@ namespace Game.Services
                 new MonsterModel
                 {
                 Name = "The Coronavirus",
-                MaxHealth = 20,
+                MaxHealth = 5,
                 Level = 1,
                 Description = "Human disaster",
                 ImageURI = "https://pngimg.com/uploads/coronavirus/coronavirus_PNG33.png",
@@ -346,7 +346,7 @@ namespace Game.Services
                 new MonsterModel
                 {
                 Name = "Needy Boyfriend",
-                MaxHealth = 100,
+                MaxHealth = 5,
                 Level = 2,
                 Description = "A demanding, and annoying boyfriend",
                 ImageURI = "https://i.ya-webdesign.com/images/poor-drawing-animated-1.png",
@@ -359,7 +359,7 @@ namespace Game.Services
                 new MonsterModel
                 {
                 Name = "Netflix Series",
-                MaxHealth = 20,
+                MaxHealth = 5,
                 Level = 4,
                 Description = "Never-ending Netflix Series",
                 ImageURI = "http://www.pngall.com/wp-content/uploads/4/Round-Netflix-Logo.png",

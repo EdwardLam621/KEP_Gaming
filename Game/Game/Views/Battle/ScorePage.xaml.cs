@@ -196,13 +196,23 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Attack Action
+        /// Exit battle
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public async void CloseButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new MainPage());
+        }
+
+        /// <summary>
+        /// ContinueNextRound
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void NextRoundButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
         }
     }
 }

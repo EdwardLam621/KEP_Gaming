@@ -280,7 +280,7 @@ namespace Game.Views
 
 				Debug.WriteLine("Game Over");
 
-				GameOver();
+				ShowScore();
 				return;
 			}
 
@@ -292,6 +292,7 @@ namespace Game.Views
 
 				// Tell Battle Engine to create new Round object, also update CurrentRound
 				SetupRound();
+				ShowScore();
 			}
 
 
@@ -354,6 +355,12 @@ namespace Game.Views
 			// run the next turns
 			DoNextTurn();
 
+			if(BattleEngine.Engine.CurrentRound.RoundResult == RoundEnum.GameOver ||
+				BattleEngine.Engine.CurrentRound.RoundResult == RoundEnum.NewRound)
+			{
+				await Navigation.PushModalAsync(new ScorePage());
+			}
+
 		}
 
 		/// <summary>
@@ -382,7 +389,7 @@ namespace Game.Views
         /// Clear the Board
         /// 
         /// </summary>
-		public async void GameOver()
+		public async void ShowScore()
 		{
 			// Save the Score to the Score View Model, by sending a message to it.
 			var Score = BattleEngine.Engine.Referee.BattleScore;
@@ -392,7 +399,7 @@ namespace Game.Views
 		}
 
 
-
+		
 
 	}
 }

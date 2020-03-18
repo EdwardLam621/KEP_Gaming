@@ -102,7 +102,11 @@
 
                 </Frame>
 
-                <Button Clicked="CloseButton_Clicked" Text="Close"/>
+                <StackLayout HorizontalOptions="Center">
+                    <Button Clicked="CloseButton_Clicked" Text="Exit"/>
+                    <Button Clicked="NextRoundButton_Clicked" Text="Next Round"/>
+                </StackLayout>
+                
 
             </StackLayout>
         </ScrollView>
