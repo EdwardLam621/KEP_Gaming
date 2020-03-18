@@ -58,7 +58,8 @@ namespace Game.Models
             OffenseAttribute = data.OffenseAttribute;
             DefenseAttribute = data.DefenseAttribute;
             Skill = data.Skill;
-            
+            ExperienceTotal = data.ExperienceTotal;
+            ExperienceRemaining = data.ExperienceRemaining;
             Equipment = data.Equipment;
             CurrentHealth = MaxHealth;
             PlayerType = data.PlayerType;
@@ -83,7 +84,8 @@ namespace Game.Models
             OffenseAttribute = character.OffenseAttribute;
             DefenseAttribute = character.DefenseAttribute;
             Skill = character.Skill;
-            
+            ExperienceTotal = character.ExperienceTotal;
+            ExperienceRemaining = character.ExperienceRemaining;
             Equipment = character.Equipment;
             CurrentHealth = MaxHealth;
             PlayerType = CreatureEnum.Character;
@@ -107,7 +109,8 @@ namespace Game.Models
             OffenseAttribute = monster.OffenseAttribute;
             DefenseAttribute = monster.DefenseAttribute;
             Skill = monster.Skill;
-
+            ExperienceTotal = monster.ExperienceTotal;
+            ExperienceRemaining = monster.ExperienceRemaining;
             DropItems = monster.DropItems;
             CurrentHealth = MaxHealth;
             PlayerType = CreatureEnum.Monster;

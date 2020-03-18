@@ -225,6 +225,9 @@ namespace Game.Engine
                         
                         Target.TakeDamage(Referee.BattleMessages.DamageAmount);
 
+                        // If it is a character apply the experience earned
+                        CalculateExperience(Attacker, Target);
+
                     }
 
                     // Update target's health for game display

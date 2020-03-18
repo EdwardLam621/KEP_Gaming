@@ -260,6 +260,10 @@ namespace Game.Engine
                 // Help identify which Monster it is
                 data.Name += " " + MonsterList.Count() + " Lv. " + data.Level;
 
+                // Set ExperienceRemaining so Monsters can both use this method
+                data.ExperienceRemaining = LevelTableHelper.Instance.LevelDetailsList[data.Level + 1].Experience;
+
+
                 MonsterList.Add(new DungeonFighterModel(data));
             }
 

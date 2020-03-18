@@ -57,6 +57,9 @@ namespace Game.Models
         //Experience remain of a character
         public int ExperienceRemaining { get; set; }
 
+        //Maximum experience of a character
+        public int ExperienceTotal { get; set; }
+
 
         #endregion PlayerAttributes
 
