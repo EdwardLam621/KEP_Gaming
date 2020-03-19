@@ -73,5 +73,40 @@ namespace UnitTests.Engine
             // Assert
             Assert.AreEqual(false, result);
         }
+
+        [Test]
+        public void TurnEngine_TakeTurn_Empty_Attacker_Should_Not_Pass()
+        {
+            // Arrange
+            Engine.Attacker = null;
+            var MonsterInfo = new MonsterModel();
+            Engine.Target = new DungeonFighterModel(MonsterInfo);
+
+            // Act
+            var result = Engine.TakeTurn();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void TurnEngine_TakeTurn_Valid_Attacker_Should_Pass()
+        {
+            // Arrange
+            var PlayerInfo = new CharacterModel();
+            Engine.Attacker = new DungeonFighterModel(PlayerInfo);
+            var MonsterInfo = new MonsterModel();
+            Engine.Target = new DungeonFighterModel(MonsterInfo);
+
+            // Act
+            var result = Engine.TakeTurn();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
     }
 }
