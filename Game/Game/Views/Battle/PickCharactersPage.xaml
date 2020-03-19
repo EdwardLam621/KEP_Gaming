@@ -79,6 +79,9 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
+                    <Label x:Name="ErrorMessage" Text="Minimum:1 Maximum:6 characters to start game!"
+                           Style="{StaticResource CenterMessageStyle}" FontSize="Medium" TextColor="#660000"/>
+
                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                         <StackLayout Orientation="Vertical">
                             <ImageButton 

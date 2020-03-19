@@ -8,6 +8,7 @@ using Game.Models;
 using Game.ViewModels;
 using System.Linq;
 
+
 namespace Game.Views
 {
     /// <summary>
@@ -96,14 +97,12 @@ namespace Game.Views
             {
                 return;
             }
+
+
             //checked character
             if (checkbox.IsChecked)
             {
-                // Don't add more than the party max
-                if (EngineViewModel.PartyCharacterList.Count() < EngineViewModel.Engine.MaxNumberPartyCharacters)
-                {
-                    EngineViewModel.PartyCharacterList.Add(ob);
-                }
+                EngineViewModel.PartyCharacterList.Add(ob);
             }
 
             //uncheck character
@@ -116,11 +115,11 @@ namespace Game.Views
                     {
                         if (EngineViewModel.PartyCharacterList[i].Name == ob.Name)
                         {
-                            EngineViewModel.PartyCharacterList[i] = null;
                             EngineViewModel.PartyCharacterList.RemoveAt(i);
                             uncheck = true;
                         }
                     }
+                   
                 }
                 
             }
@@ -219,16 +218,18 @@ namespace Game.Views
         /// </summary>
         private void ConfigureBattleButtons()
         {
-            if(EngineViewModel.PartyCharacterList.Count > MaxCharCount || 
+            if(EngineViewModel.PartyCharacterList.Count >= MaxCharCount || 
                 EngineViewModel.PartyCharacterList.Count < MinCharCount)
             {
                 BeginBattleButton.IsEnabled = false;
                 BeginAutoBattleButton.IsEnabled = false;
+                ErrorMessage.IsVisible = true;
             }
             else
             {
                 BeginBattleButton.IsEnabled = true;
                 BeginAutoBattleButton.IsEnabled = true;
+                ErrorMessage.IsVisible = false;
             }
 
         }
