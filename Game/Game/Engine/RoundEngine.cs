@@ -14,7 +14,7 @@ namespace Game.Engine
     public class RoundEngine
     {
         // Maximum number of monsters to fight
-        public const int MAX_NUM_MONSTERS = 6;
+        public int MAX_NUM_MONSTERS = 6;
 
         // Which round we are on
         public int RoundCount = 1;
