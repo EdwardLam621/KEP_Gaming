@@ -311,6 +311,7 @@ namespace Game.Views
 				// show some sort of "new round" graphic
 				Debug.WriteLine("New Round");
 
+
 				// Tell Battle Engine to create new Round object, also update CurrentRound
 				SetupRound();
 				ShowScore();
@@ -390,7 +391,10 @@ namespace Game.Views
 		{
 			BattleEngine.Engine.NewRound();
 
+
 			CurrentRound = BattleEngine.Engine.CurrentRound;
+
+			this.BattleEngine.Engine.Referee = BattleEngine.Engine.Referee;
 
 			RoundCountDisplay.Text = CurrentRound.RoundCount.ToString();
 

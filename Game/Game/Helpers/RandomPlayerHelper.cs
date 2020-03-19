@@ -239,22 +239,22 @@ namespace Game.Helpers
 
             var rnd = DiceHelper.RollDice(1, MonsterIndexViewModel.Instance.Dataset.Count);
 
-            var result = new MonsterModel(MonsterIndexViewModel.Instance.Dataset.ElementAt(rnd - 1));
+            var result = new MonsterModel(MonsterIndexViewModel.Instance.Dataset.ElementAt(rnd - 1))
             {
-                //Level = DiceHelper.RollDice(1, MaxLevel),
+                Level = DiceHelper.RollDice(1, MaxLevel),
 
-                //// Randomize Name
-                //Name = GetMonsterName(),
-                //Description = GetMonsterDescription(),
+                // Randomize Name
+                Name = GetMonsterName(),
+                Description = GetMonsterDescription(),
 
-                //// Randomize the Attributes
-                //OffenseAttribute = GetAbilityValue(),
-                //SpeedAttribute = GetAbilityValue(),
-                //DefenseAttribute = GetAbilityValue(),
+                // Randomize the Attributes
+                OffenseAttribute = GetAbilityValue(),
+                SpeedAttribute = GetAbilityValue(),
+                DefenseAttribute = GetAbilityValue(),
 
-                //ImageURI = GetMonsterImage(),
+                ImageURI = GetMonsterImage(),
 
-                //Difficulty = GetMonsterDifficultyValue()
+                Difficulty = GetMonsterDifficultyValue()
             };
 
             // Adjust values based on Difficulty
@@ -262,6 +262,12 @@ namespace Game.Helpers
             result.DefenseAttribute = result.Difficulty.ToModifier(result.DefenseAttribute);
             result.SpeedAttribute = result.Difficulty.ToModifier(result.SpeedAttribute);
             result.Level = result.Difficulty.ToModifier(result.Level);
+
+            //prevent Level overflow
+            if(result.Level > MaxLevel)
+            {
+                result.Level = MaxLevel;
+            }
 
             // Get the new Max Health
             result.MaxHealth = DiceHelper.RollDice(result.Level, 10);
@@ -274,7 +280,11 @@ namespace Game.Helpers
             }
 
             // Level up to the new level
-            result.LevelUpToValue(result.Level);
+            if(result.Level < MaxLevel)
+            {
+                result.LevelUpToValue(result.Level);
+            }
+            
 
             // Set ExperienceRemaining so Monsters can both use this method
             result.ExperienceRemaining = LevelTableHelper.Instance.LevelDetailsList[result.Level + 1].Experience;

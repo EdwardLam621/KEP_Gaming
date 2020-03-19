@@ -250,12 +250,13 @@ namespace Game.Engine
             if (Referee.Characters.Count() > 0)
             {
                 // Get the Min Character Level (linq is soo cool....)
-                TargetLevel = Convert.ToInt32(Referee.Characters.Min(m => m.Level));
+                TargetLevel = Convert.ToInt32(Referee.Characters.Max(m => m.Level));
             }
 
             for (var i = 0; i < MAX_NUM_MONSTERS; i++)
             {
-                var data = Helpers.RandomPlayerHelper.GetRandomMonster(TargetLevel - 1 + rand.Next(1, 3));
+                var data = Helpers.RandomPlayerHelper.GetRandomMonster(TargetLevel - 1 + rand.Next(0, 3));
+
 
                 // Help identify which Monster it is
                 data.Name += " " + MonsterList.Count() + " Lv. " + data.Level;
@@ -267,31 +268,7 @@ namespace Game.Engine
                 MonsterList.Add(new DungeonFighterModel(data));
             }
 
-            // FOR DEBUG
-
-            //for (var i = 0; i < MAX_NUM_MONSTERS; i++)
-            //{
-
-            //    var monster = new DungeonFighterModel(new MonsterModel
-            //    {
-            //        Name = "The Coronavirus",
-            //        MaxHealth = 1,
-            //        CurrentHealth = 1,
-            //        Level = 1,
-            //        Description = "Human disaster",
-            //        ImageURI = "https://pngimg.com/uploads/coronavirus/coronavirus_PNG33.png",
-            //        DefenseAttribute = 1,
-            //        OffenseAttribute = 1,
-            //        SpeedAttribute = 1,
-            //        Skill = CreatureSkillEnum.None,
-            //        DropItems = new List<ItemModel>(),
-            //    });
-
-            //    monster.Name += " " + (i + 1);
-
-            //    MonsterList.Add(monster);
-            //}
-
+            
         }
 
 
