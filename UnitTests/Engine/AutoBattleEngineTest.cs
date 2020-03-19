@@ -72,6 +72,8 @@ namespace UnitTests.Engine
             characterList.Add(new CharacterModel(data));
             characterList.Add(new CharacterModel(data));
 
+            Engine.Referee.SetParty(characterList);
+
 
             //Act
             var result = Engine.startBattle();
@@ -83,4 +85,6 @@ namespace UnitTests.Engine
             Assert.AreEqual(true, result);
         }
     }
+
+    
 }
