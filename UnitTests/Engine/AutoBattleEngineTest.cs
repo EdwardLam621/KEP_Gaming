@@ -38,5 +38,19 @@ namespace UnitTests.Engine
             // Assert
             Assert.IsNotNull(result);
         }
+
+        [Test]
+        public void AutoBattleEngine_ScoreTotal_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine.Referee.BattleScore.ScoreTotal;
+
+            // Reset
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
     }
 }
