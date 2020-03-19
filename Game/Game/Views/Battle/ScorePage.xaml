@@ -75,6 +75,9 @@
                                    Style="{StaticResource ValueStyle}"/>
                         </StackLayout>
 
+                        <Label x:Name="MonsterBoxDisplayMessage"
+                           Style="{StaticResource HeaderStyle}"
+                           HorizontalOptions="StartAndExpand"/>
                         
                         <FlexLayout x:Name="MonsterListFrame"
                                             JustifyContent="Start"

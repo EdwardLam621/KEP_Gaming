@@ -94,7 +94,7 @@
                 x:Key="ValueStyleSmall"
                 BasedOn="{StaticResource LabelStyle}">
                 <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}"/>
-                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontSize" Value="Micro"/>
             </Style>
 
             <Style TargetType="Label"
