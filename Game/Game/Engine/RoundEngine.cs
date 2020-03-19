@@ -250,7 +250,7 @@ namespace Game.Engine
             if (Referee.Characters.Count() > 0)
             {
                 // Get the Min Character Level (linq is soo cool....)
-                TargetLevel = Convert.ToInt32(Referee.Characters.Max(m => m.Level));
+                TargetLevel = Convert.ToInt32(Referee.Characters.Min(m => m.Level));
             }
 
             for (var i = 0; i < MAX_NUM_MONSTERS; i++)

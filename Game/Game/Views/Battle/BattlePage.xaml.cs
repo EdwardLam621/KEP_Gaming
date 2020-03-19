@@ -219,6 +219,8 @@ namespace Game.Views
 			}
 
 
+
+
 			// Draw Characters
 			for (int i = 0; i < BattleEngine.Engine.Referee.Characters.Count; i++)
 			{
@@ -393,8 +395,6 @@ namespace Game.Views
 
 
 			CurrentRound = BattleEngine.Engine.CurrentRound;
-
-			this.BattleEngine.Engine.Referee = BattleEngine.Engine.Referee;
 
 			RoundCountDisplay.Text = CurrentRound.RoundCount.ToString();
 
