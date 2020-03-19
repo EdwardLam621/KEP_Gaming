@@ -44,6 +44,8 @@ namespace Game.Views
 
 		public List<DungeonFighterModel> PartyMembers;
 
+		public List<View> BattleGridDefault = new List<View>();
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -59,10 +61,13 @@ namespace Game.Views
 			// Keep reference to character list for drawing purposes
 			PartyMembers = BattleEngine.Engine.Referee.Characters;
 
+			
 
 			SetupRound();
 
 			DoNextTurn();
+
+			
 		}
 
 		
@@ -188,6 +193,14 @@ namespace Game.Views
 			// Clear the display
 			//BattleGrid.Children.Clear();
 
+			if(BattleGridDefault.Count == 0)
+			{
+				foreach(var data in BattleGrid.Children)
+				{
+					BattleGridDefault.Add(data);
+				}
+			}
+
 			// Load the Characters into the Engine
 			foreach (var data in BattleEngine.Engine.Referee.Characters)
 			{
@@ -197,6 +210,14 @@ namespace Game.Views
 				}
 				
 			}
+
+			//Reset BattleGrid elements
+			BattleGrid.Children.Clear();
+			foreach(var data in BattleGridDefault)
+			{
+				BattleGrid.Children.Add(data);
+			}
+
 
 			// Draw Characters
 			for (int i = 0; i < BattleEngine.Engine.Referee.Characters.Count; i++)
