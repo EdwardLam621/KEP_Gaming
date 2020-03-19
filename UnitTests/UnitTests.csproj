@@ -20,4 +20,7 @@
     <ProjectReference Include="..\Game\Game\Game.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Engine\HackathonScenariosTests.cs" />
+  </ItemGroup>
 </Project>

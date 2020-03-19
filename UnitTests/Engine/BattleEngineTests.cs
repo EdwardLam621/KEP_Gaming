@@ -64,10 +64,10 @@ namespace UnitTests.Engine
             characterList.Add(new CharacterModel());
             
             // Act
-            var result = Engine.SetParty(characterList);
+            var result = Engine.Referee.SetParty(characterList);
 
             // Reset
-
+            
             // Assert
             Assert.AreEqual(true, result);
         }
