@@ -244,15 +244,15 @@ namespace Game.Helpers
                 Level = DiceHelper.RollDice(1, MaxLevel),
 
                 // Randomize Name
-                Name = GetMonsterName(),
-                Description = GetMonsterDescription(),
+                //Name = GetMonsterName(),
+                //Description = GetMonsterDescription(),
 
                 // Randomize the Attributes
                 OffenseAttribute = GetAbilityValue(),
                 SpeedAttribute = GetAbilityValue(),
                 DefenseAttribute = GetAbilityValue(),
 
-                ImageURI = GetMonsterImage(),
+                //ImageURI = GetMonsterImage(),
 
                 Difficulty = GetMonsterDifficultyValue()
             };
