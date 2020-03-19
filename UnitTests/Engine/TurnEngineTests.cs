@@ -14,11 +14,14 @@ namespace UnitTests.Engine
     public class TurnEngineTests
     {
         TurnEngine Engine;
+        RefereeModel MyReferee;
 
         [SetUp]
         public void Setup()
         {
             Engine = new TurnEngine();
+            MyReferee = new RefereeModel();
+            Engine.Referee = MyReferee;
         }
 
         [TearDown]
@@ -108,5 +111,26 @@ namespace UnitTests.Engine
             // Assert
             Assert.AreEqual(true, result);
         }
+
+
+        [Test]
+        public void TurnEngine_RemoveIfDead_Dead_Character_Should_Pass()
+        {
+            // Arrange
+            var PlayerInfo = new CharacterModel();
+            Engine.Target = new DungeonFighterModel(PlayerInfo);
+            Engine.Referee.Characters.Add(new DungeonFighterModel(PlayerInfo));
+
+            // Act
+            Engine.Target.CurrentHealth = -1;
+            var result = Engine.RemoveIfDead(Engine.Target);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+
     }
 }

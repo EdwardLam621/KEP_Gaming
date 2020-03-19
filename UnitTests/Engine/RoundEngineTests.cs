@@ -46,73 +46,36 @@ namespace UnitTests.Engine
 
         }
 
-        //[Test]
-        //public void RoundEngine_EndRound_Should_Pass()
-        //{
-        //    // Arrange
+        [Test]
+        public void RoundEngine_EndRound_Should_Pass()
+        {
+            // Arrange
 
-        //    // Act
-        //    var engine = Engine;
-        //    bool result = engine.EndRound();
+            // Act
+            var engine = Engine;
+            bool result = engine.EndRound();
 
-        //    // Reset
+            // Reset
 
-        //    // Assert
-        //    Assert.AreEqual(engine.MonsterList.Count, 0);
-        //    Assert.AreEqual(engine.FighterList.Count, 0);
-        //    Assert.AreEqual(result, true);
-        //}
+            // Assert
+            Assert.AreEqual(engine.Referee.Monsters.Count(), 0);
+            Assert.AreEqual(engine.Referee.ItemPool.Count(), 0);
+            Assert.AreEqual(result, true);
+        }
 
-
-
-        //[Test]
-        //public void RoundEngine_RoundNextTurn_Should_Return_NewRound()
-        //{
-        //    Arrange
-
-        //    Act
-        //    var engine = Engine;
-        //    engine.Referee.Characters.Add(new DungeonFighterModel());
-        //    RoundEnum result = engine.TakeAutoTurn();
-
-        //    // Reset
-
-        //    // Assert
-        //    Assert.AreEqual(result, RoundEnum.NewRound);
-        //}
-
-        //[Test]
-        //public void RoundEngine_RoundNextTurn_Should_Return_NextTurn()
-        //{
-        //    // Arrange
-
-        //    // Act
-        //    var engine = Engine;
-        //    engine.Referee.Characters.Add(new DungeonFighterModel());
-        //    engine.MonsterList.Add(new DungeonFighterModel());
-        //    engine.FighterList.Add(new DungeonFighterModel());
-        //    RoundEnum result = engine.TakeAutoTurn();
-
-        //    // Reset
-
-        //    // Assert
-        //    Assert.AreEqual(result, RoundEnum.NextTurn);
-        //}
 
         [Test]
-        public void RoundEngine_OrderFight_Sort_By_Level_Should_Pass()
+        public void RoundEngine_OrderFighters_Character_Must_Go_First()
         {
             // Arrange
 
             // Act
             var engine = Engine;
             DungeonFighterModel player1 = new DungeonFighterModel();
-            player1.SpeedAttribute = 10;
             DungeonFighterModel player2 = new DungeonFighterModel();
-            player2.SpeedAttribute = 5;
-            engine.FighterList.Add(player2);
-            engine.FighterList.Add(player1);
-            engine.OrderFight();
+            engine.Referee.Characters.Add(player1);
+            engine.MonsterList.Add(player2);
+            engine.OrderFighters();
 
             // Reset
 
