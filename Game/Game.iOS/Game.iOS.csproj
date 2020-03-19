@@ -280,4 +280,25 @@
   <ItemGroup>
     <BundleResource Include="Resources\item_super_pencil.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character_daydreaming.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character_Delinquent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character_slacker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character_straight_A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character_teachers_pet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character_unknown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character_wiki_expert.png" />
+  </ItemGroup>
 </Project>

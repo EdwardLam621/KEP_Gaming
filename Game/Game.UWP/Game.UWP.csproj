@@ -117,6 +117,13 @@
     <Content Include="battleboard.jpg" />
     <Content Include="battle_start_button.png" />
     <Content Include="cauldren.png" />
+    <Content Include="character_daydreaming.png" />
+    <Content Include="character_Delinquent.png" />
+    <Content Include="character_slacker.png" />
+    <Content Include="character_straight_A.png" />
+    <Content Include="character_teachers_pet.png" />
+    <Content Include="character_unknown.png" />
+    <Content Include="character_wiki_expert.png" />
     <Content Include="classroom.png" />
     <Content Include="d12.png" />
     <Content Include="demo_char.png" />

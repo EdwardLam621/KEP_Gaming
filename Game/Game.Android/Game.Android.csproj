@@ -209,6 +209,13 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\attack.png" />
+    <AndroidResource Include="Resources\drawable\character_teachers_pet.png" />
+    <AndroidResource Include="Resources\drawable\character_unknown.png" />
+    <AndroidResource Include="Resources\drawable\character_wiki_expert.png" />
+    <AndroidResource Include="Resources\drawable\character_daydreaming.png" />
+    <AndroidResource Include="Resources\drawable\character_Delinquent.png" />
+    <AndroidResource Include="Resources\drawable\character_slacker.png" />
+    <AndroidResource Include="Resources\drawable\character_straight_A.png" />
     <Content Include="Resources\drawable\demo_char.png" />
     <AndroidResource Include="Resources\drawable\move.png" />
     <AndroidResource Include="Resources\drawable\skills.png" />
