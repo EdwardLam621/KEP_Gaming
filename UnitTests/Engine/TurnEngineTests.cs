@@ -53,6 +53,22 @@ namespace UnitTests.Engine
 
             // Reset
 
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void TurnEngine_Attack_InValid_Empty_Character_List_Should_Fail()
+        {
+            // Arrange
+
+            // Cause an error by making the list empty
+            Engine.Attacker = null;
+
+            // Act
+            var result = Engine.Attack(Engine.Attacker);
+
+            // Reset
 
             // Assert
             Assert.AreEqual(false, result);
