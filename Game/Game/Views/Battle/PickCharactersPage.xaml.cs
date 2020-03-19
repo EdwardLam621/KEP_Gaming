@@ -33,6 +33,7 @@ namespace Game.Views
         //maximum and minimum character for play
         private const int MinCharCount = 1;
         private const int MaxCharCount = 6;
+        private int currentCount = 0;
 
         // Empty Constructor for UTs
         public PickCharactersPage(bool UnitTest) { }
@@ -103,6 +104,7 @@ namespace Game.Views
             if (checkbox.IsChecked)
             {
                 EngineViewModel.PartyCharacterList.Add(ob);
+                currentCount++;
             }
 
             //uncheck character
@@ -116,6 +118,7 @@ namespace Game.Views
                         if (EngineViewModel.PartyCharacterList[i].Name == ob.Name)
                         {
                             EngineViewModel.PartyCharacterList.RemoveAt(i);
+                            currentCount--;
                             uncheck = true;
                         }
                     }
@@ -218,8 +221,8 @@ namespace Game.Views
         /// </summary>
         private void ConfigureBattleButtons()
         {
-            if(EngineViewModel.PartyCharacterList.Count >= MaxCharCount || 
-                EngineViewModel.PartyCharacterList.Count < MinCharCount)
+            if(currentCount > MaxCharCount || 
+                currentCount < MinCharCount)
             {
                 BeginBattleButton.IsEnabled = false;
                 BeginAutoBattleButton.IsEnabled = false;

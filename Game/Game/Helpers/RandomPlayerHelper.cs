@@ -264,7 +264,7 @@ namespace Game.Helpers
             result.Level = result.Difficulty.ToModifier(result.Level);
 
             // Level up to the new level
-            if (result.Level > MaxLevel)
+            if (result.Level >= MaxLevel)
             {
                 result.Level = MaxLevel;
             }
@@ -287,7 +287,7 @@ namespace Game.Helpers
             
 
             // Set ExperienceRemaining so Monsters can both use this method
-            result.ExperienceRemaining = LevelTableHelper.Instance.LevelDetailsList[result.Level + 1].Experience;
+            result.ExperienceRemaining = LevelTableHelper.Instance.LevelDetailsList[result.Level].Experience;
 
             // Enter Battle at full health
             result.CurrentHealth = result.MaxHealth;
