@@ -18,7 +18,7 @@ namespace Game.Services
                 new ItemModel {
                     Name = "Doctor Letter",
                     Description = "a file used to write a note on a given patient to prove that they were indeed sick",
-                    ImageURI = "https://iconbug.com/data/6b/512/27307b4de000a17aac101e8bbbb48a6d.png",
+                    ImageURI = "item_doctor_letter.png",
                     Range = 1,
                     Damage = 5,
                     Value = 9,
@@ -28,7 +28,7 @@ namespace Game.Services
                 new ItemModel {
                     Name = "Doctor Prescription",
                     Description = "More convincing than Doctor Letter",
-                    ImageURI = "http://clipart-library.com/img/1244579.png",
+                    ImageURI = "item_doctor_prescription.png",
                     Range = 1,
                     Damage = 9,
                     Value = 9,
@@ -38,7 +38,7 @@ namespace Game.Services
                 new ItemModel {
                     Name = "Calculator",
                     Description = "something used for making mathematical calculations",
-                    ImageURI = "https://cdn0.iconfinder.com/data/icons/education-isometric-1/512/sim2134-512.png",
+                    ImageURI = "item_calculator.png",
                     Range = 0,
                     Damage = 0,
                     Value = 9,
@@ -47,7 +47,7 @@ namespace Game.Services
 
                  new ItemModel {
                     Name = "Rain Coat",
-                    Description = "Stay dry from raining in seattle",
+                    Description = "item_rain_coat.png",
                     ImageURI = "https://i.pinimg.com/originals/e8/14/71/e8147125c3fd38997fbd76f93aff0b2e.png",
                     Range = 0,
                     Damage = 0,
@@ -59,7 +59,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Seahawks Cap",
                     Description = "Go Hawks!!",
-                    ImageURI = "https://cdn.vox-cdn.com/thumbor/4882fHJ4x3jAK7DTAqhTuaqIpuc=/0x5:800x538/1200x800/filters:focal(0x5:800x538)/cdn.vox-cdn.com/assets/1204834/NFL_ONFIELD_12_59FIFTY_WING_SEASEA_3Q_0040.png",
+                    ImageURI = "item_seahawks_cap.png",
                     Range = 0,
                     Damage = 0,
                     Value = 3,
@@ -70,7 +70,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Pandora",
                     Description = "$$$$$",
-                    ImageURI = "https://images.vexels.com/media/users/3/141116/isolated/preview/4c5328f93195f96dae8912280be9bc1f-ring-cartoon-by-vexels.png",
+                    ImageURI = "item_pandora.png",
                     Range = 0,
                     Damage = 0,
                     Value = 1,
@@ -81,7 +81,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Just a ring",
                     Description = "5 dollars from Amazon",
-                    ImageURI = "https://pngimage.net/wp-content/uploads/2018/06/ring-cartoon-png-.png",
+                    ImageURI = "item_just_a_ring.png",
                     Range = 0,
                     Damage = 0,
                     Value = 1,
@@ -93,7 +93,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Nike!",
                     Description = "Impossible is nothing",
-                    ImageURI = "https://clipartart.com/images/baseball-shoes-clipart-13.png",
+                    ImageURI = "item_nike.png",
                     Range = 0,
                     Damage = 0,
                     Value = 1,
@@ -104,7 +104,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Super Pencil",
                     Description = "Easy to write and clean",
-                    ImageURI = "https://i.pinimg.com/originals/9b/e5/fb/9be5fb721401e89db678fd934833a35a.png",
+                    ImageURI = "item_super_pencil.png",
                     Range = 3,
                     Damage = 3,
                     Value = 5,
@@ -115,7 +115,7 @@ namespace Game.Services
                   new ItemModel {
                     Name = "Optical Glasses",
                     Description = "Everyone can be Hawkeye now!",
-                    ImageURI = "https://lh3.googleusercontent.com/proxy/gCbJ6VbiERpDmCf8q45dWhd_yeTo0v_EeR8Tus1XJ9y4lPVjRWZKPu2IksHM2VVqlfSdehlIIn5swHzbp6cvhAgRT4BX6pSFESeQYQ",
+                    ImageURI = "item_optical_glasses.png",
                     Range = 0,
                     Damage = 0,
                     Value = 7,
@@ -126,7 +126,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Laptop",
                     Description = "Take note faster, read faster, work faster!",
-                    ImageURI = "https://lh3.googleusercontent.com/proxy/UzwB2kbG93nLPTxevLj6wJNjoIqhK1aKFNS8Vpd4QP-lJXs8kcpSyKikOA-DA24yfgH3_9A16QPzx_QKa55Yz6E",
+                    ImageURI = "item_laptop.png",
                     Range = 2,
                     Damage = 8,
                     Value = 8,
@@ -137,7 +137,7 @@ namespace Game.Services
                  new ItemModel {
                     Name = "Leather Shoes",
                     Description = "Extra (impression) credit!",
-                    ImageURI = "https://cdn.clipart.email/547e692ba33b7151dda27263b33d3212_black-elegant-men-shoes-png-clipart-best-web-clipart_2500-1292.png",
+                    ImageURI = "item_leather_shoes.png",
                     Range = 0,
                     Damage = 0,
                     Value = 7,

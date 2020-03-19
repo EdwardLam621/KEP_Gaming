@@ -244,4 +244,40 @@
   <ItemGroup>
     <BundleResource Include="Resources\skills.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_laptop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_calculator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_doctor_letter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_doctor_prescription.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_just_a_ring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_leather_shoes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_nike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_optical_glasses.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_pandora.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_rain_coat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_seahawks_cap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_super_pencil.png" />
+  </ItemGroup>
 </Project>

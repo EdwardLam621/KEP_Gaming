@@ -263,8 +263,8 @@ namespace Game.Helpers
             result.SpeedAttribute = result.Difficulty.ToModifier(result.SpeedAttribute);
             result.Level = result.Difficulty.ToModifier(result.Level);
 
-            //prevent Level overflow
-            if(result.Level > MaxLevel)
+            // Level up to the new level
+            if (result.Level > MaxLevel)
             {
                 result.Level = MaxLevel;
             }
@@ -279,10 +279,10 @@ namespace Game.Helpers
                 result.MaxHealth = MaxHealthAdjusted;
             }
 
-            // Level up to the new level
-            if(result.Level < MaxLevel)
+            //prevent Level overflow
+            if (result.Level <= MaxLevel)
             {
-                result.LevelUpToValue(result.Level);
+                result.LevelUpToValue(MaxLevel);
             }
             
 

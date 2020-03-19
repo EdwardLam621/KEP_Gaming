@@ -212,6 +212,18 @@
     <Content Include="Resources\drawable\demo_char.png" />
     <AndroidResource Include="Resources\drawable\move.png" />
     <AndroidResource Include="Resources\drawable\skills.png" />
+    <AndroidResource Include="Resources\drawable\item_laptop.png" />
+    <AndroidResource Include="Resources\drawable\item_calculator.png" />
+    <AndroidResource Include="Resources\drawable\item_doctor_letter.png" />
+    <AndroidResource Include="Resources\drawable\item_doctor_prescription.png" />
+    <AndroidResource Include="Resources\drawable\item_just_a_ring.png" />
+    <AndroidResource Include="Resources\drawable\item_leather_shoes.png" />
+    <AndroidResource Include="Resources\drawable\item_nike.png" />
+    <AndroidResource Include="Resources\drawable\item_optical_glasses.png" />
+    <AndroidResource Include="Resources\drawable\item_pandora.png" />
+    <AndroidResource Include="Resources\drawable\item_rain_coat.png" />
+    <AndroidResource Include="Resources\drawable\item_seahawks_cap.png" />
+    <AndroidResource Include="Resources\drawable\item_super_pencil.png" />
     <Content Include="Resources\drawable\small-button-clip-art-clkerm-vector-clip-art-37.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
