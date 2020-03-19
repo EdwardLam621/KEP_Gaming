@@ -29,6 +29,10 @@ namespace Game.Views
         // This uses the Instance so it can be shared with other Battle Pages as needed
         public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
+        //maximum and minimum character for play
+        private const int MinCharCount = 1;
+        private const int MaxCharCount = 6;
+
         // Empty Constructor for UTs
         public PickCharactersPage(bool UnitTest) { }
 
@@ -43,10 +47,13 @@ namespace Game.Views
 
             BindingContext = EngineViewModel;
 
-
             // Clear the Database List and the Party List to start
             EngineViewModel.PartyCharacterList.Clear();
-   
+
+            //preset false
+            ConfigureBattleButtons();
+
+
         }
 
         /// <summary>
@@ -117,6 +124,9 @@ namespace Game.Views
                 }
                 
             }
+            ConfigureBattleButtons();
+
+
         }
 
         /// <summary>
@@ -203,6 +213,24 @@ namespace Game.Views
 
         }
 
-       
+
+        /// <summary>
+        /// Enable/Disable BattleStartButton if characters less than minimum or over maximum
+        /// </summary>
+        private void ConfigureBattleButtons()
+        {
+            if(EngineViewModel.PartyCharacterList.Count > MaxCharCount || 
+                EngineViewModel.PartyCharacterList.Count < MinCharCount)
+            {
+                BeginBattleButton.IsEnabled = false;
+                BeginAutoBattleButton.IsEnabled = false;
+            }
+            else
+            {
+                BeginBattleButton.IsEnabled = true;
+                BeginAutoBattleButton.IsEnabled = true;
+            }
+
+        }
     }
 }
