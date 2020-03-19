@@ -7,6 +7,7 @@ using System.Threading;
 using Game.Helpers;
 using Game.Models;
 using Game.Models.Enum;
+using Game.ViewModels;
 
 namespace Game.Engine
 {
@@ -42,8 +43,9 @@ namespace Game.Engine
         //percentage of monster to enter enraged mode
         public static int enragedChance = 20;
 
+        //Generate random number
+        Random rnd;
 
-        
 
 
         /// <summary>
@@ -51,7 +53,7 @@ namespace Game.Engine
         /// </summary>
         public TurnEngine()
         {
-
+            
         }
 
         /// <summary>
@@ -65,6 +67,7 @@ namespace Game.Engine
             DungeonFighterModel target, 
             TurnChoiceEnum choice)
         {
+            rnd = new Random();
             Referee = referee;
             Attacker = attacker;
             Target = target;
@@ -386,7 +389,7 @@ namespace Game.Engine
 
             // I feel generous, even when characters die, random drops happen :-)
             // If Random drops are enabled, then add some....
-            myItemList.AddRange(GetRandomMonsterItemDrops(Referee.BattleScore.RoundCount));
+            myItemList.AddRange(GetRandomMonsterItemDrops());
 
             // Add to ScoreModel
             foreach (var ItemModel in myItemList)
@@ -462,17 +465,17 @@ namespace Game.Engine
         /// </summary>
         /// <param name="round"></param>
         /// <returns></returns>
-        public List<ItemModel> GetRandomMonsterItemDrops(int round)
+        public List<ItemModel> GetRandomMonsterItemDrops()
         {
-            // You decide how to drop monster items, level, etc.
-
-            var NumberToDrop = DiceHelper.RollDice(1, round);
+            //pick 1 to 3 items every monster dies
+            var NumberToDrop = DiceHelper.RollDice(1, rnd.Next(1,4));
 
             var myList = new List<ItemModel>();
 
             for (var i = 0; i < NumberToDrop; i++)
             {
-                myList.Add(new ItemModel());
+                var data = ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetMonsterUniqueItem());
+                myList.Add(data);
             }
             return myList;
         }
