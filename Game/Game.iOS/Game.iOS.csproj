@@ -301,4 +301,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\character_wiki_expert.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster_coronavirus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster_needy_boyfriend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster_netflix.png" />
+  </ItemGroup>
 </Project>

@@ -231,6 +231,9 @@
     <AndroidResource Include="Resources\drawable\item_rain_coat.png" />
     <AndroidResource Include="Resources\drawable\item_seahawks_cap.png" />
     <AndroidResource Include="Resources\drawable\item_super_pencil.png" />
+    <AndroidResource Include="Resources\drawable\monster_coronavirus.png" />
+    <AndroidResource Include="Resources\drawable\monster_needy_boyfriend.png" />
+    <AndroidResource Include="Resources\drawable\monster_netflix.png" />
     <Content Include="Resources\drawable\small-button-clip-art-clkerm-vector-clip-art-37.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
