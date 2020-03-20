@@ -58,6 +58,23 @@ namespace Game.Views
             {
                 ItemListFrame.Children.Add(CreateItemDisplayBox(data));
             }
+
+            // Draw the Dead Characters
+            foreach (var data in EngineViewModel.Engine.Referee.BattleScore.CharacterModelDeathList)
+            {
+                DeadCharacterListFrame.Children.Add(CreateCharacterDisplayBox(data));
+            }
+
+            foreach (var data in EngineViewModel.Engine.Referee.Characters)
+            {
+                AliveCharacterListFrame.Children.Add(CreateCharacterDisplayBox(data));
+            }
+
+            if(EngineViewModel.Engine.Referee.BattleScore.CharacterModelDeathList.Count > 0)
+            {
+                DeadCharacterListFrame.IsVisible = true;
+                DeadCharacterLabel.IsVisible = true;
+            }
         }
 
         /// <summary>
@@ -80,9 +97,22 @@ namespace Game.Views
             };
 
             // Add the Level
-            var PlayerLevelLabel = new Label
+            var PlayerLevelLabel_1 = new Label
             {
                 Text = "Lv: " + data.Level,
+                Style = (Style)Application.Current.Resources["ValueStyleSmall"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Padding = 0,
+                LineBreakMode = LineBreakMode.TailTruncation,
+                CharacterSpacing = 1,
+                LineHeight = 1,
+                MaxLines = 1,
+            };
+
+            var PlayerLevelLabel_2 = new Label
+            {
+                Text = "HP: " + data.CurrentHealth + "/" + data.MaxHealth,
                 Style = (Style)Application.Current.Resources["ValueStyleSmall"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -102,7 +132,8 @@ namespace Game.Views
                 Spacing = 0,
                 Children = {
                     PlayerImage,
-                    PlayerLevelLabel,
+                    PlayerLevelLabel_1,
+                    PlayerLevelLabel_2
                 },
             };
 

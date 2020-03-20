@@ -37,6 +37,25 @@
                             Style="{StaticResource HeaderStyle}"/>
                         </StackLayout>
 
+                        <Label Text="Alive Characters:" Style="{StaticResource HeaderStyle}" HorizontalOptions="Start"/>
+
+                        <FlexLayout x:Name="AliveCharacterListFrame"
+                                    JustifyContent="Start"
+                                    AlignContent="Start"
+                                    Wrap="Wrap"/>
+
+
+                        <Label x:Name="DeadCharacterLabel"
+                               IsVisible="False"
+                            Text="Dead Characters:" Style="{StaticResource HeaderStyle}" HorizontalOptions="Start"/>
+                        
+                        <FlexLayout x:Name="DeadCharacterListFrame"
+                                    JustifyContent="Start"
+                                    AlignContent="Start"
+                                    Wrap="Wrap"
+                                    IsVisible="False"/>
+
+
                         <Label
                             Text="Items:"
                             Style="{StaticResource HeaderStyle}"
