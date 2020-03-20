@@ -79,7 +79,7 @@ namespace Game.Engine
         }
 
         /// <summary>
-        /// 
+        /// Process attack from BattlePage
         /// </summary>
         public void AttackClicked()
         {
@@ -95,16 +95,6 @@ namespace Game.Engine
         
         }
 
-
-        public void MonsterNextTurn()
-        {
-            // Select turn choice using same method as autobattle
-            var choice = TurnChoice();
-
-            // Do the turn
-            TakeTurn(choice);
-
-        }
 
         /// <summary>
         /// Start a new autobattle round and returns round result to BattleEngine
@@ -270,8 +260,6 @@ namespace Game.Engine
 
             
         }
-
-
 
         /// <summary>
         /// At the end of the round
