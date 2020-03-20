@@ -113,23 +113,23 @@ namespace UnitTests.Engine
         }
 
 
-        [Test]
-        public void TurnEngine_RemoveIfDead_Dead_Character_Should_Pass()
-        {
-            // Arrange
-            var PlayerInfo = new CharacterModel();
-            Engine.Target = new DungeonFighterModel(PlayerInfo);
-            Engine.Referee.Characters.Add(new DungeonFighterModel(PlayerInfo));
+        //[Test]
+        //public void TurnEngine_RemoveIfDead_Dead_Character_Should_Pass()
+        //{
+        //    // Arrange
+        //    var PlayerInfo = new CharacterModel();
+        //    Engine.Target = new DungeonFighterModel(PlayerInfo);
+        //    Engine.Referee.Characters.Add(new DungeonFighterModel(PlayerInfo));
 
-            // Act
-            Engine.Target.CurrentHealth = -1;
-            var result = Engine.RemoveIfDead(Engine.Target);
+        //    // Act
+        //    Engine.Target.CurrentHealth = -1;
+        //    var result = Engine.RemoveIfDead(Engine.Target);
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.AreEqual(true, result);
-        }
+        //    // Assert
+        //    Assert.AreEqual(true, result);
+        //}
 
 
     }

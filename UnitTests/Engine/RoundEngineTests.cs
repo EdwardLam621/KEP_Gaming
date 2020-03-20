@@ -64,45 +64,45 @@ namespace UnitTests.Engine
         }
 
 
-        [Test]
-        public void RoundEngine_OrderFighters_Character_Must_Go_First()
-        {
-            // Arrange
+        //[Test]
+        //public void RoundEngine_OrderFighters_Character_Must_Go_First()
+        //{
+        //    // Arrange
 
-            // Act
-            var engine = Engine;
-            DungeonFighterModel player1 = new DungeonFighterModel();
-            DungeonFighterModel player2 = new DungeonFighterModel();
-            engine.Referee.Characters.Add(player1);
-            engine.MonsterList.Add(player2);
-            engine.OrderFighters();
+        //    // Act
+        //    var engine = Engine;
+        //    DungeonFighterModel player1 = new DungeonFighterModel();
+        //    DungeonFighterModel player2 = new DungeonFighterModel();
+        //    engine.Referee.Characters.Add(player1);
+        //    engine.MonsterList.Add(player2);
+        //    engine.OrderFighters();
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.AreEqual(engine.FighterList[0], player1);
-            Assert.AreEqual(engine.FighterList[1], player2);
-        }
+        //    // Assert
+        //    Assert.AreEqual(engine.FighterList[0], player1);
+        //    Assert.AreEqual(engine.FighterList[1], player2);
+        //}
 
-        [Test]
-        public void RoundEngine_RemoveDeadPlayerFromList_Should_Remove_Dead_Players()
-        {
-            // Arrange
-            DungeonFighterModel player1 = new DungeonFighterModel();
-            DungeonFighterModel player2 = new DungeonFighterModel();
-            player1.CurrentHealth = -1;
-            Engine.FighterList.Add(player1);
-            Engine.FighterList.Add(player2);
+        //[Test]
+        //public void RoundEngine_RemoveDeadPlayerFromList_Should_Remove_Dead_Players()
+        //{
+        //    // Arrange
+        //    DungeonFighterModel player1 = new DungeonFighterModel();
+        //    DungeonFighterModel player2 = new DungeonFighterModel();
+        //    player1.CurrentHealth = -1;
+        //    Engine.FighterList.Add(player1);
+        //    Engine.FighterList.Add(player2);
 
-            // Act
-            List<DungeonFighterModel> result = Engine.RemoveDeadPlayersFromList();
+        //    // Act
+        //    List<DungeonFighterModel> result = Engine.RemoveDeadPlayersFromList();
 
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.AreEqual(player2, Engine.FighterList.ElementAt(0));
-        }
+        //    // Assert
+        //    Assert.AreEqual(player2, Engine.FighterList.ElementAt(0));
+        //}
     }
 
 }
