@@ -32,8 +32,10 @@ namespace Game.Models
         // Whether resurrections are enabled
         public bool ResurrectionsEnabled { get; set; } = false;
 
+        // Keep track of whether a character has been resurrected
         public Dictionary<DungeonFighterModel, int> UsedResurrection = new Dictionary<DungeonFighterModel, int>();
 
+        // Keep track of which characters died during battle
         public List<DungeonFighterModel> DeadCharacters = new List<DungeonFighterModel>();
 
         /// <summary>
@@ -53,6 +55,11 @@ namespace Game.Models
             Characters = characters;
         }
 
+        /// <summary>
+        /// Enable or disable resurrections
+        /// </summary>
+        /// <param name="toggle"></param>
+        /// <returns></returns>
         public bool SetResurrection(bool toggle)
         {
             if (toggle)
