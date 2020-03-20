@@ -83,6 +83,26 @@ namespace UnitTests.Engine
             Assert.AreEqual(engine.FighterList[0], player1);
             Assert.AreEqual(engine.FighterList[1], player2);
         }
+
+        [Test]
+        public void RoundEngine_RemoveDeadPlayerFromList_Should_Remove_Dead_Players()
+        {
+            // Arrange
+            DungeonFighterModel player1 = new DungeonFighterModel();
+            DungeonFighterModel player2 = new DungeonFighterModel();
+            player1.CurrentHealth = -1;
+            Engine.FighterList.Add(player1);
+            Engine.FighterList.Add(player2);
+
+            // Act
+            List<DungeonFighterModel> result = Engine.RemoveDeadPlayersFromList();
+
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(player2, Engine.FighterList.ElementAt(0));
+        }
     }
 
 }
