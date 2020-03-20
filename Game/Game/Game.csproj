@@ -20,15 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Battle\MainBattlePage.xaml.cs">
-      <DependentUpon>MainBattlePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Battle\PickItemsPage.xaml.cs">
-      <DependentUpon>PickItemsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Battle\RoundOverPage.xaml.cs">
-      <DependentUpon>RoundOverPage.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\Battle\NewRoundPage.xaml.cs">
       <DependentUpon>NewRoundPage.xaml</DependentUpon>
     </Compile>
@@ -65,9 +56,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\Battle\MainBattlePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\Character\CharacterCreatePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

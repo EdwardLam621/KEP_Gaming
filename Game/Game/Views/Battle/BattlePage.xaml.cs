@@ -121,16 +121,6 @@ namespace Game.Views
 
 		}
 
-		/// <summary>
-		/// Battle Over
-		/// Battle Over button shows when all characters are dead
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		async void RoundOverButton_Clicked(object sender, EventArgs e)
-		{
-			await Navigation.PushModalAsync(new RoundOverPage());
-		}
 
 
 		/// <summary>
