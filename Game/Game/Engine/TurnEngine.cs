@@ -104,13 +104,6 @@ namespace Game.Engine
         /// <summary>
         /// Attack as a Turn
         /// 
-        /// Pick who to go after
-        /// 
-        /// Determine Attack Score
-        /// Determine DefenseScore
-        /// 
-        /// Do the Attack
-        /// 
         /// </summary>
         /// <param name="Attacker"></param>
         /// <returns></returns>
@@ -130,7 +123,11 @@ namespace Game.Engine
 
 
         /// <summary>
-        /// // MonsterModel Attacks CharacterModel
+        /// 
+        /// Determine Attack Score
+        /// Determine DefenseScore
+        /// 
+        /// Do the Attack
         /// </summary>
         /// <param name="Attacker"></param>
         /// <param name="AttackScore"></param>
