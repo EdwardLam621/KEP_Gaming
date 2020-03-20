@@ -75,6 +75,13 @@ namespace Game.Views
                 DeadCharacterListFrame.IsVisible = true;
                 DeadCharacterLabel.IsVisible = true;
             }
+            
+            if(EngineViewModel.Engine.Referee.Characters.Count <= 0)
+            {
+                AliveCharacterLabel.IsVisible = false;
+                AliveCharacterListFrame.IsVisible = false;
+            }
+
         }
 
         /// <summary>

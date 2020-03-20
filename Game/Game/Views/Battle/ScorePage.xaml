@@ -37,7 +37,8 @@
                             Style="{StaticResource HeaderStyle}"/>
                         </StackLayout>
 
-                        <Label Text="Alive Characters:" Style="{StaticResource HeaderStyle}" HorizontalOptions="Start"/>
+                        <Label x:Name="AliveCharacterLabel"
+                            Text="Alive Characters:" Style="{StaticResource HeaderStyle}" HorizontalOptions="Start"/>
 
                         <FlexLayout x:Name="AliveCharacterListFrame"
                                     JustifyContent="Start"
