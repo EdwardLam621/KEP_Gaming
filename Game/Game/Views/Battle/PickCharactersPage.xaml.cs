@@ -58,36 +58,12 @@ namespace Game.Views
 
         }
 
+
         /// <summary>
-        /// The row selected from the list
+        /// operation to check or uncheck box to pick character
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        /// *************************************
-        public void OnDatabaseCharacterItemSelected(object sender, SelectedItemChangedEventArgs args)
-        {
-           
-            //CharacterModel data = args.SelectedItem as CharacterModel;
-            //if (data == null)
-            //{
-            //    return;
-            //}
-
-            //// Manually deselect Character.
-            //CharactersListView.SelectedItem = null;
-
-            //// Don't add more than the party max
-            //if (EngineViewModel.PartyCharacterList.Count() < EngineViewModel.Engine.MaxNumberPartyCharacters)
-            //{
-            //    EngineViewModel.PartyCharacterList.Add(data);
-            //}
-
-            
-        }
-
-
-
-        //****************************
         public void checkbox_CheckChanged(object sender, EventArgs e)
         {
             var checkbox = (Plugin.InputKit.Shared.Controls.CheckBox)sender;

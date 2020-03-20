@@ -110,31 +110,21 @@ namespace Game.Engine
             CurrentRound = new RoundEngine(Referee, RoundCount);
         }
 
-        //public bool SetParty(List<CharacterModel> party)
-        //{
-        //    var dungeonFighterModels = new List<DungeonFighterModel>();
-
-        //    foreach (CharacterModel character in party)
-        //    {
-        //        dungeonFighterModels.Add(new DungeonFighterModel(character));
-        //    }
-
-        //    Referee.Characters = dungeonFighterModels;
-
-        //    return true;
-        //}
-
+        /// <summary>
+        /// turn on/off autobattle
+        /// </summary>
+        /// <param name="toggle"></param>
         public void SetAutoBattle(bool toggle)
         {
             Referee.AutoBattleEnabled = toggle;
         }
 
 
-
+        /// <summary>
+        /// End battle
+        /// </summary>
         public bool EndBattle()
         {
-            //BattleRunning = false;
-
             Referee.BattleScore.CalculateScore();
 
             return true;
